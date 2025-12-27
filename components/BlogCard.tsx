@@ -41,7 +41,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             <span>{formatDate(post.date)}</span>
             {post.author && <span>{post.author}</span>}
           </div>
-          {post.tags.length > 0 && (
+          {post.tags?.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {post.tags.slice(0, 3).map((tag, index) => (
                 <span
