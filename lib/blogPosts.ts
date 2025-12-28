@@ -221,5 +221,157 @@ export const exampleBlogPosts: BlogPost[] = [
     category: "Güvenlik",
     tags: ["ISO 27001", "BGYS", "bilgi güvenliği", "siber güvenlik"],
   },
+  {
+    id: 6,
+    slug: "freepbx-asterisk-ile-acik-kaynak-telefon-santrali-kurulumu",
+    title: "FreePBX ve Asterisk ile Açık Kaynak Telefon Santrali Kurulumu",
+    description: "Açık kaynak telefon santrali çözümleri ile iletişim maliyetlerinizi düşürün. FreePBX ve Asterisk kurulumu, VoIP sistemleri hakkında bilgi edinin.",
+    content: `
+<h2>FreePBX ve Asterisk Nedir?</h2>
+
+<p>FreePBX, Asterisk tabanlı açık kaynak telefon santrali yönetim sistemidir. Kurumsal iletişim ihtiyaçlarınızı karşılamak için güçlü ve esnek bir çözüm sunar.</p>
+
+<h2>Avantajları</h2>
+
+<ul>
+  <li>Maliyet tasarrufu: Açık kaynak lisans maliyeti yok</li>
+  <li>Esneklik: İhtiyaçlarınıza göre özelleştirilebilir</li>
+  <li>Ölçeklenebilirlik: Küçük işletmeden büyük kuruluşa kadar</li>
+  <li>Zengin özellikler: IVR, çağrı yönlendirme, sesli mesaj</li>
+  <li>Entegrasyon: CRM ve diğer sistemlerle entegrasyon</li>
+</ul>
+
+<h2>VoIP Sistemleri</h2>
+
+<p>VoIP (Voice over Internet Protocol) teknolojisi, internet üzerinden sesli iletişim sağlar. Geleneksel telefon hatlarına göre daha düşük maliyetli ve esnek bir çözümdür.</p>
+
+<h2>FreePBX Özellikleri</h2>
+
+<h3>Çağrı Yönlendirme</h3>
+<p>Gelen çağrıları otomatik olarak doğru departmana veya kişiye yönlendirebilirsiniz. Zaman bazlı yönlendirme, yoğunluk bazlı dağıtım gibi özellikler sunar.</p>
+
+<h3>Sesli Mesaj</h3>
+<p>Çağrıya cevap verilemediğinde otomatik sesli mesaj kaydı yapar. E-posta entegrasyonu ile mesajları e-posta olarak alabilirsiniz.</p>
+
+<h3>IVR (Interactive Voice Response)</h3>
+<p>Otomatik sesli menü sistemi ile çağrıları yönlendirebilir, bilgi verebilir ve müşteri hizmetlerini optimize edebilirsiniz.</p>
+
+<h2>Asterisk Kurulumu</h2>
+
+<p>Asterisk, açık kaynak telefon santrali yazılımıdır. FreePBX, Asterisk'in web tabanlı yönetim arayüzüdür. Kurulum ve yapılandırma süreçleri profesyonel destek gerektirir.</p>
+
+<h2>muharremsen'in FreePBX Hizmetleri</h2>
+
+<p>muharremsen olarak, FreePBX ve Asterisk kurulumu, yapılandırma ve destek hizmetleri sunuyoruz. Açık kaynak telefon santrali çözümleriyle iletişim maliyetlerinizi düşürüyoruz.</p>
+
+<p>FreePBX kurulumu için bizimle iletişime geçin ve iletişim sisteminizi modernleştirin.</p>
+    `,
+    date: "2024-12-15",
+    author: "muharremsen",
+    category: "Telekomünikasyon",
+    tags: ["FreePBX", "Asterisk", "VoIP", "telefon santrali"],
+  },
+  {
+    id: 7,
+    slug: "domain-server-active-directory-kurulumu-kapsamli-rehber",
+    title: "Domain Server ve Active Directory Kurulumu: Kapsamlı Rehber",
+    description: "Kurumsal ağ altyapınız için domain server ve Active Directory kurulumları. Kullanıcı yönetimi, grup politikaları ve güvenlik yapılandırmaları.",
+    content: `
+<h2>Domain Server ve Active Directory Nedir?</h2>
+
+<p>Domain Server ve Active Directory, kurumsal ağ altyapısının temel bileşenleridir. Kullanıcı yönetimi, kaynak erişimi ve güvenlik politikalarını merkezi olarak yönetmenizi sağlar.</p>
+
+<h2>Active Directory'nin Önemi</h2>
+
+<p>Active Directory, Microsoft'un dizin hizmeti sistemidir. Kurumsal ağlarda kullanıcılar, bilgisayarlar, yazıcılar ve diğer kaynakları merkezi olarak yönetmenizi sağlar.</p>
+
+<h2>Avantajları</h2>
+
+<ul>
+  <li>Merkezi yönetim: Tüm kaynaklar tek yerden yönetilir</li>
+  <li>Güvenlik: Kullanıcı kimlik doğrulama ve yetkilendirme</li>
+  <li>Grup politikaları: Sistem ayarlarını merkezi olarak uygulama</li>
+  <li>Ölçeklenebilirlik: Binlerce kullanıcı ve kaynağı yönetebilme</li>
+  <li>Entegrasyon: Diğer Microsoft servisleriyle entegrasyon</li>
+</ul>
+
+<h2>Domain Server Kurulumu</h2>
+
+<p>Domain Server kurulumu, Active Directory Domain Services (AD DS) rolünün yüklenmesi ve yapılandırılması sürecidir. Doğru yapılandırma, güvenlik ve performans için kritik öneme sahiptir.</p>
+
+<h2>Kullanıcı Yönetimi</h2>
+
+<p>Active Directory ile kullanıcı hesapları, gruplar ve organizasyon birimleri (OU) oluşturabilir, yönetebilir ve yetkilendirebilirsiniz. Merkezi kimlik doğrulama ile tüm sistemlere tek giriş (SSO) sağlayabilirsiniz.</p>
+
+<h2>Grup Politikaları</h2>
+
+<p>Grup Politikaları (Group Policy) ile sistem ayarlarını, güvenlik yapılandırmalarını ve uygulama ayarlarını merkezi olarak uygulayabilirsiniz. Bu sayede tüm bilgisayarlarda tutarlı yapılandırma sağlanır.</p>
+
+<h2>Güvenlik Yapılandırmaları</h2>
+
+<p>Active Directory güvenliği için şifre politikaları, hesap kilitleme, erişim kontrolü ve denetim kayıtları gibi özellikler kullanılır. Düzenli güvenlik güncellemeleri ve yamalar uygulanmalıdır.</p>
+
+<h2>muharremsen'in Domain Server Hizmetleri</h2>
+
+<p>muharremsen olarak, domain server ve Active Directory kurulumu, yapılandırma ve yönetim hizmetleri sunuyoruz. Kullanıcı yönetimi, grup politikaları ve güvenlik yapılandırmalarıyla kurumsal ağ altyapınızı güvenli hale getiriyoruz.</p>
+
+<p>Domain Server kurulumu için bizimle iletişime geçin ve ağ altyapınızı profesyonelce yönetin.</p>
+    `,
+    date: "2024-12-10",
+    author: "muharremsen",
+    category: "Sistem Yönetimi",
+    tags: ["Domain Server", "Active Directory", "ağ yönetimi", "güvenlik"],
+  },
+  {
+    id: 8,
+    slug: "gercek-zamanli-envanter-yonetimi-ile-stoklarinizi-kontrol-edin",
+    title: "Gerçek Zamanlı Envanter Yönetimi ile Stoklarınızı Kontrol Edin",
+    description: "Stok ve envanter takibinizi kolaylaştıran entegre sistemler. Gerçek zamanlı stok takibi, otomatik sipariş yönetimi ve raporlama özellikleri.",
+    content: `
+<h2>Envanter Yönetimi Nedir?</h2>
+
+<p>Envanter yönetimi, stok seviyelerini takip etme, sipariş verme ve stok maliyetlerini optimize etme sürecidir. Modern envanter yönetim sistemleri, gerçek zamanlı takip ve otomasyon özellikleri sunar.</p>
+
+<h2>Gerçek Zamanlı Stok Takibi</h2>
+
+<p>Gerçek zamanlı stok takibi, anlık stok seviyelerini görüntülemenizi sağlar. Satış, alış ve transfer işlemleri anında stok seviyelerine yansır. Bu sayede stok fazlası veya eksikliği önlenir.</p>
+
+<h2>Avantajları</h2>
+
+<ul>
+  <li>Stok seviyesi optimizasyonu: Doğru miktarda stok bulundurma</li>
+  <li>Maliyet tasarrufu: Stok fazlası ve eksikliği önleme</li>
+  <li>Otomatik sipariş: Minimum stok seviyesinde otomatik sipariş</li>
+  <li>Raporlama: Detaylı stok raporları ve analizler</li>
+  <li>Entegrasyon: Satış, muhasebe ve tedarikçi sistemleriyle entegrasyon</li>
+</ul>
+
+<h2>Otomatik Sipariş Yönetimi</h2>
+
+<p>Envanter yönetim sistemleri, minimum stok seviyesine ulaşıldığında otomatik olarak sipariş oluşturabilir. Tedarikçi entegrasyonu ile siparişler otomatik olarak iletilir.</p>
+
+<h2>Stok Raporlama</h2>
+
+<p>Detaylı stok raporları ile stok hareketlerini, en çok satan ürünleri, yavaş hareket eden stokları ve stok değerini analiz edebilirsiniz. Bu raporlar karar verme süreçlerinizi destekler.</p>
+
+<h2>Çok Depo Yönetimi</h2>
+
+<p>Birden fazla depo veya lokasyonunuz varsa, merkezi envanter yönetimi ile tüm stokları tek sistemden yönetebilirsiniz. Depolar arası transfer işlemleri kolayca yapılabilir.</h2>
+
+<h2>Barkod ve QR Kod Desteği</h2>
+
+<p>Barkod ve QR kod okutma ile stok giriş-çıkış işlemleri hızlanır ve hata oranı azalır. Mobil cihazlarla stok sayımı yapılabilir.</p>
+
+<h2>muharremsen'in Envanter Yönetim Çözümleri</h2>
+
+<p>muharremsen olarak, stok ve envanter takibinizi kolaylaştıran entegre sistemler geliştiriyoruz. Gerçek zamanlı stok takibi, otomatik sipariş yönetimi ve raporlama özellikleriyle envanter süreçlerinizi optimize ediyoruz.</p>
+
+<p>Envanter yönetim sistemi için bizimle iletişime geçin ve stoklarınızı profesyonelce yönetin.</p>
+    `,
+    date: "2024-12-05",
+    author: "muharremsen",
+    category: "Yazılım",
+    tags: ["envanter yönetimi", "stok takibi", "depo yönetimi", "inventory"],
+  },
 ];
 
