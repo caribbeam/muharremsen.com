@@ -15,18 +15,50 @@ interface BlogPostPageProps {
 export const revalidate = 10;
 
 export async function generateStaticParams() {
-  const posts = await getPosts(1, 100);
-  return posts.map((post) => ({
+  // WordPress'ten gelen post'lar
+  const wpPosts = await getPosts(1, 100);
+  const wpSlugs = wpPosts.map((post) => ({
     slug: post.slug,
   }));
+
+  // Local blog posts'ları da ekle
+  const localSlugs = exampleBlogPosts.map((post) => ({
+    slug: post.slug,
+  }));
+
+  // İkisini birleştir (duplicate'leri kaldır)
+  const allSlugs = [...wpSlugs, ...localSlugs];
+  const uniqueSlugs = allSlugs.filter(
+    (item, index, self) => index === self.findIndex((t) => t.slug === item.slug)
+  );
+
+  return uniqueSlugs;
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  let post = await getPostBySlug(params.slug);
 
+  // WordPress'ten gelmediyse local blog posts'tan bul
   if (!post) {
+    const examplePost = exampleBlogPosts.find(p => p.slug === params.slug);
+    if (examplePost) {
+      return {
+        title: `${examplePost.title} | muharremsen Blog`,
+        description: examplePost.description,
+        openGraph: {
+          title: examplePost.title,
+          description: examplePost.description,
+          type: "article",
+          publishedTime: examplePost.date,
+        },
+        alternates: {
+          canonical: `/blog/${examplePost.slug}`,
+        },
+      };
+    }
+    
     return {
       title: "Yazı Bulunamadı | muharremsen",
     };
