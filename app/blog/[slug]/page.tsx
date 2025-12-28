@@ -82,6 +82,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     }
   }
 
+  // Post hala null ise 404 göster
+  if (!post) {
+    notFound();
+  }
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("tr-TR", {
@@ -93,7 +98,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const allPosts = await getPosts(1, 10);
   const relatedPosts = allPosts
-    .filter((p) => p.id !== post.id)
+    .filter((p) => p.id !== post!.id)
     .slice(0, 2);
 
   const structuredData = {
