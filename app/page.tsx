@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import { getPageBySlug } from "@/lib/wp";
 import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -153,8 +154,75 @@ export default async function Home() {
     </div>
   );
 
+  // Service Schema for Homepage
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "IT Danışmanlık ve Yazılım Geliştirme",
+    provider: {
+      "@type": "Organization",
+      name: "muharremsen",
+      url: "https://muharremsen.com",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Turkey",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "muharremsen Hizmetleri",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Yapay Zeka Destekli Yazılımlar",
+            description: "AI teknolojileriyle güçlendirilmiş özel yazılım çözümleri",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "FreePBX / Asterisk Kurulumları",
+            description: "Açık kaynak telefon santrali çözümleri ve VoIP sistemleri",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Domain Server / Active Directory",
+            description: "Kurumsal ağ altyapısı için domain server ve Active Directory kurulumları",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "VPN Çözümleri",
+            description: "Kurumsal VPN kurulumu ve güvenli uzaktan erişim",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "ISO 27001 BGYS Desteği",
+            description: "Bilgi güvenliği yönetim sistemi danışmanlığı",
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <>
+      <Script
+        id="service-schema-homepage"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero Section - Hareketli arka plan ve başlık */}
       <Hero />
       

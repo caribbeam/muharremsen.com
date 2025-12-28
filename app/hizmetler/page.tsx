@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import { getPageBySlug } from "@/lib/wp";
 import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -164,22 +165,142 @@ export default async function Hizmetler() {
     </div>
   );
 
+  // Service Schema for Services Page
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "muharremsen Hizmetleri",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        item: {
+          "@type": "Service",
+          name: "Yapay Zeka Destekli Yazılımlar",
+          description: "AI teknolojileriyle güçlendirilmiş özel yazılım çözümleri",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@type": "Service",
+          name: "Proforma Uygulamalar",
+          description: "İş süreçlerinizi dijitalleştiren proforma ve fatura yönetim sistemleri",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        item: {
+          "@type": "Service",
+          name: "Helpdesk Sistemleri",
+          description: "Müşteri destek süreçlerinizi profesyonelce yöneten helpdesk çözümleri",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        item: {
+          "@type": "Service",
+          name: "LMS (Öğrenme Yönetim Sistemleri)",
+          description: "Eğitim ve öğrenme süreçlerinizi dijitalleştiren LMS platformları",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        item: {
+          "@type": "Service",
+          name: "Envanter Yönetimi",
+          description: "Stok ve envanter takibinizi kolaylaştıran entegre sistemler",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 6,
+        item: {
+          "@type": "Service",
+          name: "Domain Server / Active Directory",
+          description: "Kurumsal ağ altyapınız için domain server ve Active Directory kurulumları",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 7,
+        item: {
+          "@type": "Service",
+          name: "FreePBX / Asterisk Kurulumları",
+          description: "Açık kaynak telefon santrali çözümleri ve VoIP sistemleri",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 8,
+        item: {
+          "@type": "Service",
+          name: "ISO 27001 BGYS Desteği",
+          description: "Bilgi güvenliği yönetim sistemi danışmanlığı ve uyumluluk desteği",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+    ],
+  };
+
   return (
-    <SectionWrapper className="pt-32">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          {page.title.rendered}
-        </h1>
-        
-        {hasContent ? (
-          (() => {
-            const sections = parseWordPressContent(page.content.rendered);
-            return renderWordPressContent(sections);
-          })()
-        ) : (
-          fallbackContent
-        )}
-      </div>
-    </SectionWrapper>
+    <>
+      <Script
+        id="service-schema-services"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <SectionWrapper className="pt-32">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {page.title.rendered}
+          </h1>
+          
+          {hasContent ? (
+            (() => {
+              const sections = parseWordPressContent(page.content.rendered);
+              return renderWordPressContent(sections);
+            })()
+          ) : (
+            fallbackContent
+          )}
+        </div>
+      </SectionWrapper>
+    </>
   );
 }

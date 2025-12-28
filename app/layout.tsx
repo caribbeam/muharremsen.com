@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -26,9 +27,70 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Organization Structured Data
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "muharremsen",
+    url: "https://muharremsen.com",
+    logo: "https://muharremsen.com/logo.png",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+90-530-498-95-53",
+      contactType: "customer service",
+      email: "info@muharremsen.com",
+    },
+    sameAs: [
+      // Sosyal medya linkleriniz varsa buraya ekleyin
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "TR",
+    },
+  };
+
+  // LocalBusiness Schema (Yerel işletme için)
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://muharremsen.com",
+    name: "muharremsen",
+    image: "https://muharremsen.com/logo.png",
+    telephone: "+90-530-498-95-53",
+    email: "info@muharremsen.com",
+    url: "https://muharremsen.com",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "TR",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+      ],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  };
+
   return (
     <html lang="tr">
       <body className={inter.className}>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <Script
+          id="localbusiness-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
