@@ -14,9 +14,47 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const wpPosts = await getPosts();
   
-  // WordPress'ten gelen yazılar varsa onları kullan, yoksa örnek yazıları göster
-  const hasWpPosts = wpPosts.length > 0;
-  const posts = hasWpPosts ? wpPosts : exampleBlogPosts;
+  // WordPress yazıları ile örnek yazıları birleştir
+  // Örnek yazıları her zaman göster (WordPress yazıları varsa onlar da eklenir)
+  const allPosts = [...exampleBlogPosts];
+  
+  // WordPress yazılarını da ekle (eğer varsa)
+  if (wpPosts.length > 0) {
+    wpPosts.forEach(wpPost => {
+      // Aynı slug'a sahip örnek yazı varsa WordPress yazısını kullan
+      const existingIndex = allPosts.findIndex(p => p.slug === wpPost.slug);
+      if (existingIndex !== -1) {
+        // WordPress yazısı ile değiştir
+        allPosts[existingIndex] = {
+          id: wpPost.id,
+          slug: wpPost.slug,
+          title: wpPost.title.rendered,
+          description: wpPost.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 200),
+          content: wpPost.content.rendered,
+          date: wpPost.date,
+          author: "muharremsen",
+          category: "Blog",
+          tags: [],
+        };
+      } else {
+        // Yeni WordPress yazısı ekle
+        allPosts.push({
+          id: wpPost.id,
+          slug: wpPost.slug,
+          title: wpPost.title.rendered,
+          description: wpPost.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 200),
+          content: wpPost.content.rendered,
+          date: wpPost.date,
+          author: "muharremsen",
+          category: "Blog",
+          tags: [],
+        });
+      }
+    });
+  }
+  
+  // Tarihe göre sırala (en yeni önce)
+  const posts = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <SectionWrapper className="pt-32">
@@ -40,45 +78,20 @@ export default async function BlogPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => {
-              if (hasWpPosts) {
-                // WordPress post
-                const wpPost = post as typeof wpPosts[0];
-                return (
-                  <BlogCard
-                    key={wpPost.id}
-                    post={{
-                      slug: wpPost.slug,
-                      title: wpPost.title.rendered,
-                      description: wpPost.excerpt.rendered
-                        .replace(/<[^>]*>/g, "")
-                        .substring(0, 150),
-                      author: "muharremsen",
-                      date: wpPost.date,
-                      category: "Blog",
-                      tags: [],
-                    }}
-                  />
-                );
-              } else {
-                // Example post
-                const examplePost = post as typeof exampleBlogPosts[0];
-                return (
-                  <BlogCard
-                    key={examplePost.id}
-                    post={{
-                      slug: examplePost.slug,
-                      title: examplePost.title,
-                      description: examplePost.description.substring(0, 150),
-                      author: examplePost.author,
-                      date: examplePost.date,
-                      category: examplePost.category,
-                      tags: examplePost.tags,
-                    }}
-                  />
-                );
-              }
-            })}
+            {posts.map((post) => (
+              <BlogCard
+                key={post.id}
+                post={{
+                  slug: post.slug,
+                  title: post.title,
+                  description: post.description.substring(0, 150),
+                  author: post.author,
+                  date: post.date,
+                  category: post.category,
+                  tags: post.tags,
+                }}
+              />
+            ))}
           </div>
         )}
       </div>
