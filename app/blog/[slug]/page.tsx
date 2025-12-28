@@ -203,7 +203,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </header>
 
-          <article className="mb-8">
+          <article className="mb-8 glass rounded-xl p-8">
             {(() => {
               const sections = parseWordPressContent(currentPost.content.rendered);
               return renderWordPressContent(sections);
