@@ -34,7 +34,23 @@ export default async function Iletisim() {
   const page = await getPageBySlug("iletisim");
 
   if (!page) {
-    notFound();
+    return (
+      <SectionWrapper className="pt-32">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              İçerik Bekleniyor
+            </h1>
+            <p className="text-gray-400 text-lg">
+              WordPress panelinde <strong>slug: "iletisim"</strong> olan bir sayfa oluşturun.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <ContactForm />
+          </div>
+        </div>
+      </SectionWrapper>
+    );
   }
 
   return (

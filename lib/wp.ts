@@ -72,12 +72,14 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
     );
 
     if (!response.ok) {
+      console.error(`WordPress API error for slug "${slug}": ${response.status} ${response.statusText}`);
       return null;
     }
 
     const pages: WPPage[] = await response.json();
 
     if (!pages || pages.length === 0) {
+      console.warn(`No page found with slug "${slug}" in WordPress`);
       return null;
     }
 

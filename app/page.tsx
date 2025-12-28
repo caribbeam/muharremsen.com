@@ -33,7 +33,27 @@ export default async function Home() {
   const page = await getPageBySlug("ana-sayfa");
 
   if (!page) {
-    notFound();
+    return (
+      <SectionWrapper className="pt-32">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            WordPress İçerik Bekleniyor
+          </h1>
+          <p className="text-gray-400 text-lg mb-4">
+            WordPress panelinde <strong>slug: "ana-sayfa"</strong> olan bir sayfa oluşturmanız gerekiyor.
+          </p>
+          <div className="glass rounded-xl p-6 mt-8 text-left">
+            <h2 className="text-xl font-bold text-white mb-4">WordPress'te Oluşturulması Gereken Sayfalar:</h2>
+            <ul className="text-gray-300 space-y-2">
+              <li>• <strong>Slug:</strong> ana-sayfa → Ana Sayfa (/)</li>
+              <li>• <strong>Slug:</strong> hizmetler → Hizmetler (/hizmetler)</li>
+              <li>• <strong>Slug:</strong> hakkimizda → Hakkımızda (/hakkimizda)</li>
+              <li>• <strong>Slug:</strong> iletisim → İletişim (/iletisim)</li>
+            </ul>
+          </div>
+        </div>
+      </SectionWrapper>
+    );
   }
 
   return (

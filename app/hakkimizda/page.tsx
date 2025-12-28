@@ -33,7 +33,18 @@ export default async function Hakkimizda() {
   const page = await getPageBySlug("hakkimizda");
 
   if (!page) {
-    notFound();
+    return (
+      <SectionWrapper className="pt-32">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            İçerik Bekleniyor
+          </h1>
+          <p className="text-gray-400 text-lg">
+            WordPress panelinde <strong>slug: "hakkimizda"</strong> olan bir sayfa oluşturun.
+          </p>
+        </div>
+      </SectionWrapper>
+    );
   }
 
   return (
