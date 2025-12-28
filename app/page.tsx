@@ -79,7 +79,7 @@ export default async function Home() {
                 Tarayıcı console'unu açın (F12) ve şu komutu çalıştırın:
               </p>
               <code className="block bg-dark-tertiary p-3 rounded text-xs text-gray-300 break-all">
-                fetch('https://panel.muharremsen.com/wp-json/wp/v2/pages').then(r => r.json()).then(console.log)
+                {`fetch('https://panel.muharremsen.com/wp-json/wp/v2/pages').then(r => r.json()).then(console.log)`}
               </code>
             </div>
           </div>
