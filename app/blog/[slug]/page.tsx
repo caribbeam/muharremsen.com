@@ -4,6 +4,7 @@ import SectionWrapper from "@/components/SectionWrapper";
 import { getPostBySlug, getPosts } from "@/lib/wp";
 import Link from "next/link";
 import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
+import { exampleBlogPosts } from "@/lib/blogPosts";
 
 interface BlogPostPageProps {
   params: {
@@ -57,10 +58,28 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getPostBySlug(params.slug);
-
+  let post = await getPostBySlug(params.slug);
+  
+  // WordPress'ten gelmediyse örnek yazılardan bul
   if (!post) {
-    notFound();
+    const examplePost = exampleBlogPosts.find(p => p.slug === params.slug);
+    if (examplePost) {
+      post = {
+        id: examplePost.id,
+        slug: examplePost.slug,
+        title: { rendered: examplePost.title },
+        excerpt: { rendered: examplePost.description },
+        content: { rendered: examplePost.content },
+        date: examplePost.date,
+        modified: examplePost.date,
+        yoast_head_json: {
+          title: examplePost.title,
+          description: examplePost.description,
+        },
+      } as any;
+    } else {
+      notFound();
+    }
   }
 
   const formatDate = (dateString: string) => {
