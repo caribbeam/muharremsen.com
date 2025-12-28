@@ -539,5 +539,686 @@ export const exampleBlogPosts: BlogPost[] = [
     category: "Telekomünikasyon",
     tags: ["FreePBX", "Asterisk", "VoIP", "telefon santrali", "kurulum", "yapılandırma"],
   },
+  {
+    id: 10,
+    slug: "freepbx-connect-asterisk-hizmetleri-kurulum-ve-yapilandirma",
+    title: "FreePBX Connect Asterisk Hizmetleri: Kurulum ve Yapılandırma Rehberi",
+    description: "FreePBX Connect ile Asterisk telefon santrali kurulumu. VoIP sistemleri, trunk yapılandırması, extension oluşturma ve profesyonel telefon santrali hizmetleri hakkında detaylı bilgi.",
+    content: `
+<h2>FreePBX Connect ve Asterisk Nedir?</h2>
+
+<p>FreePBX Connect, açık kaynak telefon santrali yönetim sistemidir ve Asterisk tabanlıdır. Kurumsal iletişim ihtiyaçlarınızı karşılamak için güçlü, esnek ve maliyet etkin bir çözüm sunar. Bu rehber, FreePBX Connect Asterisk hizmetlerinin kurulumu ve yapılandırması hakkında kapsamlı bilgi içermektedir.</p>
+
+<h2>FreePBX Connect'in Avantajları</h2>
+
+<ul>
+  <li><strong>Maliyet Tasarrufu:</strong> Açık kaynak lisans maliyeti yok, sadece donanım ve destek maliyeti</li>
+  <li><strong>Esneklik:</strong> İhtiyaçlarınıza göre tam özelleştirilebilir yapı</li>
+  <li><strong>Ölçeklenebilirlik:</strong> Küçük işletmeden büyük kuruluşa kadar her ölçekte kullanılabilir</li>
+  <li><strong>Zengin Özellikler:</strong> IVR, çağrı yönlendirme, sesli mesaj, queue sistemi, konferans</li>
+  <li><strong>Entegrasyon:</strong> CRM, helpdesk ve diğer iş uygulamalarıyla entegrasyon imkanı</li>
+  <li><strong>Güvenlik:</strong> Gelişmiş güvenlik özellikleri ve şifreleme desteği</li>
+</ul>
+
+<h2>Sistem Gereksinimleri</h2>
+
+<h3>Donanım Gereksinimleri</h3>
+<ul>
+  <li><strong>İşlemci:</strong> 2 çekirdek (önerilen: 4+ çekirdek)</li>
+  <li><strong>RAM:</strong> Minimum 2GB (önerilen: 4GB+)</li>
+  <li><strong>Disk:</strong> Minimum 20GB boş alan (önerilen: 50GB+ SSD)</li>
+  <li><strong>Ağ:</strong> Statik IP adresi, sabit internet bağlantısı (minimum 1 Mbps upload)</li>
+</ul>
+
+<h3>Yazılım Gereksinimleri</h3>
+<ul>
+  <li><strong>İşletim Sistemi:</strong> FreePBX Distro, CentOS 7/8, RHEL 7/8</li>
+  <li><strong>Asterisk:</strong> 16.x veya üzeri (FreePBX ile birlikte gelir)</li>
+  <li><strong>FreePBX:</strong> 15.x veya üzeri</li>
+</ul>
+
+<h2>FreePBX Connect Kurulum Adımları</h2>
+
+<h3>Adım 1: FreePBX Distro Kurulumu</h3>
+
+<p>FreePBX Distro, FreePBX ve Asterisk'in önceden yapılandırılmış bir Linux dağıtımıdır. En kolay kurulum yöntemidir.</p>
+
+<ol>
+  <li><strong>ISO İndirme:</strong> FreePBX resmi web sitesinden en son FreePBX Distro ISO dosyasını indirin</li>
+  <li><strong>Boot:</strong> Sunucunuzu ISO'dan başlatın</li>
+  <li><strong>Kurulum:</strong> Kurulum sihirbazını takip edin:
+    <ul>
+      <li>Dil seçimi</li>
+      <li>Zaman dilimi ayarı</li>
+      <li>Disk bölümleme</li>
+      <li>Root şifresi belirleme</li>
+      <li>Ağ yapılandırması (statik IP önerilir)</li>
+    </ul>
+  </li>
+  <li><strong>İlk Başlatma:</strong> Kurulum tamamlandıktan sonra sunucu yeniden başlatılır</li>
+</ol>
+
+<h3>Adım 2: Web Arayüzüne Erişim</h3>
+
+<p>Kurulum tamamlandıktan sonra, tarayıcınızdan şu adrese gidin:</p>
+<p><code>https://[SUNUCU-IP-ADRESI]</code></p>
+
+<p>İlk girişte admin kullanıcı adı ve şifresi istenir. Varsayılan kullanıcı adı genellikle <strong>admin</strong>'dir. İlk girişte şifre değiştirmeniz istenecektir.</p>
+
+<h3>Adım 3: Temel Sistem Yapılandırması</h3>
+
+<h4>3.1. SIP Ayarları</h4>
+<p><strong>Settings → Asterisk SIP Settings</strong> menüsünden:</p>
+<ul>
+  <li>SIP port: 5060 (varsayılan)</li>
+  <li>RTP port aralığı: 10000-20000</li>
+  <li>Codec ayarları: G.711 (ulaw/alaw), G.729, Opus</li>
+  <li>NAT ayarları: Firewall arkasındaysanız NAT modunu etkinleştirin</li>
+</ul>
+
+<h4>3.2. Sistem Bilgileri</h4>
+<p><strong>Admin → System Admin</strong> menüsünden:</p>
+<ul>
+  <li>Şirket adı ve bilgileri</li>
+  <li>E-posta ayarları</li>
+  <li>Zaman dilimi</li>
+  <li>Dil ayarları</li>
+</ul>
+
+<h2>Extension (Dahili) Oluşturma</h2>
+
+<h3>Extension Yapılandırması</h3>
+
+<ol>
+  <li><strong>Applications → Extensions</strong> menüsüne gidin</li>
+  <li><strong>Add Extension</strong> butonuna tıklayın</li>
+  <li>Extension türünü seçin (SIP Extension önerilir)</li>
+  <li>Extension bilgilerini girin:
+    <ul>
+      <li><strong>User Extension:</strong> Dahili numara (örn: 1001)</li>
+      <li><strong>Display Name:</strong> Kullanıcı adı</li>
+      <li><strong>Secret:</strong> SIP şifresi (güçlü bir şifre kullanın)</li>
+      <li><strong>Email Address:</strong> Sesli mesaj için e-posta</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> ve <strong>Apply Config</strong> butonlarına tıklayın</li>
+</ol>
+
+<h3>VoIP Telefon Yapılandırması</h3>
+
+<p>VoIP telefonlarınızı FreePBX'e bağlamak için:</p>
+<ol>
+  <li>Telefonun ağ ayarlarına gidin</li>
+  <li>SIP sunucu adresini girin (FreePBX IP adresi)</li>
+  <li>Extension numarası ve şifresini girin</li>
+  <li>Codec ayarlarını yapılandırın (G.711 önerilir)</li>
+  <li>Telefonu kaydedin ve test edin</li>
+</ol>
+
+<h2>Trunk (Hat) Yapılandırması</h2>
+
+<h3>SIP Trunk Oluşturma</h3>
+
+<p>Dış hat bağlantıları için trunk oluşturun:</p>
+
+<ol>
+  <li><strong>Connectivity → Trunks</strong> menüsüne gidin</li>
+  <li><strong>Add Trunk</strong> butonuna tıklayın</li>
+  <li>Trunk türünü seçin (SIP Trunk önerilir)</li>
+  <li>VoIP sağlayıcınızın bilgilerini girin:
+    <ul>
+      <li><strong>Trunk Name:</strong> Trunk ismi (örn: VoIP-Provider)</li>
+      <li><strong>Outbound CallerID:</strong> Görünen numara</li>
+      <li><strong>PEER Details:</strong> VoIP sağlayıcınızın SIP sunucu bilgileri</li>
+      <li><strong>USER Context:</strong> Kullanıcı adı ve şifre</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> ve <strong>Apply Config</strong> butonlarına tıklayın</li>
+</ol>
+
+<h3>Trunk Test Etme</h3>
+
+<p>Trunk'ı test etmek için:</p>
+<ul>
+  <li>Asterisk CLI'de: <code>sip show peers</code> komutu ile trunk durumunu kontrol edin</li>
+  <li>Test çağrısı yaparak bağlantıyı doğrulayın</li>
+</ul>
+
+<h2>Outbound Routes (Giden Yönlendirme)</h2>
+
+<h3>Giden Yönlendirme Yapılandırması</h3>
+
+<ol>
+  <li><strong>Connectivity → Outbound Routes</strong> menüsüne gidin</li>
+  <li><strong>Add Route</strong> butonuna tıklayın</li>
+  <li>Route bilgilerini girin:
+    <ul>
+      <li><strong>Route Name:</strong> Yönlendirme ismi</li>
+      <li><strong>Dial Patterns:</strong> Çağrı desenleri (örn: 9. X. - dış hat için 9 tuşu)</li>
+      <li><strong>Trunk Sequence:</strong> Kullanılacak trunk'ları seçin</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> ve <strong>Apply Config</strong> butonlarına tıklayın</li>
+</ol>
+
+<h2>Inbound Routes (Gelen Yönlendirme)</h2>
+
+<h3>Gelen Yönlendirme Yapılandırması</h3>
+
+<ol>
+  <li><strong>Connectivity → Inbound Routes</strong> menüsüne gidin</li>
+  <li><strong>Add Inbound Route</strong> butonuna tıklayın</li>
+  <li>Route bilgilerini girin:
+    <ul>
+      <li><strong>Description:</strong> Açıklama</li>
+      <li><strong>DID Number:</strong> Gelen numara (boş bırakılırsa tüm numaralar)</li>
+      <li><strong>Destination:</strong> Yönlendirme hedefi (Extension, IVR, Queue, vb.)</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> ve <strong>Apply Config</strong> butonlarına tıklayın</li>
+</ol>
+
+<h2>IVR (Interactive Voice Response) Yapılandırması</h2>
+
+<h3>IVR Oluşturma</h3>
+
+<p>IVR, otomatik sesli menü sistemidir. Gelen çağrıları menü seçeneklerine göre yönlendirebilirsiniz.</p>
+
+<ol>
+  <li><strong>Applications → IVR</strong> menüsüne gidin</li>
+  <li><strong>Add IVR</strong> butonuna tıklayın</li>
+  <li>IVR bilgilerini girin:
+    <ul>
+      <li><strong>IVR Name:</strong> IVR ismi</li>
+      <li><strong>Announcement:</strong> Hoş geldiniz mesajı (ses dosyası)</li>
+      <li><strong>Menu Options:</strong> Menü seçeneklerini tanımlayın:
+        <ul>
+          <li>1 → Satış departmanı</li>
+          <li>2 → Destek departmanı</li>
+          <li>3 → Muhasebe</li>
+          <li>0 → Operatör</li>
+        </ul>
+      </li>
+      <li><strong>Timeout:</strong> Zaman aşımı süresi (saniye)</li>
+      <li><strong>Invalid Entry:</strong> Geçersiz giriş için yönlendirme</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> ve <strong>Apply Config</strong> butonlarına tıklayın</li>
+</ol>
+
+<h2>Queue (Kuyruk) Yapılandırması</h2>
+
+<h3>Queue Oluşturma</h3>
+
+<p>Queue sistemi, çağrıları birden fazla agent arasında dağıtır. Müşteri hizmetleri için idealdir.</p>
+
+<ol>
+  <li><strong>Applications → Queues</strong> menüsüne gidin</li>
+  <li><strong>Add Queue</strong> butonuna tıklayın</li>
+  <li>Queue bilgilerini girin:
+    <ul>
+      <li><strong>Queue Number:</strong> Queue numarası</li>
+      <li><strong>Queue Name:</strong> Queue ismi</li>
+      <li><strong>Queue Members:</strong> Agent'ları ekleyin (Extensions)</li>
+      <li><strong>Ring Strategy:</strong> Zil stratejisi:
+        <ul>
+          <li><strong>ringall:</strong> Tüm agent'lara aynı anda çalar</li>
+          <li><strong>leastrecent:</strong> En az son çağrı alan agent'a çalar</li>
+          <li><strong>fewestcalls:</strong> En az çağrı alan agent'a çalar</li>
+        </ul>
+      </li>
+      <li><strong>Music on Hold:</strong> Bekleme müziği</li>
+      <li><strong>Timeout:</strong> Maksimum bekleme süresi</li>
+    </ul>
+  </li>
+  <li><strong>Submit</strong> ve <strong>Apply Config</strong> butonlarına tıklayın</li>
+</ol>
+
+<h2>Güvenlik Yapılandırmaları</h2>
+
+<h3>Firewall Ayarları</h3>
+
+<p>FreePBX sunucusunu güvenli hale getirmek için firewall kurallarını yapılandırın:</p>
+
+<ul>
+  <li><strong>Port 80/443:</strong> Web arayüzü (HTTPS önerilir)</li>
+  <li><strong>Port 5060:</strong> SIP protokolü</li>
+  <li><strong>Port 10000-20000:</strong> RTP port aralığı (ses verisi)</li>
+  <li><strong>SSH (22):</strong> Sadece güvenilir IP'lerden erişime izin verin</li>
+</ul>
+
+<h3>Fail2Ban Kurulumu</h3>
+
+<p>Brute force saldırılarına karşı koruma için Fail2Ban kurun:</p>
+
+<ol>
+  <li><strong>Admin → Module Admin</strong> menüsüne gidin</li>
+  <li>Fail2Ban modülünü arayın ve kurun</li>
+  <li><strong>Settings → Advanced → Fail2Ban</strong> menüsünden yapılandırın</li>
+  <li>IP ban süresi ve deneme sayısını ayarlayın</li>
+</ol>
+
+<h3>SSL Sertifikası</h3>
+
+<p>Web arayüzü için SSL sertifikası kurun:</p>
+
+<ol>
+  <li><strong>Admin → Certificate Management</strong> menüsüne gidin</li>
+  <li>Let's Encrypt sertifikası oluşturun (ücretsiz)</li>
+  <li>Domain adresinizi girin ve sertifikayı oluşturun</li>
+  <li>HTTPS erişimini zorunlu hale getirin</li>
+</ol>
+
+<h2>Yedekleme ve Bakım</h2>
+
+<h3>Otomatik Yedekleme</h3>
+
+<p>FreePBX'te otomatik yedekleme özelliği vardır:</p>
+
+<ol>
+  <li><strong>Admin → Backup & Restore</strong> menüsüne gidin</li>
+  <li><strong>Backup Settings</strong> bölümünden yedekleme zamanlaması yapın</li>
+  <li>Yedekleme sıklığını belirleyin (günlük, haftalık)</li>
+  <li>Yedeklemeleri harici bir depolama alanına kopyalayın</li>
+</ol>
+
+<h3>Sistem Güncellemeleri</h3>
+
+<p>FreePBX ve modüllerini düzenli olarak güncelleyin:</p>
+
+<ul>
+  <li><strong>Admin → Module Admin</strong> menüsünden güncellemeleri kontrol edin</li>
+  <li>Yedekleme yaptıktan sonra güncellemeleri uygulayın</li>
+  <li>Asterisk ve FreePBX sürümlerini takip edin</li>
+</ol>
+
+<h2>Yaygın Sorunlar ve Çözümleri</h2>
+
+<h3>Çağrı Yapılamıyor</h3>
+<ul>
+  <li>Firewall ayarlarını kontrol edin (port 5060 açık mı?)</li>
+  <li>SIP trunk yapılandırmasını doğrulayın</li>
+  <li>Extension şifrelerini kontrol edin</li>
+  <li>Asterisk log dosyalarını inceleyin: <code>asterisk -rvvv</code></li>
+</ul>
+
+<h3>Ses Kalitesi Sorunları</h3>
+<ul>
+  <li>RTP port aralığının açık olduğundan emin olun</li>
+  <li>Codec ayarlarını optimize edin (G.711 önerilir)</li>
+  <li>Ağ bant genişliğini kontrol edin (her çağrı için ~100 Kbps)</li>
+  <li>Jitter buffer ayarlarını yapılandırın</li>
+</ul>
+
+<h3>NAT Sorunları</h3>
+<ul>
+  <li>Firewall arkasındaysanız NAT modunu etkinleştirin</li>
+  <li>External IP adresini doğru yapılandırın</li>
+  <li>STUN server kullanmayı düşünün</li>
+</ul>
+
+<h2>muharremsen'in FreePBX Connect Hizmetleri</h2>
+
+<p>muharremsen olarak, FreePBX Connect Asterisk kurulumu, yapılandırma ve destek hizmetleri sunuyoruz. Açık kaynak telefon santrali çözümleriyle iletişim maliyetlerinizi düşürüyoruz.</p>
+
+<p>Profesyonel FreePBX kurulumu, Asterisk yapılandırması, VoIP entegrasyonu ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, telefon santrali sisteminizi en iyi şekilde yapılandırarak işletmenizin iletişim ihtiyaçlarını karşılamanıza yardımcı olur.</p>
+
+<p>FreePBX Connect kurulumu, trunk yapılandırması, IVR ve Queue sistemleri, güvenlik yapılandırmaları ve sürekli destek hizmetleri için muharremsen ile çalışın.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Telekomünikasyon",
+    tags: ["FreePBX", "Asterisk", "VoIP", "telefon santrali", "kurulum", "Connect", "trunk"],
+  },
+  {
+    id: 11,
+    slug: "domain-server-kurulum-rehberi-active-directory-yapilandirma",
+    title: "Domain Server Kurulum Rehberi: Active Directory Yapılandırma",
+    description: "Windows Server Domain Controller kurulumu ve Active Directory yapılandırması. Kullanıcı yönetimi, grup politikaları, DNS yapılandırması ve güvenlik ayarları hakkında detaylı bilgi.",
+    content: `
+<h2>Domain Server ve Active Directory Nedir?</h2>
+
+<p>Domain Server ve Active Directory, kurumsal ağ altyapısının temel bileşenleridir. Windows Server üzerinde Domain Controller kurulumu ile merkezi kullanıcı yönetimi, kaynak erişimi ve güvenlik politikalarını yönetebilirsiniz. Bu rehber, Domain Server kurulumu ve Active Directory yapılandırması hakkında kapsamlı bilgi içermektedir.</p>
+
+<h2>Active Directory'nin Avantajları</h2>
+
+<ul>
+  <li><strong>Merkezi Yönetim:</strong> Tüm kullanıcılar, bilgisayarlar ve kaynaklar tek yerden yönetilir</li>
+  <li><strong>Güvenlik:</strong> Merkezi kimlik doğrulama ve yetkilendirme</li>
+  <li><strong>Grup Politikaları:</strong> Sistem ayarlarını merkezi olarak uygulama</li>
+  <li><strong>Ölçeklenebilirlik:</strong> Binlerce kullanıcı ve kaynağı yönetebilme</li>
+  <li><strong>Entegrasyon:</strong> Microsoft servisleriyle tam entegrasyon</li>
+  <li><strong>Yedekleme ve Geri Yükleme:</strong> Merkezi yedekleme ve kurtarma</li>
+</ul>
+
+<h2>Sistem Gereksinimleri</h2>
+
+<h3>Donanım Gereksinimleri</h3>
+<ul>
+  <li><strong>İşlemci:</strong> 1.4 GHz 64-bit (önerilen: 2+ GHz, 2+ çekirdek)</li>
+  <li><strong>RAM:</strong> Minimum 2GB (önerilen: 4GB+)</li>
+  <li><strong>Disk:</strong> Minimum 32GB boş alan (önerilen: 100GB+ SSD)</li>
+  <li><strong>Ağ:</strong> Statik IP adresi, sabit internet bağlantısı</li>
+</ul>
+
+<h3>Yazılım Gereksinimleri</h3>
+<ul>
+  <li><strong>İşletim Sistemi:</strong> Windows Server 2016/2019/2022</li>
+  <li><strong>Lisans:</strong> Windows Server lisansı (CAL - Client Access License gerekli)</li>
+  <li><strong>DNS:</strong> DNS servisi (Active Directory ile birlikte kurulur)</li>
+</ul>
+
+<h2>Domain Server Kurulum Adımları</h2>
+
+<h3>Adım 1: Windows Server Kurulumu</h3>
+
+<ol>
+  <li>Windows Server ISO dosyasını indirin</li>
+  <li>Sunucuya Windows Server'ı kurun</li>
+  <li>İlk kurulum sırasında:
+    <ul>
+      <li>Dil, saat ve klavye ayarlarını yapın</li>
+      <li>Lisans anlaşmasını kabul edin</li>
+      <li>Disk bölümleme yapın</li>
+      <li>Administrator şifresi belirleyin</li>
+    </ul>
+  </li>
+  <li>Sunucuyu yeniden başlatın</li>
+</ol>
+
+<h3>Adım 2: Ağ Yapılandırması</h3>
+
+<p>Domain Controller olmadan önce ağ ayarlarını yapılandırın:</p>
+
+<ol>
+  <li><strong>Network Settings</strong> açın</li>
+  <li>Statik IP adresi atayın (örnek: 192.168.1.10)</li>
+  <li>Subnet mask: 255.255.255.0</li>
+  <li>Default gateway: Router IP adresi</li>
+  <li>DNS sunucu: Kendi IP adresiniz (şimdilik 127.0.0.1 veya boş bırakın, AD kurulumu sonrası otomatik ayarlanır)</li>
+</ol>
+
+<h3>Adım 3: Active Directory Domain Services (AD DS) Rolünü Yükleme</h3>
+
+<ol>
+  <li><strong>Server Manager</strong> açın</li>
+  <li><strong>Add Roles and Features</strong> tıklayın</li>
+  <li>Wizard'ı takip edin:
+    <ul>
+      <li><strong>Installation Type:</strong> Role-based or feature-based installation</li>
+      <li><strong>Server Selection:</strong> Mevcut sunucuyu seçin</li>
+      <li><strong>Server Roles:</strong> <strong>Active Directory Domain Services</strong> seçin</li>
+      <li>Gerekli özellikler otomatik eklenir (DNS, Group Policy Management, vb.)</li>
+      <li><strong>Features:</strong> Ek özellik eklemeye gerek yok</li>
+      <li><strong>Confirmation:</strong> Kurulumu başlatın</li>
+    </ul>
+  </li>
+  <li>Kurulum tamamlandıktan sonra <strong>Close</strong> tıklayın</li>
+</ol>
+
+<h3>Adım 4: Domain Controller'a Yükseltme</h3>
+
+<ol>
+  <li>Server Manager'da <strong>AD DS</strong> uyarısına tıklayın</li>
+  <li><strong>Promote this server to a domain controller</strong> seçeneğini seçin</li>
+  <li><strong>Deployment Configuration</strong> bölümünde:
+    <ul>
+      <li><strong>Add a new forest</strong> seçin (ilk domain controller için)</li>
+      <li><strong>Root domain name:</strong> Domain adınızı girin (örn: muharremsen.local)</li>
+    </ul>
+  </li>
+  <li><strong>Domain Controller Options</strong> bölümünde:
+    <ul>
+      <li><strong>Domain functional level:</strong> Windows Server 2016 veya üzeri (önerilir)</li>
+      <li><strong>Forest functional level:</strong> Windows Server 2016 veya üzeri</li>
+      <li><strong>DSRM Password:</strong> Directory Services Restore Mode şifresi (güçlü bir şifre)</li>
+      <li><strong>DNS Options:</strong> DNS server'ı otomatik kurulur</li>
+    </ul>
+  </li>
+  <li><strong>Additional Options</strong> bölümünde NetBIOS adını kontrol edin</li>
+  <li><strong>Paths</strong> bölümünde:
+    <ul>
+      <li>Database, Log files ve SYSVOL klasör konumlarını belirleyin (varsayılan genellikle uygundur)</li>
+    </ul>
+  </li>
+  <li><strong>Review Options</strong> bölümünde ayarları kontrol edin</li>
+  <li><strong>Prerequisites Check</strong> bölümünde tüm kontrollerin geçtiğinden emin olun</li>
+  <li><strong>Install</strong> butonuna tıklayın</li>
+  <li>Kurulum tamamlandıktan sonra sunucu otomatik olarak yeniden başlatılır</li>
+</ol>
+
+<h2>DNS Yapılandırması</h2>
+
+<h3>DNS Servisinin Doğrulanması</h3>
+
+<p>Active Directory kurulumu sırasında DNS servisi otomatik olarak kurulur. DNS yapılandırmasını kontrol edin:</p>
+
+<ol>
+  <li><strong>Server Manager → Tools → DNS</strong> açın</li>
+  <li>Forward Lookup Zones altında domain adınızı görmelisiniz</li>
+  <li>Reverse Lookup Zones kontrol edin</li>
+  <li>SRV kayıtlarının oluşturulduğunu doğrulayın</li>
+</ol>
+
+<h3>DNS Ayarlarını Güncelleme</h3>
+
+<p>Sunucunun kendi DNS ayarlarını güncelleyin:</p>
+
+<ol>
+  <li><strong>Network Settings</strong> açın</li>
+  <li>DNS sunucu adresini kendi IP adresiniz olarak ayarlayın (127.0.0.1 veya kendi IP)</li>
+  <li>Alternatif DNS sunucu olarak 8.8.8.8 (Google DNS) ekleyebilirsiniz</li>
+</ol>
+
+<h2>Kullanıcı Yönetimi</h2>
+
+<h3>Organizational Unit (OU) Oluşturma</h3>
+
+<p>Kullanıcıları organize etmek için OU'lar oluşturun:</p>
+
+<ol>
+  <li><strong>Server Manager → Tools → Active Directory Users and Computers</strong> açın</li>
+  <li>Domain adınıza sağ tıklayın</li>
+  <li><strong>New → Organizational Unit</strong> seçin</li>
+  <li>OU adını girin (örn: Users, Computers, Servers)</li>
+  <li><strong>OK</strong> tıklayın</li>
+</ol>
+
+<h3>Kullanıcı Hesapları Oluşturma</h3>
+
+<ol>
+  <li>İlgili OU'ya sağ tıklayın</li>
+  <li><strong>New → User</strong> seçin</li>
+  <li>Kullanıcı bilgilerini girin:
+    <ul>
+      <li><strong>First name, Last name:</strong> Kullanıcı adı</li>
+      <li><strong>User logon name:</strong> Kullanıcı adı (örn: john.doe)</li>
+      <li><strong>User logon name (pre-Windows 2000):</strong> Otomatik oluşturulur</li>
+    </ul>
+  </li>
+  <li><strong>Next</strong> tıklayın</li>
+  <li>Şifre belirleyin:
+    <ul>
+      <li>Güçlü bir şifre (en az 8 karakter, büyük/küçük harf, rakam, özel karakter)</li>
+      <li><strong>User must change password at next logon:</strong> İlk girişte şifre değiştirme</li>
+      <li><strong>User cannot change password:</strong> Sadece admin değiştirebilir</li>
+      <li><strong>Password never expires:</strong> Şifre süresi dolmaz</li>
+      <li><strong>Account is disabled:</strong> Hesabı devre dışı bırak</li>
+    </ul>
+  </li>
+  <li><strong>Finish</strong> tıklayın</li>
+</ol>
+
+<h3>Grup Oluşturma</h3>
+
+<ol>
+  <li>OU'ya sağ tıklayın</li>
+  <li><strong>New → Group</strong> seçin</li>
+  <li>Grup bilgilerini girin:
+    <ul>
+      <li><strong>Group name:</strong> Grup adı</li>
+      <li><strong>Group scope:</strong> Domain Local, Global, veya Universal</li>
+      <li><strong>Group type:</strong> Security veya Distribution</li>
+    </ul>
+  </li>
+  <li><strong>OK</strong> tıklayın</li>
+</ol>
+
+<h2>Grup Politikaları (Group Policy)</h2>
+
+<h3>Grup Politikası Oluşturma</h3>
+
+<ol>
+  <li><strong>Server Manager → Tools → Group Policy Management</strong> açın</li>
+  <li>Domain adınıza sağ tıklayın</li>
+  <li><strong>Create a GPO in this domain, and Link it here</strong> seçin</li>
+  <li>GPO adını girin (örn: Desktop Settings)</li>
+  <li><strong>OK</strong> tıklayın</li>
+  <li>GPO'ya sağ tıklayın ve <strong>Edit</strong> seçin</li>
+  <li>İstediğiniz ayarları yapılandırın:
+    <ul>
+      <li><strong>Computer Configuration:</strong> Bilgisayar ayarları</li>
+      <li><strong>User Configuration:</strong> Kullanıcı ayarları</li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Yaygın Grup Politikası Ayarları</h3>
+
+<ul>
+  <li><strong>Şifre Politikaları:</strong> Minimum şifre uzunluğu, karmaşıklık gereksinimleri</li>
+  <li><strong>Hesap Kilitleme:</strong> Başarısız giriş denemelerinden sonra hesap kilitleme</li>
+  <li><strong>Masaüstü Ayarları:</strong> Duvar kağıdı, ekran koruyucu</li>
+  <li><strong>Yazılım Kısıtlamaları:</strong> Belirli yazılımların çalıştırılmasını engelleme</li>
+  <li><strong>Ağ Ayarları:</strong> Ağ paylaşımları, yazıcı ayarları</li>
+</ul>
+
+<h2>Bilgisayar Yönetimi</h2>
+
+<h3>Bilgisayarı Domain'e Ekleme</h3>
+
+<p>Windows istemci bilgisayarları domain'e eklemek için:</p>
+
+<ol>
+  <li>İstemci bilgisayarda <strong>System Properties</strong> açın</li>
+  <li><strong>Computer Name</strong> sekmesine gidin</li>
+  <li><strong>Change</strong> butonuna tıklayın</li>
+  <li><strong>Domain</strong> seçeneğini işaretleyin</li>
+  <li>Domain adınızı girin (örn: muharremsen.local)</li>
+  <li>Domain admin kullanıcı adı ve şifresi girin</li>
+  <li><strong>OK</strong> tıklayın</li>
+  <li>Bilgisayar yeniden başlatılır</li>
+</ol>
+
+<h3>Bilgisayar Hesaplarını Yönetme</h3>
+
+<p>Active Directory'de bilgisayar hesaplarını yönetmek için:</p>
+
+<ul>
+  <li><strong>Active Directory Users and Computers</strong> açın</li>
+  <li><strong>Computers</strong> OU'suna gidin</li>
+  <li>Bilgisayar hesaplarını görebilir, silebilir veya taşıyabilirsiniz</li>
+</ul>
+
+<h2>Güvenlik Yapılandırmaları</h2>
+
+<h3>Şifre Politikaları</h3>
+
+<ol>
+  <li><strong>Group Policy Management</strong> açın</li>
+  <li><strong>Default Domain Policy</strong> düzenleyin</li>
+  <li><strong>Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Password Policy</strong> gidin</li>
+  <li>Şifre politikalarını yapılandırın:
+    <ul>
+      <li>Minimum password length: 8 karakter</li>
+      <li>Password must meet complexity requirements: Enabled</li>
+      <li>Maximum password age: 90 gün</li>
+      <li>Minimum password age: 1 gün</li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Hesap Kilitleme Politikası</h3>
+
+<ol>
+  <li><strong>Account Lockout Policy</strong> bölümüne gidin</li>
+  <li>Hesap kilitleme ayarlarını yapılandırın:
+    <ul>
+      <li>Account lockout threshold: 5 başarısız deneme</li>
+      <li>Account lockout duration: 30 dakika</li>
+      <li>Reset account lockout counter after: 30 dakika</li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Güvenlik Güncellemeleri</h3>
+
+<ul>
+  <li>Windows Update'i düzenli olarak çalıştırın</li>
+  <li>Kritik güvenlik yamalarını hemen uygulayın</li>
+  <li>WSUS (Windows Server Update Services) kullanarak merkezi güncelleme yönetimi yapın</li>
+</ul>
+
+<h2>Yedekleme ve Geri Yükleme</h2>
+
+<h3>Active Directory Yedekleme</h3>
+
+<p>Windows Server Backup kullanarak Active Directory'yi yedekleyin:</p>
+
+<ol>
+  <li><strong>Server Manager → Tools → Windows Server Backup</strong> açın</li>
+  <li><strong>Backup Schedule</strong> tıklayın</li>
+  <li>Yedekleme zamanlaması yapın</li>
+  <li>Yedekleme konumunu belirleyin (harici disk önerilir)</li>
+  <li>Active Directory'yi yedekleme seçeneklerine ekleyin</li>
+</ol>
+
+<h3>System State Yedekleme</h3>
+
+<p>System State yedeklemesi, Active Directory veritabanını içerir:</p>
+
+<ul>
+  <li>AD DS veritabanı</li>
+  <li>SYSVOL klasörü</li>
+  <li>Registry</li>
+  <li>Boot dosyaları</li>
+</ul>
+
+<h2>Yaygın Sorunlar ve Çözümleri</h2>
+
+<h3>DNS Sorunları</h3>
+<ul>
+  <li>DNS sunucu ayarlarını kontrol edin</li>
+  <li>SRV kayıtlarının doğru oluşturulduğunu doğrulayın</li>
+  <li>DNS forwarder'ları yapılandırın</li>
+</ul>
+
+<h3>Replikasyon Sorunları</h3>
+<ul>
+  <li>Active Directory Sites and Services'te replikasyon ayarlarını kontrol edin</li>
+  <li>Replikasyon hatalarını Event Viewer'da kontrol edin</li>
+  <li>repadmin komutunu kullanarak replikasyon durumunu kontrol edin</li>
+</ul>
+
+<h3>Grup Politikası Uygulanmıyor</h3>
+<ul>
+  <li>gpupdate /force komutunu çalıştırın</li>
+  <li>GPO link'lerini kontrol edin</li>
+  <li>GPO inheritance ayarlarını kontrol edin</li>
+</ul>
+
+<h2>muharremsen'in Domain Server Hizmetleri</h2>
+
+<p>muharremsen olarak, Domain Server kurulumu, Active Directory yapılandırması ve yönetim hizmetleri sunuyoruz. Kullanıcı yönetimi, grup politikaları ve güvenlik yapılandırmalarıyla kurumsal ağ altyapınızı güvenli hale getiriyoruz.</p>
+
+<p>Profesyonel Domain Server kurulumu, Active Directory yapılandırması, DNS yapılandırması, grup politikaları ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, domain altyapınızı en iyi şekilde yapılandırarak işletmenizin ağ yönetim ihtiyaçlarını karşılamanıza yardımcı olur.</p>
+
+<p>Domain Server kurulumu, kullanıcı yönetimi, grup politikaları, güvenlik yapılandırmaları ve sürekli destek hizmetleri için muharremsen ile çalışın.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Sistem Yönetimi",
+    tags: ["Domain Server", "Active Directory", "Windows Server", "kurulum", "yapılandırma", "DNS"],
+  },
 ];
 
