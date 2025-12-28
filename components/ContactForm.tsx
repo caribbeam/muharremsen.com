@@ -19,30 +19,25 @@ export default function ContactForm() {
     setError(null);
 
     const form = e.currentTarget;
-    const formDataObj = new FormData(form);
 
     try {
-      // FormSubmit kullanarak direkt mail gönder
-      const response = await fetch("https://formsubmit.co/ajax/info@muharremsen.com", {
+      // Kendi API route'umuzu kullan (mail + SMS gönderir)
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          _subject: `İletişim Formu: ${formData.name}`,
-          _template: "box",
-          _captcha: false,
         }),
       });
 
       const data = await response.json();
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || "Bir hata oluştu");
+      if (!response.ok) {
+        throw new Error(data.error || "Bir hata oluştu");
       }
 
       // Başarılı
@@ -78,7 +73,7 @@ export default function ContactForm() {
       <p className="text-gray-400 text-sm mb-6">
         Teklif, soru veya önerileriniz için formu doldurun. En kısa sürede size dönüş yapacağız.
       </p>
-      <form onSubmit={handleSubmit} className="space-y-6" action="https://formsubmit.co/info@muharremsen.com" method="POST">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label
             htmlFor="name"
