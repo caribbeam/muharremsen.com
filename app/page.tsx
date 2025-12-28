@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getPageBySlug } from "@/lib/wp";
 import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
+import Hero from "@/components/Hero";
 import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
 
 export const revalidate = 10;
@@ -160,21 +161,23 @@ export default async function Home() {
   );
 
   return (
-    <SectionWrapper className="pt-32">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          {page.title.rendered}
-        </h1>
-        
-        {hasContent ? (
-          (() => {
-            const sections = parseWordPressContent(page.content.rendered);
-            return renderWordPressContent(sections);
-          })()
-        ) : (
-          fallbackContent
-        )}
-      </div>
-    </SectionWrapper>
+    <>
+      {/* Hero Section - Hareketli arka plan ve başlık */}
+      <Hero />
+      
+      {/* WordPress İçerik Bölümü */}
+      <SectionWrapper className="py-16">
+        <div className="max-w-4xl mx-auto">
+          {hasContent ? (
+            (() => {
+              const sections = parseWordPressContent(page.content.rendered);
+              return renderWordPressContent(sections);
+            })()
+          ) : (
+            fallbackContent
+          )}
+        </div>
+      </SectionWrapper>
+    </>
   );
 }
