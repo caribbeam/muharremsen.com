@@ -133,15 +133,6 @@ export default async function Iletisim() {
           </div>
         </div>
 
-        {!hasContent && (
-          <div className="glass rounded-xl p-6 mt-8 bg-yellow-900/10 border-yellow-500/30">
-            <p className="text-yellow-400 text-sm mb-2">💡 İpucu</p>
-            <p className="text-gray-300 text-sm">
-              Bu içerik WordPress'ten geliyor. WordPress panelinde <strong className="text-accent-green">"iletisim"</strong> slug'ına sahip 
-              sayfaya içerik eklediğinizde, bu içerik yerine WordPress içeriği gösterilecektir.
-            </p>
-          </div>
-        )}
       </div>
     </SectionWrapper>
   );
