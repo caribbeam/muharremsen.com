@@ -87,6 +87,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  // TypeScript için: post artık kesinlikle null değil
+  const currentPost = post;
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("tr-TR", {
@@ -98,16 +101,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const allPosts = await getPosts(1, 10);
   const relatedPosts = allPosts
-    .filter((p) => p.id !== post!.id)
+    .filter((p) => p.id !== currentPost.id)
     .slice(0, 2);
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title.rendered,
-    description: post.excerpt.rendered.replace(/<[^>]*>/g, ""),
-    datePublished: post.date,
-    dateModified: post.modified,
+    headline: currentPost.title.rendered,
+    description: currentPost.excerpt.rendered.replace(/<[^>]*>/g, ""),
+    datePublished: currentPost.date,
+    dateModified: currentPost.modified,
     author: {
       "@type": "Person",
       name: "muharremsen",
@@ -118,7 +121,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://muharremsen.com/blog/${post.slug}`,
+      "@id": `https://muharremsen.com/blog/${currentPost.slug}`,
     },
   };
 
@@ -142,21 +145,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Blog
             </Link>
             {" / "}
-            <span className="text-gray-500">{post.title.rendered}</span>
+            <span className="text-gray-500">{currentPost.title.rendered}</span>
           </nav>
 
           <header className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {post.title.rendered}
+              {currentPost.title.rendered}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-6">
-              <span>{formatDate(post.date)}</span>
+              <span>{formatDate(currentPost.date)}</span>
             </div>
           </header>
 
           <article className="mb-8">
             {(() => {
-              const sections = parseWordPressContent(post.content.rendered);
+              const sections = parseWordPressContent(currentPost.content.rendered);
               return renderWordPressContent(sections);
             })()}
           </article>
