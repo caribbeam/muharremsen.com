@@ -3,7 +3,7 @@ import { getPosts } from "@/lib/wp";
 import SectionWrapper from "@/components/SectionWrapper";
 import BlogCard from "@/components/BlogCard";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export const metadata: Metadata = {
   title: "Blog | muharremsen",

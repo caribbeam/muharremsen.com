@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
 import ContactForm from "@/components/ContactForm";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("iletisim");
@@ -53,6 +53,31 @@ export default async function Iletisim() {
     );
   }
 
+  const hasContent = page.content.rendered && page.content.rendered.trim().length > 0;
+
+  // Fallback içerik
+  const fallbackContent = (
+    <div className="glass rounded-xl p-8 mb-8">
+      <p className="text-gray-300 text-lg leading-relaxed mb-4">
+        Projeleriniz için bizimle iletişime geçin. Size en uygun çözümü birlikte belirleyelim.
+      </p>
+      <div className="space-y-4 text-gray-300">
+        <div className="flex items-center">
+          <span className="text-accent-green mr-3">📞</span>
+          <span><strong>Telefon:</strong> 0 530 498 95 53</span>
+        </div>
+        <div className="flex items-center">
+          <span className="text-accent-green mr-3">✉️</span>
+          <span><strong>E-posta:</strong> info@muharremsen.com</span>
+        </div>
+        <div className="flex items-center">
+          <span className="text-accent-green mr-3">💬</span>
+          <span><strong>WhatsApp:</strong> Aşağıdaki butonlardan bize ulaşabilirsiniz</span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <SectionWrapper className="pt-32">
       <div className="max-w-6xl mx-auto">
@@ -60,24 +85,69 @@ export default async function Iletisim() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {page.title.rendered}
           </h1>
-          <div
-            className="prose prose-invert prose-lg max-w-none
-              prose-headings:text-white
-              prose-p:text-gray-300
-              prose-strong:text-white
-              prose-a:text-accent-green
-              prose-a:no-underline
-              hover:prose-a:underline
-              prose-ul:text-gray-300
-              prose-ol:text-gray-300
-              prose-li:text-gray-300 mb-8"
-            dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-          />
+          
+          {hasContent ? (
+            <div
+              className="prose prose-invert prose-lg max-w-none
+                prose-headings:text-white
+                prose-p:text-gray-300
+                prose-strong:text-white
+                prose-a:text-accent-green
+                prose-a:no-underline
+                hover:prose-a:underline
+                prose-ul:text-gray-300
+                prose-ol:text-gray-300
+                prose-li:text-gray-300 mb-8"
+              dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+            />
+          ) : (
+            fallbackContent
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <ContactForm />
+          
+          <div className="glass rounded-xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-6">İletişim Bilgileri</h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-accent-green mb-2">Telefon</h3>
+                <a href="tel:+905304989553" className="text-gray-300 hover:text-accent-green transition-colors">
+                  0 530 498 95 53
+                </a>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-accent-green mb-2">E-posta</h3>
+                <a href="mailto:info@muharremsen.com" className="text-gray-300 hover:text-accent-green transition-colors">
+                  info@muharremsen.com
+                </a>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-accent-green mb-2">WhatsApp</h3>
+                <a 
+                  href="https://wa.me/905304989553" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-accent-green text-dark-primary font-semibold px-4 py-2 rounded-lg hover:bg-accent-turquoise transition-colors"
+                >
+                  <span>💬</span>
+                  <span>WhatsApp ile İletişime Geç</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {!hasContent && (
+          <div className="glass rounded-xl p-6 mt-8 bg-yellow-900/10 border-yellow-500/30">
+            <p className="text-yellow-400 text-sm mb-2">💡 İpucu</p>
+            <p className="text-gray-300 text-sm">
+              Bu içerik WordPress'ten geliyor. WordPress panelinde <strong className="text-accent-green">"iletisim"</strong> slug'ına sahip 
+              sayfaya içerik eklediğinizde, bu içerik yerine WordPress içeriği gösterilecektir.
+            </p>
+          </div>
+        )}
       </div>
     </SectionWrapper>
   );

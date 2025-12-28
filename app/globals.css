@@ -91,6 +91,37 @@ body {
   @apply text-accent-green hover:text-accent-turquoise underline;
 }
 
+/* WordPress content card styles */
+.wp-content-card {
+  @apply glass rounded-xl p-8;
+}
+
+.wp-content-card h2 {
+  @apply text-2xl font-bold text-accent-green mb-4;
+}
+
+.wp-content-card h3 {
+  @apply text-xl font-bold text-accent-green mt-6 mb-3;
+}
+
+.wp-content-card p {
+  @apply text-gray-300 leading-relaxed mb-4;
+}
+
+.wp-content-card ul,
+.wp-content-card ol {
+  @apply list-none space-y-2;
+}
+
+.wp-content-card li {
+  @apply flex items-start mb-2;
+}
+
+.wp-content-card li::before {
+  content: "✓";
+  @apply text-accent-green mr-3 font-bold flex-shrink-0;
+}
+
 /* Animated Background for Hero */
 @keyframes gradient-shift {
   0% {

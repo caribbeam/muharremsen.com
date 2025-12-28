@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -12,12 +12,13 @@ export const metadata: Metadata = {
   description:
     "Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri, LMS, envanter yönetimi, QDMS, domain server, Active Directory, imaj yönetimi, FreePBX/Asterisk kurulumları ve ISO 27001 BGYS desteği hizmetleri.",
   keywords: "yazılım geliştirme, yapay zeka, proforma uygulama, helpdesk, LMS, envanter yönetimi, QDMS, domain server, Active Directory, FreePBX, Asterisk, ISO 27001, BGYS",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({

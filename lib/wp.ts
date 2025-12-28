@@ -64,11 +64,13 @@ const slugToRouteMap: Record<string, string> = {
 
 export async function getPageBySlug(slug: string): Promise<WPPage | null> {
   try {
+    const cacheOption = process.env.NODE_ENV === 'development' 
+      ? { cache: 'no-store' as const }
+      : { next: { revalidate: 10 } };
+
     const response = await fetch(
       `${WP_API_URL}/pages?slug=${slug}&_embed`,
-      {
-        next: { revalidate: 60 },
-      }
+      cacheOption
     );
 
     if (!response.ok) {
@@ -92,11 +94,13 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
 
 export async function getPosts(page: number = 1, perPage: number = 10): Promise<WPPost[]> {
   try {
+    const cacheOption = process.env.NODE_ENV === 'development' 
+      ? { cache: 'no-store' as const }
+      : { next: { revalidate: 10 } };
+
     const response = await fetch(
       `${WP_API_URL}/posts?page=${page}&per_page=${perPage}&_embed&orderby=date&order=desc`,
-      {
-        next: { revalidate: 60 },
-      }
+      cacheOption
     );
 
     if (!response.ok) {
@@ -113,11 +117,13 @@ export async function getPosts(page: number = 1, perPage: number = 10): Promise<
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
   try {
+    const cacheOption = process.env.NODE_ENV === 'development' 
+      ? { cache: 'no-store' as const }
+      : { next: { revalidate: 10 } };
+
     const response = await fetch(
       `${WP_API_URL}/posts?slug=${slug}&_embed`,
-      {
-        next: { revalidate: 60 },
-      }
+      cacheOption
     );
 
     if (!response.ok) {
