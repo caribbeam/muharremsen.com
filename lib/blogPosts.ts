@@ -1220,5 +1220,679 @@ export const exampleBlogPosts: BlogPost[] = [
     category: "Sistem Yönetimi",
     tags: ["Domain Server", "Active Directory", "Windows Server", "kurulum", "yapılandırma", "DNS"],
   },
-];
+  {
+    id: 12,
+    slug: "domain-ve-hosting-nedir-nereden-nasil-alinir-kapsamli-rehber",
+    title: "Domain ve Hosting Nedir? Nereden Nasıl Alınır? Kapsamlı Rehber",
+    description: "Domain ve hosting kavramları, farkları, nereden alınacağı ve nasıl yapılandırılacağı hakkında detaylı bilgi. Web sitesi kurulumu için gerekli tüm bilgiler.",
+    content: `
+<h2>Domain Nedir?</h2>
+
+<p>Domain (alan adı), web sitenizin internet üzerindeki adresidir. Örneğin <strong>muharremsen.com</strong> bir domain adıdır. Domain, IP adreslerinin (örn: 192.168.1.1) insanların hatırlayabileceği isimlere dönüştürülmüş halidir.</p>
+
+<h3>Domain Yapısı</h3>
+
+<p>Bir domain adı şu bölümlerden oluşur:</p>
+<ul>
+  <li><strong>Subdomain:</strong> www, mail, panel (opsiyonel)</li>
+  <li><strong>Domain Adı:</strong> muharremsen (ana isim)</li>
+  <li><strong>TLD (Top Level Domain):</strong> .com, .net, .org, .tr</li>
+</ul>
+
+<h2>Hosting Nedir?</h2>
+
+<p>Hosting (web barındırma), web sitenizin dosyalarının saklandığı ve yayınlandığı sunucudur. Hosting olmadan web siteniz internette görünmez. Hosting, web sitenizin 7/24 erişilebilir olmasını sağlar.</p>
+
+<h3>Hosting Türleri</h3>
+
+<ul>
+  <li><strong>Shared Hosting:</strong> Paylaşımlı hosting, düşük maliyetli, küçük siteler için</li>
+  <li><strong>VPS Hosting:</strong> Sanal özel sunucu, daha fazla kontrol ve kaynak</li>
+  <li><strong>Dedicated Server:</strong> Fiziksel sunucu, tam kontrol ve yüksek performans</li>
+  <li><strong>Cloud Hosting:</strong> Bulut tabanlı, ölçeklenebilir çözüm</li>
+</ul>
+
+<h2>Domain ve Hosting Farkı</h2>
+
+<p><strong>Domain:</strong> Web sitenizin adresi (örn: muharremsen.com)</p>
+<p><strong>Hosting:</strong> Web sitenizin dosyalarının saklandığı yer (sunucu)</p>
+
+<p>İkisi birlikte çalışır: Domain, ziyaretçileri hosting sunucusuna yönlendirir. Hosting olmadan domain çalışmaz, domain olmadan hosting'e erişilemez.</p>
+
+<h2>Domain Nereden Alınır?</h2>
+
+<h3>Türkiye'deki Domain Sağlayıcıları</h3>
+
+<ul>
+  <li><strong>Turhost:</strong> Türkiye'nin önde gelen domain ve hosting sağlayıcısı</li>
+  <li><strong>Natro:</strong> Yerli domain ve hosting hizmetleri</li>
+  <li><strong>Alone.net.tr:</strong> Domain ve hosting çözümleri</li>
+  <li><strong>İsimtescil:</strong> Domain kayıt hizmetleri</li>
+</ul>
+
+<h3>Yurtdışı Domain Sağlayıcıları</h3>
+
+<ul>
+  <li><strong>GoDaddy:</strong> Dünyanın en büyük domain sağlayıcısı</li>
+  <li><strong>Namecheap:</strong> Uygun fiyatlı domain hizmetleri</li>
+  <li><strong>Cloudflare:</strong> Domain + CDN hizmetleri</li>
+</ul>
+
+<h2>Domain Nasıl Alınır?</h2>
+
+<h3>Adım 1: Domain Seçimi</h3>
+
+<ol>
+  <li>Domain sağlayıcısının web sitesine gidin</li>
+  <li>Domain arama kutusuna istediğiniz domain adını yazın</li>
+  <li>Müsaitlik kontrolü yapın</li>
+  <li>Uygun TLD seçin (.com, .net, .tr, vb.)</li>
+</ol>
+
+<h3>Adım 2: Domain Kaydı</h3>
+
+<ol>
+  <li>Sepete ekleyin</li>
+  <li>Kayıt süresini seçin (1 yıl, 2 yıl, vb.)</li>
+  <li>Kişisel bilgilerinizi girin (WHOIS bilgileri)</li>
+  <li>Ödeme yapın</li>
+</ol>
+
+<h3>Adım 3: Domain Yönetimi</h3>
+
+<ol>
+  <li>Domain panelinize giriş yapın</li>
+  <li>DNS ayarlarını yapılandırın</li>
+  <li>Hosting sunucunuzun nameserver'larını ekleyin</li>
+</ol>
+
+<h2>Hosting Nereden Alınır?</h2>
+
+<h3>Türkiye'deki Hosting Sağlayıcıları</h3>
+
+<ul>
+  <li><strong>Turhost:</strong> SSD hosting, VPS, dedicated server</li>
+  <li><strong>Natro:</strong> Web hosting, WordPress hosting</li>
+  <li><strong>Alone.net.tr:</strong> Profesyonel hosting çözümleri</li>
+  <li><strong>Hostinger Türkiye:</strong> Uygun fiyatlı hosting</li>
+</ul>
+
+<h3>Yurtdışı Hosting Sağlayıcıları</h3>
+
+<ul>
+  <li><strong>Vercel:</strong> Next.js için ücretsiz hosting (şu an kullandığınız)</li>
+  <li><strong>Netlify:</strong> JAMstack hosting</li>
+  <li><strong>DigitalOcean:</strong> VPS ve cloud hosting</li>
+  <li><strong>AWS:</strong> Amazon Web Services, enterprise çözümler</li>
+</ul>
+
+<h2>Hosting Nasıl Alınır?</h2>
+
+<h3>Adım 1: Hosting Paketi Seçimi</h3>
+
+<ul>
+  <li>Web sitenizin ihtiyaçlarını belirleyin (trafik, depolama, özellikler)</li>
+  <li>Uygun hosting paketini seçin</li>
+  <li>SSD hosting önerilir (daha hızlı)</li>
+</ul>
+
+<h3>Adım 2: Hosting Kaydı</h3>
+
+<ol>
+  <li>Hosting sağlayıcısının web sitesine gidin</li>
+  <li>Hosting paketini seçin</li>
+  <li>Domain adınızı bağlayın (mevcut domain veya yeni domain)</li>
+  <li>Ödeme yapın</li>
+</ol>
+
+<h3>Adım 3: Hosting Yapılandırması</h3>
+
+<ol>
+  <li>Hosting panelinize giriş yapın (cPanel, Plesk, vb.)</li>
+  <li>FTP bilgilerinizi alın</li>
+  <li>Veritabanı oluşturun (gerekirse)</li>
+  <li>SSL sertifikası kurun (ücretsiz Let's Encrypt)</li>
+</ol>
+
+<h2>Domain ve Hosting Bağlama</h2>
+
+<h3>Nameserver Yapılandırması</h3>
+
+<ol>
+  <li>Hosting sağlayıcınızdan nameserver bilgilerini alın (örn: ns1.hosting.com, ns2.hosting.com)</li>
+  <li>Domain sağlayıcınızın panelinde nameserver'ları güncelleyin</li>
+  <li>DNS yayılımı için 24-48 saat bekleyin</li>
+</ol>
+
+<h3>DNS Kayıtları</h3>
+
+<p>Domain ve hosting bağlandıktan sonra DNS kayıtları otomatik oluşturulur:</p>
+<ul>
+  <li><strong>A Kaydı:</strong> Domain'i IP adresine yönlendirir</li>
+  <li><strong>CNAME:</strong> Subdomain'leri ana domain'e yönlendirir</li>
+  <li><strong>MX Kaydı:</strong> E-posta sunucusu için</li>
+  <li><strong>TXT Kaydı:</strong> Doğrulama ve güvenlik için</li>
+</ul>
+
+<h2>Maliyetler</h2>
+
+<h3>Domain Fiyatları</h3>
+<ul>
+  <li><strong>.com:</strong> ~$10-15/yıl (~300-500 TL)</li>
+  <li><strong>.net:</strong> ~$10-15/yıl</li>
+  <li><strong>.org:</strong> ~$10-15/yıl</li>
+  <li><strong>.tr:</strong> ~200-400 TL/yıl</li>
+</ul>
+
+<h3>Hosting Fiyatları</h3>
+<ul>
+  <li><strong>Shared Hosting:</strong> ~50-200 TL/ay</li>
+  <li><strong>VPS:</strong> ~200-1000 TL/ay</li>
+  <li><strong>Dedicated Server:</strong> ~1000-5000 TL/ay</li>
+  <li><strong>Vercel (Next.js):</strong> Ücretsiz (pro plan: $20/ay)</li>
+</ul>
+
+<h2>Öneriler</h2>
+
+<h3>Domain Seçimi İçin</h3>
+<ul>
+  <li>Kısa ve hatırlanabilir isimler seçin</li>
+  <li>.com uzantısını tercih edin (en güvenilir)</li>
+  <li>Marka adınızla uyumlu olsun</li>
+  <li>Tire (-) kullanmaktan kaçının</li>
+</ul>
+
+<h3>Hosting Seçimi İçin</h3>
+<ul>
+  <li>SSD hosting tercih edin (daha hızlı)</li>
+  <li>SSL sertifikası ücretsiz olsun</li>
+  <li>7/24 teknik destek olsun</li>
+  <li>Yedekleme hizmeti olsun</li>
+  <li>Türkiye lokasyonlu sunucular (daha hızlı)</li>
+</ul>
+
+<h2>muharremsen'in Domain ve Hosting Hizmetleri</h2>
+
+<p>muharremsen olarak, domain ve hosting danışmanlığı, yapılandırma ve yönetim hizmetleri sunuyoruz. Doğru domain ve hosting seçimi, web sitenizin başarısı için kritik öneme sahiptir.</p>
+
+<p>Domain kaydı, hosting kurulumu, DNS yapılandırması ve sürekli destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, web sitenizin ihtiyaçlarına en uygun çözümü belirlemenize yardımcı olur.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Web Teknolojileri",
+    tags: ["domain", "hosting", "web hosting", "DNS", "alan adı"],
+  },
+  {
+    id: 13,
+    slug: "proxmox-nedir-nasil-kullanilir-sanalizasyon-rehberi",
+    title: "Proxmox Nedir? Nasıl Kullanılır? Sanalizasyon Rehberi",
+    description: "Proxmox VE (Virtual Environment) nedir, nasıl kurulur ve yapılandırılır? Açık kaynak sanalizasyon platformu, VM ve container yönetimi hakkında detaylı bilgi.",
+    content: `
+<h2>Proxmox Nedir?</h2>
+
+<p>Proxmox VE (Virtual Environment), açık kaynak bir sanalizasyon platformudur. Hem VM (Virtual Machine) hem de container (LXC) teknolojilerini destekleyen, kurumsal düzeyde bir hipervizör çözümüdür. Linux tabanlı, web arayüzlü ve tamamen ücretsizdir.</p>
+
+<h2>Proxmox'un Avantajları</h2>
+
+<ul>
+  <li><strong>Ücretsiz:</strong> Açık kaynak, lisans maliyeti yok</li>
+  <li><strong>KVM ve LXC Desteği:</strong> Hem VM hem container desteği</li>
+  <li><strong>Web Arayüzü:</strong> Kolay yönetim için web tabanlı panel</li>
+  <li><strong>Yüksek Performans:</strong> Donanım sanalizasyonu ile neredeyse fiziksel performans</li>
+  <li><strong>Ölçeklenebilirlik:</strong> Küçük işletmeden büyük kuruluşa kadar</li>
+  <li><strong>Yedekleme:</strong> Entegre yedekleme ve geri yükleme</li>
+  <li><strong>Cluster Desteği:</strong> Çoklu sunucu yönetimi</li>
+</ul>
+
+<h2>Proxmox Kullanım Alanları</h2>
+
+<h3>1. Sunucu Konsolidasyonu</h3>
+<p>Birden fazla fiziksel sunucuyu tek bir Proxmox sunucusunda birleştirerek maliyet ve enerji tasarrufu sağlanır.</p>
+
+<h3>2. Test ve Geliştirme Ortamları</h3>
+<p>Geliştiriciler için izole test ortamları oluşturulabilir. Her proje için ayrı VM veya container.</p>
+
+<h3>3>Yedekleme ve Disaster Recovery</h3>
+<p>VM'lerin anlık yedekleri alınabilir ve hızlı geri yükleme yapılabilir.</p>
+
+<h3>4. Cloud Altyapısı</h3>
+<p>Özel bulut altyapısı oluşturmak için kullanılabilir. IaaS (Infrastructure as a Service) sağlar.</p>
+
+<h2>Proxmox Kurulum Gereksinimleri</h2>
+
+<h3>Donanım Gereksinimleri</h3>
+<ul>
+  <li><strong>İşlemci:</strong> 64-bit, VT-x/AMD-V desteği (sanalizasyon desteği)</li>
+  <li><strong>RAM:</strong> Minimum 4GB (önerilen: 8GB+)</li>
+  <li><strong>Disk:</strong> Minimum 32GB (önerilen: 100GB+ SSD)</li>
+  <li><strong>Ağ:</strong> En az bir ethernet bağlantısı</li>
+</ul>
+
+<h3>Yazılım Gereksinimleri</h3>
+<ul>
+  <li>Proxmox VE ISO dosyası (resmi web sitesinden indirilebilir)</li>
+  <li>USB bellek veya DVD (kurulum için)</li>
+</ul>
+
+<h2>Proxmox Kurulum Adımları</h2>
+
+<h3>Adım 1: ISO İndirme</h3>
+<ol>
+  <li>Proxmox resmi web sitesine gidin: https://www.proxmox.com</li>
+  <li>Downloads bölümünden Proxmox VE ISO dosyasını indirin</li>
+  <li>ISO dosyasını USB belleğe veya DVD'ye yazdırın</li>
+</ol>
+
+<h3>Adım 2: Boot ve Kurulum</h3>
+<ol>
+  <li>Sunucuyu ISO'dan başlatın</li>
+  <li>Kurulum ekranında "Install Proxmox VE" seçin</li>
+  <li>Lisans anlaşmasını kabul edin</li>
+  <li>Disk seçimi yapın (tüm disk kullanılabilir veya bölümlenebilir)</li>
+  <li>Ülke, saat dilimi ve klavye ayarlarını yapın</li>
+  <li>Root şifresi belirleyin (güçlü bir şifre)</li>
+  <li>E-posta adresi girin (opsiyonel, bildirimler için)</li>
+  <li>Ağ yapılandırması:
+    <ul>
+      <li>Hostname: sunucu adı (örn: proxmox-01)</li>
+      <li>IP adresi: statik IP (örn: 192.168.1.100)</li>
+      <li>Subnet mask: 255.255.255.0</li>
+      <li>Gateway: router IP adresi</li>
+      <li>DNS: 8.8.8.8 veya kendi DNS sunucunuz</li>
+    </ul>
+  </li>
+  <li>Kurulumu başlatın ve tamamlanmasını bekleyin</li>
+  <li>Sunucu yeniden başlatılır</li>
+</ol>
+
+<h3>Adım 3: Web Arayüzüne Erişim</h3>
+<ol>
+  <li>Kurulum tamamlandıktan sonra, tarayıcınızdan şu adrese gidin:</li>
+  <li><code>https://[SUNUCU-IP]:8006</code> (örn: https://192.168.1.100:8006)</li>
+  <li>İlk girişte:
+    <ul>
+      <li>Language: Türkçe seçebilirsiniz</li>
+      <li>Username: root</li>
+      <li>Password: Kurulum sırasında belirlediğiniz şifre</li>
+    </ul>
+  </li>
+  <li>SSL sertifika uyarısını kabul edin (self-signed sertifika)</li>
+</ol>
+
+<h2>Proxmox Web Arayüzü</h2>
+
+<h3>Ana Bölümler</h3>
+
+<ul>
+  <li><strong>Datacenter:</strong> Tüm cluster yönetimi</li>
+  <li><strong>Nodes:</strong> Fiziksel sunucular (node'lar)</li>
+  <li><strong>Storage:</strong> Depolama yönetimi</li>
+  <li><strong>VMs:</strong> Sanal makineler</li>
+  <li><strong>Containers:</strong> LXC container'lar</li>
+</ul>
+
+<h2>İlk VM Oluşturma</h2>
+
+<h3>Adım 1: ISO Yükleme</h3>
+<ol>
+  <li>Sol menüden <strong>local (pve) → ISO Images</strong> seçin</li>
+  <li><strong>Upload</strong> butonuna tıklayın</li>
+  <li>İşletim sistemi ISO dosyasını yükleyin (Windows, Linux, vb.)</li>
+</ol>
+
+<h3>Adım 2: VM Oluşturma</h3>
+<ol>
+  <li>Sağ üstteki <strong>Create VM</strong> butonuna tıklayın</li>
+  <li><strong>General:</strong> VM ID ve isim verin</li>
+  <li><strong>OS:</strong> ISO image seçin (yüklediğiniz ISO)</li>
+  <li><strong>System:</strong> BIOS/UEFI, Qemu Agent seçenekleri</li>
+  <li><strong>Hard Disk:</strong> Disk boyutu (örn: 32GB)</li>
+  <li><strong>CPU:</strong> CPU çekirdek sayısı (örn: 2 cores)</li>
+  <li><strong>Memory:</strong> RAM miktarı (örn: 2048 MB)</li>
+  <li><strong>Network:</strong> Ağ ayarları (varsayılan genellikle uygundur)</li>
+  <li><strong>Confirm:</strong> Ayarları kontrol edin ve <strong>Finish</strong> tıklayın</li>
+</ol>
+
+<h3>Adım 3: VM Başlatma</h3>
+<ol>
+  <li>Oluşturulan VM'i seçin</li>
+  <li><strong>Start</strong> butonuna tıklayın</li>
+  <li><strong>Console</strong> butonuna tıklayarak VM'e bağlanın</li>
+  <li>İşletim sistemi kurulumunu yapın</li>
+</ol>
+
+<h2>LXC Container Oluşturma</h2>
+
+<p>LXC (Linux Containers), VM'lerden daha hafif ve hızlıdır. Sadece Linux işletim sistemleri için kullanılabilir.</p>
+
+<h3>Container Oluşturma</h3>
+<ol>
+  <li>Sağ üstteki <strong>Create CT</strong> butonuna tıklayın</li>
+  <li><strong>General:</strong> Container ID ve hostname</li>
+  <li><strong>Template:</strong> Container template seçin (Ubuntu, Debian, CentOS, vb.)</li>
+  <li><strong>Root Disk:</strong> Disk boyutu</li>
+  <li><strong>CPU:</strong> CPU limitleri</li>
+  <li><strong>Memory:</strong> RAM miktarı</li>
+  <li><strong>Network:</strong> Ağ ayarları</li>
+  <li><strong>DNS:</strong> DNS sunucu ayarları</li>
+  <li><strong>Confirm:</strong> Ayarları kontrol edin ve <strong>Finish</strong> tıklayın</li>
+</ol>
+
+<h2>Storage (Depolama) Yönetimi</h2>
+
+<h3>Storage Türleri</h3>
+<ul>
+  <li><strong>Local:</strong> Sunucunun yerel diski</li>
+  <li><strong>NFS:</strong> Network File System</li>
+  <li><strong>CIFS:</strong> Windows paylaşımları</li>
+  <li><strong>iSCSI:</strong> SAN depolama</li>
+</ul>
+
+<h3>Storage Ekleme</h3>
+<ol>
+  <li><strong>Datacenter → Storage</strong> menüsüne gidin</li>
+  <li><strong>Add</strong> butonuna tıklayın</li>
+  <li>Storage türünü seçin</li>
+  <li>Gerekli bilgileri girin (IP, path, vb.)</li>
+  <li><strong>Add</strong> tıklayın</li>
+</ol>
+
+<h2>Yedekleme ve Geri Yükleme</h2>
+
+<h3>Yedekleme Oluşturma</h3>
+<ol>
+  <li>VM veya Container'ı seçin</li>
+  <li><strong>Backup</strong> butonuna tıklayın</li>
+  <li>Yedekleme ayarlarını yapın:
+    <ul>
+      <li>Storage: Yedekleme konumu</li>
+      <li>Mode: Snapshot veya Suspend</li>
+      <li>Compression: Sıkıştırma (ZSTD önerilir)</li>
+    </ul>
+  </li>
+  <li><strong>Backup</strong> tıklayın</li>
+</ol>
+
+<h3>Otomatik Yedekleme</h3>
+<ol>
+  <li><strong>Datacenter → Backup</strong> menüsüne gidin</li>
+  <li><strong>Add</strong> butonuna tıklayın</li>
+  <li>Yedekleme zamanlaması yapın:
+    <ul>
+      <li>Schedule: Zamanlama (günlük, haftalık)</li>
+      <li>Selection mode: Hangi VM'ler yedeklenecek</li>
+      <li>Storage: Yedekleme konumu</li>
+    </ul>
+  </li>
+  <li><strong>Create</strong> tıklayın</li>
+</ol>
+
+<h2>Cluster (Küme) Yapılandırması</h2>
+
+<p>Birden fazla Proxmox sunucusunu birleştirerek yüksek erişilebilirlik sağlanabilir.</p>
+
+<h3>Cluster Oluşturma</h3>
+<ol>
+  <li>İlk node'da: <strong>Datacenter → Cluster</strong> menüsüne gidin</li>
+  <li><strong>Create Cluster</strong> tıklayın</li>
+  <li>Cluster adı verin</li>
+  <li>Diğer node'ları eklemek için: <strong>Join Information</strong> butonuna tıklayın</li>
+  <li>Çıkan komutu diğer node'larda çalıştırın</li>
+</ol>
+
+<h2>Güvenlik Yapılandırmaları</h2>
+
+<h3>Firewall</h3>
+<ol>
+  <li><strong>Datacenter → Firewall</strong> menüsüne gidin</li>
+  <li>Firewall'u etkinleştirin</li>
+  <li>Gerekli portları açın (8006 web arayüzü için)</li>
+</ol>
+
+<h3>Kullanıcı ve Grup Yönetimi</h3>
+<ol>
+  <li><strong>Datacenter → Permissions → Users</strong> menüsüne gidin</li>
+  <li>Yeni kullanıcılar oluşturun</li>
+  <li>Roller ve izinler atayın</li>
+</ol>
+
+<h2>Yaygın Sorunlar ve Çözümleri</h2>
+
+<h3>VM Başlamıyor</h3>
+<ul>
+  <li>CPU sanalizasyon desteğini kontrol edin (BIOS'ta VT-x/AMD-V)</li>
+  <li>Yeterli RAM ve disk alanı olduğundan emin olun</li>
+  <li>VM log'larını kontrol edin</li>
+</ul>
+
+<h3>Web Arayüzüne Erişilemiyor</h3>
+<ul>
+  <li>Firewall ayarlarını kontrol edin (port 8006 açık mı?)</li>
+  <li>IP adresini doğrulayın</li>
+  <li>Proxmox servisinin çalıştığını kontrol edin</li>
+</ul>
+
+<h2>muharremsen'in Proxmox Hizmetleri</h2>
+
+<p>muharremsen olarak, Proxmox kurulumu, yapılandırma ve yönetim hizmetleri sunuyoruz. Sanalizasyon altyapınızı profesyonelce kurarak, sunucu konsolidasyonu ve maliyet tasarrufu sağlıyoruz.</p>
+
+<p>Proxmox kurulumu, VM yönetimi, cluster yapılandırması, yedekleme stratejileri ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, sanalizasyon altyapınızı en iyi şekilde yapılandırarak işletmenizin ihtiyaçlarını karşılamanıza yardımcı olur.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Sanalizasyon",
+    tags: ["Proxmox", "sanalizasyon", "VM", "container", "LXC", "KVM"],
+  },
+  {
+    id: 14,
+    slug: "vpn-nedir-kurumsal-firmalar-neden-vpn-kullanmali",
+    title: "VPN Nedir? Kurumsal Firmalar Neden VPN Kullanmalı?",
+    description: "VPN (Virtual Private Network) nedir, nasıl çalışır? Kurumsal firmalar için VPN'in önemi, güvenlik, uzaktan erişim ve veri koruma hakkında detaylı bilgi.",
+    content: `
+<h2>VPN Nedir?</h2>
+
+<p>VPN (Virtual Private Network - Sanal Özel Ağ), internet üzerinden güvenli ve şifreli bir bağlantı oluşturan teknolojidir. VPN, kullanıcının internet trafiğini şifreleyerek, verilerin güvenli bir şekilde iletilmesini sağlar.</p>
+
+<h2>VPN Nasıl Çalışır?</h2>
+
+<h3>Temel Çalışma Prensibi</h3>
+
+<ol>
+  <li>Kullanıcı VPN istemcisini başlatır</li>
+  <li>VPN istemcisi, VPN sunucusuna şifreli bir tünel oluşturur</li>
+  <li>Tüm internet trafiği bu tünel üzerinden geçer</li>
+  <li>VPN sunucusu, trafiği şifreler ve hedefe iletir</li>
+  <li>Dışarıdan bakıldığında, kullanıcının IP adresi VPN sunucusunun IP adresi olarak görünür</li>
+</ol>
+
+<h3>Şifreleme Protokolleri</h3>
+
+<ul>
+  <li><strong>OpenVPN:</strong> Açık kaynak, güvenli, esnek</li>
+  <li><strong>IPSec:</strong> Güçlü şifreleme, kurumsal kullanım için</li>
+  <li><strong>WireGuard:</strong> Modern, hızlı, güvenli</li>
+  <li><strong>SSTP:</strong> Windows için, SSL tabanlı</li>
+  <li><strong>L2TP/IPSec:</strong> Yaygın kullanılan, güvenli</li>
+</ul>
+
+<h2>VPN Türleri</h2>
+
+<h3>1. Site-to-Site VPN</h3>
+<p>İki veya daha fazla ofis/şube arasında güvenli bağlantı kurar. Tüm ofisler tek bir ağ gibi çalışır.</p>
+
+<h3>2. Remote Access VPN</h3>
+<p>Uzaktan çalışanların veya mobil kullanıcıların şirket ağına güvenli erişim sağlar.</h3>
+
+<h3>3. Client-to-Site VPN</h3>
+<p>Bireysel kullanıcıların şirket ağına bağlanması için kullanılır.</p>
+
+<h2>Kurumsal Firmalar Neden VPN Kullanmalı?</h2>
+
+<h3>1. Güvenlik ve Veri Koruma</h3>
+
+<p><strong>Şifreli İletişim:</strong> VPN, tüm veri trafiğini şifreler. Hassas bilgiler (müşteri verileri, finansal bilgiler, ticari sırlar) güvenli bir şekilde iletilir.</p>
+
+<p><strong>Man-in-the-Middle Saldırılarına Karşı Koruma:</strong> VPN, araya girme saldırılarını önler. Veriler şifrelendiği için saldırganlar içeriği okuyamaz.</p>
+
+<p><strong>Veri Sızıntısı Önleme:</strong> VPN kullanılmadan gönderilen veriler kolayca yakalanabilir. VPN ile veriler şifrelenir ve güvenli hale gelir.</p>
+
+<h3>2. Uzaktan Erişim</h3>
+
+<p><strong>Uzaktan Çalışma:</strong> Evden veya farklı lokasyonlardan çalışanlar, şirket ağına güvenli erişim sağlayabilir. Dosya sunucularına, uygulamalara ve veritabanlarına erişebilirler.</p>
+
+<p><strong>Mobil Erişim:</strong> Seyahat eden çalışanlar, güvenli olmayan Wi-Fi ağlarında bile güvenli bağlantı kurabilir.</p>
+
+<p><strong>7/24 Erişim:</strong> Acil durumlarda veya gece vardiyalarında, yetkili personel şirket kaynaklarına erişebilir.</p>
+
+<h3>3. Coğrafi Kısıtlamaları Aşma</h3>
+
+<p><strong>Uluslararası Erişim:</strong> Farklı ülkelerdeki ofisler, merkez sunuculara erişebilir. Coğrafi kısıtlamalar aşılır.</p>
+
+<p><strong>Bulut Servisleri:</strong> Bazı bulut servisleri belirli bölgelerde sınırlıdır. VPN ile bu sınırlamalar aşılabilir.</p>
+
+<h3>4. Maliyet Tasarrufu</h3>
+
+<p><strong>Leased Line Alternatifi:</strong> VPN, pahalı leased line bağlantılarına alternatif sağlar. İnternet üzerinden güvenli bağlantı kurulur.</p>
+
+<p><strong>Uzaktan Çalışma Maliyetleri:</strong> Ofis kirası, ulaşım maliyetleri azalır. Çalışanlar evden güvenli şekilde çalışabilir.</p>
+
+<h3>5. Yasal Uyumluluk</h3>
+
+<p><strong>KVKK/GDPR Uyumluluğu:</strong> Kişisel verilerin korunması yasalarına uyum için veri şifreleme gereklidir. VPN bu gerekliliği karşılar.</p>
+
+<p><strong>Sektörel Düzenlemeler:</strong> Finans, sağlık gibi sektörlerde veri güvenliği zorunludur. VPN, bu gereklilikleri karşılar.</p>
+
+<h3>6. Ağ Performansı</h3>
+
+<p><strong>Bant Genişliği Optimizasyonu:</strong> VPN, kritik uygulamalar için öncelik verebilir (QoS).</p>
+
+<p><strong>Yedek Bağlantılar:</strong> VPN, birden fazla internet bağlantısını birleştirerek yüksek erişilebilirlik sağlar.</p>
+
+<h2>Kurumsal VPN Çözümleri</h2>
+
+<h3>1. Hardware VPN (Donanım Tabanlı)</h3>
+
+<p><strong>Avantajları:</strong></p>
+<ul>
+  <li>Yüksek performans</li>
+  <li>Dedike donanım</li>
+  <li>Güvenlik odaklı</li>
+</ul>
+
+<p><strong>Örnekler:</strong> Cisco ASA, Fortinet FortiGate, Palo Alto Networks</p>
+
+<h3>2. Software VPN (Yazılım Tabanlı)</h3>
+
+<p><strong>Avantajları:</strong></p>
+<ul>
+  <li>Esnek kurulum</li>
+  <li>Düşük maliyet</li>
+  <li>Kolay yönetim</li>
+</ul>
+
+<p><strong>Örnekler:</strong> OpenVPN, WireGuard, SoftEther VPN</p>
+
+<h3>3. Cloud VPN</h3>
+
+<p><strong>Avantajları:</strong></p>
+<ul>
+  <li>Hızlı kurulum</li>
+  <li>Ölçeklenebilir</li>
+  <li>Yönetilen hizmet</li>
+</ul>
+
+<p><strong>Örnekler:</strong> AWS VPN, Azure VPN, Google Cloud VPN</p>
+
+<h2>VPN Kurulumu ve Yapılandırması</h2>
+
+<h3>VPN Sunucusu Kurulumu</h3>
+
+<ol>
+  <li><strong>Sunucu Seçimi:</strong> Windows Server, Linux (Ubuntu, CentOS) veya dedicated VPN cihazı</li>
+  <li><strong>VPN Yazılımı Kurulumu:</strong> OpenVPN, WireGuard veya Windows RRAS</li>
+  <li><strong>Ağ Yapılandırması:</strong> Statik IP, port yönlendirme (1194 OpenVPN, 51820 WireGuard)</li>
+  <li><strong>Sertifika Oluşturma:</strong> SSL/TLS sertifikaları</li>
+  <li><strong>Kullanıcı Yönetimi:</strong> Kullanıcı hesapları ve yetkilendirme</li>
+</ol>
+
+<h3>VPN İstemci Yapılandırması</h3>
+
+<ol>
+  <li>VPN istemci yazılımını kurun</li>
+  <li>VPN sunucu bilgilerini girin (IP adresi, port)</li>
+  <li>Sertifikaları veya kullanıcı adı/şifre bilgilerini girin</li>
+  <li>Bağlantıyı test edin</li>
+</ol>
+
+<h2>VPN Güvenlik En İyi Uygulamaları</h2>
+
+<h3>1. Güçlü Şifreleme</h3>
+<ul>
+  <li>AES-256 şifreleme kullanın</li>
+  <li>Güçlü şifreleme protokolleri seçin (OpenVPN, WireGuard)</li>
+  <li>Düzenli olarak şifreleme anahtarlarını değiştirin</li>
+</ul>
+
+<h3>2. Çok Faktörlü Kimlik Doğrulama (MFA)</h3>
+<ul>
+  <li>Kullanıcı adı/şifre yanında ek doğrulama (SMS, Authenticator app)</li>
+  <li>Güvenliği artırır</li>
+</ul>
+
+<h3>3. Ağ Segmentasyonu</h3>
+<ul>
+  <li>VPN kullanıcılarını ayrı bir ağ segmentine yerleştirin</li>
+  <li>Yetkisiz erişimi önler</li>
+</ul>
+
+<h3>4. Düzenli Güncellemeler</h3>
+<ul>
+  <li>VPN yazılımını düzenli güncelleyin</li>
+  <li>Güvenlik yamalarını uygulayın</li>
+</ul>
+
+<h3>5. Loglama ve İzleme</h3>
+<ul>
+  <li>VPN bağlantılarını loglayın</li>
+  <li>Şüpheli aktiviteleri izleyin</li>
+</ul>
+
+<h2>VPN Performans Optimizasyonu</h2>
+
+<h3>1. Sunucu Lokasyonu</h3>
+<p>VPN sunucusunu, kullanıcılara yakın bir lokasyona yerleştirin. Gecikme süresini azaltır.</p>
+
+<h3>2. Bant Genişliği</h3>
+<p>Yeterli bant genişliği sağlayın. Her kullanıcı için minimum 1-2 Mbps önerilir.</p>
+
+<h3>3>Compression (Sıkıştırma)</h3>
+<p>VPN sıkıştırmasını etkinleştirin. Bant genişliği kullanımını azaltır.</p>
+
+<h2>Yaygın VPN Sorunları ve Çözümleri</h2>
+
+<h3>Bağlantı Sorunları</h3>
+<ul>
+  <li>Firewall ayarlarını kontrol edin (port açık mı?)</li>
+  <li>DNS ayarlarını kontrol edin</li>
+  <li>VPN sunucusunun çalıştığını doğrulayın</li>
+</ul>
+
+<h3>Yavaş Bağlantı</h3>
+<ul>
+  <li>Sunucu lokasyonunu kontrol edin</li>
+  <li>Bant genişliğini artırın</li>
+  <li>Şifreleme protokolünü optimize edin</li>
+</ul>
+
+<h2>muharremsen'in VPN Hizmetleri</h2>
+
+<p>muharremsen olarak, kurumsal VPN kurulumu, yapılandırma ve yönetim hizmetleri sunuyoruz. Güvenli uzaktan erişim, site-to-site bağlantılar ve veri koruma çözümleriyle işletmenizin güvenliğini sağlıyoruz.</p>
+
+<p>VPN kurulumu, güvenlik yapılandırması, kullanıcı yönetimi ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, VPN altyapınızı en iyi şekilde yapılandırarak güvenli ve verimli bir uzaktan erişim çözümü sağlar.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Güvenlik",
+    tags: ["VPN", "güvenlik", "uzaktan erişim", "şifreleme", "kurumsal VPN"],
+  },
 
