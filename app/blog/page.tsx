@@ -14,13 +14,23 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const wpPosts = await getPosts();
   
-  // WordPress yazıları ile örnek yazıları birleştir
-  // Örnek yazıları her zaman göster (WordPress yazıları varsa onlar da eklenir)
+  // WordPress'ten gelen yazıları filtrele - "Hello world!" gibi varsayılan yazıları kaldır
+  const filteredWpPosts = wpPosts.filter(post => {
+    const title = post.title.rendered.toLowerCase();
+    const slug = post.slug.toLowerCase();
+    // "Hello world", "Merhaba dünya" gibi varsayılan yazıları filtrele
+    return !title.includes('hello world') && 
+           !title.includes('merhaba dünya') && 
+           !slug.includes('hello-world') &&
+           !slug.includes('merhaba-dunya');
+  });
+  
+  // Örnek yazıları her zaman göster
   const allPosts = [...exampleBlogPosts];
   
-  // WordPress yazılarını da ekle (eğer varsa)
-  if (wpPosts.length > 0) {
-    wpPosts.forEach(wpPost => {
+  // Filtrelenmiş WordPress yazılarını ekle (eğer varsa)
+  if (filteredWpPosts.length > 0) {
+    filteredWpPosts.forEach(wpPost => {
       // Aynı slug'a sahip örnek yazı varsa WordPress yazısını kullan
       const existingIndex = allPosts.findIndex(p => p.slug === wpPost.slug);
       if (existingIndex !== -1) {
