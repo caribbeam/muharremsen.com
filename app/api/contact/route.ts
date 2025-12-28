@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendSMS } from "@/lib/sms";
+import { sendEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,35 +24,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // FormSubmit ile mail gönder
+    // SMTP ile mail gönder
     let mailSuccess = false;
     try {
-      console.log("📧 Mail gönderme başlatılıyor...");
-      const mailResponse = await fetch("https://formsubmit.co/ajax/info@muharremsen.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message,
-          _subject: `İletişim Formu: ${name}`,
-          _template: "box",
-          _captcha: false,
-        }),
+      console.log("📧 Mail gönderme başlatılıyor (SMTP)...");
+      
+      const mailTo = process.env.CONTACT_EMAIL || "info@muharremsen.com";
+      const mailSubject = `İletişim Formu: ${name}`;
+      const mailHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #00ff88; margin-bottom: 20px;">Yeni İletişim Formu Mesajı</h2>
+          <div style="background: #f5f5f5; padding: 20px; border-radius: 8px;">
+            <p><strong>İsim:</strong> ${name}</p>
+            <p><strong>E-posta:</strong> ${email}</p>
+            <p><strong>Mesaj:</strong></p>
+            <p style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 4px; margin-top: 10px;">${message}</p>
+          </div>
+          <p style="margin-top: 20px; color: #666; font-size: 12px;">
+            Bu mesaj muharremsen.com web sitesindeki iletişim formundan gönderilmiştir.
+          </p>
+        </div>
+      `;
+
+      const mailResult = await sendEmail({
+        to: mailTo,
+        subject: mailSubject,
+        html: mailHtml,
       });
 
-      const mailData = await mailResponse.json();
-      console.log("📧 Mail API Response:", {
-        status: mailResponse.status,
-        ok: mailResponse.ok,
-        data: mailData,
-      });
-
-      if (!mailResponse.ok || !mailData.success) {
-        console.error("❌ Mail gönderme hatası:", mailData);
+      if (!mailResult.success) {
+        console.error("❌ Mail gönderme hatası:", mailResult.error);
         // Mail hatası olsa bile devam et, SMS gönder
       } else {
         console.log("✅ Mail başarıyla gönderildi");
