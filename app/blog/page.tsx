@@ -27,11 +27,14 @@ export default async function BlogPage() {
         </div>
 
         {posts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">Henüz blog yazısı bulunmuyor.</p>
+          <div className="glass rounded-xl p-12 text-center">
+            <p className="text-gray-400 text-lg mb-4">Henüz blog yazısı bulunmuyor.</p>
+            <p className="text-gray-500 text-sm">
+              WordPress panelinde blog yazıları eklediğinizde burada görünecektir.
+            </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
               <BlogCard
                 key={post.id}

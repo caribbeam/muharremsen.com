@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getPostBySlug, getPosts } from "@/lib/wp";
 import Link from "next/link";
+import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
 
 interface BlogPostPageProps {
   params: {
@@ -129,20 +130,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </header>
 
-          <article className="glass rounded-xl p-8 md:p-12 mb-8">
-            <div
-              className="prose prose-invert prose-lg max-w-none
-                prose-headings:text-white
-                prose-p:text-gray-300
-                prose-strong:text-white
-                prose-a:text-accent-green
-                prose-a:no-underline
-                hover:prose-a:underline
-                prose-ul:text-gray-300
-                prose-ol:text-gray-300
-                prose-li:text-gray-300"
-              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-            />
+          <article className="mb-8">
+            {(() => {
+              const sections = parseWordPressContent(post.content.rendered);
+              return renderWordPressContent(sections);
+            })()}
           </article>
 
           {relatedPosts.length > 0 && (
