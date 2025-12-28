@@ -13,35 +13,49 @@ export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
+    const form = e.currentTarget;
+    const formDataObj = new FormData(form);
+
     try {
-      setIsLoading(true);
-      const response = await fetch("/api/contact", {
+      // FormSubmit kullanarak direkt mail gönder
+      const response = await fetch("https://formsubmit.co/ajax/info@muharremsen.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `İletişim Formu: ${formData.name}`,
+          _template: "box",
+          _captcha: false,
+        }),
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Bir hata oluştu");
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Bir hata oluştu");
       }
 
       // Başarılı
       setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
       
-      // 3 saniye sonra formu sıfırla
+      // Formu resetle
+      form.reset();
+      
+      // 5 saniye sonra mesajı kaldır
       setTimeout(() => {
         setIsSubmitted(false);
-      }, 3000);
+      }, 5000);
     } catch (err: any) {
       setError(err.message || "Bir hata oluştu. Lütfen tekrar deneyin.");
     } finally {
@@ -61,7 +75,10 @@ export default function ContactForm() {
   return (
     <div className="glass rounded-xl p-8">
       <h2 className="text-2xl font-bold text-white mb-6">Bize Ulaşın</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <p className="text-gray-400 text-sm mb-6">
+        Teklif, soru veya önerileriniz için formu doldurun. En kısa sürede size dönüş yapacağız.
+      </p>
+      <form onSubmit={handleSubmit} className="space-y-6" action="https://formsubmit.co/info@muharremsen.com" method="POST">
         <div>
           <label
             htmlFor="name"
