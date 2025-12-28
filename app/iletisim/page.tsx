@@ -3,6 +3,7 @@ import { getPageBySlug } from "@/lib/wp";
 import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
 import ContactForm from "@/components/ContactForm";
+import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
 
 export const revalidate = 10;
 
@@ -87,19 +88,12 @@ export default async function Iletisim() {
           </h1>
           
           {hasContent ? (
-            <div
-              className="prose prose-invert prose-lg max-w-none
-                prose-headings:text-white
-                prose-p:text-gray-300
-                prose-strong:text-white
-                prose-a:text-accent-green
-                prose-a:no-underline
-                hover:prose-a:underline
-                prose-ul:text-gray-300
-                prose-ol:text-gray-300
-                prose-li:text-gray-300 mb-8"
-              dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-            />
+            <div className="mb-8">
+              {(() => {
+                const sections = parseWordPressContent(page.content.rendered);
+                return renderWordPressContent(sections);
+              })()}
+            </div>
           ) : (
             fallbackContent
           )}
