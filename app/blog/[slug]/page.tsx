@@ -101,7 +101,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const allPosts = await getPosts(1, 10);
   const relatedPosts = allPosts
-    .filter((p) => p.id !== currentPost.id)
+    .filter((p) => {
+      // Mevcut yazıyı hariç tut
+      if (p.id === currentPost.id) return false;
+      
+      // "Hello world!" gibi varsayılan yazıları filtrele
+      const title = p.title.rendered.toLowerCase();
+      const slug = p.slug.toLowerCase();
+      const isDefaultPost = 
+        title.includes('hello world') || 
+        title.includes('merhaba dünya') ||
+        slug.includes('hello-world') ||
+        slug.includes('merhaba-dunya');
+      
+      return !isDefaultPost;
+    })
     .slice(0, 2);
 
   const structuredData = {

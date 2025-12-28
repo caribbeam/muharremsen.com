@@ -18,11 +18,19 @@ export default async function BlogPage() {
   const filteredWpPosts = wpPosts.filter(post => {
     const title = post.title.rendered.toLowerCase();
     const slug = post.slug.toLowerCase();
-    // "Hello world", "Merhaba dünya" gibi varsayılan yazıları filtrele
-    return !title.includes('hello world') && 
-           !title.includes('merhaba dünya') && 
-           !slug.includes('hello-world') &&
-           !slug.includes('merhaba-dunya');
+    const excerpt = (post.excerpt.rendered || '').toLowerCase();
+    
+    // "Hello world", "Merhaba dünya" ve benzeri varsayılan yazıları filtrele
+    const isDefaultPost = 
+      title.includes('hello world') || 
+      title.includes('merhaba dünya') ||
+      title.includes('welcome to wordpress') ||
+      slug.includes('hello-world') ||
+      slug.includes('merhaba-dunya') ||
+      excerpt.includes('welcome to wordpress') ||
+      excerpt.includes('this is your first post');
+    
+    return !isDefaultPost;
   });
   
   // Örnek yazıları her zaman göster
