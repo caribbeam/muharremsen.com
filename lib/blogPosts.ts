@@ -1895,4 +1895,812 @@ export const exampleBlogPosts: BlogPost[] = [
     category: "Güvenlik",
     tags: ["VPN", "güvenlik", "uzaktan erişim", "şifreleme", "kurumsal VPN"],
   },
+  {
+    id: 15,
+    slug: "dns-ipv4-network-ve-sunucu-temelleri-kapsamli-rehber",
+    title: "DNS, IPv4, Network ve Sunucu Temelleri: Kapsamlı Rehber",
+    description: "DNS nedir, IPv4 nasıl çalışır? Network temelleri, sunucu kavramları ve ağ yapılandırması hakkında detaylı bilgi. IT altyapısı için temel kavramlar.",
+    content: `
+<h2>DNS (Domain Name System) Nedir?</h2>
 
+<p>DNS (Domain Name System - Alan Adı Sistemi), domain adlarını IP adreslerine çeviren sistemdir. İnternet üzerindeki her cihazın bir IP adresi vardır, ancak insanlar IP adreslerini hatırlamakta zorlanır. DNS, domain adlarını (örn: muharremsen.com) IP adreslerine (örn: 192.168.1.1) çevirir.</p>
+
+<h3>DNS Nasıl Çalışır?</h3>
+
+<ol>
+  <li>Kullanıcı tarayıcıya domain adını yazar (örn: muharremsen.com)</li>
+  <li>Tarayıcı, DNS sunucusuna sorgu gönderir</li>
+  <li>DNS sunucusu, domain'in IP adresini bulur</li>
+  <li>IP adresi tarayıcıya döner</li>
+  <li>Tarayıcı, IP adresine bağlanır ve web sitesini gösterir</li>
+</ol>
+
+<h3>DNS Kayıt Türleri</h3>
+
+<ul>
+  <li><strong>A Kaydı:</strong> Domain'i IPv4 adresine yönlendirir</li>
+  <li><strong>AAAA Kaydı:</strong> Domain'i IPv6 adresine yönlendirir</li>
+  <li><strong>CNAME:</strong> Bir domain'i başka bir domain'e yönlendirir</li>
+  <li><strong>MX Kaydı:</strong> E-posta sunucusu için</li>
+  <li><strong>TXT Kaydı:</strong> Doğrulama ve güvenlik için</li>
+  <li><strong>NS Kaydı:</strong> Nameserver bilgileri</li>
+</ul>
+
+<h2>IPv4 (Internet Protocol Version 4) Nedir?</h2>
+
+<p>IPv4, internet üzerindeki cihazları tanımlamak için kullanılan 32-bit adres sistemidir. Her cihazın benzersiz bir IP adresi vardır.</p>
+
+<h3>IPv4 Adres Formatı</h3>
+
+<p>IPv4 adresi, dört sayıdan oluşur (0-255 arası), nokta ile ayrılır:</p>
+<p><code>192.168.1.1</code></p>
+
+<p>Toplam 4.3 milyar farklı adres oluşturulabilir (2^32).</p>
+
+<h3>IPv4 Adres Sınıfları</h3>
+
+<ul>
+  <li><strong>Class A:</strong> 1.0.0.0 - 126.255.255.255 (Büyük ağlar)</li>
+  <li><strong>Class B:</strong> 128.0.0.0 - 191.255.255.255 (Orta ağlar)</li>
+  <li><strong>Class C:</strong> 192.0.0.0 - 223.255.255.255 (Küçük ağlar)</li>
+  <li><strong>Private IP:</strong> 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 (Özel ağlar)</li>
+</ul>
+
+<h3>Subnet Mask (Alt Ağ Maskesi)</h3>
+
+<p>Subnet mask, IP adresinin hangi kısmının network, hangi kısmının host olduğunu belirler.</p>
+
+<p><strong>Örnek:</strong></p>
+<ul>
+  <li>IP: 192.168.1.100</li>
+  <li>Subnet Mask: 255.255.255.0</li>
+  <li>Network: 192.168.1.0</li>
+  <li>Host: 100</li>
+</ul>
+
+<h3>CIDR Notasyonu</h3>
+
+<p>CIDR (Classless Inter-Domain Routing), subnet mask'ı daha kısa gösterir:</p>
+<ul>
+  <li>255.255.255.0 = /24 (24 bit network)</li>
+  <li>255.255.0.0 = /16 (16 bit network)</li>
+  <li>255.0.0.0 = /8 (8 bit network)</li>
+</ul>
+
+<h2>Network (Ağ) Nedir?</h2>
+
+<p>Network, birden fazla cihazın birbirine bağlandığı sistemdir. Cihazlar arasında veri iletişimi sağlar.</p>
+
+<h3>Network Türleri</h3>
+
+<ul>
+  <li><strong>LAN (Local Area Network):</strong> Yerel ağ, ofis veya ev içi</li>
+  <li><strong>WAN (Wide Area Network):</strong> Geniş alan ağı, şehirler arası</li>
+  <li><strong>MAN (Metropolitan Area Network):</strong> Şehir içi ağ</li>
+  <li><strong>Internet:</strong> Dünya çapında ağ</li>
+</ul>
+
+<h3>Network Topolojileri</h3>
+
+<ul>
+  <li><strong>Star Topology:</strong> Merkezi bir hub/switch'e bağlı cihazlar</li>
+  <li><strong>Bus Topology:</strong> Tüm cihazlar tek bir kabloya bağlı</li>
+  <li><strong>Ring Topology:</strong> Cihazlar halka şeklinde bağlı</li>
+  <li><strong>Mesh Topology:</strong> Her cihaz diğer tüm cihazlara bağlı</li>
+</ul>
+
+<h3>Network Cihazları</h3>
+
+<ul>
+  <li><strong>Router:</strong> Farklı ağlar arasında yönlendirme yapar</li>
+  <li><strong>Switch:</strong> Aynı ağ içinde cihazları birbirine bağlar</li>
+  <li><strong>Hub:</strong> Eski teknoloji, tüm trafiği yayınlar</li>
+  <li><strong>Firewall:</strong> Ağ güvenliği sağlar</li>
+  <li><strong>Access Point:</strong> Kablosuz ağ erişimi sağlar</li>
+</ul>
+
+<h2>Sunucu (Server) Nedir?</h2>
+
+<p>Sunucu, ağ üzerinde hizmet sağlayan bilgisayar veya yazılımdır. İstemcilere (client) veri, uygulama veya kaynak sağlar.</p>
+
+<h3>Sunucu Türleri</h3>
+
+<ul>
+  <li><strong>Web Sunucusu:</strong> Web sitelerini barındırır (Apache, Nginx)</li>
+  <li><strong>Veritabanı Sunucusu:</strong> Veritabanı hizmeti sağlar (MySQL, PostgreSQL)</li>
+  <li><strong>Dosya Sunucusu:</strong> Dosya paylaşımı sağlar (FTP, SMB)</li>
+  <li><strong>Mail Sunucusu:</strong> E-posta hizmeti sağlar (Postfix, Exchange)</li>
+  <li><strong>DNS Sunucusu:</strong> DNS sorgularını yanıtlar (BIND)</li>
+  <li><strong>Domain Controller:</strong> Active Directory yönetimi (Windows Server)</li>
+</ul>
+
+<h3>Sunucu Donanımı</h3>
+
+<ul>
+  <li><strong>İşlemci:</strong> Yüksek performanslı CPU (Xeon, EPYC)</li>
+  <li><strong>RAM:</strong> Yüksek kapasiteli bellek (ECC RAM önerilir)</li>
+  <li><strong>Disk:</strong> SSD veya SAS diskler (RAID yapılandırması)</li>
+  <li><strong>Ağ:</strong> Gigabit veya 10 Gigabit ethernet</li>
+  <li><strong>Güç Kaynağı:</strong> Yedekli güç kaynakları (redundant PSU)</li>
+</ul>
+
+<h2>Network Yapılandırması</h2>
+
+<h3>Statik IP Yapılandırması</h3>
+
+<p>Sunucular için statik IP adresi önerilir:</p>
+
+<ol>
+  <li>Network ayarlarına gidin</li>
+  <li>Statik IP modunu seçin</li>
+  <li>IP adresi: 192.168.1.100 (örnek)</li>
+  <li>Subnet mask: 255.255.255.0</li>
+  <li>Gateway: 192.168.1.1 (router IP)</li>
+  <li>DNS: 8.8.8.8, 8.8.4.4 (Google DNS)</li>
+</ol>
+
+<h3>DHCP Yapılandırması</h3>
+
+<p>İstemci cihazlar için DHCP (Dynamic Host Configuration Protocol) kullanılabilir. Router otomatik IP atar.</p>
+
+<h2>Port ve Protokoller</h2>
+
+<h3>Yaygın Portlar</h3>
+
+<ul>
+  <li><strong>80:</strong> HTTP (web trafiği)</li>
+  <li><strong>443:</strong> HTTPS (şifreli web trafiği)</li>
+  <li><strong>21:</strong> FTP (dosya transferi)</li>
+  <li><strong>22:</strong> SSH (güvenli uzaktan erişim)</li>
+  <li><strong>25:</strong> SMTP (e-posta gönderme)</li>
+  <li><strong>53:</strong> DNS (alan adı sorguları)</li>
+  <li><strong>3306:</strong> MySQL (veritabanı)</li>
+  <li><strong>3389:</strong> RDP (Windows uzaktan masaüstü)</li>
+</ul>
+
+<h3>Network Protokolleri</h3>
+
+<ul>
+  <li><strong>TCP (Transmission Control Protocol):</strong> Güvenilir, bağlantılı protokol</li>
+  <li><strong>UDP (User Datagram Protocol):</strong> Hızlı, bağlantısız protokol</li>
+  <li><strong>HTTP/HTTPS:</strong> Web trafiği</li>
+  <li><strong>FTP/SFTP:</strong> Dosya transferi</li>
+  <li><strong>SMTP/POP3/IMAP:</strong> E-posta protokolleri</li>
+</ul>
+
+<h2>Firewall ve Güvenlik</h2>
+
+<h3>Firewall Kuralları</h3>
+
+<p>Güvenlik için sadece gerekli portları açın:</p>
+
+<ul>
+  <li>Gelen trafik (inbound): Sadece gerekli servisler</li>
+  <li>Giden trafik (outbound): Genellikle tümüne izin verilir</li>
+  <li>Port bazlı filtreleme</li>
+  <li>IP bazlı filtreleme</li>
+</ul>
+
+<h3>Network Segmentasyonu</h3>
+
+<p>Ağları bölümlere ayırarak güvenliği artırın:</p>
+<ul>
+  <li>DMZ (Demilitarized Zone): Dışarıya açık sunucular</li>
+  <li>Internal Network: İç ağ, korumalı</li>
+  <li>Guest Network: Misafir ağı, izole</li>
+</ul>
+
+<h2>muharremsen'in Network ve Sunucu Hizmetleri</h2>
+
+<p>muharremsen olarak, network yapılandırması, sunucu kurulumu ve yönetim hizmetleri sunuyoruz. DNS yapılandırması, IP yönetimi, firewall kurulumu ve ağ güvenliği çözümleriyle işletmenizin IT altyapısını profesyonelce yönetiyoruz.</p>
+
+<p>Network tasarımı, sunucu kurulumu, DNS yapılandırması, güvenlik yapılandırmaları ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, ağ altyapınızı en iyi şekilde yapılandırarak güvenli ve verimli bir IT ortamı sağlar.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Ağ Teknolojileri",
+    tags: ["DNS", "IPv4", "network", "sunucu", "ağ yapılandırması"],
+  },
+  {
+    id: 16,
+    slug: "imaj-kurulumu-ve-yapilandirma-rehberi",
+    title: "İmaj Kurulumu ve Yapılandırma Rehberi",
+    description: "İşletim sistemi imajı nedir, nasıl oluşturulur ve yüklenir? Disk imajı, sistem yedekleme ve geri yükleme, deployment stratejileri hakkında detaylı bilgi.",
+    content: `
+<h2>İmaj (Image) Nedir?</h2>
+
+<p>İmaj, bir disk veya sistemin tam kopyasıdır. İşletim sistemi, uygulamalar, ayarlar ve veriler dahil tüm içeriği içerir. İmaj, sistem yedekleme, hızlı deployment ve disaster recovery için kullanılır.</p>
+
+<h2>İmaj Türleri</h2>
+
+<h3>1. Disk İmajı</h3>
+<p>Tüm disk veya bölümün bit-by-bit kopyası. Fiziksel disk yapısını korur.</p>
+
+<h3>2. Sistem İmajı</h3>
+<p>İşletim sistemi ve yapılandırmaların kopyası. Uygulamalar ve veriler dahil olabilir.</p>
+
+<h3>3. Master İmaj (Golden Image)</h3>
+<p>Standart sistem yapılandırması. Yeni sistemler için şablon olarak kullanılır.</p>
+
+<h2>İmaj Oluşturma Yöntemleri</h2>
+
+<h3>Windows İmaj Oluşturma</h3>
+
+<h4>Windows Server Backup</h4>
+<ol>
+  <li><strong>Server Manager → Windows Server Backup</strong> açın</li>
+  <li><strong>Backup Schedule</strong> veya <strong>Backup Once</strong> seçin</li>
+  <li><strong>Full Server</strong> veya <strong>Custom</strong> seçin</li>
+  <li>Yedekleme konumunu belirleyin (harici disk, ağ paylaşımı)</li>
+  <li>Yedeklemeyi başlatın</li>
+</ol>
+
+<h4>DISM (Deployment Image Servicing and Management)</h4>
+<p>Windows imaj oluşturma ve yönetme aracı:</p>
+<pre><code># Mevcut sistemi imaj olarak kaydetme
+DISM /Capture-Image /ImageFile:D:\\Image.wim /CaptureDir:C:\\ /Name:"Windows Server 2019"
+</code></pre>
+
+<h4>Acronis, Clonezilla, Macrium Reflect</h4>
+<p>Üçüncü parti yazılımlar ile disk imajı oluşturulabilir.</p>
+
+<h3>Linux İmaj Oluşturma</h3>
+
+<h4>dd Komutu</h4>
+<p>Disk'in tam kopyasını alır:</p>
+<pre><code># Disk imajı oluşturma
+dd if=/dev/sda of=/backup/disk-image.img bs=4M
+
+# Sıkıştırılmış imaj
+dd if=/dev/sda | gzip > /backup/disk-image.img.gz
+</code></pre>
+
+<h4>Clonezilla</h4>
+<p>Açık kaynak disk klonlama ve imaj oluşturma aracı. Hem Windows hem Linux için kullanılabilir.</p>
+
+<h4>rsync</h4>
+<p>Dosya bazlı yedekleme ve senkronizasyon:</p>
+<pre><code>rsync -av --exclude=/proc --exclude=/sys / /backup/
+</code></pre>
+
+<h2>İmaj Yükleme (Deployment)</h2>
+
+<h3>Windows İmaj Yükleme</h3>
+
+<h4>WDS (Windows Deployment Services)</h4>
+<ol>
+  <li>WDS sunucusu kurun</li>
+  <li>Boot imajı ve install imajı ekleyin</li>
+  <li>Network boot ile istemcilere imaj yükleyin</li>
+</ol>
+
+<h4>MDT (Microsoft Deployment Toolkit)</h4>
+<p>Gelişmiş deployment çözümü. Özelleştirilmiş imajlar ve otomatik kurulum.</p>
+
+<h4>DISM ile İmaj Yükleme</h4>
+<pre><code># İmajı diske yükleme
+DISM /Apply-Image /ImageFile:D:\\Image.wim /Index:1 /ApplyDir:C:\\
+</code></pre>
+
+<h3>Linux İmaj Yükleme</h3>
+
+<h4>dd ile Geri Yükleme</h4>
+<pre><code># İmajı diske geri yükleme
+dd if=/backup/disk-image.img of=/dev/sda bs=4M
+</code></pre>
+
+<h4>PXE Boot</h4>
+<p>Network üzerinden boot ederek imaj yükleme. Kickstart (RHEL/CentOS) veya Preseed (Debian/Ubuntu) ile otomatik kurulum.</p>
+
+<h2>Master İmaj (Golden Image) Oluşturma</h2>
+
+<h3>Windows Master İmaj</h3>
+
+<ol>
+  <li><strong>Referans Sistem Hazırlama:</strong>
+    <ul>
+      <li>Temiz Windows kurulumu</li>
+      <li>Güncellemeleri yükleyin</li>
+      <li>Gerekli uygulamaları kurun</li>
+      <li>Yapılandırmaları yapın</li>
+    </ul>
+  </li>
+  <li><strong>Sysprep Çalıştırma:</strong>
+    <ul>
+      <li>Sysprep, sistemi generalize eder</li>
+      <li>Benzersiz bilgileri kaldırır (SID, bilgisayar adı, vb.)</li>
+      <li>Komut: <code>sysprep /generalize /shutdown</code></li>
+    </ul>
+  </li>
+  <li><strong>İmaj Oluşturma:</strong>
+    <ul>
+      <li>Sysprep sonrası sistem kapanır</li>
+      <li>Boot edilmeden imaj alınır</li>
+      <li>DISM, WDS veya üçüncü parti araç kullanılır</li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Linux Master İmaj</h3>
+
+<ol>
+  <li>Temiz Linux kurulumu yapın</li>
+  <li>Güncellemeleri yükleyin</li>
+  <li>Gerekli paketleri kurun</li>
+  <li>Yapılandırmaları yapın</li>
+  <li>İmaj oluşturun (dd, Clonezilla, vb.)</li>
+</ol>
+
+<h2>İmaj Yönetimi</h2>
+
+<h3>İmaj Versiyonlama</h3>
+<ul>
+  <li>Her değişiklikte yeni versiyon oluşturun</li>
+  <li>Versiyon numaraları kullanın (v1.0, v1.1, vb.)</li>
+  <li>Değişiklik log'ları tutun</li>
+</ul>
+
+<h3>İmaj Depolama</h3>
+<ul>
+  <li>Merkezi depolama (NAS, SAN)</li>
+  <li>Yedekleme stratejisi</li>
+  <li>Erişim kontrolü</li>
+</ul>
+
+<h2>Otomatik Deployment</h2>
+
+<h3>Windows Deployment</h3>
+
+<ul>
+  <li><strong>WDS + MDT:</strong> Network üzerinden otomatik kurulum</li>
+  <li><strong>SCCM (System Center Configuration Manager):</strong> Enterprise deployment</li>
+  <li><strong>Intune:</strong> Cloud tabanlı deployment</li>
+</ul>
+
+<h3>Linux Deployment</h3>
+
+<ul>
+  <li><strong>Kickstart (RHEL/CentOS):</strong> Otomatik kurulum script'i</li>
+  <li><strong>Preseed (Debian/Ubuntu):</strong> Otomatik kurulum yanıt dosyası</li>
+  <li><strong>Ansible, Puppet, Chef:</strong> Configuration management</li>
+</ul>
+
+<h2>İmaj Optimizasyonu</h2>
+
+<h3>İmaj Boyutunu Küçültme</h3>
+
+<ul>
+  <li>Gereksiz dosyaları temizleyin</li>
+  <li>Disk temizleme yapın</li>
+  <li>Sıkıştırma kullanın</li>
+  <li>Differential imajlar kullanın (sadece değişiklikler)</li>
+</ul>
+
+<h2>Yedekleme ve Geri Yükleme</h2>
+
+<h3>Düzenli Yedekleme</h3>
+
+<ul>
+  <li>Haftalık tam yedekleme</li>
+  <li>Günlük incremental yedekleme</li>
+  <li>3-2-1 kuralı: 3 kopya, 2 farklı medya, 1 off-site</li>
+</ul>
+
+<h3>Disaster Recovery</h3>
+
+<p>İmajlar, sistem çökmesi durumunda hızlı geri yükleme sağlar:</p>
+<ul>
+  <li>RTO (Recovery Time Objective): Geri yükleme süresi hedefi</li>
+  <li>RPO (Recovery Point Objective): Veri kaybı toleransı</li>
+</ul>
+
+<h2>muharremsen'in İmaj Yönetimi Hizmetleri</h2>
+
+<p>muharremsen olarak, imaj oluşturma, yönetim ve deployment hizmetleri sunuyoruz. Master imaj hazırlama, otomatik deployment, yedekleme stratejileri ve disaster recovery çözümleriyle işletmenizin sistem yönetimini optimize ediyoruz.</p>
+
+<p>İmaj kurulumu, deployment otomasyonu, yedekleme çözümleri ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, sistem yönetimi süreçlerinizi otomatikleştirerek zaman ve maliyet tasarrufu sağlar.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Sistem Yönetimi",
+    tags: ["imaj", "disk imajı", "deployment", "yedekleme", "sistem yönetimi"],
+  },
+  {
+    id: 17,
+    slug: "kms-sunucular-windows-lisans-yonetimi",
+    title: "KMS Sunucular: Windows Lisans Yönetimi Rehberi",
+    description: "KMS (Key Management Service) nedir, nasıl kurulur? Windows lisans aktivasyonu, volume licensing, KMS host ve client yapılandırması hakkında detaylı bilgi.",
+    content: `
+<h2>KMS (Key Management Service) Nedir?</h2>
+
+<p>KMS (Key Management Service), Microsoft'un volume licensing için geliştirdiği lisans aktivasyon servisidir. Kurumsal ortamlarda çok sayıda Windows bilgisayarın merkezi olarak lisanslanmasını sağlar.</p>
+
+<h2>KMS'in Avantajları</h2>
+
+<ul>
+  <li><strong>Merkezi Yönetim:</strong> Tüm lisanslar tek yerden yönetilir</li>
+  <li><strong>Otomatik Aktivasyon:</strong> Bilgisayarlar otomatik olarak lisanslanır</li>
+  <li><strong>Maliyet Tasarrufu:</strong> Volume licensing ile daha uygun fiyat</li>
+  <li><strong>Kolay Yönetim:</strong> Manuel aktivasyon gerekmez</li>
+  <li><strong>180 Gün Aktivasyon:</strong> KMS sunucusuna bağlanabilen bilgisayarlar 180 gün aktif kalır</li>
+</ul>
+
+<h2>KMS Gereksinimleri</h2>
+
+<h3>KMS Host (Sunucu) Gereksinimleri</h3>
+
+<ul>
+  <li><strong>İşletim Sistemi:</strong> Windows Server 2008 R2 veya üzeri</li>
+  <li><strong>Lisans:</strong> Volume License (MAK veya KMS key)</li>
+  <li><strong>Network:</strong> İstemcilerle aynı ağda olmalı</li>
+  <li><strong>Port:</strong> TCP 1688 (KMS portu)</li>
+</ul>
+
+<h3>KMS Client (İstemci) Gereksinimleri</h3>
+
+<ul>
+  <li><strong>Windows Sürümü:</strong> Windows 7/8/10/11, Windows Server 2008 R2+</li>
+  <li><strong>Volume License Edition:</strong> KMS destekli Windows sürümü</li>
+  <li><strong>Network:</strong> KMS host'a erişebilmeli</li>
+</ul>
+
+<h2>KMS Host Kurulumu</h2>
+
+<h3>Adım 1: KMS Key Yükleme</h3>
+
+<ol>
+  <li>Windows Server'da Administrator olarak giriş yapın</li>
+  <li>Command Prompt'u Administrator olarak açın</li>
+  <li>KMS key'i yükleyin:
+    <pre><code>slmgr.vbs /ipk [KMS-KEY]</code></pre>
+  </li>
+  <li>Key'in yüklendiğini doğrulayın</li>
+</ol>
+
+<h3>Adım 2: KMS Host Aktivasyonu</h3>
+
+<pre><code># KMS host'u aktive etme
+slmgr.vbs /ato
+</code></pre>
+
+<p>Not: İlk aktivasyon için en az 25 Windows client veya 5 Windows Server gerekir (activation threshold).</p>
+
+<h3>Adım 3: KMS Servisini Başlatma</h3>
+
+<p>KMS servisi otomatik başlar. Kontrol etmek için:</p>
+<pre><code># KMS servis durumunu kontrol etme
+sc query sppsvc
+</code></pre>
+
+<h3>Adım 4: Firewall Yapılandırması</h3>
+
+<p>KMS portunu (1688) açın:</p>
+<pre><code># Windows Firewall'da port açma
+netsh advfirewall firewall add rule name="KMS" dir=in action=allow protocol=TCP localport=1688
+</code></pre>
+
+<h2>KMS Client Yapılandırması</h2>
+
+<h3>GPO (Group Policy) ile Yapılandırma</h3>
+
+<ol>
+  <li><strong>Group Policy Management</strong> açın</li>
+  <li>GPO oluşturun veya düzenleyin</li>
+  <li><strong>Computer Configuration → Policies → Administrative Templates → Windows Components → Software Protection Platform</strong> gidin</li>
+  <li><strong>Specify KMS host</strong> ayarını etkinleştirin</li>
+  <li>KMS host adresini girin (FQDN veya IP)</li>
+  <li>GPO'yu uygulayın</li>
+</ol>
+
+<h3>Manuel Yapılandırma</h3>
+
+<p>Her bilgisayarda manuel olarak KMS host belirtilebilir:</p>
+<pre><code># KMS host belirtme
+slmgr.vbs /skms [KMS-HOST-NAME-OR-IP]
+
+# Aktivasyon
+slmgr.vbs /ato
+</code></pre>
+
+<h2>KMS Aktivasyon Kontrolü</h2>
+
+<h3>KMS Host Durumu</h3>
+
+<pre><code># KMS host bilgilerini görüntüleme
+slmgr.vbs /dlv
+</code></pre>
+
+<p>Çıktıda şunları görebilirsiniz:</p>
+<ul>
+  <li>Toplam aktivasyon sayısı</li>
+  <li>Kalan aktivasyon sayısı</li>
+  <li>KMS host durumu</li>
+</ul>
+
+<h3>Client Aktivasyon Durumu</h3>
+
+<pre><code># Client lisans durumunu kontrol etme
+slmgr.vbs /xpr
+slmgr.vbs /dli
+</code></pre>
+
+<h2>KMS Activation Threshold</h2>
+
+<p>KMS host'un aktivasyon yapabilmesi için minimum client sayısı gerekir:</p>
+
+<ul>
+  <li><strong>Windows Client:</strong> 25 adet</li>
+  <li><strong>Windows Server:</strong> 5 adet</li>
+</ul>
+
+<p>Bu sayıya ulaşmadan KMS host aktivasyon yapamaz. Test ortamları için Microsoft VAMT (Volume Activation Management Tool) kullanılabilir.</p>
+
+<h2>KMS vs MAK (Multiple Activation Key)</h2>
+
+<h3>KMS (Key Management Service)</h3>
+<ul>
+  <li>Network üzerinden aktivasyon</li>
+  <li>180 günlük aktivasyon süresi</li>
+  <li>KMS host gerektirir</li>
+  <li>Çok sayıda bilgisayar için uygun</li>
+</ul>
+
+<h3>MAK (Multiple Activation Key)</h3>
+<ul>
+  <li>İnternet üzerinden aktivasyon</li>
+  <li>Kalıcı aktivasyon</li>
+  <li>KMS host gerekmez</li>
+  <li>Az sayıda bilgisayar için uygun</li>
+</ul>
+
+<h2>KMS Yedekleme ve Yüksek Erişilebilirlik</h2>
+
+<h3>Yedek KMS Host</h3>
+
+<p>Yüksek erişilebilirlik için ikinci bir KMS host kurulabilir:</p>
+<ol>
+  <li>İkinci bir Windows Server'da KMS kurun</li>
+  <li>Aynı KMS key'i kullanın</li>
+  <li>Client'larda her iki KMS host'u belirtin (DNS SRV kaydı ile otomatik)</li>
+</ol>
+
+<h3>DNS SRV Kaydı</h3>
+
+<p>DNS'te SRV kaydı oluşturarak client'lar otomatik KMS host bulabilir:</p>
+<ul>
+  <li>Service: _vlmcs</li>
+  <li>Protocol: _tcp</li>
+  <li>Port: 1688</li>
+  <li>Target: KMS host FQDN</li>
+</ul>
+
+<h2>Yaygın Sorunlar ve Çözümleri</h2>
+
+<h3>KMS Host Aktive Olmuyor</h3>
+<ul>
+  <li>Activation threshold'u kontrol edin (25 client veya 5 server)</li>
+  <li>KMS key'in doğru yüklendiğini kontrol edin</li>
+  <li>İnternet bağlantısını kontrol edin (aktivasyon için gerekli)</li>
+</ul>
+
+<h3>Client'lar Aktive Olmuyor</h3>
+<ul>
+  <li>KMS host'a erişilebilirliği kontrol edin (ping, port 1688)</li>
+  <li>Firewall ayarlarını kontrol edin</li>
+  <li>DNS çözümlemesini kontrol edin</li>
+  <li>GPO ayarlarını kontrol edin</li>
+</ul>
+
+<h2>muharremsen'in KMS Hizmetleri</h2>
+
+<p>muharremsen olarak, KMS sunucu kurulumu, yapılandırma ve yönetim hizmetleri sunuyoruz. Windows lisans yönetimi, volume licensing aktivasyonu ve merkezi lisans yönetimi çözümleriyle işletmenizin lisans maliyetlerini optimize ediyoruz.</p>
+
+<p>KMS kurulumu, lisans yönetimi, aktivasyon stratejileri ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, Windows lisans yönetim süreçlerinizi otomatikleştirerek zaman ve maliyet tasarrufu sağlar.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Sistem Yönetimi",
+    tags: ["KMS", "Windows lisans", "volume licensing", "aktivasyon", "lisans yönetimi"],
+  },
+  {
+    id: 18,
+    slug: "ethernet-internet-dvs-adsl-teknolojileri-rehberi",
+    title: "Ethernet, Internet, DVS ve ADSL Teknolojileri: Kapsamlı Rehber",
+    description: "Ethernet nedir, internet nasıl çalışır? DVS (Digital Video System) ve ADSL teknolojileri, ağ bağlantı türleri, bant genişliği ve performans hakkında detaylı bilgi.",
+    content: `
+<h2>Ethernet Nedir?</h2>
+
+<p>Ethernet, yerel ağlarda (LAN) kullanılan en yaygın ağ teknolojisidir. Kablolu bağlantı sağlar ve IEEE 802.3 standardına dayanır. Ethernet, ofislerde, evlerde ve veri merkezlerinde kullanılır.</p>
+
+<h3>Ethernet Standartları</h3>
+
+<ul>
+  <li><strong>10BASE-T:</strong> 10 Mbps, eski teknoloji</li>
+  <li><strong>100BASE-TX (Fast Ethernet):</strong> 100 Mbps</li>
+  <li><strong>1000BASE-T (Gigabit Ethernet):</strong> 1 Gbps (1000 Mbps)</li>
+  <li><strong>10GBASE-T:</strong> 10 Gbps</li>
+  <li><strong>25GBASE-T, 40GBASE-T, 100GBASE-T:</strong> Yüksek hızlı veri merkezi bağlantıları</li>
+</ul>
+
+<h3>Ethernet Kabloları</h3>
+
+<ul>
+  <li><strong>Cat5:</strong> 100 Mbps'e kadar</li>
+  <li><strong>Cat5e:</strong> 1 Gbps'e kadar (100 MHz)</li>
+  <li><strong>Cat6:</strong> 1 Gbps, 10 Gbps (kısa mesafe, 250 MHz)</li>
+  <li><strong>Cat6a:</strong> 10 Gbps (100 metre, 500 MHz)</li>
+  <li><strong>Cat7:</strong> 10 Gbps ve üzeri (600 MHz)</li>
+</ul>
+
+<h3>Ethernet Topolojisi</h3>
+
+<p>Ethernet, star topoloji kullanır. Tüm cihazlar bir switch veya hub'a bağlanır. Modern ağlarda switch kullanılır (hub yerine).</p>
+
+<h2>Internet Nedir?</h2>
+
+<p>Internet, dünya çapında birbirine bağlı bilgisayar ağlarının oluşturduğu global ağdır. Milyarlarca cihaz birbirine bağlıdır ve veri paylaşımı yapılır.</p>
+
+<h3>Internet Nasıl Çalışır?</h3>
+
+<ol>
+  <li>İnternet, birçok ağın birbirine bağlanmasıyla oluşur</li>
+  <li>Router'lar, veri paketlerini yönlendirir</li>
+  <li>DNS, domain adlarını IP adreslerine çevirir</li>
+  <li>TCP/IP protokolü, veri iletişimini sağlar</li>
+</ol>
+
+<h3>Internet Altyapısı</h3>
+
+<ul>
+  <li><strong>Backbone:</strong> Ana internet omurgası, yüksek hızlı fiber kablolar</li>
+  <li><strong>ISP (Internet Service Provider):</strong> İnternet servis sağlayıcıları</li>
+  <li><strong>IXP (Internet Exchange Point):</strong> İnternet değişim noktaları</li>
+  <li><strong>Data Center:</strong> Sunucuların bulunduğu veri merkezleri</li>
+</ul>
+
+<h2>DVS (Digital Video System) Nedir?</h2>
+
+<p>DVS, dijital video sistemleridir. Güvenlik kameraları, video kayıt sistemleri ve görüntü yönetimi için kullanılır.</p>
+
+<h3>DVS Bileşenleri</h3>
+
+<ul>
+  <li><strong>IP Kameralar:</strong> Ağ üzerinden video aktaran kameralar</li>
+  <li><strong>NVR (Network Video Recorder):</strong> Ağ tabanlı video kayıt cihazı</li>
+  <li><strong>DVR (Digital Video Recorder):</strong> Dijital video kayıt cihazı</li>
+  <li><strong>Video Management Software:</strong> Video yönetim yazılımları</li>
+</ul>
+
+<h3>DVS Ağ Gereksinimleri</h3>
+
+<ul>
+  <li><strong>Bant Genişliği:</strong> Her kamera için 2-10 Mbps (kaliteye göre)</li>
+  <li><strong>Network Switch:</strong> PoE (Power over Ethernet) desteği önerilir</li>
+  <li><strong>Storage:</strong> Yüksek kapasiteli depolama (video kayıtları için)</li>
+  <li><strong>Güvenlik:</strong> Şifreli video aktarımı</li>
+</ul>
+
+<h2>ADSL (Asymmetric Digital Subscriber Line) Nedir?</h2>
+
+<p>ADSL, mevcut telefon hatları üzerinden yüksek hızlı internet erişimi sağlayan teknolojidir. Asimetrik yapısı nedeniyle download (indirme) hızı, upload (yükleme) hızından yüksektir.</p>
+
+<h3>ADSL Özellikleri</h3>
+
+<ul>
+  <li><strong>Download Hızı:</strong> 1-24 Mbps (hat kalitesine göre)</li>
+  <li><strong>Upload Hızı:</strong> 512 Kbps - 1 Mbps</li>
+  <li><strong>Mesafe:</strong> Telefon santraline uzaklık önemli (max 5-6 km)</li>
+  <li><strong>Teknoloji:</strong> Bakır telefon hattı kullanır</li>
+</ul>
+
+<h3>ADSL vs VDSL</h3>
+
+<p><strong>ADSL:</strong> Daha yavaş, uzun mesafe</p>
+<p><strong>VDSL (Very High Bitrate DSL):</strong> Daha hızlı (100 Mbps+), kısa mesafe</p>
+
+<h2>İnternet Bağlantı Türleri</h2>
+
+<h3>1. ADSL/VDSL</h3>
+<ul>
+  <li>Bakır telefon hattı üzerinden</li>
+  <li>Orta hız (1-100 Mbps)</li>
+  <li>Yaygın kullanım</li>
+</ul>
+
+<h3>2. Fiber Internet</h3>
+<ul>
+  <li>Fiber optik kablolar</li>
+  <li>Yüksek hız (100 Mbps - 10 Gbps+)</li>
+  <li>Düşük gecikme</li>
+  <li>FTTH (Fiber to the Home) veya FTTB (Fiber to the Building)</li>
+</ul>
+
+<h3>3. Kablo Internet</h3>
+<ul>
+  <li>Kablo TV hatları üzerinden</li>
+  <li>Orta-yüksek hız (50-500 Mbps)</li>
+  <li>Paylaşımlı bant genişliği</li>
+</ul>
+
+<h3>4. Uydu Internet</h3>
+<ul>
+  <li>Uydu üzerinden bağlantı</li>
+  <li>Yüksek gecikme</li>
+  <li>Kırsal alanlar için</li>
+</ul>
+
+<h3>5. Mobil Internet (4G/5G)</h3>
+<ul>
+  <li>Hücresel ağ üzerinden</li>
+  <li>Mobil cihazlar için</li>
+  <li>5G ile yüksek hızlar (1 Gbps+)</li>
+</ul>
+
+<h2>Bant Genişliği ve Performans</h2>
+
+<h3>Bant Genişliği Hesaplama</h3>
+
+<p>İhtiyaç duyulan bant genişliği, kullanım senaryosuna göre değişir:</p>
+
+<ul>
+  <li><strong>Web Browsing:</strong> 1-5 Mbps</li>
+  <li><strong>Video Streaming (HD):</strong> 5-10 Mbps</li>
+  <li><strong>Video Streaming (4K):</strong> 25-50 Mbps</li>
+  <li><strong>Video Conferencing:</strong> 2-4 Mbps</li>
+  <li><strong>Online Gaming:</strong> 3-6 Mbps (düşük gecikme önemli)</li>
+  <li><strong>File Download:</strong> Mümkün olduğunca yüksek</li>
+</ul>
+
+<h3>Latency (Gecikme)</h3>
+
+<p>Latency, veri paketinin gönderilmesi ile alınması arasındaki süredir. Düşük latency önemlidir:</p>
+
+<ul>
+  <li><strong>Fiber:</strong> 1-5 ms (çok düşük)</li>
+  <li><strong>ADSL:</strong> 10-40 ms</li>
+  <li><strong>Uydu:</strong> 500-700 ms (çok yüksek)</li>
+</ul>
+
+<h2>Ağ Yapılandırması</h2>
+
+<h3>Router Yapılandırması</h3>
+
+<ol>
+  <li>Router'a bağlanın (192.168.1.1 veya 192.168.0.1)</li>
+  <li>WAN ayarlarını yapılandırın (ISP bilgileri)</li>
+  <li>LAN ayarlarını yapılandırın (IP aralığı, DHCP)</li>
+  <li>Wi-Fi ayarlarını yapılandırın (SSID, şifre, kanal)</li>
+  <li>Port yönlendirme yapın (gerekirse)</li>
+</ol>
+
+<h3>Switch Yapılandırması</h3>
+
+<ul>
+  <li><strong>Unmanaged Switch:</strong> Yapılandırma gerekmez, plug-and-play</li>
+  <li><strong>Managed Switch:</strong> VLAN, QoS, port yönetimi</li>
+  <li><strong>PoE Switch:</strong> Power over Ethernet, IP kameralar için</li>
+</ul>
+
+<h2>Güvenlik</h2>
+
+<h3>Ağ Güvenliği</h3>
+
+<ul>
+  <li><strong>Firewall:</strong> Gelen ve giden trafiği filtrele</li>
+  <li><strong>WPA3:</strong> Wi-Fi şifreleme (en güncel)</li>
+  <li><strong>VPN:</strong> Güvenli uzaktan erişim</li>
+  <li><strong>Network Segmentation:</strong> Ağları bölümlere ayır</li>
+</ul>
+
+<h2>muharremsen'in Ağ Teknolojileri Hizmetleri</h2>
+
+<p>muharremsen olarak, ağ yapılandırması, internet bağlantı yönetimi ve DVS sistemleri hizmetleri sunuyoruz. Ethernet ağ kurulumu, router/switch yapılandırması, bant genişliği optimizasyonu ve güvenlik çözümleriyle işletmenizin ağ altyapısını profesyonelce yönetiyoruz.</p>
+
+<p>Ağ kurulumu, internet bağlantı yönetimi, DVS sistemleri, güvenlik yapılandırmaları ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, ağ altyapınızı en iyi şekilde yapılandırarak yüksek performanslı ve güvenli bir ağ ortamı sağlar.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Ağ Teknolojileri",
+    tags: ["Ethernet", "internet", "ADSL", "DVS", "network", "bant genişliği"],
+  },
+];
