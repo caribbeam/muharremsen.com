@@ -72,7 +72,7 @@ export function renderWordPressContent(sections: ContentSection[]): JSX.Element 
                     {section.title}
                   </h2>
                   <div
-                    className="prose prose-invert prose-lg max-w-none
+                    className="prose prose-invert prose-lg max-w-none overflow-hidden
                       prose-p:text-gray-300
                       prose-p:leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: section.content }}
@@ -102,7 +102,7 @@ export function renderWordPressContent(sections: ContentSection[]): JSX.Element 
           return (
             <div key={`intro-${index}`} className="glass rounded-xl p-8">
               <div
-                className="prose prose-invert prose-lg max-w-none
+                className="prose prose-invert prose-lg max-w-none overflow-hidden
                   prose-p:text-gray-300
                   prose-p:leading-relaxed
                   prose-p:text-lg"
@@ -119,7 +119,7 @@ export function renderWordPressContent(sections: ContentSection[]): JSX.Element 
                 {section.title}
               </h2>
               <div
-                className="wp-content-card prose prose-invert max-w-none
+                className="wp-content-card prose prose-invert max-w-none overflow-hidden
                   prose-ul:list-none prose-ul:space-y-2
                   prose-li:text-gray-300
                   prose-li:flex
@@ -137,7 +137,7 @@ export function renderWordPressContent(sections: ContentSection[]): JSX.Element 
               {section.title}
             </h2>
             <div
-              className="prose prose-invert prose-lg max-w-none
+              className="prose prose-invert prose-lg max-w-none overflow-hidden
                 prose-p:text-gray-300
                 prose-p:leading-relaxed
                 prose-h3:text-accent-green
