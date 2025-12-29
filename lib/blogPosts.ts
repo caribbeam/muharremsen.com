@@ -2703,4 +2703,320 @@ slmgr.vbs /dli
     category: "Ağ Teknolojileri",
     tags: ["Ethernet", "internet", "ADSL", "DVS", "network", "bant genişliği"],
   },
+  {
+    id: 19,
+    slug: "bigbluebutton-ve-moodle-uzaktan-egitim-sistemi-kurulum-rehberi",
+    title: "BigBlueButton ve Moodle: Ücretsiz Uzaktan Eğitim Sistemi Kurulum Rehberi",
+    description: "BigBlueButton ve Moodle entegrasyonu ile ücretsiz, açık kaynak uzaktan eğitim sistemi kurulumu. Canlı dersler, video konferans, sınav sistemi ve öğrenci yönetimi hakkında detaylı bilgi.",
+    content: `
+<h2>BigBlueButton ve Moodle Nedir?</h2>
+
+<p>BigBlueButton ve Moodle, ücretsiz ve açık kaynak kodlu eğitim teknolojileridir. Moodle, öğrenme yönetim sistemi (LMS) sağlarken, BigBlueButton canlı video konferans ve sanal sınıf özellikleri sunar. İkisi birlikte kullanıldığında, kurumsal düzeyde bir uzaktan eğitim platformu oluşturulur.</p>
+
+<h3>Moodle (Modular Object-Oriented Dynamic Learning Environment)</h3>
+
+<p>Moodle, dünya çapında milyonlarca kullanıcıya sahip açık kaynak bir öğrenme yönetim sistemidir. Kurs yönetimi, öğrenci takibi, sınav sistemi ve içerik paylaşımı özellikleri sunar.</p>
+
+<h3>BigBlueButton</h3>
+
+<p>BigBlueButton, açık kaynak bir web konferans sistemidir. Canlı dersler, video konferans, ekran paylaşımı, beyaz tahta ve kayıt özellikleri sağlar.</p>
+
+<h2>Neden BigBlueButton ve Moodle?</h2>
+
+<h3>Avantajları</h3>
+
+<ul>
+  <li><strong>Tamamen Ücretsiz:</strong> Açık kaynak, lisans maliyeti yok</li>
+  <li><strong>Özelleştirilebilir:</strong> İhtiyacınıza göre özelleştirme yapabilirsiniz</li>
+  <li><strong>Ölçeklenebilir:</strong> Küçük sınıflardan binlerce öğrenciye kadar</li>
+  <li><strong>Güvenli:</strong> Verileriniz kendi sunucunuzda kalır</li>
+  <li><strong>Entegrasyon:</strong> Moodle ve BigBlueButton mükemmel entegre çalışır</li>
+  <li><strong>Çok Dilli:</strong> Türkçe dahil 100+ dil desteği</li>
+</ul>
+
+<h2>Kurulum Gereksinimleri</h2>
+
+<h3>Sunucu Gereksinimleri</h3>
+
+<ul>
+  <li><strong>İşlemci:</strong> Minimum 4 CPU çekirdek (önerilen: 8+)</li>
+  <li><strong>RAM:</strong> Minimum 8GB (önerilen: 16GB+)</li>
+  <li><strong>Disk:</strong> Minimum 50GB SSD (önerilen: 100GB+)</li>
+  <li><strong>İşletim Sistemi:</strong> Ubuntu 20.04 LTS veya 22.04 LTS</li>
+  <li><strong>Bant Genişliği:</strong> Her kullanıcı için minimum 1 Mbps</li>
+</ul>
+
+<h3>Yazılım Gereksinimleri</h3>
+
+<ul>
+  <li>PHP 7.4 veya üzeri</li>
+  <li>MySQL 5.7+ veya MariaDB 10.3+</li>
+  <li>Apache veya Nginx web sunucusu</li>
+  <li>SSL sertifikası (Let's Encrypt ücretsiz)</li>
+</ul>
+
+<h2>Moodle Kurulumu</h2>
+
+<h3>Adım 1: Sunucu Hazırlığı</h3>
+
+<pre><code># Sistem güncellemesi
+sudo apt update && sudo apt upgrade -y
+
+# Gerekli paketleri kur
+sudo apt install -y apache2 mysql-server php php-mysql php-xml php-mbstring php-curl php-zip php-gd php-intl
+</code></pre>
+
+<h3>Adım 2: Moodle İndirme</h3>
+
+<pre><code># Moodle'ı indir
+cd /var/www/html
+sudo wget https://download.moodle.org/releases/latest/moodle-latest.tgz
+sudo tar -xzf moodle-latest.tgz
+sudo chown -R www-data:www-data moodle
+sudo chmod -R 755 moodle
+</code></pre>
+
+<h3>Adım 3: Veritabanı Oluşturma</h3>
+
+<pre><code># MySQL'e giriş yap
+sudo mysql -u root -p
+
+# Veritabanı oluştur
+CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'moodleuser'@'localhost' IDENTIFIED BY 'güçlü_şifre';
+GRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+</code></pre>
+
+<h3>Adım 4: Moodle Kurulum Sihirbazı</h3>
+
+<ol>
+  <li>Tarayıcıda <code>http://sunucu-ip/moodle</code> adresine gidin</li>
+  <li>Kurulum sihirbazını takip edin</li>
+  <li>Veritabanı bilgilerini girin</li>
+  <li>Yönetici hesabı oluşturun</li>
+  <li>Kurulumu tamamlayın</li>
+</ol>
+
+<h2>BigBlueButton Kurulumu</h2>
+
+<h3>Adım 1: BigBlueButton Kurulum Script'i</h3>
+
+<pre><code># BigBlueButton kurulum script'ini indir
+wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | bash -s -- -w -a -g
+
+# Bu komut:
+# -w: Web sunucusu kurulumu
+# -a: API demo kurulumu
+# -g: Greenlight (kullanıcı arayüzü) kurulumu
+</code></pre>
+
+<h3>Adım 2: Kurulum Kontrolü</h3>
+
+<pre><code># BigBlueButton durumunu kontrol et
+sudo bbb-conf --check
+
+# BigBlueButton servislerini kontrol et
+sudo systemctl status bbb-web
+sudo systemctl status bbb-apps
+</code></pre>
+
+<h3>Adım 3: BigBlueButton API Anahtarı</h3>
+
+<ol>
+  <li>BigBlueButton yönetim paneline gidin</li>
+  <li>API anahtarınızı alın</li>
+  <li>Bu anahtarı Moodle entegrasyonu için kullanacaksınız</li>
+</ol>
+
+<h2>Moodle ve BigBlueButton Entegrasyonu</h2>
+
+<h3>Adım 1: BigBlueButton Plugin Kurulumu</h3>
+
+<ol>
+  <li>Moodle yönetim paneline giriş yapın</li>
+  <li><strong>Site yönetimi → Eklentiler → Eklenti yükle</strong> menüsüne gidin</li>
+  <li>BigBlueButton eklentisini arayın ve kurun</li>
+  <li>Veya manuel olarak eklentiyi indirip <code>/moodle/mod/bigbluebuttonbn</code> klasörüne yükleyin</li>
+</ol>
+
+<h3>Adım 2: BigBlueButton Yapılandırması</h3>
+
+<ol>
+  <li><strong>Site yönetimi → Eklentiler → Etkinlik modülleri → BigBlueButton</strong> menüsüne gidin</li>
+  <li>BigBlueButton sunucu URL'sini girin: <code>https://bbb-sunucu-ip/bigbluebutton/</code></li>
+  <li>API Secret (Shared Secret) girin</li>
+  <li>Ayarları kaydedin</li>
+</ol>
+
+<h3>Adım 3: API Secret Bulma</h3>
+
+<pre><code># BigBlueButton API Secret'ı bul
+sudo bbb-conf --secret
+
+# Çıktıda "Secret:" satırındaki değeri kopyalayın
+</code></pre>
+
+<h2>Kullanım Senaryoları</h2>
+
+<h3>1. Canlı Ders Oluşturma</h3>
+
+<ol>
+  <li>Moodle'da bir kurs oluşturun</li>
+  <li>Kurs içine "Etkinlik veya kaynak ekle" tıklayın</li>
+  <li>"BigBlueButton" seçin</li>
+  <li>Ders adı ve açıklama girin</li>
+  <li>Ders ayarlarını yapılandırın:
+    <ul>
+      <li>Kayıt etkinleştir (ders kaydı alınsın)</li>
+      <li>Bekleme odası (öğrenciler beklemede kalsın)</li>
+      <li>Maksimum katılımcı sayısı</li>
+    </ul>
+  </li>
+  <li>Kaydedin</li>
+</ol>
+
+<h3>2. Öğrenci Erişimi</h3>
+
+<ol>
+  <li>Öğrenciler Moodle'a giriş yapar</li>
+  <li>Kursa katılır</li>
+  <li>BigBlueButton etkinliğine tıklar</li>
+  <li>Otomatik olarak BigBlueButton oturumuna katılır</li>
+</ol>
+
+<h3>3. Ders Kayıtları</h3>
+
+<ul>
+  <li>Ders kayıtları otomatik olarak Moodle'a kaydedilir</li>
+  <li>Öğrenciler ders sonrası kayıtları izleyebilir</li>
+  <li>Kayıtlar sunucuda saklanır</li>
+</ol>
+
+<h2>BigBlueButton Özellikleri</h2>
+
+<h3>Canlı Ders Özellikleri</h3>
+
+<ul>
+  <li><strong>Video Konferans:</strong> HD video kalitesi</li>
+  <li><strong>Ses:</strong> Yüksek kaliteli ses iletimi</li>
+  <li><strong>Ekran Paylaşımı:</strong> Sunum ve uygulama paylaşımı</li>
+  <li><strong>Beyaz Tahta:</strong> İnteraktif çizim ve not alma</li>
+  <li><strong>Sohbet:</strong> Metin tabanlı sohbet</li>
+  <li><strong>Anket:</strong> Anlık anketler ve oylamalar</li>
+  <li><strong>Gruplar:</strong> Breakout odaları (küçük grup çalışmaları)</li>
+  <li><strong>Kayıt:</strong> Ders kayıtları (video + ses)</li>
+</ul>
+
+<h2>Moodle Özellikleri</h2>
+
+<h3>Kurs Yönetimi</h3>
+
+<ul>
+  <li><strong>Kurs Oluşturma:</strong> Sınırsız kurs oluşturma</li>
+  <li><strong>İçerik Yönetimi:</strong> Dosya, video, metin içerikleri</li>
+  <li><strong>Ödev Sistemi:</strong> Ödev verme ve değerlendirme</li>
+  <li><strong>Sınav Sistemi:</strong> Çoktan seçmeli, doğru/yanlış, kısa cevap</li>
+  <li><strong>Forum:</strong> Tartışma forumları</li>
+  <li><strong>Wiki:</strong> İşbirlikçi içerik oluşturma</li>
+  <li><strong>Rozet Sistemi:</strong> Başarı rozetleri</li>
+</ul>
+
+<h3>Öğrenci Takibi</h3>
+
+<ul>
+  <li><strong>İlerleme Takibi:</strong> Öğrenci ilerlemesini görüntüleme</li>
+  <li><strong>Raporlar:</strong> Detaylı raporlar ve analitikler</li>
+  <li><strong>Not Defteri:</strong> Not verme ve değerlendirme</li>
+  <li><strong>Sertifika:</strong> Otomatik sertifika oluşturma</li>
+</ul>
+
+<h2>Performans Optimizasyonu</h2>
+
+<h3>Sunucu Optimizasyonu</h3>
+
+<ul>
+  <li><strong>CDN Kullanımı:</strong> Statik içerik için CDN</li>
+  <li><strong>Cache:</strong> Moodle cache ayarları</li>
+  <li><strong>Database Optimizasyonu:</strong> MySQL optimizasyonu</li>
+  <li><strong>Load Balancer:</strong> Yüksek trafik için load balancer</li>
+</ul>
+
+<h3>BigBlueButton Optimizasyonu</h3>
+
+<ul>
+  <li><strong>Video Kalitesi:</strong> Bant genişliğine göre ayarlama</li>
+  <li><strong>Sunucu Kaynakları:</strong> Yeterli CPU ve RAM</li>
+  <li><strong>Network:</strong> Düşük gecikme (latency)</li>
+</ul>
+
+<h2>Güvenlik Yapılandırması</h2>
+
+<h3>Moodle Güvenliği</h3>
+
+<ul>
+  <li><strong>SSL Sertifikası:</strong> HTTPS zorunlu</li>
+  <li><strong>Güçlü Şifreler:</strong> Kullanıcı şifre politikaları</li>
+  <li><strong>İki Faktörlü Kimlik Doğrulama:</strong> 2FA desteği</li>
+  <li><strong>Yedekleme:</strong> Düzenli veritabanı yedekleme</li>
+</ul>
+
+<h3>BigBlueButton Güvenliği</h3>
+
+<ul>
+  <li><strong>API Güvenliği:</strong> API anahtarlarını koruyun</li>
+  <li><strong>Firewall:</strong> Gerekli portları açın</li>
+  <li><strong>DDoS Koruması:</strong> Saldırı koruması</li>
+</ul>
+
+<h2>Yedekleme Stratejisi</h2>
+
+<h3>Moodle Yedekleme</h3>
+
+<pre><code># Veritabanı yedekleme
+mysqldump -u moodleuser -p moodle > moodle_backup_$(date +%Y%m%d).sql
+
+# Dosya yedekleme
+tar -czf moodle_files_backup_$(date +%Y%m%d).tar.gz /var/www/html/moodle
+</code></pre>
+
+<h3>BigBlueButton Yedekleme</h3>
+
+<pre><code># BigBlueButton yedekleme
+sudo bbb-conf --backup
+
+# Kayıt dosyalarını yedekle
+sudo tar -czf bbb_recordings_backup_$(date +%Y%m%d).tar.gz /var/bigbluebutton/recordings
+</code></pre>
+
+<h2>Yaygın Sorunlar ve Çözümleri</h2>
+
+<h3>BigBlueButton Bağlantı Sorunu</h3>
+
+<ul>
+  <li>API Secret'ı kontrol edin</li>
+  <li>Firewall ayarlarını kontrol edin (port 80, 443, 7443)</li>
+  <li>BigBlueButton servislerinin çalıştığını kontrol edin</li>
+</ul>
+
+<h3>Moodle Yavaş Çalışıyor</h3>
+
+<ul>
+  <li>Cache ayarlarını kontrol edin</li>
+  <li>Veritabanı optimizasyonu yapın</li>
+  <li>Sunucu kaynaklarını kontrol edin</li>
+</ul>
+
+<h2>muharremsen'in LMS Hizmetleri</h2>
+
+<p>muharremsen olarak, Moodle ve BigBlueButton kurulumu, yapılandırma ve yönetim hizmetleri sunuyoruz. Ücretsiz, açık kaynak uzaktan eğitim çözümleriyle kurumunuzun eğitim ihtiyaçlarını karşılıyoruz.</p>
+
+<p>Moodle kurulumu, BigBlueButton entegrasyonu, özelleştirme, güvenlik yapılandırması ve 7/24 destek hizmetleri için bizimle iletişime geçin. Deneyimli ekibimiz, uzaktan eğitim platformunuzu en iyi şekilde yapılandırarak eğitim süreçlerinizi dijitalleştirmenize yardımcı olur.</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Eğitim Teknolojileri",
+    tags: ["Moodle", "BigBlueButton", "LMS", "uzaktan eğitim", "açık kaynak", "eğitim teknolojisi"],
+  },
 ];
