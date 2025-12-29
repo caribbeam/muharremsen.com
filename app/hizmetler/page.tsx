@@ -28,8 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: title ? `${title} | muharremsen` : "Hizmetlerimiz | IT Çözümleri ve Yazılım Geliştirme | muharremsen",
-    description: description || "Yapay zeka destekli yazılımlar, FreePBX/Asterisk kurulumları, Domain Server, Active Directory, VPN çözümleri, ISO 27001 BGYS desteği ve daha fazlası. Profesyonel IT hizmetleri.",
-    keywords: "yapay zeka yazılımları, FreePBX kurulumu, Domain Server, Active Directory, VPN çözümleri, ISO 27001, BGYS, IT danışmanlık, sistem yönetimi",
+    description: description || "Yapay zeka destekli yazılımlar, FreePBX/Asterisk kurulumları, Domain Server, Active Directory, VPN çözümleri, ISO 27001 BGYS desteği, Supplier Portal uygulamaları ve daha fazlası. Profesyonel IT hizmetleri.",
+    keywords: "yapay zeka yazılımları, FreePBX kurulumu, Domain Server, Active Directory, VPN çözümleri, ISO 27001, BGYS, IT danışmanlık, sistem yönetimi, supplier portal, tedarikçi portalı",
     alternates: {
       canonical: "https://muharremsen.com/hizmetler",
     },
@@ -352,6 +352,31 @@ export default async function Hizmetler() {
             </Link>
           </div>
         </div>
+
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
+          <div className="text-4xl mb-4">🏢</div>
+          <h3 className="text-xl font-bold text-white mb-3">Supplier Portal Uygulaması</h3>
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
+            Tedarikçi yönetimi ve iş birliği için kapsamlı portal çözümleri. 
+            Sipariş yönetimi, fiyat teklifleri, dokümantasyon paylaşımı ve tedarikçi performans takibi.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Supplier%20Portal%20Uygulaması%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -461,6 +486,19 @@ export default async function Hizmetler() {
           "@type": "Service",
           name: "ISO 27001 BGYS Desteği",
           description: "Bilgi güvenliği yönetim sistemi danışmanlığı ve uyumluluk desteği",
+          provider: {
+            "@type": "Organization",
+            name: "muharremsen",
+          },
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 9,
+        item: {
+          "@type": "Service",
+          name: "Supplier Portal Uygulaması",
+          description: "Tedarikçi yönetimi ve iş birliği için kapsamlı portal çözümleri",
           provider: {
             "@type": "Organization",
             name: "muharremsen",

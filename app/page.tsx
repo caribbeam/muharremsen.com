@@ -28,8 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: title ? `${title} | muharremsen` : "muharremsen | Yazılım Geliştirme ve IT Çözümleri",
-    description: description || "Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri, LMS, envanter yönetimi, QDMS, domain server, Active Directory, imaj yönetimi, FreePBX/Asterisk kurulumları ve ISO 27001 BGYS desteği hizmetleri.",
-    keywords: "yazılım geliştirme, yapay zeka, proforma uygulama, helpdesk, LMS, envanter yönetimi, QDMS, domain server, Active Directory, FreePBX, Asterisk, ISO 27001, BGYS, IT danışmanlık",
+    description: description || "Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri, LMS, envanter yönetimi, QDMS, domain server, Active Directory, imaj yönetimi, FreePBX/Asterisk kurulumları, ISO 27001 BGYS desteği ve Supplier Portal uygulamaları hizmetleri.",
+    keywords: "yazılım geliştirme, yapay zeka, proforma uygulama, helpdesk, LMS, envanter yönetimi, QDMS, domain server, Active Directory, FreePBX, Asterisk, ISO 27001, BGYS, supplier portal, tedarikçi portalı, IT danışmanlık",
     alternates: {
       canonical: "https://muharremsen.com",
     },
