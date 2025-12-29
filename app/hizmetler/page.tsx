@@ -4,6 +4,7 @@ import { getPageBySlug } from "@/lib/wp";
 import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
 import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
+import Link from "next/link";
 
 export const revalidate = 10;
 
@@ -77,103 +78,279 @@ export default async function Hizmetler() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">🤖</div>
           <h3 className="text-xl font-bold text-white mb-3">Yapay Zeka Destekli Yazılımlar</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             AI teknolojileriyle güçlendirilmiş özel yazılım çözümleri. Makine öğrenmesi, 
             doğal dil işleme ve görüntü tanıma teknolojileriyle iş süreçlerinizi optimize ediyoruz.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Yapay%20Zeka%20Destekli%20Yazılımlar%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">📄</div>
           <h3 className="text-xl font-bold text-white mb-3">Proforma Uygulamalar</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             İş süreçlerinizi dijitalleştiren proforma ve fatura yönetim sistemleri. 
             Otomatik fatura oluşturma, takip ve raporlama özellikleri.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Proforma%20Uygulamalar%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">🎫</div>
           <h3 className="text-xl font-bold text-white mb-3">Helpdesk Sistemleri</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Müşteri destek süreçlerinizi profesyonelce yöneten helpdesk çözümleri. 
             Ticket yönetimi, SLA takibi ve otomatik yönlendirme özellikleri.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Helpdesk%20Sistemleri%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">📚</div>
           <h3 className="text-xl font-bold text-white mb-3">LMS (Öğrenme Yönetim Sistemleri)</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Eğitim ve öğrenme süreçlerinizi dijitalleştiren LMS platformları. 
             Kurs yönetimi, sınav sistemi ve ilerleme takibi.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=LMS%20(Öğrenme%20Yönetim%20Sistemleri)%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">📦</div>
           <h3 className="text-xl font-bold text-white mb-3">Envanter Yönetimi</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Stok ve envanter takibinizi kolaylaştıran entegre sistemler. 
             Gerçek zamanlı stok takibi, otomatik sipariş yönetimi ve raporlama.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Envanter%20Yönetimi%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">📋</div>
           <h3 className="text-xl font-bold text-white mb-3">QDMS (Kalite Dokümantasyon)</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Kalite yönetim sistemleriniz için dokümantasyon çözümleri. 
             Doküman versiyonlama, onay süreçleri ve uyumluluk takibi.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=QDMS%20(Kalite%20Dokümantasyon)%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">🌐</div>
           <h3 className="text-xl font-bold text-white mb-3">Uzak Bağlantı IT Uygulamaları</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Uzaktan erişim ve yönetim için güvenli IT uygulamaları. 
             VPN çözümleri, uzaktan masaüstü erişimi ve sistem yönetimi.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Uzak%20Bağlantı%20IT%20Uygulamaları%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">🖥️</div>
           <h3 className="text-xl font-bold text-white mb-3">Domain Server / Active Directory</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Kurumsal ağ altyapınız için domain server ve Active Directory kurulumları. 
             Kullanıcı yönetimi, grup politikaları ve güvenlik yapılandırmaları.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Domain%20Server%20/%20Active%20Directory%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">🖼️</div>
           <h3 className="text-xl font-bold text-white mb-3">Imaj Yönetimi</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Kurumsal yapıda imaj yönetim sistemleri. 
             Sistem imajları, dağıtım ve güncelleme yönetimi.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=Imaj%20Yönetimi%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">☎️</div>
           <h3 className="text-xl font-bold text-white mb-3">FreePBX / Asterisk Kurulumları</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Açık kaynak telefon santrali çözümleri. 
             VoIP sistemleri, çağrı yönlendirme ve sesli mesaj özellikleri.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=FreePBX%20/%20Asterisk%20Kurulumları%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
 
-        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+        <div className="glass rounded-xl p-6 hover:scale-105 transition-transform flex flex-col">
           <div className="text-4xl mb-4">🔒</div>
           <h3 className="text-xl font-bold text-white mb-3">ISO 27001 BGYS Desteği</h3>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4 flex-grow">
             Bilgi güvenliği yönetim sistemi (BGYS) danışmanlığı ve uyumluluk desteği. 
             ISO 27001 sertifikasyon süreçlerinde rehberlik.
           </p>
+          <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-4 border-t border-gray-700">
+            <Link
+              href="https://wa.me/905304989553?text=ISO%2027001%20BGYS%20Desteği%20hizmeti%20için%20demo%20görmek%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-accent-green/20 hover:bg-accent-green/30 text-accent-green text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              Demo Gör
+            </Link>
+            <Link
+              href="/iletisim"
+              className="flex-1 bg-dark-tertiary hover:bg-dark-secondary text-white text-center py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium touch-manipulation"
+            >
+              İletişime Geç
+            </Link>
+          </div>
         </div>
       </div>
 
