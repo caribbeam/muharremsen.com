@@ -5,6 +5,7 @@ import { getPostBySlug, getPosts } from "@/lib/wp";
 import Link from "next/link";
 import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
 import { exampleBlogPosts } from "@/lib/blogPosts";
+import SocialShare from "@/components/SocialShare";
 
 interface BlogPostPageProps {
   params: {
@@ -210,6 +211,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 return renderWordPressContent(sections);
               })()}
             </div>
+            <SocialShare 
+              title={currentPost.title.rendered}
+              url={`/blog/${currentPost.slug}`}
+              description={currentPost.excerpt.rendered.replace(/<[^>]*>/g, "")}
+            />
           </article>
 
           {relatedPosts.length > 0 && (
