@@ -25,8 +25,23 @@ export async function generateMetadata(): Promise<Metadata> {
     page.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 160);
 
   return {
-    title: title ? `${title} | muharremsen` : "Hakkımızda | muharremsen",
-    description: description || undefined,
+    title: title ? `${title} | muharremsen` : "Hakkımızda | IT Çözümleri ve Yazılım Geliştirme | muharremsen",
+    description: description || "muharremsen olarak teknoloji dünyasında güvenilir çözümler sunuyoruz. Yazılım geliştirme, sistem yönetimi ve danışmanlık hizmetlerimizle işletmenizin dijital dönüşümünde yanınızdayız.",
+    keywords: "muharremsen, IT danışmanlık, yazılım geliştirme, sistem yönetimi, teknoloji çözümleri",
+    alternates: {
+      canonical: "https://muharremsen.com/hakkimizda",
+    },
+    openGraph: {
+      title: title ? `${title} | muharremsen` : "Hakkımızda | muharremsen",
+      description: description || "muharremsen olarak teknoloji dünyasında güvenilir çözümler sunuyoruz.",
+      url: "https://muharremsen.com/hakkimizda",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title ? `${title} | muharremsen` : "Hakkımızda | muharremsen",
+      description: description || "muharremsen olarak teknoloji dünyasında güvenilir çözümler sunuyoruz.",
+    },
   };
 }
 

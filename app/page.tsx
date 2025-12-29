@@ -27,8 +27,23 @@ export async function generateMetadata(): Promise<Metadata> {
     page.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 160);
 
   return {
-    title: title ? `${title} | muharremsen` : "muharremsen",
-    description: description || undefined,
+    title: title ? `${title} | muharremsen` : "muharremsen | Yazılım Geliştirme ve IT Çözümleri",
+    description: description || "Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri, LMS, envanter yönetimi, QDMS, domain server, Active Directory, imaj yönetimi, FreePBX/Asterisk kurulumları ve ISO 27001 BGYS desteği hizmetleri.",
+    keywords: "yazılım geliştirme, yapay zeka, proforma uygulama, helpdesk, LMS, envanter yönetimi, QDMS, domain server, Active Directory, FreePBX, Asterisk, ISO 27001, BGYS, IT danışmanlık",
+    alternates: {
+      canonical: "https://muharremsen.com",
+    },
+    openGraph: {
+      title: title ? `${title} | muharremsen` : "muharremsen | Yazılım Geliştirme ve IT Çözümleri",
+      description: description || "Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri ve IT çözümleri.",
+      url: "https://muharremsen.com",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title ? `${title} | muharremsen` : "muharremsen | Yazılım Geliştirme ve IT Çözümleri",
+      description: description || "Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri ve IT çözümleri.",
+    },
   };
 }
 

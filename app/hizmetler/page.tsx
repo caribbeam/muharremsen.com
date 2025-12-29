@@ -26,8 +26,23 @@ export async function generateMetadata(): Promise<Metadata> {
     page.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 160);
 
   return {
-    title: title ? `${title} | muharremsen` : "Hizmetlerimiz | muharremsen",
-    description: description || undefined,
+    title: title ? `${title} | muharremsen` : "Hizmetlerimiz | IT Çözümleri ve Yazılım Geliştirme | muharremsen",
+    description: description || "Yapay zeka destekli yazılımlar, FreePBX/Asterisk kurulumları, Domain Server, Active Directory, VPN çözümleri, ISO 27001 BGYS desteği ve daha fazlası. Profesyonel IT hizmetleri.",
+    keywords: "yapay zeka yazılımları, FreePBX kurulumu, Domain Server, Active Directory, VPN çözümleri, ISO 27001, BGYS, IT danışmanlık, sistem yönetimi",
+    alternates: {
+      canonical: "https://muharremsen.com/hizmetler",
+    },
+    openGraph: {
+      title: title ? `${title} | muharremsen` : "Hizmetlerimiz | IT Çözümleri | muharremsen",
+      description: description || "Yapay zeka destekli yazılımlar, FreePBX kurulumları, Domain Server ve IT çözümleri.",
+      url: "https://muharremsen.com/hizmetler",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title ? `${title} | muharremsen` : "Hizmetlerimiz | IT Çözümleri | muharremsen",
+      description: description || "Yapay zeka destekli yazılımlar, FreePBX kurulumları, Domain Server ve IT çözümleri.",
+    },
   };
 }
 

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import { getPosts } from "@/lib/wp";
 import SectionWrapper from "@/components/SectionWrapper";
 import BlogCard from "@/components/BlogCard";
@@ -7,8 +8,23 @@ import { exampleBlogPosts } from "@/lib/blogPosts";
 export const revalidate = 10;
 
 export const metadata: Metadata = {
-  title: "Blog | muharremsen",
-  description: "IT teknolojileri ve güvenlik konularında güncel blog yazıları.",
+  title: "Blog | IT Teknolojileri ve Güvenlik Yazıları | muharremsen",
+  description: "FreePBX, Domain Server, VPN, Proxmox, KMS, DNS, IPv4, Network, İmaj Kurulumu ve daha fazlası hakkında detaylı teknik blog yazıları. IT çözümleri, kurulum rehberleri ve teknoloji ipuçları.",
+  keywords: "FreePBX, Domain Server, VPN, Proxmox, KMS, DNS, IPv4, Network, İmaj Kurulumu, IT blog, teknoloji yazıları, sistem yönetimi, güvenlik",
+  alternates: {
+    canonical: "https://muharremsen.com/blog",
+  },
+  openGraph: {
+    title: "Blog | IT Teknolojileri ve Güvenlik Yazıları | muharremsen",
+    description: "FreePBX, Domain Server, VPN, Proxmox ve daha fazlası hakkında detaylı teknik blog yazıları.",
+    url: "https://muharremsen.com/blog",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | IT Teknolojileri ve Güvenlik Yazıları | muharremsen",
+    description: "FreePBX, Domain Server, VPN, Proxmox ve daha fazlası hakkında detaylı teknik blog yazıları.",
+  },
 };
 
 export default async function BlogPage() {
@@ -74,8 +90,61 @@ export default async function BlogPage() {
   // Tarihe göre sırala (en yeni önce)
   const posts = allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Ana Sayfa",
+        item: "https://muharremsen.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://muharremsen.com/blog",
+      },
+    ],
+  };
+
+  // CollectionPage Schema
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Blog | muharremsen",
+    description: "IT teknolojileri ve güvenlik konularında güncel blog yazıları",
+    url: "https://muharremsen.com/blog",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: posts.length,
+      itemListElement: posts.slice(0, 10).map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "BlogPosting",
+          headline: post.title,
+          url: `https://muharremsen.com/blog/${post.slug}`,
+        },
+      })),
+    },
+  };
+
   return (
-    <SectionWrapper className="pt-32">
+    <>
+      <Script
+        id="breadcrumb-schema-blog"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="collectionpage-schema-blog"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }}
+      />
+      <SectionWrapper className="pt-32">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -113,6 +182,7 @@ export default async function BlogPage() {
           </div>
         )}
       </div>
-    </SectionWrapper>
+      </SectionWrapper>
+    </>
   );
 }

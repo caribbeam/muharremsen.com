@@ -26,8 +26,23 @@ export async function generateMetadata(): Promise<Metadata> {
     page.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 160);
 
   return {
-    title: title ? `${title} | muharremsen` : "İletişim | muharremsen",
-    description: description || undefined,
+    title: title ? `${title} | muharremsen` : "İletişim | Teklif ve Danışmanlık | muharremsen",
+    description: description || "muharremsen ile iletişime geçin. IT çözümleri, yazılım geliştirme ve danışmanlık hizmetleri için teklif alın. Telefon: 0 530 498 95 53",
+    keywords: "muharremsen iletişim, IT danışmanlık, yazılım geliştirme teklif, FreePBX kurulum, Domain Server",
+    alternates: {
+      canonical: "https://muharremsen.com/iletisim",
+    },
+    openGraph: {
+      title: title ? `${title} | muharremsen` : "İletişim | muharremsen",
+      description: description || "muharremsen ile iletişime geçin. IT çözümleri ve danışmanlık hizmetleri için teklif alın.",
+      url: "https://muharremsen.com/iletisim",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title ? `${title} | muharremsen` : "İletişim | muharremsen",
+      description: description || "muharremsen ile iletişime geçin. IT çözümleri ve danışmanlık hizmetleri için teklif alın.",
+    },
   };
 }
 
