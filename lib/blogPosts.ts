@@ -3019,4 +3019,210 @@ sudo tar -czf bbb_recordings_backup_$(date +%Y%m%d).tar.gz /var/bigbluebutton/re
     category: "Eğitim Teknolojileri",
     tags: ["Moodle", "BigBlueButton", "LMS", "uzaktan eğitim", "açık kaynak", "eğitim teknolojisi"],
   },
+  {
+    id: 12,
+    slug: "iso-27001-bgys-hazirlik-sureci-adim-adim-sertifikasyon-rehberi",
+    title: "ISO 27001 BGYS Hazırlık Süreci: Adım Adım Sertifikasyon Rehberi",
+    description: "ISO 27001 Bilgi Güvenliği Yönetim Sistemi (BGYS) sertifikasyon sürecini öğrenin. Hazırlık aşamaları, gerekli dokümantasyon, denetim süreci ve başarı ipuçları.",
+    content: `
+<h2>ISO 27001 BGYS Nedir?</h2>
+
+<p>ISO 27001, bilgi güvenliği yönetim sistemi (BGYS) için uluslararası standarttır. İşletmelerin bilgi varlıklarını korumak, siber güvenlik risklerini yönetmek ve müşteri güvenini artırmak için kullanılan kapsamlı bir yönetim sistemidir.</p>
+
+<p>ISO 27001 sertifikasyonu, işletmenizin bilgi güvenliği süreçlerinin uluslararası standartlara uygun olduğunu gösterir ve rekabet avantajı sağlar.</p>
+
+<h2>ISO 27001 Sertifikasyonunun Avantajları</h2>
+
+<p>ISO 27001 sertifikasyonu, işletmenize birçok avantaj sağlar:</p>
+
+<ul>
+  <li><strong>Güven Artışı:</strong> Müşteriler ve iş ortakları ile güven ilişkisi kurma</li>
+  <li><strong>Risk Yönetimi:</strong> Bilgi güvenliği risklerini sistematik olarak yönetme</li>
+  <li><strong>Yasal Uyumluluk:</strong> KVKK ve diğer yasal gerekliliklere uyum sağlama</li>
+  <li><strong>Rekabet Avantajı:</strong> Tender ve iş fırsatlarında öne çıkma</li>
+  <li><strong>Maliyet Tasarrufu:</strong> Güvenlik ihlallerinden kaynaklanan maliyetleri azaltma</li>
+  <li><strong>Süreç İyileştirme:</strong> Bilgi güvenliği süreçlerini optimize etme</li>
+</ul>
+
+<h2>ISO 27001 Hazırlık Süreci: 6 Aşama</h2>
+
+<h3>Aşama 1: Proje Başlatma ve Planlama (1-2 Hafta)</h3>
+
+<p>ISO 27001 hazırlık sürecinin ilk aşaması, projenin başlatılması ve planlanmasıdır:</p>
+
+<ul>
+  <li><strong>Üst Yönetim Taahhüdü:</strong> Üst yönetimden destek alınması kritik öneme sahiptir</li>
+  <li><strong>Proje Ekibi Oluşturma:</strong> BGYS ekibi ve proje yöneticisi belirlenir</li>
+  <li><strong>Kapsam Belirleme:</strong> Sertifikasyon kapsamı (departmanlar, süreçler, sistemler) belirlenir</li>
+  <li><strong>Bütçe Planlama:</strong> Danışmanlık, denetim ve sertifikasyon maliyetleri planlanır</li>
+  <li><strong>Zaman Çizelgesi:</strong> 6-12 aylık bir zaman çizelgesi oluşturulur</li>
+</ul>
+
+<h3>Aşama 2: Mevcut Durum Analizi (2-4 Hafta)</h3>
+
+<p>Mevcut bilgi güvenliği durumunun analiz edilmesi:</p>
+
+<ul>
+  <li><strong>Gap Analizi:</strong> Mevcut durum ile ISO 27001 gereksinimleri arasındaki farklar belirlenir</li>
+  <li><strong>Bilgi Varlıkları Envanteri:</strong> Tüm bilgi varlıkları (veriler, sistemler, yazılımlar) listelenir</li>
+  <li><strong>Risk Değerlendirmesi:</strong> Bilgi güvenliği riskleri tanımlanır ve değerlendirilir</li>
+  <li><strong>Mevcut Kontroller:</strong> Zaten uygulanan güvenlik kontrolleri belirlenir</li>
+  <li><strong>Yasal Gereklilikler:</strong> KVKK, Siber Güvenlik Kanunu gibi yasal gereklilikler incelenir</li>
+</ul>
+
+<h3>Aşama 3: Dokümantasyon Hazırlama (4-8 Hafta)</h3>
+
+<p>ISO 27001 gereksinimlerine uygun dokümantasyon hazırlanır:</p>
+
+<ul>
+  <li><strong>BGYS Politikası:</strong> Üst yönetim tarafından onaylanan bilgi güvenliği politikası</li>
+  <li><strong>Risk Yönetimi Dokümantasyonu:</strong> Risk değerlendirme raporu ve risk işleme planı</li>
+  <li><strong>Süreç Dokümantasyonu:</strong> Bilgi güvenliği süreçlerinin tanımlandığı prosedürler</li>
+  <li><strong>Kontrol Önlemleri Dokümantasyonu:</strong> ISO 27001 Annex A kontrol önlemlerinin uygulanması</li>
+  <li><strong>İş Sürekliliği Planı:</strong> Bilgi güvenliği olaylarına yönelik müdahale planları</li>
+  <li><strong>Eğitim ve Farkındalık Dokümantasyonu:</strong> Personel eğitim kayıtları</li>
+</ul>
+
+<h3>Aşama 4: Uygulama ve İyileştirme (8-16 Hafta)</h3>
+
+<p>Hazırlanan dokümantasyonun uygulanması ve süreçlerin iyileştirilmesi:</p>
+
+<ul>
+  <li><strong>Kontrol Önlemlerinin Uygulanması:</strong> ISO 27001 Annex A kontrol önlemleri hayata geçirilir</li>
+  <li><strong>Eğitim Programları:</strong> Tüm personel için bilgi güvenliği eğitimleri düzenlenir</li>
+  <li><strong>Teknik Kontroller:</strong> Güvenlik yazılımları, erişim kontrolleri, şifreleme uygulamaları</li>
+  <li><strong>Fiziksel Güvenlik:</strong> Veri merkezi, ofis güvenliği, erişim kontrol sistemleri</li>
+  <li><strong>İş Sürekliliği Testleri:</strong> Yedekleme ve kurtarma prosedürlerinin test edilmesi</li>
+  <li><strong>Sürekli İyileştirme:</strong> İç denetimler ve düzeltici faaliyetler</li>
+</ul>
+
+<h3>Aşama 5: İç Denetim ve Yönetim Gözden Geçirmesi (2-4 Hafta)</h3>
+
+<p>Sertifikasyon öncesi iç denetim ve yönetim gözden geçirmesi:</p>
+
+<ul>
+  <li><strong>İç Denetim:</strong> Bağımsız iç denetçiler tarafından BGYS denetimi yapılır</li>
+  <li><strong>Düzeltici Faaliyetler:</strong> İç denetimde tespit edilen uygunsuzluklar düzeltilir</li>
+  <li><strong>Yönetim Gözden Geçirmesi:</strong> Üst yönetim BGYS performansını gözden geçirir</li>
+  <li><strong>İyileştirme Planları:</strong> Sürekli iyileştirme için aksiyon planları oluşturulur</li>
+</ul>
+
+<h3>Aşama 6: Sertifikasyon Denetimi (2-4 Hafta)</h3>
+
+<p>Akredite sertifikasyon kuruluşu tarafından denetim:</p>
+
+<ul>
+  <li><strong>Denetim Planlama:</strong> Sertifikasyon kuruluşu ile denetim tarihleri belirlenir</li>
+  <li><strong>1. Aşama Denetimi (Dokümantasyon):</strong> Dokümantasyonun ISO 27001'e uygunluğu kontrol edilir</li>
+  <li><strong>2. Aşama Denetimi (Uygulama):</strong> Uygulamaların yerinde kontrol edilmesi</li>
+  <li><strong>Uygunsuzluk Yönetimi:</strong> Denetimde tespit edilen uygunsuzluklar düzeltilir</li>
+  <li><strong>Sertifikasyon:</strong> Başarılı denetim sonrası ISO 27001 sertifikası alınır</li>
+</ul>
+
+<h2>ISO 27001 Annex A Kontrol Önlemleri</h2>
+
+<p>ISO 27001 Annex A, 93 kontrol önlemi içerir. Bu önlemler 14 ana kategori altında toplanır:</p>
+
+<ul>
+  <li><strong>A.5 Bilgi Güvenliği Politikaları:</strong> Politika dokümantasyonu ve yönetimi</li>
+  <li><strong>A.6 Bilgi Güvenliği Organizasyonu:</strong> Roller, sorumluluklar ve yetkilendirme</li>
+  <li><strong>A.7 İnsan Kaynakları Güvenliği:</strong> İşe alım, eğitim, işten ayrılma süreçleri</li>
+  <li><strong>A.8 Varlık Yönetimi:</strong> Bilgi varlıklarının envanteri ve sınıflandırılması</li>
+  <li><strong>A.9 Erişim Kontrolü:</strong> Kullanıcı erişim yönetimi ve yetkilendirme</li>
+  <li><strong>A.10 Kriptografi:</strong> Şifreleme ve kriptografik kontroller</li>
+  <li><strong>A.11 Fiziksel ve Çevresel Güvenlik:</strong> Veri merkezi ve ofis güvenliği</li>
+  <li><strong>A.12 İşletim Güvenliği:</strong> Sistem yönetimi, yedekleme, zararlı yazılım koruması</li>
+  <li><strong>A.13 İletişim Güvenliği:</strong> Ağ güvenliği ve bilgi transferi</li>
+  <li><strong>A.14 Sistem Edinme, Geliştirme ve Bakım:</strong> Yazılım güvenliği ve güvenli geliştirme</li>
+  <li><strong>A.15 Tedarikçi İlişkileri:</strong> Tedarikçi güvenlik gereksinimleri</li>
+  <li><strong>A.16 Bilgi Güvenliği Olay Yönetimi:</strong> Olay tespiti, müdahale ve raporlama</li>
+  <li><strong>A.17 İş Sürekliliği Yönetimi:</strong> Yedekleme ve kurtarma planları</li>
+  <li><strong>A.18 Uyumluluk:</strong> Yasal gereklilikler ve sözleşme yükümlülükleri</li>
+</ul>
+
+<h2>ISO 27001 Sertifikasyon Maliyeti</h2>
+
+<p>ISO 27001 sertifikasyon maliyeti, işletmenin büyüklüğüne, karmaşıklığına ve mevcut durumuna göre değişir:</p>
+
+<ul>
+  <li><strong>Danışmanlık Hizmetleri:</strong> 50.000 - 200.000 TL (işletme büyüklüğüne göre)</li>
+  <li><strong>Sertifikasyon Denetimi:</strong> 30.000 - 100.000 TL (yıllık)</li>
+  <li><strong>İç Denetim:</strong> 10.000 - 30.000 TL (yıllık)</li>
+  <li><strong>Eğitim Programları:</strong> 5.000 - 20.000 TL</li>
+  <li><strong>Teknik Altyapı:</strong> Güvenlik yazılımları, donanım (değişken)</li>
+</ul>
+
+<p><strong>Toplam maliyet:</strong> Küçük işletmeler için 100.000 - 200.000 TL, orta ölçekli işletmeler için 200.000 - 400.000 TL arasında değişebilir.</p>
+
+<h2>ISO 27001 Sertifikasyon Süresi</h2>
+
+<p>ISO 27001 sertifikasyon süreci genellikle 6-12 ay arasında tamamlanır:</p>
+
+<ul>
+  <li><strong>Hazırlık Aşaması:</strong> 2-4 ay (dokümantasyon ve uygulama)</li>
+  <li><strong>İç Denetim:</strong> 1-2 ay</li>
+  <li><strong>Sertifikasyon Denetimi:</strong> 1-2 ay</li>
+  <li><strong>Düzeltici Faaliyetler:</strong> 1-2 ay</li>
+</ul>
+
+<p>Mevcut durumunuz iyi ise süreç 6 ayda tamamlanabilir. Eğer sıfırdan başlıyorsanız, 12 aya kadar sürebilir.</p>
+
+<h2>Başarı İpuçları</h2>
+
+<h3>1. Üst Yönetim Desteği</h3>
+<p>ISO 27001 projesi, üst yönetimin tam desteği olmadan başarılı olamaz. Üst yönetim, projeye kaynak ayırmalı ve personeli teşvik etmelidir.</p>
+
+<h3>2. Doğru Ekip Seçimi</h3>
+<p>BGYS ekibi, bilgi güvenliği konusunda bilgili ve deneyimli kişilerden oluşmalıdır. Proje yöneticisi, süreci koordine edebilecek yeteneklere sahip olmalıdır.</p>
+
+<h3>3. Gerçekçi Zaman Planlaması</h3>
+<p>ISO 27001 sertifikasyonu, aceleye getirilemez. Her aşama için yeterli zaman ayrılmalı ve gerçekçi hedefler belirlenmelidir.</p>
+
+<h3>4. Sürekli İyileştirme</h3>
+<p>ISO 27001, bir kerelik bir proje değil, sürekli iyileştirme sürecidir. Sertifikasyon sonrası da düzenli iç denetimler ve iyileştirmeler yapılmalıdır.</p>
+
+<h3>5. Personel Eğitimi</h3>
+<p>Tüm personel, bilgi güvenliği konusunda eğitilmeli ve farkındalık düzeyi artırılmalıdır. Eğitimler düzenli olarak tekrarlanmalıdır.</p>
+
+<h2>Yaygın Hatalar ve Çözümleri</h2>
+
+<h3>Hata 1: Dokümantasyon Odaklı Yaklaşım</h3>
+<p><strong>Sorun:</strong> Sadece dokümantasyon hazırlayıp uygulamayı ihmal etmek</p>
+<p><strong>Çözüm:</strong> Dokümantasyon ve uygulama birlikte ilerletilmeli, her doküman uygulamada test edilmelidir.</p>
+
+<h3>Hata 2: Yetersiz Risk Değerlendirmesi</h3>
+<p><strong>Sorun:</strong> Risk değerlendirmesinin yüzeysel yapılması</p>
+<p><strong>Çözüm:</strong> Detaylı risk analizi yapılmalı, tüm bilgi varlıkları ve tehditler değerlendirilmelidir.</p>
+
+<h3>Hata 3: Personel Katılımının Eksikliği</h3>
+<p><strong>Sorun:</strong> Sadece IT departmanının sürece dahil edilmesi</p>
+<p><strong>Çözüm:</strong> Tüm departmanlar ve personel sürece dahil edilmeli, eğitimler verilmelidir.</p>
+
+<h2>muharremsen'in ISO 27001 BGYS Hizmetleri</h2>
+
+<p>muharremsen olarak, ISO 27001 BGYS hazırlık sürecinde kapsamlı danışmanlık hizmetleri sunuyoruz:</p>
+
+<ul>
+  <li><strong>Gap Analizi:</strong> Mevcut durumun ISO 27001 gereksinimleri ile karşılaştırılması</li>
+  <li><strong>Risk Değerlendirmesi:</strong> Bilgi güvenliği risklerinin tanımlanması ve değerlendirilmesi</li>
+  <li><strong>Dokümantasyon Hazırlama:</strong> BGYS politikası, prosedürler ve kontrol önlemleri dokümantasyonu</li>
+  <li><strong>Uygulama Desteği:</strong> Kontrol önlemlerinin hayata geçirilmesi ve teknik destek</li>
+  <li><strong>İç Denetim:</strong> Sertifikasyon öncesi iç denetim hizmetleri</li>
+  <li><strong>Eğitim Programları:</strong> Personel bilgi güvenliği eğitimleri ve farkındalık programları</li>
+  <li><strong>Sertifikasyon Desteği:</strong> Sertifikasyon kuruluşu seçimi ve denetim süreci desteği</li>
+</ul>
+
+<p>ISO 27001 BGYS hazırlık sürecinizde profesyonel destek almak için bizimle iletişime geçin. Deneyimli ekibimiz, 6-12 ay içinde ISO 27001 sertifikasyonu almanız için size rehberlik eder.</p>
+
+<h2>Sonuç</h2>
+
+<p>ISO 27001 BGYS sertifikasyonu, işletmenizin bilgi güvenliği süreçlerini uluslararası standartlara uygun hale getirir ve rekabet avantajı sağlar. Doğru planlama, üst yönetim desteği ve profesyonel danışmanlık ile 6-12 ay içinde sertifikasyon alabilirsiniz.</p>
+
+<p>ISO 27001 hazırlık sürecinizde muharremsen'in deneyimli ekibi yanınızda. Bilgi güvenliği yolculuğunuzda başarılar dileriz!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Güvenlik",
+    tags: ["ISO 27001", "BGYS", "bilgi güvenliği", "sertifikasyon", "güvenlik", "siber güvenlik", "KVKK"],
+  },
 ];
