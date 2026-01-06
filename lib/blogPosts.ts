@@ -4041,4 +4041,443 @@ PersistentKeepalive = 25
     category: "Güvenlik",
     tags: ["VPN", "OpenVPN", "WireGuard", "güvenlik", "uzaktan erişim", "şifreleme", "ağ güvenliği", "kurumsal VPN"],
   },
+  {
+    id: 15,
+    slug: "veri-merkezi-islemleri-alan-kiralama-sunucu-tasima-ilo-rehberi",
+    title: "Veri Merkezi İşlemleri: Alan Kiralama, Sunucu Taşıma ve ILO İşlemleri Rehberi",
+    description: "Veri merkezi işlemleri kapsamlı rehber: Alan kiralama, sunucu taşıma, ILO (Integrated Lights-Out) yapılandırması, güvenlik, soğutma, elektrik ve bakım işlemleri hakkında detaylı bilgi.",
+    content: `
+<h2>Veri Merkezi İşlemleri: Giriş</h2>
+
+<p>Veri merkezi işlemleri, işletmelerin IT altyapılarını profesyonel bir ortamda barındırması için kritik öneme sahiptir. Bu rehber, veri merkezi alan kiralama, sunucu taşıma, ILO yapılandırması ve diğer önemli işlemleri detaylı olarak ele almaktadır.</p>
+
+<p>Modern işletmeler, sunucularını, network cihazlarını ve depolama sistemlerini profesyonel veri merkezlerinde barındırarak yüksek erişilebilirlik, güvenlik ve performans sağlar.</p>
+
+<h2>Veri Merkezi Nedir?</h2>
+
+<p>Veri merkezi, işletmelerin IT altyapılarını barındıran, güvenli, soğutmalı ve yedekli elektrik sistemlerine sahip profesyonel tesislerdir. Veri merkezleri, 7/24 çalışan sistemler için kritik altyapı sağlar.</p>
+
+<h3>Veri Merkezinin Temel Bileşenleri</h3>
+
+<ul>
+  <li><strong>Fiziksel Altyapı:</strong> Rack'ler, kabinetler, güç dağıtım üniteleri (PDU)</li>
+  <li><strong>Elektrik Sistemi:</strong> UPS, jeneratör, elektrik dağıtımı</li>
+  <li><strong>Soğutma Sistemi:</strong> Klima, havalandırma, sıcaklık kontrolü</li>
+  <li><strong>Güvenlik:</strong> Fiziksel güvenlik, erişim kontrolü, kamera sistemleri</li>
+  <li><strong>Network Altyapısı:</strong> Internet bağlantısı, fiber optik, switch'ler</li>
+  <li><strong>Yangın Güvenliği:</strong> Yangın algılama ve söndürme sistemleri</li>
+</ul>
+
+<h2>Veri Merkezi Alan Kiralama</h2>
+
+<h3>1. Alan Kiralama Türleri</h3>
+
+<h4>Rack Kiralama (Co-location)</h4>
+
+<p>Rack kiralama, veri merkezinde bir rack'in tamamını veya bir kısmını kiralamaktır:</p>
+
+<ul>
+  <li><strong>1U, 2U, 4U:</strong> Rack'in belirli birimlerini kiralama</li>
+  <li><strong>Half Rack:</strong> Rack'in yarısını kiralama (21U)</li>
+  <li><strong>Full Rack:</strong> Tüm rack'i kiralama (42U)</li>
+  <li><strong>Multiple Racks:</strong> Birden fazla rack kiralama</li>
+</ul>
+
+<p><strong>Avantajları:</strong></p>
+<ul>
+  <li>Esnek ölçekleme imkanı</li>
+  <li>Düşük başlangıç maliyeti</li>
+  <li>Profesyonel altyapı erişimi</li>
+  <li>7/24 teknik destek</li>
+</ul>
+
+<h4>Kabin Kiralama</h4>
+
+<p>Kabin kiralama, özel bir kabin veya oda kiralamaktır:</p>
+
+<ul>
+  <li><strong>Küçük Kabin:</strong> 5-10 rack kapasiteli</li>
+  <li><strong>Orta Kabin:</strong> 10-20 rack kapasiteli</li>
+  <li><strong>Büyük Kabin:</strong> 20+ rack kapasiteli</li>
+  <li><strong>Özel Oda:</strong> Tamamen izole edilmiş oda</li>
+</ul>
+
+<p><strong>Avantajları:</strong></p>
+<ul>
+  <li>Yüksek güvenlik ve gizlilik</li>
+  <li>Özel soğutma ve elektrik</li>
+  <li>Özel erişim kontrolü</li>
+  <li>Özelleştirilebilir altyapı</li>
+</ul>
+
+<h4>Cloud ve Hybrid Çözümler</h4>
+
+<p>Bulut ve hibrit çözümler:</p>
+
+<ul>
+  <li><strong>Cloud Hosting:</strong> Sanal sunucular ve bulut altyapısı</li>
+  <li><strong>Hybrid:</strong> Fiziksel sunucular + bulut hizmetleri</li>
+  <li><strong>Managed Services:</strong> Yönetilen hosting hizmetleri</li>
+</ul>
+
+<h3>2. Alan Kiralama Seçim Kriterleri</h3>
+
+<h4>Fiziksel Özellikler</h4>
+
+<ul>
+  <li><strong>Rack Boyutları:</strong> 19" standart rack, yükseklik (42U, 47U)</li>
+  <li><strong>Güç Kapasitesi:</strong> Rack başına kW cinsinden güç (3kW, 5kW, 10kW+)</li>
+  <li><strong>Soğutma Kapasitesi:</strong> Sıcaklık ve nem kontrolü</li>
+  <li><strong>Zemin Yükü:</strong> Rack başına maksimum ağırlık</li>
+</ul>
+
+<h4>Elektrik ve Güç</h4>
+
+<ul>
+  <li><strong>UPS Sistemi:</strong> Kesintisiz güç kaynağı kapasitesi</li>
+  <li><strong>Jeneratör:</strong> Yedek jeneratör kapasitesi ve yakıt stoğu</li>
+  <li><strong>PDU Türleri:</strong> Basic PDU, Smart PDU, Metered PDU</li>
+  <li><strong>Elektrik Faturalandırması:</strong> Sabit ücret veya kullanım bazlı</li>
+</ul>
+
+<h4>Network ve Bağlantı</h4>
+
+<ul>
+  <li><strong>Internet Bant Genişliği:</strong> Dahil edilen bant genişliği</li>
+  <li><strong>Fiber Optik:</strong> Fiber bağlantı seçenekleri</li>
+  <li><strong>Cross-Connect:</strong> Diğer servis sağlayıcılara bağlantı</li>
+  <li><strong>IP Adresleri:</strong> IPv4 ve IPv6 adresleri</li>
+</ul>
+
+<h4>Güvenlik</h4>
+
+<ul>
+  <li><strong>Fiziksel Güvenlik:</strong> 7/24 güvenlik görevlisi, kamera sistemleri</li>
+  <li><strong>Erişim Kontrolü:</strong> Biyometrik erişim, kartlı geçiş</li>
+  <li><strong>Ziyaretçi Yönetimi:</strong> Ziyaretçi kayıt ve takip sistemi</li>
+  <li><strong>Güvenlik Sertifikaları:</strong> ISO 27001, SOC 2, PCI-DSS</li>
+</ul>
+
+<h4>Destek ve Hizmetler</h4>
+
+<ul>
+  <li><strong>7/24 Teknik Destek:</strong> Uzaktan ve yerinde destek</li>
+  <li><strong>Remote Hands:</strong> Uzaktan fiziksel müdahale hizmeti</li>
+  <li><strong>Bakım Pencereleri:</strong> Planlı bakım zamanları</li>
+  <li><strong>SLA (Service Level Agreement):</strong> Hizmet seviyesi garantileri</li>
+</ul>
+
+<h3>3. Maliyet Faktörleri</h3>
+
+<p>Veri merkezi kiralama maliyetleri:</p>
+
+<ul>
+  <li><strong>Rack Kiralama:</strong> 500-3000 TL/ay (rack boyutuna göre)</li>
+  <li><strong>Güç Tüketimi:</strong> 0.50-1.50 TL/kWh</li>
+  <li><strong>Bant Genişliği:</strong> 100-500 TL/ay (100Mbps için)</li>
+  <li><strong>IP Adresleri:</strong> 50-200 TL/ay</li>
+  <li><strong>Cross-Connect:</strong> 200-1000 TL/ay</li>
+  <li><strong>Remote Hands:</strong> 200-500 TL/saat</li>
+</ul>
+
+<h2>Sunucu Taşıma İşlemleri</h2>
+
+<h3>1. Taşıma Öncesi Hazırlık</h3>
+
+<h4>Envanter ve Dokümantasyon</h4>
+
+<ul>
+  <li><strong>Sunucu Envanteri:</strong> Tüm sunucuların listesi, seri numaraları</li>
+  <li><strong>Network Topolojisi:</strong> Ağ yapısı, IP adresleri, VLAN'lar</li>
+  <li><strong>Kablo Yönetimi:</strong> Kabloların etiketlenmesi ve dokümantasyonu</li>
+  <li><strong>Yedekleme:</strong> Tüm verilerin yedeklenmesi</li>
+</ul>
+
+<h4>Fiziksel Hazırlık</h4>
+
+<ul>
+  <li><strong>Ambalajlama:</strong> Anti-statik ambalaj, köpük koruma</li>
+  <li><strong>Etiketleme:</strong> Her cihazın net şekilde etiketlenmesi</li>
+  <li><strong>Fotoğraflama:</strong> Taşıma öncesi ve sonrası fotoğraflar</li>
+  <li><strong>Sigorta:</strong> Taşıma sigortası yapılması</li>
+</ul>
+
+<h3>2. Taşıma Süreci</h3>
+
+<h4>Güvenli Taşıma Yöntemleri</h4>
+
+<ul>
+  <li><strong>Özel Taşıma Aracı:</strong> İklim kontrollü araç</li>
+  <li><strong>Anti-Statik Önlemler:</strong> Anti-statik torbalar, zemin</li>
+  <li><strong>Şok Sensörleri:</strong> Taşıma sırasında şok takibi</li>
+  <li><strong>GPS Takibi:</strong> Araç konum takibi</li>
+</ul>
+
+<h4>Taşıma Sırasında Dikkat Edilecekler</h4>
+
+<ul>
+  <li><strong>Sıcaklık Kontrolü:</strong> 15-25°C arası sıcaklık</li>
+  <li><strong>Nem Kontrolü:</strong> %40-60 nem seviyesi</li>
+  <li><strong>Şok ve Titreşim:</strong> Minimum şok ve titreşim</li>
+  <li><strong>Güvenlik:</strong> Güvenli rota ve güvenlik görevlisi</li>
+</ul>
+
+<h3>3. Taşıma Sonrası Kurulum</h3>
+
+<h4>Fiziksel Kurulum</h4>
+
+<ol>
+  <li><strong>Rack Montajı:</strong> Sunucuların rack'e montajı</li>
+  <li><strong>Kablo Bağlantıları:</strong> Network, güç, ILO kabloları</li>
+  <li><strong>Güç Bağlantısı:</strong> PDU'ya güç bağlantısı</li>
+  <li><strong>Fiziksel Kontrol:</strong> Tüm bağlantıların kontrolü</li>
+</ol>
+
+<h4>Yazılım ve Yapılandırma</h4>
+
+<ol>
+  <li><strong>İşletim Sistemi Kontrolü:</strong> OS'in çalıştığının doğrulanması</li>
+  <li><strong>Network Yapılandırması:</strong> IP adresleri, gateway, DNS</li>
+  <li><strong>Servis Kontrolü:</strong> Tüm servislerin çalıştığının kontrolü</li>
+  <li><strong>Performans Testi:</strong> CPU, RAM, disk performans testleri</li>
+</ol>
+
+<h2>ILO (Integrated Lights-Out) İşlemleri</h2>
+
+<h3>ILO Nedir?</h3>
+
+<p>ILO (Integrated Lights-Out), HP sunucularında bulunan uzaktan yönetim teknolojisidir. Sunucu kapalı olsa bile, ILO üzerinden sunucuya erişim sağlanabilir, güç yönetimi yapılabilir ve konsol erişimi sağlanabilir.</p>
+
+<h3>ILO Özellikleri</h3>
+
+<ul>
+  <li><strong>Uzaktan Güç Yönetimi:</strong> Sunucuyu açma, kapatma, yeniden başlatma</li>
+  <li><strong>Konsol Erişimi:</strong> BIOS, işletim sistemi konsol erişimi</li>
+  <li><strong>Donanım İzleme:</strong> Sıcaklık, fan hızı, güç tüketimi</li>
+  <li><strong>Uzaktan Medya:</strong> ISO dosyalarını uzaktan mount etme</li>
+  <li><strong>Log Yönetimi:</strong> Sistem loglarını görüntüleme</li>
+</ul>
+
+<h3>ILO Kurulumu ve Yapılandırması</h3>
+
+<h4>Adım 1: ILO Fiziksel Bağlantısı</h4>
+
+<ol>
+  <li>ILO portunu network switch'e bağlayın</li>
+  <li>ILO için ayrı bir network VLAN'ı oluşturun (önerilir)</li>
+  <li>ILO'ya statik IP adresi atayın</li>
+</ol>
+
+<h4>Adım 2: ILO İlk Yapılandırma</h4>
+
+<ol>
+  <li>Sunucuyu açın ve F8 tuşuna basın (ILO yapılandırma menüsü)</li>
+  <li>ILO yapılandırma menüsüne girin</li>
+  <li>Network ayarlarını yapılandırın:
+    <ul>
+      <li>IP adresi: 192.168.1.100 (örnek)</li>
+      <li>Subnet mask: 255.255.255.0</li>
+      <li>Gateway: 192.168.1.1</li>
+      <li>DNS: 8.8.8.8</li>
+    </ul>
+  </li>
+  <li>ILO kullanıcı hesabı oluşturun</li>
+  <li>Güvenlik ayarlarını yapılandırın</li>
+</ol>
+
+<h4>Adım 3: ILO Web Arayüzüne Erişim</h4>
+
+<ol>
+  <li>Web tarayıcısından ILO IP adresine bağlanın: https://192.168.1.100</li>
+  <li>ILO kullanıcı adı ve şifresi ile giriş yapın</li>
+  <li>ILO web arayüzünde sunucu bilgilerini görüntüleyin</li>
+</ol>
+
+<h4>Adım 4: ILO Güvenlik Yapılandırması</h4>
+
+<ul>
+  <li><strong>Güçlü Şifre:</strong> En az 12 karakter, karmaşık şifre</li>
+  <li><strong>SSL/TLS:</strong> HTTPS bağlantısını zorunlu kılın</li>
+  <li><strong>IP Kısıtlaması:</strong> Belirli IP'lerden erişime izin verin</li>
+  <li><strong>Timeout Ayarları:</strong> Oturum timeout süresini ayarlayın</li>
+  <li><strong>Audit Logging:</strong> Tüm ILO erişimlerini loglayın</li>
+</ul>
+
+<h3>ILO Kullanım Senaryoları</h3>
+
+<h4>Senaryo 1: Uzaktan Sunucu Yeniden Başlatma</h4>
+
+<ol>
+  <li>ILO web arayüzüne bağlanın</li>
+  <li>Power Management → Reset Server</li>
+  <li>Sunucu yeniden başlatılır</li>
+</ol>
+
+<h4>Senaryo 2: Uzaktan Konsol Erişimi</h4>
+
+<ol>
+  <li>ILO web arayüzünde Remote Console'u açın</li>
+  <li>Java veya HTML5 konsol bağlantısı kurun</li>
+  <li>Sunucu konsoluna erişin</li>
+</ol>
+
+<h4>Senaryo 3: Uzaktan ISO Mount</h4>
+
+<ol>
+  <li>ILO web arayüzünde Virtual Media'ya gidin</li>
+  <li>ISO dosyasını yükleyin</li>
+  <li>Sunucuyu ISO'dan boot edin</li>
+</ol>
+
+<h4>Senaryo 4: Donanım İzleme</h4>
+
+<ol>
+  <li>ILO web arayüzünde System Information'a gidin</li>
+  <li>Sıcaklık, fan hızı, güç tüketimi bilgilerini görüntüleyin</li>
+  <li>Uyarıları kontrol edin</li>
+</ol>
+
+<h2>Veri Merkezi Güvenlik İşlemleri</h2>
+
+<h3>1. Fiziksel Güvenlik</h3>
+
+<ul>
+  <li><strong>Erişim Kontrolü:</strong> Biyometrik erişim, kartlı geçiş</li>
+  <li><strong>Ziyaretçi Yönetimi:</strong> Ziyaretçi kayıt ve takip</li>
+  <li><strong>Kamera Sistemleri:</strong> 7/24 video kayıt</li>
+  <li><strong>Güvenlik Görevlileri:</strong> 7/24 güvenlik personeli</li>
+</ul>
+
+<h3>2. Network Güvenlik</h3>
+
+<ul>
+  <li><strong>Firewall:</strong> Veri merkezi giriş/çıkış firewall'ları</li>
+  <li><strong>DDoS Koruması:</strong> DDoS saldırılarına karşı koruma</li>
+  <li><strong>Network Segmentasyonu:</strong> VLAN'lar ve network izolasyonu</li>
+  <li><strong>Traffic Monitoring:</strong> Ağ trafiği izleme ve analiz</li>
+</ul>
+
+<h3>3. Veri Güvenliği</h3>
+
+<ul>
+  <li><strong>Şifreleme:</strong> Disk şifreleme, veri şifreleme</li>
+  <li><strong>Yedekleme:</strong> Düzenli yedekleme ve kurtarma testleri</li>
+  <li><strong>Erişim Kontrolü:</strong> Rol tabanlı erişim kontrolü</li>
+  <li><strong>Audit Logging:</strong> Tüm erişimlerin loglanması</li>
+</ul>
+
+<h2>Veri Merkezi Bakım İşlemleri</h2>
+
+<h3>1. Düzenli Bakım</h3>
+
+<ul>
+  <li><strong>Haftalık Kontroller:</strong> Sunucu durumu, sıcaklık, güç</li>
+  <li><strong>Aylık Bakım:</strong> Toz temizliği, kablolama kontrolü</li>
+  <li><strong>Üç Aylık Bakım:</strong> Donanım testleri, yedekleme kontrolü</li>
+  <li><strong>Yıllık Bakım:</strong> Kapsamlı donanım kontrolü, yükseltmeler</li>
+</ul>
+
+<h3>2. Acil Müdahale</h3>
+
+<ul>
+  <li><strong>7/24 Destek:</strong> Acil durumlarda teknik destek</li>
+  <li><strong>Remote Hands:</strong> Uzaktan fiziksel müdahale</li>
+  <li><strong>Yedek Parça:</strong> Kritik yedek parça stoğu</li>
+  <li><strong>Kurtarma Planı:</strong> Felaket kurtarma prosedürleri</li>
+</ul>
+
+<h2>Veri Merkezi Seçim Kriterleri</h2>
+
+<h3>1. Lokasyon</h3>
+
+<ul>
+  <li><strong>Coğrafi Konum:</strong> Erişim kolaylığı, gecikme süresi</li>
+  <li><strong>Doğal Afet Riski:</strong> Deprem, sel, fırtına riski</li>
+  <li><strong>Altyapı:</strong> Elektrik, fiber optik altyapı</li>
+</ul>
+
+<h3>2. Altyapı Kalitesi</h3>
+
+<ul>
+  <li><strong>Uptime Garantisi:</strong> %99.9, %99.99, %99.999 SLA</li>
+  <li><strong>Yedeklilik:</strong> N+1, 2N yedeklilik seviyeleri</li>
+  <li><strong>Sertifikasyonlar:</strong> ISO 27001, SOC 2, PCI-DSS</li>
+</ul>
+
+<h3>3. Maliyet</h3>
+
+<ul>
+  <li><strong>Başlangıç Maliyeti:</strong> Kurulum ve taşıma maliyetleri</li>
+  <li><strong>Aylık Maliyet:</strong> Rack, güç, bant genişliği maliyetleri</li>
+  <li><strong>Gizli Maliyetler:</strong> Cross-connect, remote hands, ekstra hizmetler</li>
+</ul>
+
+<h2>Veri Merkezi İşlemleri: En İyi Uygulamalar</h2>
+
+<h3>1. Dokümantasyon</h3>
+
+<ul>
+  <li>Tüm sunucuların envanterini tutun</li>
+  <li>Network topolojisini dokümante edin</li>
+  <li>Kablo yönetimini etiketleyin</li>
+  <li>Yapılandırma değişikliklerini kaydedin</li>
+</ul>
+
+<h3>2. Yedekleme Stratejisi</h3>
+
+<ul>
+  <li>Düzenli yedekleme yapın (günlük, haftalık)</li>
+  <li>Yedeklemeleri farklı lokasyonlarda saklayın</li>
+  <li>Kurtarma testleri yapın</li>
+  <li>Yedekleme stratejisini dokümante edin</li>
+</ul>
+
+<h3>3. İzleme ve Uyarı</h3>
+
+<ul>
+  <li>7/24 izleme sistemi kurun</li>
+  <li>Kritik metrikleri izleyin (sıcaklık, güç, disk)</li>
+  <li>Uyarı sistemleri yapılandırın</li>
+  <li>Düzenli raporlama yapın</li>
+</ul>
+
+<h3>4. Güvenlik</h3>
+
+<ul>
+  <li>Güçlü şifreler kullanın</li>
+  <li>İki faktörlü kimlik doğrulama ekleyin</li>
+  <li>Erişim loglarını izleyin</li>
+  <li>Düzenli güvenlik denetimleri yapın</li>
+</ul>
+
+<h2>muharremsen'in Veri Merkezi Hizmetleri</h2>
+
+<p>muharremsen olarak, veri merkezi işlemleri için kapsamlı hizmetler sunuyoruz:</p>
+
+<ul>
+  <li><strong>Veri Merkezi Danışmanlığı:</strong> Veri merkezi seçimi ve planlama</li>
+  <li><strong>Alan Kiralama Desteği:</strong> Uygun veri merkezi ve alan bulma</li>
+  <li><strong>Sunucu Taşıma:</strong> Güvenli sunucu taşıma ve kurulum</li>
+  <li><strong>ILO Yapılandırması:</strong> ILO kurulumu ve yapılandırması</li>
+  <li><strong>Network Yapılandırması:</strong> Ağ altyapısı kurulumu</li>
+  <li><strong>Güvenlik Yapılandırması:</strong> Güvenlik ayarları ve erişim kontrolü</li>
+  <li><strong>7/24 Destek:</strong> Uzaktan ve yerinde teknik destek</li>
+  <li><strong>Bakım Hizmetleri:</strong> Düzenli bakım ve izleme</li>
+</ul>
+
+<p>Veri merkezi işlemleriniz için profesyonel destek almak için bizimle iletişime geçin. Deneyimli ekibimiz, sunucularınızın güvenli bir şekilde veri merkezinde barındırılması ve yönetilmesi için size yardımcı olur.</p>
+
+<h2>Sonuç</h2>
+
+<p>Veri merkezi işlemleri, işletmelerin IT altyapılarını profesyonel bir ortamda barındırması için kritik öneme sahiptir. Doğru veri merkezi seçimi, güvenli sunucu taşıma, ILO yapılandırması ve düzenli bakım ile yüksek erişilebilirlik ve performans sağlanabilir.</p>
+
+<p>Alan kiralama, sunucu taşıma ve ILO işlemleri, profesyonel yaklaşım ve deneyim gerektirir. muharremsen'in deneyimli ekibi, veri merkezi işlemlerinizde size rehberlik ederek IT altyapınızın güvenli ve verimli bir şekilde yönetilmesini sağlar.</p>
+
+<p>Veri merkezi işlemleriniz için bizimle iletişime geçin ve profesyonel destek alın!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Altyapı",
+    tags: ["Veri Merkezi", "Co-location", "Sunucu Taşıma", "ILO", "HP iLO", "veri merkezi kiralama", "rack kiralama", "sunucu barındırma"],
+  },
 ];
