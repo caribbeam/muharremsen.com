@@ -4480,4 +4480,631 @@ PersistentKeepalive = 25
     category: "Altyapı",
     tags: ["Veri Merkezi", "Co-location", "Sunucu Taşıma", "ILO", "HP iLO", "veri merkezi kiralama", "rack kiralama", "sunucu barındırma"],
   },
+  {
+    id: 16,
+    slug: "mail-server-kurulumu-postfix-dovecot-detayli-rehber",
+    title: "Mail Server Kurulumu: Postfix ve Dovecot ile Kurumsal E-posta Sistemi Rehberi",
+    description: "Mail server kurulumu detaylı rehber: Postfix SMTP, Dovecot IMAP/POP3, Roundcube webmail, SPF, DKIM, DMARC yapılandırması, güvenlik ve sorun giderme.",
+    content: `
+<h2>Mail Server Kurulumu: Giriş</h2>
+
+<p>Kurumsal mail server kurulumu, işletmelerin kendi e-posta altyapılarını oluşturması için kritik öneme sahiptir. Bu rehber, Postfix ve Dovecot kullanarak profesyonel bir mail server kurulumunu detaylı olarak ele almaktadır.</p>
+
+<p>Kendi mail server'ınızı kurarak, e-posta kontrolünü elinize alır, güvenliği artırır ve maliyetleri düşürebilirsiniz.</p>
+
+<h2>Mail Server Nedir?</h2>
+
+<p>Mail server, e-posta gönderme ve alma işlemlerini yöneten sunucu yazılımıdır. SMTP (Simple Mail Transfer Protocol) ile e-posta gönderimi, IMAP/POP3 ile e-posta alma işlemlerini gerçekleştirir.</p>
+
+<h3>Mail Server Bileşenleri</h3>
+
+<ul>
+  <li><strong>SMTP Server:</strong> E-posta gönderimi (Postfix, Sendmail, Exim)</li>
+  <li><strong>IMAP/POP3 Server:</strong> E-posta alma (Dovecot, Courier)</li>
+  <li><strong>Webmail:</strong> Web arayüzü (Roundcube, SquirrelMail)</li>
+  <li><strong>Anti-Spam:</strong> Spam filtreleme (SpamAssassin, Amavis)</li>
+  <li><strong>Anti-Virus:</strong> Virüs tarama (ClamAV)</li>
+</ul>
+
+<h2>Mail Server Kurulumu Öncesi Hazırlık</h2>
+
+<h3>1. Sistem Gereksinimleri</h3>
+
+<ul>
+  <li><strong>İşletim Sistemi:</strong> Ubuntu 20.04/22.04 LTS veya Debian 11+</li>
+  <li><strong>RAM:</strong> 2GB minimum (4GB+ önerilir)</li>
+  <li><strong>Disk:</strong> 20GB+ boş alan (e-posta depolama için)</li>
+  <li><strong>CPU:</strong> 2+ çekirdek</li>
+  <li><strong>Network:</strong> Statik IP adresi, DNS kayıtları</li>
+</ul>
+
+<h3>2. DNS Yapılandırması</h3>
+
+<p>Mail server kurulumu öncesi DNS kayıtlarını hazırlayın:</p>
+
+<ul>
+  <li><strong>A Record:</strong> mail.yourdomain.com → Sunucu IP adresi</li>
+  <li><strong>MX Record:</strong> yourdomain.com → mail.yourdomain.com (öncelik: 10)</li>
+  <li><strong>SPF Record:</strong> TXT kaydı (spam koruması)</li>
+  <li><strong>DKIM Record:</strong> TXT kaydı (e-posta doğrulama)</li>
+  <li><strong>DMARC Record:</strong> TXT kaydı (e-posta güvenliği)</li>
+</ul>
+
+<h3>3. Port Yapılandırması</h3>
+
+<p>Firewall'da açılması gereken portlar:</p>
+
+<ul>
+  <li><strong>25/TCP:</strong> SMTP (e-posta gönderimi)</li>
+  <li><strong>587/TCP:</strong> SMTP Submission (güvenli gönderim)</li>
+  <li><strong>465/TCP:</strong> SMTPS (SSL/TLS ile SMTP)</li>
+  <li><strong>993/TCP:</strong> IMAPS (SSL/TLS ile IMAP)</li>
+  <li><strong>995/TCP:</strong> POP3S (SSL/TLS ile POP3)</li>
+  <li><strong>143/TCP:</strong> IMAP (isteğe bağlı, güvenli değil)</li>
+  <li><strong>110/TCP:</strong> POP3 (isteğe bağlı, güvenli değil)</li>
+  <li><strong>80/TCP, 443/TCP:</strong> Webmail (HTTP/HTTPS)</li>
+</ul>
+
+<h2>Postfix SMTP Server Kurulumu</h2>
+
+<h3>Adım 1: Postfix Kurulumu</h3>
+
+<p>Ubuntu/Debian sisteminde Postfix kurulumu:</p>
+
+<pre><code>sudo apt update
+sudo apt install -y postfix postfix-mysql
+</code></pre>
+
+<p>Kurulum sırasında yapılandırma seçenekleri:</p>
+
+<ul>
+  <li><strong>General type of mail configuration:</strong> Internet Site</li>
+  <li><strong>System mail name:</strong> yourdomain.com</li>
+</ul>
+
+<h3>Adım 2: Postfix Temel Yapılandırması</h3>
+
+<p>Postfix ana yapılandırma dosyası:</p>
+
+<pre><code>sudo nano /etc/postfix/main.cf
+</code></pre>
+
+<p>Temel yapılandırma:</p>
+
+<pre><code># Network settings
+myhostname = mail.yourdomain.com
+mydomain = yourdomain.com
+myorigin = $mydomain
+inet_interfaces = all
+inet_protocols = ipv4
+
+# Mail delivery
+mydestination = $myhostname, $mydomain, localhost.$mydomain, localhost
+mynetworks = 127.0.0.0/8, [::ffff:127.0.0.0]/104, [::1]/128
+
+# Mailbox settings
+home_mailbox = Maildir/
+mailbox_command =
+
+# Message size limits
+message_size_limit = 52428800
+mailbox_size_limit = 1073741824
+
+# TLS/SSL settings
+smtpd_tls_cert_file = /etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file = /etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_use_tls = yes
+smtpd_tls_auth_only = yes
+smtpd_tls_security_level = may
+
+# SMTP Authentication
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = $myhostname
+
+# Relay restrictions
+smtpd_recipient_restrictions = 
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    reject_rbl_client zen.spamhaus.org,
+    reject_rbl_client bl.spamcop.net,
+    permit
+
+# Header checks
+smtpd_header_checks = regexp:/etc/postfix/header_checks
+</code></pre>
+
+<h3>Adım 3: Postfix Master Yapılandırması</h3>
+
+<p>Submission port (587) için yapılandırma:</p>
+
+<pre><code>sudo nano /etc/postfix/master.cf
+</code></pre>
+
+<p>Submission servisini etkinleştirin:</p>
+
+<pre><code>submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_tls_auth_only=yes
+  -o smtpd_reject_unlisted_recipient=no
+  -o smtpd_client_restrictions=$mua_client_restrictions
+  -o smtpd_helo_restrictions=$mua_helo_restrictions
+  -o smtpd_sender_restrictions=$mua_sender_restrictions
+  -o smtpd_recipient_restrictions=
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
+</code></pre>
+
+<h3>Adım 4: Postfix Servisini Başlatma</h3>
+
+<pre><code>sudo systemctl restart postfix
+sudo systemctl enable postfix
+sudo systemctl status postfix
+</code></pre>
+
+<h2>Dovecot IMAP/POP3 Server Kurulumu</h2>
+
+<h3>Adım 1: Dovecot Kurulumu</h3>
+
+<pre><code>sudo apt install -y dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-sqlite
+</code></pre>
+
+<h3>Adım 2: Dovecot Yapılandırması</h3>
+
+<p>Ana yapılandırma dosyası:</p>
+
+<pre><code>sudo nano /etc/dovecot/dovecot.conf
+</code></pre>
+
+<p>Temel yapılandırma:</p>
+
+<pre><code>protocols = imap pop3 lmtp
+listen = *, ::
+
+mail_location = maildir:~/Maildir
+mail_privileged_group = mail
+
+userdb {
+  driver = passwd
+}
+
+passdb {
+  driver = pam
+}
+
+namespace inbox {
+  inbox = yes
+  location =
+  mailbox Drafts {
+    special_use = \Drafts
+  }
+  mailbox Junk {
+    special_use = \Junk
+  }
+  mailbox Sent {
+    special_use = \Sent
+  }
+  mailbox "Sent Messages" {
+    special_use = \Sent
+  }
+  mailbox Trash {
+    special_use = \Trash
+  }
+}
+</code></pre>
+
+<h3>Adım 3: SSL/TLS Yapılandırması</h3>
+
+<p>SSL/TLS ayarları:</p>
+
+<pre><code>sudo nano /etc/dovecot/conf.d/10-ssl.conf
+</code></pre>
+
+<pre><code>ssl = required
+ssl_cert = </etc/ssl/certs/ssl-cert-snakeoil.pem
+ssl_key = </etc/ssl/private/ssl-cert-snakeoil.key
+ssl_protocols = !SSLv2 !SSLv3
+ssl_cipher_list = ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384
+</code></pre>
+
+<h3>Adım 4: SMTP Authentication Yapılandırması</h3>
+
+<p>Postfix ile Dovecot entegrasyonu:</p>
+
+<pre><code>sudo nano /etc/dovecot/conf.d/10-master.conf
+</code></pre>
+
+<p>Auth servisini etkinleştirin:</p>
+
+<pre><code>service auth {
+  unix_listener /var/spool/postfix/private/auth {
+    mode = 0666
+    user = postfix
+    group = postfix
+  }
+}
+</code></pre>
+
+<h3>Adım 5: Dovecot Servisini Başlatma</h3>
+
+<pre><code>sudo systemctl restart dovecot
+sudo systemctl enable dovecot
+sudo systemctl status dovecot
+</code></pre>
+
+<h2>SSL/TLS Sertifika Kurulumu</h2>
+
+<h3>Let's Encrypt SSL Sertifikası</h3>
+
+<p>Ücretsiz SSL sertifikası için Let's Encrypt kullanın:</p>
+
+<pre><code>sudo apt install -y certbot
+sudo certbot certonly --standalone -d mail.yourdomain.com
+</code></pre>
+
+<p>Postfix ve Dovecot için sertifikaları yapılandırın:</p>
+
+<pre><code>sudo nano /etc/postfix/main.cf
+</code></pre>
+
+<pre><code>smtpd_tls_cert_file = /etc/letsencrypt/live/mail.yourdomain.com/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.yourdomain.com/privkey.pem
+</code></pre>
+
+<pre><code>sudo nano /etc/dovecot/conf.d/10-ssl.conf
+</code></pre>
+
+<pre><code>ssl_cert = </etc/letsencrypt/live/mail.yourdomain.com/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.yourdomain.com/privkey.pem
+</code></pre>
+
+<p>Sertifika otomatik yenileme:</p>
+
+<pre><code>sudo certbot renew --dry-run
+</code></pre>
+
+<h2>SPF, DKIM ve DMARC Yapılandırması</h2>
+
+<h3>1. SPF (Sender Policy Framework) Kaydı</h3>
+
+<p>SPF kaydı, e-posta gönderen sunucunun yetkili olduğunu doğrular.</p>
+
+<p>DNS TXT kaydı ekleyin:</p>
+
+<pre><code>v=spf1 mx a:mail.yourdomain.com ip4:YOUR_SERVER_IP ~all
+</code></pre>
+
+<p>Örnek SPF kaydı:</p>
+<pre><code>yourdomain.com.  IN  TXT  "v=spf1 mx a:mail.yourdomain.com ip4:192.168.1.100 ~all"
+</code></pre>
+
+<h3>2. DKIM (DomainKeys Identified Mail) Yapılandırması</h3>
+
+<p>DKIM, e-posta gönderenin kimliğini doğrular.</p>
+
+<h4>OpenDKIM Kurulumu</h4>
+
+<pre><code>sudo apt install -y opendkim opendkim-tools
+</code></pre>
+
+<h4>OpenDKIM Yapılandırması</h4>
+
+<pre><code>sudo nano /etc/opendkim.conf
+</code></pre>
+
+<pre><code>Domain                  yourdomain.com
+KeyFile                 /etc/opendkim/keys/yourdomain.com/default.private
+Selector                default
+Socket                  inet:8891@localhost
+</code></pre>
+
+<h4>DKIM Key Oluşturma</h4>
+
+<pre><code>sudo mkdir -p /etc/opendkim/keys/yourdomain.com
+sudo opendkim-genkey -D /etc/opendkim/keys/yourdomain.com/ -d yourdomain.com -s default
+sudo chown -R opendkim:opendkim /etc/opendkim/keys
+</code></pre>
+
+<h4>DKIM Public Key'i DNS'e Ekleyin</h4>
+
+<pre><code>sudo cat /etc/opendkim/keys/yourdomain.com/default.txt
+</code></pre>
+
+<p>Çıktıyı DNS TXT kaydı olarak ekleyin:</p>
+<pre><code>default._domainkey.yourdomain.com. IN TXT "v=DKIM1; k=rsa; p=..."
+</code></pre>
+
+<h4>Postfix ile OpenDKIM Entegrasyonu</h4>
+
+<pre><code>sudo nano /etc/postfix/main.cf
+</code></pre>
+
+<pre><code>milter_protocol = 2
+milter_default_action = accept
+smtpd_milters = inet:localhost:8891
+non_smtpd_milters = inet:localhost:8891
+</code></pre>
+
+<h3>3. DMARC (Domain-based Message Authentication) Yapılandırması</h3>
+
+<p>DMARC, SPF ve DKIM sonuçlarını birleştirir.</p>
+
+<p>DNS TXT kaydı ekleyin:</p>
+
+<pre><code>_dmarc.yourdomain.com. IN TXT "v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com; ruf=mailto:dmarc@yourdomain.com; fo=1"
+</code></pre>
+
+<p>DMARC politikaları:</p>
+<ul>
+  <li><strong>p=none:</strong> Sadece izleme (başlangıç için)</li>
+  <li><strong>p=quarantine:</strong> Şüpheli e-postaları karantinaya al</li>
+  <li><strong>p=reject:</strong> Başarısız e-postaları reddet</li>
+</ul>
+
+<h2>Roundcube Webmail Kurulumu</h2>
+
+<h3>Adım 1: Gereksinimler</h3>
+
+<pre><code>sudo apt install -y apache2 php php-mysql php-imap php-mbstring php-xml php-curl php-zip php-gd
+</code></pre>
+
+<h3>Adım 2: Roundcube Kurulumu</h3>
+
+<pre><code>cd /var/www
+sudo wget https://github.com/roundcube/roundcubemail/releases/download/1.6.4/roundcubemail-1.6.4-complete.tar.gz
+sudo tar -xzf roundcubemail-1.6.4-complete.tar.gz
+sudo mv roundcubemail-1.6.4 roundcube
+sudo chown -R www-data:www-data roundcube
+</code></pre>
+
+<h3>Adım 3: Apache Yapılandırması</h3>
+
+<pre><code>sudo nano /etc/apache2/sites-available/roundcube.conf
+</code></pre>
+
+<pre><code>&lt;VirtualHost *:80>
+    ServerName mail.yourdomain.com
+    DocumentRoot /var/www/roundcube
+    
+    &lt;Directory /var/www/roundcube>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+    &lt;/Directory>
+    
+    ErrorLog ${APACHE_LOG_DIR}/roundcube_error.log
+    CustomLog ${APACHE_LOG_DIR}/roundcube_access.log combined
+&lt;/VirtualHost>
+</code></pre>
+
+<pre><code>sudo a2ensite roundcube
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+</code></pre>
+
+<h3>Adım 4: Roundcube Yapılandırması</h3>
+
+<p>Web tarayıcısından: https://mail.yourdomain.com/installer</p>
+
+<p>Yapılandırma adımları:</p>
+<ol>
+  <li>Veritabanı oluşturma (MySQL/MariaDB)</li>
+  <li>IMAP/SMTP ayarları</li>
+  <li>Güvenlik ayarları</li>
+</ol>
+
+<h2>Anti-Spam ve Anti-Virus Kurulumu</h2>
+
+<h3>SpamAssassin Kurulumu</h3>
+
+<pre><code>sudo apt install -y spamassassin spamc
+sudo systemctl enable spamassassin
+sudo systemctl start spamassassin
+</code></pre>
+
+<h3>ClamAV Anti-Virus Kurulumu</h3>
+
+<pre><code>sudo apt install -y clamav clamav-daemon
+sudo freshclam
+sudo systemctl start clamav-daemon
+sudo systemctl enable clamav-daemon
+</code></pre>
+
+<h3>Amavis Entegrasyonu</h3>
+
+<pre><code>sudo apt install -y amavisd-new
+</code></pre>
+
+<p>Postfix ile entegrasyon:</p>
+
+<pre><code>sudo nano /etc/postfix/main.cf
+</code></pre>
+
+<pre><code>content_filter = amavis:[127.0.0.1]:10024
+</code></pre>
+
+<h2>Mail Server Güvenlik Yapılandırması</h2>
+
+<h3>1. Firewall Kuralları</h3>
+
+<pre><code>sudo ufw allow 25/tcp
+sudo ufw allow 587/tcp
+sudo ufw allow 465/tcp
+sudo ufw allow 993/tcp
+sudo ufw allow 995/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+</code></pre>
+
+<h3>2. Fail2Ban Kurulumu</h3>
+
+<p>Brute-force saldırılarına karşı koruma:</p>
+
+<pre><code>sudo apt install -y fail2ban
+sudo nano /etc/fail2ban/jail.local
+</code></pre>
+
+<pre><code>[postfix-sasl]
+enabled = true
+port = smtp,465,submission
+filter = postfix-sasl
+logpath = /var/log/mail.log
+
+[dovecot]
+enabled = true
+port = imap,imaps,pop3,pop3s
+filter = dovecot
+logpath = /var/log/mail.log
+</code></pre>
+
+<pre><code>sudo systemctl restart fail2ban
+</code></pre>
+
+<h3>3. Güçlü Şifre Politikaları</h3>
+
+<ul>
+  <li>Minimum 12 karakter</li>
+  <li>Büyük/küçük harf, sayı, özel karakter</li>
+  <li>Düzenli şifre değişikliği</li>
+</ul>
+
+<h2>Mail Server Yönetimi</h2>
+
+<h3>1. Kullanıcı Yönetimi</h3>
+
+<p>Yeni kullanıcı ekleme:</p>
+
+<pre><code>sudo adduser username
+sudo passwd username
+</code></pre>
+
+<p>Mail dizini oluşturma:</p>
+
+<pre><code>sudo maildirmake /home/username/Maildir
+sudo chown -R username:username /home/username/Maildir
+</code></pre>
+
+<h3>2. E-posta Log İzleme</h3>
+
+<pre><code>sudo tail -f /var/log/mail.log
+sudo grep "status=sent" /var/log/mail.log
+sudo grep "status=bounced" /var/log/mail.log
+</code></pre>
+
+<h3>3. Disk Kullanımı İzleme</h3>
+
+<pre><code>du -sh /home/*/Maildir
+df -h
+</code></pre>
+
+<h3>4. Yedekleme</h3>
+
+<ul>
+  <li>E-posta verilerini düzenli yedekleyin</li>
+  <li>Yapılandırma dosyalarını yedekleyin</li>
+  <li>Otomatik yedekleme scriptleri oluşturun</li>
+</ul>
+
+<h2>Mail Server Sorun Giderme</h2>
+
+<h3>Yaygın Sorunlar ve Çözümleri</h3>
+
+<h4>Sorun 1: E-posta Gönderilemiyor</h4>
+
+<p><strong>Kontrol Edilecekler:</strong></p>
+<ul>
+  <li>Postfix servisi çalışıyor mu? (systemctl status postfix)</li>
+  <li>Port 25 açık mı? (telnet mail.yourdomain.com 25)</li>
+  <li>DNS MX kaydı doğru mu? (dig MX yourdomain.com)</li>
+  <li>Firewall kuralları doğru mu?</li>
+  <li>Log dosyalarını kontrol edin (/var/log/mail.log)</li>
+</ul>
+
+<h4>Sorun 2: E-posta Alınamıyor</h4>
+
+<p><strong>Kontrol Edilecekler:</strong></p>
+<ul>
+  <li>Dovecot servisi çalışıyor mu? (systemctl status dovecot)</li>
+  <li>IMAP/POP3 portları açık mı?</li>
+  <li>Kullanıcı dizinleri doğru mu?</li>
+  <li>SSL sertifikaları geçerli mi?</li>
+</ul>
+
+<h4>Sorun 3: E-postalar Spam Kutusuna Düşüyor</h4>
+
+<p><strong>Çözümler:</strong></p>
+<ul>
+  <li>SPF kaydını kontrol edin</li>
+  <li>DKIM imzasını doğrulayın</li>
+  <li>DMARC politikasını yapılandırın</li>
+  <li>Reverse DNS (PTR) kaydını kontrol edin</li>
+</ul>
+
+<h4>Sorun 4: SSL/TLS Hataları</h4>
+
+<p><strong>Çözümler:</strong></p>
+<ul>
+  <li>SSL sertifikalarını kontrol edin</li>
+  <li>Sertifika sürelerini kontrol edin</li>
+  <li>Let's Encrypt sertifikasını yenileyin</li>
+</ul>
+
+<h2>Mail Server Performans Optimizasyonu</h2>
+
+<h3>1. Postfix Optimizasyonu</h3>
+
+<pre><code>default_process_limit = 100
+smtpd_client_connection_limit = 50
+smtpd_client_message_rate_limit = 10
+</code></pre>
+
+<h3>2. Dovecot Optimizasyonu</h3>
+
+<pre><code>mail_max_userip_connections = 20
+mail_plugins = $mail_plugins quota
+</code></pre>
+
+<h3>3. Disk I/O Optimizasyonu</h3>
+
+<ul>
+  <li>SSD kullanın (e-posta depolama için)</li>
+  <li>Maildir formatını kullanın (mbox yerine)</li>
+  <li>Düzenli disk temizliği yapın</li>
+</ul>
+
+<h2>muharremsen'in Mail Server Hizmetleri</h2>
+
+<p>muharremsen olarak, mail server kurulumu ve yönetimi için kapsamlı hizmetler sunuyoruz:</p>
+
+<ul>
+  <li><strong>Mail Server Kurulumu:</strong> Postfix, Dovecot, Roundcube kurulumu</li>
+  <li><strong>SSL/TLS Yapılandırması:</strong> Let's Encrypt sertifika kurulumu</li>
+  <li><strong>SPF/DKIM/DMARC:</strong> E-posta güvenlik kayıtları yapılandırması</li>
+  <li><strong>Anti-Spam/Anti-Virus:</strong> SpamAssassin ve ClamAV kurulumu</li>
+  <li><strong>Webmail Kurulumu:</strong> Roundcube veya diğer webmail çözümleri</li>
+  <li><strong>Güvenlik Yapılandırması:</strong> Firewall, Fail2Ban, güvenlik ayarları</li>
+  <li><strong>Yedekleme ve İzleme:</strong> Otomatik yedekleme ve izleme sistemleri</li>
+  <li><strong>7/24 Destek:</strong> Teknik destek ve bakım hizmetleri</li>
+</ul>
+
+<p>Kurumsal mail server kurulumu için bizimle iletişime geçin. Deneyimli ekibimiz, güvenli ve performanslı bir e-posta altyapısı kurarak işletmenizin iletişim ihtiyaçlarını karşılar.</p>
+
+<h2>Sonuç</h2>
+
+<p>Mail server kurulumu, kurumsal e-posta altyapısı için kritik öneme sahiptir. Postfix ve Dovecot ile profesyonel bir mail server kurarak, e-posta kontrolünü elinize alır, güvenliği artırır ve maliyetleri düşürebilirsiniz.</p>
+
+<p>SPF, DKIM ve DMARC yapılandırması ile e-posta güvenliğini artırır, spam ve phishing saldırılarına karşı koruma sağlarsınız. Düzenli bakım, izleme ve yedekleme ile mail server'ınızın yüksek performans ve erişilebilirlik sağlamasını garanti edebilirsiniz.</p>
+
+<p>Mail server kurulumu ve yönetimi konusunda muharremsen'in deneyimli ekibi yanınızda. Güvenli ve performanslı e-posta altyapınız için bizimle iletişime geçin!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Altyapı",
+    tags: ["Mail Server", "Postfix", "Dovecot", "SMTP", "IMAP", "e-posta", "Roundcube", "SPF", "DKIM", "DMARC", "e-posta güvenliği"],
+  },
 ];
