@@ -5107,4 +5107,331 @@ mail_plugins = $mail_plugins quota
     category: "Altyapı",
     tags: ["Mail Server", "Postfix", "Dovecot", "SMTP", "IMAP", "e-posta", "Roundcube", "SPF", "DKIM", "DMARC", "e-posta güvenliği"],
   },
+  {
+    id: 20,
+    slug: "qdms-kalite-dokuman-yonetim-sistemi-kurulum-rehberi",
+    title: "QDMS: Kalite Doküman Yönetim Sistemi Kurulum ve Yapılandırma Rehberi",
+    description: "QDMS (Quality Document Management System) kurulumu, yapılandırması ve kullanımı. ISO 9001, ISO 27001 uyumlu doküman yönetimi, versiyon kontrolü, onay süreçleri ve güvenlik ayarları.",
+    content: `
+<h2>QDMS Nedir?</h2>
+
+<p>QDMS (Quality Document Management System), kalite dokümanlarının dijital ortamda yönetilmesini sağlayan bir sistemdir. ISO 9001, ISO 27001 gibi kalite standartlarına uyum için kritik öneme sahiptir.</p>
+
+<p>QDMS ile dokümanların versiyon kontrolü, onay süreçleri, erişim yetkilendirmeleri ve güvenli saklama işlemleri merkezi olarak yönetilir.</p>
+
+<h2>QDMS'in Avantajları</h2>
+
+<h3>1. Versiyon Kontrolü</h3>
+<ul>
+  <li>Doküman versiyonlarının otomatik takibi</li>
+  <li>Değişiklik geçmişi kayıtları</li>
+  <li>Eski versiyonlara erişim imkanı</li>
+  <li>Versiyon karşılaştırma özellikleri</li>
+</ul>
+
+<h3>2. Onay Süreçleri</h3>
+<ul>
+  <li>Otomatik onay akışları</li>
+  <li>Çok aşamalı onay süreçleri</li>
+  <li>Onay bildirimleri</li>
+  <li>Onay geçmişi takibi</li>
+</ul>
+
+<h3>3. Erişim Kontrolü</h3>
+<ul>
+  <li>Rol tabanlı yetkilendirme</li>
+  <li>Doküman bazlı erişim kontrolü</li>
+  <li>Güvenli dosya saklama</li>
+  <li>Erişim log kayıtları</li>
+</ul>
+
+<h3>4. ISO Uyumluluğu</h3>
+<ul>
+  <li>ISO 9001:2015 uyumlu doküman yönetimi</li>
+  <li>ISO 27001 bilgi güvenliği standartları</li>
+  <li>Denetim izi (audit trail)</li>
+  <li>Yasal uyumluluk desteği</li>
+</ul>
+
+<h2>QDMS Kurulumu</h2>
+
+<h3>Gereksinimler</h3>
+
+<ul>
+  <li><strong>İşletim Sistemi:</strong> Ubuntu 20.04/22.04 LTS veya Windows Server 2019+</li>
+  <li><strong>Veritabanı:</strong> PostgreSQL 12+ veya MySQL 8.0+</li>
+  <li><strong>Web Sunucu:</strong> Apache 2.4+ veya Nginx 1.18+</li>
+  <li><strong>PHP:</strong> PHP 8.0+ (eğer PHP tabanlı çözüm kullanılıyorsa)</li>
+  <li><strong>RAM:</strong> 4GB minimum (8GB+ önerilir)</li>
+  <li><strong>Disk:</strong> 50GB+ boş alan (doküman depolama için)</li>
+</ul>
+
+<h3>Seçenek 1: Açık Kaynak QDMS Çözümleri</h3>
+
+<h4>1.1. OpenKM Kurulumu</h4>
+
+<p>OpenKM, Java tabanlı açık kaynak bir doküman yönetim sistemidir.</p>
+
+<pre><code># Java JDK kurulumu
+sudo apt update
+sudo apt install -y openjdk-11-jdk
+
+# OpenKM indirme
+cd /opt
+sudo wget https://www.openkm.com/downloads/openkm-6.3.12-community.tar.gz
+sudo tar -xzf openkm-6.3.12-community.tar.gz
+sudo mv openkm-6.3.12-community openkm
+
+# OpenKM başlatma
+cd /opt/openkm
+sudo ./start.sh
+</code></pre>
+
+<h4>1.2. Alfresco Community Edition</h4>
+
+<p>Alfresco, kurumsal düzeyde doküman yönetimi sağlar.</p>
+
+<pre><code># Docker ile Alfresco kurulumu
+docker run -d \\
+  --name alfresco \\
+  -p 8080:8080 \\
+  -e JAVA_OPTS="-Xms512m -Xmx2048m" \\
+  alfresco/alfresco-content-services-community:latest
+</code></pre>
+
+<h3>Seçenek 2: Özel QDMS Geliştirme</h3>
+
+<p>muharremsen olarak, işletmenizin ihtiyaçlarına özel QDMS çözümleri geliştiriyoruz. Özel çözümler, tam kontrol ve özelleştirme imkanı sağlar.</p>
+
+<h2>QDMS Yapılandırması</h2>
+
+<h3>1. Veritabanı Yapılandırması</h3>
+
+<p>PostgreSQL veritabanı oluşturma:</p>
+
+<pre><code>sudo -u postgres psql
+
+CREATE DATABASE qdms_db;
+CREATE USER qdms_user WITH PASSWORD 'güvenli_şifre';
+GRANT ALL PRIVILEGES ON DATABASE qdms_db TO qdms_user;
+\\q
+</code></pre>
+
+<h3>2. Doküman Depolama Yapılandırması</h3>
+
+<p>Dokümanlar için ayrı bir depolama dizini oluşturun:</p>
+
+<pre><code>sudo mkdir -p /var/qdms/documents
+sudo mkdir -p /var/qdms/archive
+sudo chown -R www-data:www-data /var/qdms
+sudo chmod -R 750 /var/qdms
+</code></pre>
+
+<h3>3. Kullanıcı ve Rol Yönetimi</h3>
+
+<h4>Rol Tanımları</h4>
+
+<ul>
+  <li><strong>Yönetici:</strong> Tüm yetkilere sahip</li>
+  <li><strong>Kalite Müdürü:</strong> Doküman onayı ve yönetimi</li>
+  <li><strong>Doküman Sorumlusu:</strong> Doküman oluşturma ve güncelleme</li>
+  <li><strong>Kullanıcı:</strong> Doküman görüntüleme</li>
+</ul>
+
+<h3>4. Doküman Kategorileri</h3>
+
+<p>ISO standartlarına uygun doküman kategorileri:</p>
+
+<ul>
+  <li><strong>Kalite El Kitabı:</strong> Üst seviye dokümanlar</li>
+  <li><strong>Prosedürler:</strong> İş süreç prosedürleri</li>
+  <li><strong>Talimatlar:</strong> Çalışma talimatları</li>
+  <li><strong>Formlar:</strong> Kayıt formları</li>
+  <li><strong>Politikalar:</strong> Şirket politikaları</li>
+</ul>
+
+<h2>Doküman Yönetim Süreçleri</h2>
+
+<h3>1. Doküman Oluşturma</h3>
+
+<ol>
+  <li>Doküman şablonu seçimi</li>
+  <li>İçerik hazırlama</li>
+  <li>Versiyon numarası atama</li>
+  <li>Kategori ve etiketleme</li>
+  <li>Onay sürecine gönderme</li>
+</ol>
+
+<h3>2. Onay Süreci</h3>
+
+<p>Çok aşamalı onay süreci:</p>
+
+<ol>
+  <li><strong>Hazırlayan:</strong> Dokümanı hazırlar</li>
+  <li><strong>İnceleyen:</strong> Teknik inceleme yapar</li>
+  <li><strong>Onaylayan:</strong> Kalite müdürü onaylar</li>
+  <li><strong>Yayın:</strong> Doküman yayınlanır</li>
+</ol>
+
+<h3>3. Versiyon Kontrolü</h3>
+
+<p>Doküman versiyonlama sistemi:</p>
+
+<ul>
+  <li><strong>Revizyon Numarası:</strong> 00, 01, 02, ...</li>
+  <li><strong>Değişiklik Özeti:</strong> Her versiyonda değişiklik notları</li>
+  <li><strong>Versiyon Geçmişi:</strong> Tüm versiyonlar saklanır</li>
+  <li><strong>Karşılaştırma:</strong> Versiyonlar arası fark görüntüleme</li>
+</ul>
+
+<h3>4. Doküman Arşivleme</h3>
+
+<p>Eski versiyonlar otomatik arşivlenir:</p>
+
+<ul>
+  <li>Arşivleme politikaları</li>
+  <li>Otomatik arşivleme kuralları</li>
+  <li>Arşiv erişim yetkileri</li>
+  <li>Arşiv geri yükleme</li>
+</ul>
+
+<h2>Güvenlik Yapılandırması</h2>
+
+<h3>1. Erişim Kontrolü</h3>
+
+<pre><code># Rol bazlı erişim kontrolü
+- Yönetici: Tüm dokümanlara erişim
+- Kalite Müdürü: Kalite dokümanlarına erişim
+- Departman Sorumlusu: Departman dokümanlarına erişim
+- Kullanıcı: Sadece yayınlanmış dokümanlara erişim
+</code></pre>
+
+<h3>2. Şifreleme</h3>
+
+<ul>
+  <li>Dokümanlar şifrelenmiş olarak saklanır</li>
+  <li>HTTPS ile iletişim</li>
+  <li>Veritabanı şifreleme</li>
+  <li>Yedekleme şifreleme</li>
+</ul>
+
+<h3>3. Denetim İzi (Audit Trail)</h3>
+
+<p>Tüm işlemler loglanır:</p>
+
+<ul>
+  <li>Doküman görüntüleme</li>
+  <li>Doküman indirme</li>
+  <li>Doküman değiştirme</li>
+  <li>Onay işlemleri</li>
+  <li>Silme işlemleri</li>
+</ul>
+
+<h3>4. Yedekleme Stratejisi</h3>
+
+<pre><code># Günlük yedekleme scripti
+#!/bin/bash
+DATE=$(date +%Y%m%d)
+tar -czf /backup/qdms_$DATE.tar.gz /var/qdms/documents
+pg_dump qdms_db > /backup/qdms_db_$DATE.sql
+</code></pre>
+
+<h2>ISO 9001 Uyumluluğu</h2>
+
+<h3>Gerekli Dokümanlar</h3>
+
+<ul>
+  <li><strong>Kalite El Kitabı:</strong> Üst seviye doküman</li>
+  <li><strong>Prosedürler:</strong> İş süreç prosedürleri</li>
+  <li><strong>Talimatlar:</strong> Çalışma talimatları</li>
+  <li><strong>Formlar:</strong> Kayıt formları</li>
+  <li><strong>Politikalar:</strong> Kalite politikaları</li>
+</ul>
+
+<h3>Doküman Kontrol Süreci</h3>
+
+<ol>
+  <li>Doküman hazırlama</li>
+  <li>İnceleme ve onay</li>
+  <li>Yayınlama</li>
+  <li>Dağıtım</li>
+  <li>Güncelleme ve revizyon</li>
+  <li>Eski versiyonların geri çekilmesi</li>
+</ol>
+
+<h2>QDMS Entegrasyonları</h2>
+
+<h3>1. E-posta Entegrasyonu</h3>
+
+<ul>
+  <li>Onay bildirimleri</li>
+  <li>Doküman paylaşımı</li>
+  <li>Hatırlatma e-postaları</li>
+</ul>
+
+<h3>2. ERP Entegrasyonu</h3>
+
+<ul>
+  <li>ERP sistemlerinden doküman çekme</li>
+  <li>Doküman verilerini ERP'ye gönderme</li>
+  <li>Otomatik senkronizasyon</li>
+</ul>
+
+<h3>3. E-İmza Entegrasyonu</h3>
+
+<ul>
+  <li>Dijital imza desteği</li>
+  <li>E-İmza doğrulama</li>
+  <li>İmzalı doküman saklama</li>
+</ul>
+
+<h2>Performans Optimizasyonu</h2>
+
+<h3>1. Veritabanı Optimizasyonu</h3>
+
+<ul>
+  <li>İndeksleme</li>
+  <li>Query optimizasyonu</li>
+  <li>Connection pooling</li>
+  <li>Cache mekanizmaları</li>
+</ul>
+
+<h3>2. Dosya Depolama Optimizasyonu</h3>
+
+<ul>
+  <li>Dosya sıkıştırma</li>
+  <li>CDN kullanımı</li>
+  <li>Arşivleme stratejisi</li>
+  <li>Disk alanı yönetimi</li>
+</ul>
+
+<h2>muharremsen'in QDMS Hizmetleri</h2>
+
+<p>muharremsen olarak, QDMS kurulumu ve yönetimi için kapsamlı hizmetler sunuyoruz:</p>
+
+<ul>
+  <li><strong>QDMS Kurulumu:</strong> Açık kaynak veya özel çözüm kurulumu</li>
+  <li><strong>Yapılandırma:</strong> ISO 9001, ISO 27001 uyumlu yapılandırma</li>
+  <li><strong>Özel Geliştirme:</strong> İhtiyaçlarınıza özel QDMS çözümleri</li>
+  <li><strong>Entegrasyon:</strong> ERP, e-posta, e-imza entegrasyonları</li>
+  <li><strong>Eğitim:</strong> Kullanıcı eğitimleri ve dokümantasyon</li>
+  <li><strong>Destek:</strong> 7/24 teknik destek ve bakım hizmetleri</li>
+  <li><strong>ISO Danışmanlığı:</strong> ISO 9001 sertifikasyon desteği</li>
+</ul>
+
+<p>Kurumsal doküman yönetimi için profesyonel QDMS çözümleri sunuyoruz. ISO standartlarına uyumlu, güvenli ve ölçeklenebilir sistemler kurarak işletmenizin kalite yönetim süreçlerini dijitalleştiriyoruz.</p>
+
+<h2>Sonuç</h2>
+
+<p>QDMS, modern işletmeler için kritik öneme sahip bir sistemdir. Doküman yönetimini merkezileştirerek, versiyon kontrolü, onay süreçleri ve güvenli saklama imkanı sağlar.</p>
+
+<p>ISO 9001, ISO 27001 gibi kalite standartlarına uyum için QDMS kullanımı zorunludur. Doğru yapılandırılmış bir QDMS sistemi, işletmenizin kalite yönetim süreçlerini optimize eder ve denetim süreçlerini kolaylaştırır.</p>
+
+<p>QDMS kurulumu ve yönetimi konusunda muharremsen'in deneyimli ekibi yanınızda. ISO uyumlu, güvenli ve performanslı doküman yönetim sisteminiz için bizimle iletişime geçin!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Yazılım",
+    tags: ["QDMS", "Kalite Doküman Yönetimi", "ISO 9001", "ISO 27001", "Doküman Yönetimi", "Versiyon Kontrolü", "Onay Süreçleri", "Kalite Yönetimi"],
+  },
 ];
