@@ -70,3 +70,4 @@ Sayfaları oluşturduktan sonra:
 
 Veya Vercel'de "Redeploy" yaparak cache'i temizleyin.
 
+

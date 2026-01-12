@@ -55,7 +55,11 @@ export async function generateMetadata({
           publishedTime: examplePost.date,
         },
         alternates: {
-          canonical: `/blog/${examplePost.slug}`,
+          canonical: `https://muharremsen.com/blog/${examplePost.slug}`,
+        },
+        robots: {
+          index: true,
+          follow: true,
         },
       };
     }
@@ -85,7 +89,11 @@ export async function generateMetadata({
       modifiedTime: post.modified,
     },
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical: `https://muharremsen.com/blog/${post.slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

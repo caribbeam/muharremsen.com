@@ -262,3 +262,4 @@ WordPress'te içerik eklerken:
 
 İçerikleriniz Next.js sitesinde otomatik olarak görünecek! 🎉
 
+

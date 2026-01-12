@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://muharremsen.com/blog",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "Blog | IT Teknolojileri ve Güvenlik Yazıları | muharremsen",
     description: "FreePBX, Domain Server, VPN, Proxmox ve daha fazlası hakkında detaylı teknik blog yazıları.",

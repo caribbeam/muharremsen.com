@@ -33,6 +33,10 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "https://muharremsen.com/hizmetler",
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       title: title ? `${title} | muharremsen` : "Hizmetlerimiz | IT Çözümleri | muharremsen",
       description: description || "Yapay zeka destekli yazılımlar, FreePBX kurulumları, Domain Server ve IT çözümleri.",
