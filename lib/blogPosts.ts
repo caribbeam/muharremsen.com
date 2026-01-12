@@ -4876,8 +4876,8 @@ sudo chown -R www-data:www-data roundcube
         AllowOverride All
     &lt;/Directory>
     
-    ErrorLog ${APACHE_LOG_DIR}/roundcube_error.log
-    CustomLog ${APACHE_LOG_DIR}/roundcube_access.log combined
+    ErrorLog \${APACHE_LOG_DIR}/roundcube_error.log
+    CustomLog \${APACHE_LOG_DIR}/roundcube_access.log combined
 &lt;/VirtualHost>
 </code></pre>
 
