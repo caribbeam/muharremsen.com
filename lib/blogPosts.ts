@@ -6615,4 +6615,519 @@ ALTER TABLE radacct PARTITION BY RANGE (YEAR(acctstarttime)) (
     category: "Network",
     tags: ["WiFi Log", "5651 Port", "Log Yönetimi", "Syslog", "SNMP", "RADIUS", "Graylog", "ELK Stack", "Ağ İzleme", "Network Monitoring"],
   },
+  {
+    id: 23,
+    slug: "rfid-sistemi-kurulum-ve-yapilandirma-detayli-rehber",
+    title: "RFID Sistemi: Kurulum, Yapılandırma ve Entegrasyon Rehberi",
+    description: "RFID (Radio Frequency Identification) sistemi kurulumu, okuyucu yapılandırması, etiket seçimi, yazılım entegrasyonu, erişim kontrolü, envanter yönetimi ve güvenlik. Detaylı teknik rehber.",
+    content: `
+<h2>RFID Nedir?</h2>
+
+<p>RFID (Radio Frequency Identification), radyo frekansı kullanarak nesneleri tanımlama ve takip etme teknolojisidir. RFID etiketleri, okuyucular tarafından radyo dalgaları ile okunur ve yazılır.</p>
+
+<p>RFID sistemleri, barcode sistemlerinden farklı olarak:</p>
+
+<ul>
+  <li><strong>Görüş hattı gerektirmez:</strong> Etiket görünmese bile okunabilir</li>
+  <li><strong>Çoklu okuma:</strong> Aynı anda birden fazla etiket okunabilir</li>
+  <li><strong>Yazılabilir:</strong> Etiketlere veri yazılabilir ve güncellenebilir</li>
+  <li><strong>Dayanıklı:</strong> Zorlu ortamlarda kullanılabilir</li>
+  <li><strong>Hızlı:</strong> Saniyede yüzlerce etiket okunabilir</li>
+</ul>
+
+<h2>RFID Sistem Bileşenleri</h2>
+
+<h3>1. RFID Etiketleri (Tags)</h3>
+
+<p><strong>Pasif Etiketler:</strong></p>
+<ul>
+  <li>Kendi enerjisi yok, okuyucudan gelen sinyali kullanır</li>
+  <li>Düşük maliyetli</li>
+  <li>Kısa okuma mesafesi (1-10 metre)</li>
+  <li>Uzun ömürlü</li>
+  <li>En yaygın kullanılan tip</li>
+</ul>
+
+<p><strong>Aktif Etiketler:</strong></p>
+<ul>
+  <li>Kendi bataryası var</li>
+  <li>Yüksek maliyetli</li>
+  <li>Uzun okuma mesafesi (100+ metre)</li>
+  <li>Sınırlı ömür (batarya bitince)</li>
+  <li>Gerçek zamanlı takip için kullanılır</li>
+</ul>
+
+<p><strong>Yarı Pasif Etiketler:</strong></p>
+<ul>
+  <li>Batarya var ama sadece chip için</li>
+  <li>Orta maliyetli</li>
+  <li>Orta okuma mesafesi (10-50 metre)</li>
+  <li>Daha uzun ömürlü</li>
+</ul>
+
+<h3>2. RFID Okuyucular (Readers)</h3>
+
+<p><strong>Sabit Okuyucular:</strong></p>
+<ul>
+  <li>Kapı, geçiş noktaları için</li>
+  <li>Yüksek güç</li>
+  <li>Çoklu anten desteği</li>
+  <li>Network bağlantılı</li>
+</ul>
+
+<p><strong>Mobil Okuyucular:</strong></p>
+<ul>
+  <li>El tipi cihazlar</li>
+  <li>Düşük güç</li>
+  <li>WiFi/Bluetooth bağlantılı</li>
+  <li>Saha çalışması için</li>
+</ul>
+
+<p><strong>Entegre Okuyucular:</strong></p>
+<ul>
+  <li>Yazılım içinde gömülü</li>
+  <li>USB/Serial bağlantı</li>
+  <li>Küçük form faktör</li>
+  <li>Masaüstü uygulamaları için</li>
+</ul>
+
+<h3>3. Antenler</h3>
+
+<ul>
+  <li><strong>Yönlü Antenler:</strong> Belirli yöne odaklanmış</li>
+  <li><strong>Omni-directional:</strong> Her yöne eşit güç</li>
+  <li><strong>Polarizasyon:</strong> Linear veya circular</li>
+  <li><strong>Güç:</strong> 0.5W - 4W arası</li>
+</ul>
+
+<h3>4. Yazılım ve Middleware</h3>
+
+<ul>
+  <li>Okuyucu yönetimi</li>
+  <li>Veri toplama ve filtreleme</li>
+  <li>Event yönetimi</li>
+  <li>Entegrasyon API'leri</li>
+  <li>Raporlama ve analiz</li>
+</ul>
+
+<h2>RFID Frekans Bantları</h2>
+
+<h3>1. LF (Low Frequency) - 125-134 kHz</h3>
+
+<ul>
+  <li><strong>Okuma Mesafesi:</strong> 0-10 cm</li>
+  <li><strong>Kullanım:</strong> Hayvan takibi, erişim kontrolü</li>
+  <li><strong>Avantajlar:</strong> Su ve metalden etkilenmez</li>
+  <li><strong>Dezavantajlar:</strong> Yavaş, kısa mesafe</li>
+</ul>
+
+<h3>2. HF (High Frequency) - 13.56 MHz</h3>
+
+<ul>
+  <li><strong>Okuma Mesafesi:</strong> 0-1 metre</li>
+  <li><strong>Kullanım:</strong> NFC, akıllı kartlar, kütüphane</li>
+  <li><strong>Avantajlar:</strong> Standart (ISO 15693, ISO 14443)</li>
+  <li><strong>Dezavantajlar:</strong> Metalden etkilenir</li>
+</ul>
+
+<h3>3. UHF (Ultra High Frequency) - 860-960 MHz</h3>
+
+<ul>
+  <li><strong>Okuma Mesafesi:</strong> 1-12 metre</li>
+  <li><strong>Kullanım:</strong> Envanter, lojistik, perakende</li>
+  <li><strong>Avantajlar:</strong> Hızlı, uzun mesafe, çoklu okuma</li>
+  <li><strong>Dezavantajlar:</strong> Su ve metalden etkilenir</li>
+  <li><strong>Standartlar:</strong> EPC Gen2, ISO 18000-6C</li>
+</ul>
+
+<h3>4. Mikrodalga - 2.45 GHz, 5.8 GHz</h3>
+
+<ul>
+  <li><strong>Okuma Mesafesi:</strong> 1-100+ metre</li>
+  <li><strong>Kullanım:</strong> Aktif etiketler, araç takibi</li>
+  <li><strong>Avantajlar:</strong> Çok uzun mesafe</li>
+  <li><strong>Dezavantajlar:</strong> Yüksek maliyet</li>
+</ul>
+
+<h2>RFID Sistem Kurulumu</h2>
+
+<h3>Gereksinimler</h3>
+
+<ul>
+  <li><strong>Okuyucu:</strong> UHF RFID okuyucu (örn: Impinj Speedway, Zebra FX9600)</li>
+  <li><strong>Anten:</strong> UHF anten (4-8 dBi)</li>
+  <li><strong>Kablo:</strong> Koaksiyel kablo (RG-58 veya daha iyi)</li>
+  <li><strong>Güç:</strong> PoE (Power over Ethernet) veya harici güç kaynağı</li>
+  <li><strong>Network:</strong> Ethernet bağlantısı</li>
+  <li><strong>Yazılım:</strong> RFID middleware veya özel yazılım</li>
+</ul>
+
+<h3>Adım 1: Okuyucu Kurulumu</h3>
+
+<pre><code># Okuyucu fiziksel kurulumu
+1. Okuyucuyu uygun yere monte edin
+2. Antenleri bağlayın (maksimum 4 anten)
+3. Ethernet kablosunu bağlayın
+4. Güç kaynağını bağlayın (PoE veya harici)
+
+# Okuyucu IP yapılandırması
+# Web arayüzüne erişim: http://192.168.1.100 (varsayılan IP)
+# Varsayılan kullanıcı adı: admin
+# Varsayılan şifre: (cihaza göre değişir)
+</code></pre>
+
+<h3>Adım 2: Okuyucu Yapılandırması</h3>
+
+<pre><code># Temel ayarlar
+- IP Address: 192.168.1.100
+- Subnet Mask: 255.255.255.0
+- Default Gateway: 192.168.1.1
+- DNS Server: 8.8.8.8
+
+# RFID ayarları
+- Region: ETSI (Avrupa) veya FCC (ABD)
+- Power Level: 30 dBm (1W)
+- Antenna Port: 1, 2, 3, 4
+- Session: S0, S1, S2, S3
+- Tari: 0-15 (Q algoritması için)
+
+# Filtreleme ayarları
+- Tag Filter: EPC, TID, User Memory
+- Read Filter: Belirli prefix'ler
+- Write Filter: Yazma izinleri
+</code></pre>
+
+<h3>Adım 3: Anten Yapılandırması</h3>
+
+<pre><code># Anten güç seviyeleri
+Antenna 1: 30 dBm (1W)
+Antenna 2: 30 dBm (1W)
+Antenna 3: 30 dBm (1W)
+Antenna 4: 30 dBm (1W)
+
+# Anten sıralaması (round-robin)
+- Tüm antenler sırayla aktif olur
+- Her anten için ayrı güç ayarı
+
+# Anten mesafe ayarları
+- Yakın mesafe: 20-25 dBm
+- Orta mesafe: 25-30 dBm
+- Uzak mesafe: 30-31.5 dBm (maksimum)
+</code></pre>
+
+<h2>RFID Yazılım Entegrasyonu</h2>
+
+<h3>1. LLRP (Low Level Reader Protocol)</h3>
+
+<p>LLRP, RFID okuyucuları ile iletişim için standart protokoldür.</p>
+
+<pre><code># LLRP Python kütüphanesi
+pip install llrp
+
+# LLRP bağlantı örneği
+from llrp import LLRPClient
+
+client = LLRPClient("192.168.1.100", 5084)
+client.connect()
+
+# Tag okuma
+tags = client.read_tags()
+for tag in tags:
+    print(f"EPC: {tag.epc}, RSSI: {tag.rssi}")
+
+client.disconnect()
+</code></pre>
+
+<h3>2. REST API Entegrasyonu</h3>
+
+<pre><code># Impinj Speedway REST API örneği
+import requests
+
+# Okuyucu durumu
+response = requests.get("http://192.168.1.100/api/v1/antennas/1/status")
+print(response.json())
+
+# Tag okuma
+response = requests.get("http://192.168.1.100/api/v1/antennas/1/tags")
+tags = response.json()
+for tag in tags:
+    print(f"EPC: {tag['epc']}, Timestamp: {tag['timestamp']}")
+
+# Güç ayarı
+data = {"power": 30}
+response = requests.put("http://192.168.1.100/api/v1/antennas/1/power", json=data)
+</code></pre>
+
+<h3>3. Database Entegrasyonu</h3>
+
+<pre><code># MySQL veritabanı yapısı
+CREATE TABLE rfid_tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    epc VARCHAR(96) UNIQUE NOT NULL,
+    tid VARCHAR(96),
+    antenna INT,
+    rssi INT,
+    timestamp DATETIME,
+    reader_id VARCHAR(50),
+    INDEX idx_epc (epc),
+    INDEX idx_timestamp (timestamp)
+);
+
+CREATE TABLE rfid_reads (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tag_id INT,
+    reader_id VARCHAR(50),
+    antenna INT,
+    rssi INT,
+    timestamp DATETIME,
+    FOREIGN KEY (tag_id) REFERENCES rfid_tags(id),
+    INDEX idx_timestamp (timestamp)
+);
+
+# Python ile veri kaydetme
+import mysql.connector
+from datetime import datetime
+
+db = mysql.connector.connect(
+    host="localhost",
+    user="rfid_user",
+    password="password",
+    database="rfid_db"
+)
+
+cursor = db.cursor()
+
+# Tag kaydetme
+sql = "INSERT INTO rfid_tags (epc, antenna, rssi, timestamp, reader_id) VALUES (%s, %s, %s, %s, %s)"
+values = ("E20012345678901234567890", 1, -60, datetime.now(), "READER001")
+cursor.execute(sql, values)
+db.commit()
+</code></pre>
+
+<h2>RFID Kullanım Senaryoları</h2>
+
+<h3>1. Erişim Kontrolü</h3>
+
+<p><strong>Kurulum:</strong></p>
+<ul>
+  <li>Kapıya sabit okuyucu</li>
+  <li>Kartlarda RFID etiket</li>
+  <li>Yazılım entegrasyonu</li>
+</p>
+
+<pre><code># Erişim kontrolü mantığı
+def check_access(card_epc):
+    # Veritabanından kullanıcı bilgisi al
+    user = get_user_by_epc(card_epc)
+    
+    if not user:
+        return False, "Kullanıcı bulunamadı"
+    
+    if not user.is_active:
+        return False, "Kullanıcı aktif değil"
+    
+    # Zaman kontrolü
+    if not is_access_time_valid(user):
+        return False, "Erişim zamanı dışında"
+    
+    # Bölge kontrolü
+    if not user.has_permission(current_zone):
+        return False, "Bu bölgeye erişim izni yok"
+    
+    # Erişim kaydı
+    log_access(user, current_zone, datetime.now())
+    
+    return True, "Erişim izni verildi"
+</code></pre>
+
+<h3>2. Envanter Yönetimi</h3>
+
+<p><strong>Kurulum:</strong></p>
+<ul>
+  <li>Depo giriş/çıkış noktalarına okuyucular</li>
+  <li>Ürünlere RFID etiketleri</li>
+  <li>Envanter yazılımı entegrasyonu</li>
+</ul>
+
+<pre><code># Envanter takip sistemi
+def process_inventory_read(epc, reader_id, antenna, timestamp):
+    # Ürün bilgisini al
+    product = get_product_by_epc(epc)
+    
+    if not product:
+        # Yeni ürün kaydı
+        product = create_product(epc)
+    
+    # Okuyucu konumunu belirle
+    location = get_location_by_reader(reader_id)
+    
+    # Envanter hareketi kaydet
+    movement = {
+        "product_id": product.id,
+        "location": location,
+        "direction": get_direction(reader_id, antenna),
+        "timestamp": timestamp
+    }
+    
+    save_inventory_movement(movement)
+    
+    # Stok güncelle
+    update_stock(product.id, location, movement["direction"])
+</code></pre>
+
+<h3>3. Lojistik ve Nakliye</h3>
+
+<p><strong>Kurulum:</strong></p>
+<ul>
+  <li>Kamyon/tırlara aktif etiketler</li>
+  <li>Yol üzeri okuyucular</li>
+  <li>Merkezi takip sistemi</li>
+</ul>
+
+<h3>4. Perakende</h3>
+
+<p><strong>Kurulum:</strong></p>
+<ul>
+  <li>Ürünlere RFID etiketleri</li>
+  <li>POS sistemine entegre okuyucu</li>
+  <li>Güvenlik alarm sistemi</li>
+</ul>
+
+<h2>RFID Güvenlik</h2>
+
+<h3>1. Veri Şifreleme</h3>
+
+<pre><code># EPC şifreleme
+from cryptography.fernet import Fernet
+
+key = Fernet.generate_key()
+cipher = Fernet(key)
+
+# EPC şifreleme
+encrypted_epc = cipher.encrypt(epc.encode())
+
+# EPC çözme
+decrypted_epc = cipher.decrypt(encrypted_epc).decode()
+</code></pre>
+
+<h3>2. Erişim Kontrolü</h3>
+
+<ul>
+  <li>Okuyucu erişim şifreleri</li>
+  <li>Network izolasyonu</li>
+  <li>VPN bağlantıları</li>
+  <li>Firewall kuralları</li>
+</ul>
+
+<h3>3. Veri Bütünlüğü</h3>
+
+<ul>
+  <li>Hash kontrolü</li>
+  <li>Digital imza</li>
+  <li>Timestamp doğrulama</li>
+  <li>Audit log</li>
+</ul>
+
+<h2>RFID Performans Optimizasyonu</h2>
+
+<h3>1. Okuma Hızı Optimizasyonu</h3>
+
+<pre><code># Q algoritması ayarları
+# Q değeri: 0-15 arası
+# Yüksek Q: Daha az çakışma, daha yavaş
+# Düşük Q: Daha fazla çakışma, daha hızlı
+
+# Optimize Q değeri
+if tag_count < 10:
+    q_value = 4
+elif tag_count < 50:
+    q_value = 7
+else:
+    q_value = 10
+</code></pre>
+
+<h3>2. Güç Yönetimi</h3>
+
+<ul>
+  <li>Gereksiz güç kullanımını azaltın</li>
+  <li>Anten güçlerini optimize edin</li>
+  <li>Okuma aralıklarını ayarlayın</li>
+</ul>
+
+<h3>3. Filtreleme</h3>
+
+<pre><code># Sadece ilgili etiketleri oku
+filter_config = {
+    "epc_prefix": "E200",  # Sadece E200 ile başlayanlar
+    "memory_bank": "EPC",
+    "mask": "E20000000000000000000000"
+}
+
+# Okuyucuya filtre uygula
+reader.set_filter(filter_config)
+</code></pre>
+
+<h2>RFID Sorun Giderme</h2>
+
+<h3>Sorun 1: Etiketler Okunmuyor</h3>
+
+<p><strong>Kontrol Edilecekler:</strong></p>
+<ul>
+  <li>Güç seviyesi yeterli mi? (30 dBm+)</li>
+  <li>Anten mesafesi uygun mu? (1-5 metre)</li>
+  <li>Etiket frekansı doğru mu? (UHF: 860-960 MHz)</li>
+  <li>Metal veya su engeli var mı?</li>
+  <li>Etiket hasarlı mı?</li>
+</ul>
+
+<h3>Sorun 2: Çoklu Okuma Sorunları</h3>
+
+<p><strong>Çözümler:</strong></p>
+<ul>
+  <li>Q değerini artırın</li>
+  <li>Güç seviyesini düşürün</li>
+  <li>Anten mesafesini ayarlayın</li>
+  <li>Filtreleme kullanın</li>
+</ul>
+
+<h3>Sorun 3: Okuma Mesafesi Kısa</h3>
+
+<p><strong>Çözümler:</strong></p>
+<ul>
+  <li>Güç seviyesini artırın (maksimum 31.5 dBm)</li>
+  <li>Daha güçlü anten kullanın (8-12 dBi)</li>
+  <li>Metal engelleri kaldırın</li>
+  <li>Etiket tipini değiştirin (daha büyük anten)</li>
+</ul>
+
+<h2>muharremsen'in RFID Hizmetleri</h2>
+
+<p>muharremsen olarak, RFID sistemi kurulumu ve yönetimi için kapsamlı hizmetler sunuyoruz:</p>
+
+<ul>
+  <li><strong>RFID Sistem Tasarımı:</strong> İhtiyaç analizi ve sistem tasarımı</li>
+  <li><strong>Okuyucu Kurulumu:</strong> Fiziksel kurulum ve yapılandırma</li>
+  <li><strong>Yazılım Entegrasyonu:</strong> ERP, WMS, erişim kontrolü entegrasyonları</li>
+  <li><strong>Etiket Seçimi:</strong> Uygun etiket tipi ve frekans seçimi</li>
+  <li><strong>Performans Optimizasyonu:</strong> Okuma hızı ve mesafe optimizasyonu</li>
+  <li><strong>Güvenlik:</strong> Veri şifreleme ve erişim kontrolü</li>
+  <li><strong>Eğitim:</strong> Kullanıcı eğitimleri ve dokümantasyon</li>
+  <li><strong>7/24 Destek:</strong> Teknik destek ve bakım hizmetleri</li>
+</ul>
+
+<p>Profesyonel RFID sistemi kurulumu için bizimle iletişime geçin. Deneyimli ekibimiz, işletmenizin ihtiyaçlarına uygun RFID çözümleri kurarak operasyonel verimliliğinizi artırır.</p>
+
+<h2>Sonuç</h2>
+
+<p>RFID teknolojisi, modern işletmeler için kritik öneme sahiptir. Erişim kontrolünden envanter yönetimine, lojistikten perakendeye kadar birçok alanda kullanılır.</p>
+
+<p>Doğru kurulum, yapılandırma ve entegrasyon ile RFID sisteminiz yüksek performans sağlar. Güvenlik önlemleri ve performans optimizasyonu ile sisteminizin güvenilirliğini artırabilirsiniz.</p>
+
+<p>RFID sistemi kurulumu ve yönetimi konusunda muharremsen'in deneyimli ekibi yanınızda. Profesyonel RFID çözümleriniz için bizimle iletişime geçin!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Yazılım",
+    tags: ["RFID", "Radio Frequency Identification", "Erişim Kontrolü", "Envanter Yönetimi", "Lojistik", "UHF", "NFC", "Otomatik Tanıma"],
+  },
 ];
