@@ -5434,4 +5434,622 @@ pg_dump qdms_db > /backup/qdms_db_$DATE.sql
     category: "Yazılım",
     tags: ["QDMS", "Kalite Doküman Yönetimi", "ISO 9001", "ISO 27001", "Doküman Yönetimi", "Versiyon Kontrolü", "Onay Süreçleri", "Kalite Yönetimi"],
   },
+  {
+    id: 21,
+    slug: "bigbluebutton-detayli-kurulum-ve-yapilandirma-rehberi",
+    title: "BigBlueButton Detaylı Kurulum ve Yapılandırma Rehberi: Profesyonel Web Konferans Sistemi",
+    description: "BigBlueButton kurulumu, yapılandırması ve optimizasyonu. Ubuntu sunucu kurulumu, SSL sertifikası, Greenlight kurulumu, API yapılandırması, performans optimizasyonu ve güvenlik ayarları.",
+    content: `
+<h2>BigBlueButton Nedir?</h2>
+
+<p>BigBlueButton, açık kaynak kodlu bir web konferans sistemidir. Canlı dersler, video konferans, ekran paylaşımı, beyaz tahta, anket ve kayıt özellikleri sunar. Eğitim kurumları, işletmeler ve organizasyonlar için profesyonel bir çözümdür.</p>
+
+<p>BigBlueButton'un temel özellikleri:</p>
+
+<ul>
+  <li><strong>Ücretsiz ve Açık Kaynak:</strong> Lisans maliyeti yok</li>
+  <li><strong>Ölçeklenebilir:</strong> 10'dan 10.000+ kullanıcıya kadar</li>
+  <li><strong>Güvenli:</strong> Verileriniz kendi sunucunuzda kalır</li>
+  <li><strong>Entegrasyon:</strong> Moodle, WordPress, Canvas gibi sistemlerle entegre</li>
+  <li><strong>Çok Dilli:</strong> 50+ dil desteği</li>
+  <li><strong>Mobil Uyumlu:</strong> iOS ve Android uygulamaları</li>
+</ul>
+
+<h2>BigBlueButton Kurulum Gereksinimleri</h2>
+
+<h3>Donanım Gereksinimleri</h3>
+
+<p><strong>Minimum Gereksinimler (10-25 kullanıcı):</strong></p>
+<ul>
+  <li><strong>CPU:</strong> 4 çekirdek (2.4 GHz+)</li>
+  <li><strong>RAM:</strong> 8GB</li>
+  <li><strong>Disk:</strong> 50GB SSD</li>
+  <li><strong>Bant Genişliği:</strong> 100 Mbps</li>
+</ul>
+
+<p><strong>Önerilen Gereksinimler (50-100 kullanıcı):</strong></p>
+<ul>
+  <li><strong>CPU:</strong> 8 çekirdek (3.0 GHz+)</li>
+  <li><strong>RAM:</strong> 16GB</li>
+  <li><strong>Disk:</strong> 100GB SSD</li>
+  <li><strong>Bant Genişliği:</strong> 500 Mbps</li>
+</ul>
+
+<p><strong>Yüksek Performans (200+ kullanıcı):</strong></p>
+<ul>
+  <li><strong>CPU:</strong> 16+ çekirdek (3.5 GHz+)</li>
+  <li><strong>RAM:</strong> 32GB+</li>
+  <li><strong>Disk:</strong> 200GB+ SSD</li>
+  <li><strong>Bant Genişliği:</strong> 1 Gbps+</li>
+</ul>
+
+<h3>Yazılım Gereksinimleri</h3>
+
+<ul>
+  <li><strong>İşletim Sistemi:</strong> Ubuntu 20.04 LTS veya 22.04 LTS (64-bit)</li>
+  <li><strong>Docker:</strong> 20.10+ (otomatik kurulur)</li>
+  <li><strong>SSL Sertifikası:</strong> Let's Encrypt (ücretsiz)</li>
+  <li><strong>Domain Adı:</strong> Statik IP ve DNS kaydı</li>
+</ul>
+
+<h2>BigBlueButton Kurulumu</h2>
+
+<h3>Adım 1: Sunucu Hazırlığı</h3>
+
+<pre><code># Sistem güncellemesi
+sudo apt update && sudo apt upgrade -y
+
+# Swap alanı kontrolü (en az 4GB önerilir)
+sudo swapon --show
+
+# Eğer swap yoksa oluştur
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Firewall yapılandırması
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 7443/tcp
+sudo ufw allow 16384:32768/udp
+sudo ufw enable
+</code></pre>
+
+<h3>Adım 2: BigBlueButton Kurulum Script'i</h3>
+
+<p>BigBlueButton, otomatik kurulum script'i ile kolayca kurulur:</p>
+
+<pre><code># Kurulum script'ini indir ve çalıştır
+wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | bash -s -- -w -a -g
+
+# Parametreler:
+# -w: Nginx web sunucusu kurulumu
+# -a: API demo kurulumu
+# -g: Greenlight (kullanıcı arayüzü) kurulumu
+# -s: IP adresi yerine domain kullan (önerilir)
+# -e: E-posta adresi (Let's Encrypt için)
+</code></pre>
+
+<p><strong>Domain ile kurulum (önerilen):</strong></p>
+
+<pre><code>wget -qO- https://ubuntu.bigbluebutton.org/bbb-install.sh | bash -s -- -w -a -g -s bbb.yourdomain.com -e admin@yourdomain.com
+</code></pre>
+
+<h3>Adım 3: Kurulum Kontrolü</h3>
+
+<pre><code># BigBlueButton durumunu kontrol et
+sudo bbb-conf --check
+
+# Tüm servislerin çalıştığını kontrol et
+sudo systemctl status bbb-web
+sudo systemctl status bbb-apps-akka
+sudo systemctl status bbb-fsesl-akka
+sudo systemctl status bbb-transcription-akka
+sudo systemctl status bbb-html5
+sudo systemctl status nginx
+</code></pre>
+
+<h3>Adım 4: BigBlueButton Versiyon Kontrolü</h3>
+
+<pre><code># BigBlueButton versiyonunu kontrol et
+sudo bbb-conf --version
+
+# Güncelleme kontrolü
+sudo apt update
+sudo apt list --upgradable | grep bigbluebutton
+</code></pre>
+
+<h2>BigBlueButton Yapılandırması</h2>
+
+<h3>1. API Secret (Shared Secret) Yapılandırması</h3>
+
+<pre><code># Mevcut API Secret'ı görüntüle
+sudo bbb-conf --secret
+
+# API Secret'ı değiştir
+sudo bbb-conf --setsecret yeni_güvenli_secret_anahtari
+</code></pre>
+
+<h3>2. BigBlueButton URL Yapılandırması</h3>
+
+<pre><code># Yapılandırma dosyasını düzenle
+sudo nano /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+
+# Önemli ayarlar:
+# bigbluebutton.web.serverURL=https://bbb.yourdomain.com
+# defaultWelcomeMessage=Hoş geldiniz!
+# defaultWelcomeMessageFooter=BigBlueButton'a hoş geldiniz
+</code></pre>
+
+<h3>3. Kayıt (Recording) Yapılandırması</h3>
+
+<pre><code># Kayıt servisini kontrol et
+sudo systemctl status bbb-record-core
+
+# Kayıt dizinini kontrol et
+sudo ls -la /var/bigbluebutton/recordings/
+
+# Kayıt formatı ayarları
+sudo nano /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+
+# Kayıt ayarları:
+# record=true
+# recordFullDurationMedia=true
+</code></pre>
+
+<h3>4. Ses ve Video Yapılandırması</h3>
+
+<pre><code># FreeSWITCH yapılandırması
+sudo nano /opt/freeswitch/conf/autoload_configs/conference.conf.xml
+
+# Ses kalitesi ayarları:
+# &lt;param name="rate" value="16000"/&gt;
+# &lt;param name="channels" value="1"/&gt;
+
+# WebRTC yapılandırması
+sudo nano /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+
+# Video ayarları:
+# defaultMaxUsers=25
+# maxUsers=100
+</code></pre>
+
+<h2>Greenlight Kurulumu ve Yapılandırması</h2>
+
+<h3>Greenlight Nedir?</h3>
+
+<p>Greenlight, BigBlueButton için kullanıcı dostu bir web arayüzüdür. Kullanıcıların toplantı oluşturmasına, katılmasına ve yönetmesine olanak sağlar.</p>
+
+<h3>Greenlight Kurulumu</h3>
+
+<p>Greenlight, BigBlueButton kurulum script'i ile otomatik kurulur (-g parametresi ile).</p>
+
+<pre><code># Greenlight durumunu kontrol et
+sudo systemctl status greenlight
+
+# Greenlight dizini
+cd /var/www/greenlight
+</code></pre>
+
+<h3>Greenlight Yapılandırması</h3>
+
+<pre><code># Yapılandırma dosyasını düzenle
+sudo nano /var/www/greenlight/.env
+
+# Önemli ayarlar:
+# BIGBLUEBUTTON_ENDPOINT=https://bbb.yourdomain.com/bigbluebutton/
+# BIGBLUEBUTTON_SECRET=your_secret_key
+# SECRET_KEY_BASE=generate_with_rails_secret
+# DEFAULT_LOCALE=tr
+# ALLOW_MAIL_NOTIFICATIONS=true
+# SMTP_SERVER=smtp.gmail.com
+# SMTP_PORT=587
+# SMTP_DOMAIN=yourdomain.com
+# SMTP_USERNAME=your_email@gmail.com
+# SMTP_PASSWORD=your_app_password
+# SMTP_AUTH=plain
+# SMTP_STARTTLS_AUTO=true
+</code></pre>
+
+<h3>Greenlight Kullanıcı Yönetimi</h3>
+
+<pre><code># Greenlight dizinine git
+cd /var/www/greenlight
+
+# Yönetici kullanıcı oluştur
+sudo docker exec greenlight-v2 bundle exec rake user:create["Admin","admin@yourdomain.com","password","admin"]
+
+# Kullanıcı listesi
+sudo docker exec greenlight-v2 bundle exec rake user:list
+</code></pre>
+
+<h2>BigBlueButton API Kullanımı</h2>
+
+<h3>API Endpoint'leri</h3>
+
+<p>BigBlueButton, RESTful API sağlar. Tüm API çağrıları şu formatta yapılır:</p>
+
+<pre><code>https://bbb.yourdomain.com/bigbluebutton/api/[ACTION]?[PARAMETERS]&checksum=[CHECKSUM]
+</code></pre>
+
+<h3>API Checksum Hesaplama</h3>
+
+<pre><code># Checksum = SHA1(ACTION + PARAMETERS + SECRET)
+
+# Örnek: create toplantı oluşturma
+# ACTION = create
+# PARAMETERS = name=Test+Meeting&meetingID=test123
+# SECRET = your_secret_key
+# CHECKSUM = SHA1("createname=Test+Meeting&meetingID=test123your_secret_key")
+</code></pre>
+
+<h3>Önemli API Komutları</h3>
+
+<h4>1. Toplantı Oluşturma (create)</h4>
+
+<pre><code>https://bbb.yourdomain.com/bigbluebutton/api/create?
+  name=Toplantı+Adı&
+  meetingID=unique-meeting-id&
+  attendeePW=katılımcı_şifresi&
+  moderatorPW=moderatör_şifresi&
+  checksum=CHECKSUM
+</code></pre>
+
+<h4>2. Toplantıya Katılma (join)</h4>
+
+<pre><code>https://bbb.yourdomain.com/bigbluebutton/api/join?
+  fullName=Kullanıcı+Adı&
+  meetingID=unique-meeting-id&
+  password=moderatör_şifresi&
+  checksum=CHECKSUM
+</code></pre>
+
+<h4>3. Toplantı Bilgisi (getMeetingInfo)</h4>
+
+<pre><code>https://bbb.yourdomain.com/bigbluebutton/api/getMeetingInfo?
+  meetingID=unique-meeting-id&
+  checksum=CHECKSUM
+</code></pre>
+
+<h4>4. Toplantıları Listeleme (getMeetings)</h4>
+
+<pre><code>https://bbb.yourdomain.com/bigbluebutton/api/getMeetings?
+  checksum=CHECKSUM
+</code></pre>
+
+<h4>5. Kayıtları Listeleme (getRecordings)</h4>
+
+<pre><code>https://bbb.yourdomain.com/bigbluebutton/api/getRecordings?
+  meetingID=unique-meeting-id&
+  checksum=CHECKSUM
+</code></pre>
+
+<h2>BigBlueButton Performans Optimizasyonu</h2>
+
+<h3>1. CPU ve RAM Optimizasyonu</h3>
+
+<pre><code># BigBlueButton servis limitlerini ayarla
+sudo nano /etc/systemd/system/bbb-html5.service
+
+# CPU ve RAM limitleri:
+# CPUQuota=200%
+# MemoryLimit=2G
+
+# Değişiklikleri uygula
+sudo systemctl daemon-reload
+sudo systemctl restart bbb-html5
+</code></pre>
+
+<h3>2. Network Optimizasyonu</h3>
+
+<pre><code># TCP ayarları
+sudo nano /etc/sysctl.conf
+
+# Ekleyin:
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 65536 16777216
+net.ipv4.udp_mem = 16777216 16777216 16777216
+
+# Uygula
+sudo sysctl -p
+</code></pre>
+
+<h3>3. Disk I/O Optimizasyonu</h3>
+
+<pre><code># Kayıt dosyaları için ayrı disk kullanın
+# /var/bigbluebutton/recordings için SSD kullanın
+
+# Disk yazma optimizasyonu
+sudo nano /etc/fstab
+
+# noatime ekleyin:
+# /dev/sda1 /var/bigbluebutton ext4 defaults,noatime 0 2
+</code></pre>
+
+<h3>4. Nginx Optimizasyonu</h3>
+
+<pre><code># Nginx yapılandırması
+sudo nano /etc/nginx/nginx.conf
+
+# Worker process sayısı
+worker_processes auto;
+
+# Connection limit
+worker_connections 4096;
+
+# Buffer ayarları
+client_max_body_size 100M;
+client_body_buffer_size 128k;
+</code></pre>
+
+<h2>BigBlueButton Güvenlik Yapılandırması</h2>
+
+<h3>1. SSL/TLS Sertifikası</h3>
+
+<pre><code># Let's Encrypt sertifikası (otomatik kurulur)
+# Manuel kurulum:
+sudo certbot --nginx -d bbb.yourdomain.com
+
+# Otomatik yenileme
+sudo certbot renew --dry-run
+</code></pre>
+
+<h3>2. Firewall Yapılandırması</h3>
+
+<pre><code># Sadece gerekli portları aç
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 7443/tcp
+sudo ufw allow 16384:32768/udp
+sudo ufw enable
+</code></pre>
+
+<h3>3. API Güvenliği</h3>
+
+<pre><code># API Secret'ı düzenli değiştirin
+sudo bbb-conf --setsecret yeni_güvenli_secret
+
+# API rate limiting
+sudo nano /etc/nginx/conf.d/bigbluebutton.conf
+
+# Rate limit ekleyin:
+limit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;
+</code></pre>
+
+<h3>4. Kayıt Güvenliği</h3>
+
+<pre><code># Kayıt dosyalarına erişim kontrolü
+sudo chmod 750 /var/bigbluebutton/recordings
+sudo chown -R bbb-recording:bbb-recording /var/bigbluebutton/recordings
+
+# Kayıt URL'lerini gizleyin
+# /var/www/bigbluebutton-default/application/conf/config.xml
+</code></pre>
+
+<h2>BigBlueButton Yedekleme ve Geri Yükleme</h2>
+
+<h3>1. Kayıt Yedekleme</h3>
+
+<pre><code>#!/bin/bash
+# Kayıt yedekleme script'i
+
+DATE=$(date +%Y%m%d)
+BACKUP_DIR="/backup/bbb_recordings"
+SOURCE_DIR="/var/bigbluebutton/recordings"
+
+# Yedekleme dizini oluştur
+mkdir -p $BACKUP_DIR
+
+# Kayıtları yedekle
+tar -czf $BACKUP_DIR/recordings_$DATE.tar.gz $SOURCE_DIR
+
+# Eski yedekleri sil (30 günden eski)
+find $BACKUP_DIR -name "recordings_*.tar.gz" -mtime +30 -delete
+</code></pre>
+
+<h3>2. Veritabanı Yedekleme</h3>
+
+<pre><code># Greenlight veritabanı yedekleme
+sudo docker exec greenlight-v2 pg_dump -U postgres greenlight_production > /backup/greenlight_$(date +%Y%m%d).sql
+</code></pre>
+
+<h3>3. Tam Sistem Yedekleme</h3>
+
+<pre><code>#!/bin/bash
+# Tam sistem yedekleme
+
+DATE=$(date +%Y%m%d)
+BACKUP_DIR="/backup/bbb_full"
+
+mkdir -p $BACKUP_DIR
+
+# Yapılandırma dosyaları
+tar -czf $BACKUP_DIR/config_$DATE.tar.gz \\
+  /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties \\
+  /opt/freeswitch/conf \\
+  /etc/nginx/sites-available/bigbluebutton
+
+# Kayıtlar
+tar -czf $BACKUP_DIR/recordings_$DATE.tar.gz /var/bigbluebutton/recordings
+
+# Greenlight
+sudo docker exec greenlight-v2 pg_dump -U postgres greenlight_production > $BACKUP_DIR/greenlight_$DATE.sql
+</code></pre>
+
+<h2>BigBlueButton İzleme ve Log Yönetimi</h2>
+
+<h3>1. Sistem İzleme</h3>
+
+<pre><code># BigBlueButton durum kontrolü
+sudo bbb-conf --check
+
+# Servis durumları
+sudo systemctl status bbb-web
+sudo systemctl status bbb-html5
+sudo systemctl status bbb-fsesl-akka
+
+# CPU ve RAM kullanımı
+htop
+</code></pre>
+
+<h3>2. Log Dosyaları</h3>
+
+<pre><code># BigBlueButton log dizini
+/var/log/bigbluebutton/
+
+# Önemli log dosyaları:
+# - bbb-web.log: Web servisi logları
+# - bbb-html5.log: HTML5 client logları
+# - bbb-fsesl-akka.log: FreeSWITCH logları
+# - nginx/access.log: Web erişim logları
+# - nginx/error.log: Web hata logları
+
+# Log takibi
+sudo tail -f /var/log/bigbluebutton/bbb-web.log
+</code></pre>
+
+<h3>3. Performans Metrikleri</h3>
+
+<pre><code># Aktif toplantı sayısı
+sudo bbb-conf --status | grep "Active"
+
+# Kayıt sayısı
+ls -1 /var/bigbluebutton/recordings/ | wc -l
+
+# Disk kullanımı
+df -h /var/bigbluebutton/recordings
+</code></pre>
+
+<h2>BigBlueButton Sorun Giderme</h2>
+
+<h3>Sorun 1: Toplantıya Bağlanılamıyor</h3>
+
+<p><strong>Kontrol Edilecekler:</strong></p>
+<ul>
+  <li>Firewall portları açık mı? (16384:32768/udp)</li>
+  <li>SSL sertifikası geçerli mi?</li>
+  <li>BigBlueButton servisleri çalışıyor mu?</li>
+  <li>API Secret doğru mu?</li>
+</ul>
+
+<pre><code># Servisleri kontrol et
+sudo bbb-conf --check
+
+# Portları kontrol et
+sudo netstat -tulpn | grep -E '7443|16384'
+</code></pre>
+
+<h3>Sorun 2: Ses/Görüntü Kalitesi Düşük</h3>
+
+<p><strong>Çözümler:</strong></p>
+<ul>
+  <li>Bant genişliğini kontrol edin</li>
+  <li>CPU kullanımını kontrol edin</li>
+  <li>Video kalitesi ayarlarını düşürün</li>
+  <li>Kullanıcı sayısını sınırlayın</li>
+</ul>
+
+<h3>Sorun 3: Kayıtlar Oluşmuyor</h3>
+
+<p><strong>Kontrol Edilecekler:</strong></p>
+<ul>
+  <li>Kayıt servisi çalışıyor mu? (bbb-record-core)</li>
+  <li>Disk alanı yeterli mi?</li>
+  <li>Kayıt izinleri doğru mu?</li>
+</ul>
+
+<pre><code># Kayıt servisini kontrol et
+sudo systemctl status bbb-record-core
+
+# Disk alanını kontrol et
+df -h /var/bigbluebutton/recordings
+
+# Kayıt izinlerini kontrol et
+ls -la /var/bigbluebutton/recordings
+</code></pre>
+
+<h2>BigBlueButton Entegrasyonları</h2>
+
+<h3>1. Moodle Entegrasyonu</h3>
+
+<pre><code># Moodle'da BigBlueButton plugin'i kur
+# Site yönetimi → Eklentiler → Eklenti yükle
+# "BigBlueButton" arayın ve kurun
+
+# Yapılandırma:
+# - BigBlueButton URL: https://bbb.yourdomain.com/bigbluebutton/
+# - Shared Secret: API Secret'ınız
+</code></pre>
+
+<h3>2. WordPress Entegrasyonu</h3>
+
+<pre><code># BigBlueButton WordPress plugin'i kur
+# Plugins → Add New → "BigBlueButton" arayın
+
+# Yapılandırma:
+# - Server URL: https://bbb.yourdomain.com/bigbluebutton/
+# - Shared Secret: API Secret'ınız
+</code></pre>
+
+<h3>3. API Entegrasyonu</h3>
+
+<p>BigBlueButton API'sini kullanarak özel entegrasyonlar geliştirebilirsiniz:</p>
+
+<pre><code># PHP örneği
+function createBBBMeeting($meetingID, $meetingName) {
+    $bbbURL = "https://bbb.yourdomain.com/bigbluebutton/api/";
+    $secret = "your_secret_key";
+    
+    $params = "name=" . urlencode($meetingName) . 
+              "&meetingID=" . $meetingID . 
+              "&attendeePW=attendee123" . 
+              "&moderatorPW=moderator123";
+    
+    $checksum = sha1("create" . $params . $secret);
+    
+    $url = $bbbURL . "create?" . $params . "&checksum=" . $checksum;
+    
+    $response = file_get_contents($url);
+    return simplexml_load_string($response);
+}
+</code></pre>
+
+<h2>muharremsen'in BigBlueButton Hizmetleri</h2>
+
+<p>muharremsen olarak, BigBlueButton kurulumu ve yönetimi için kapsamlı hizmetler sunuyoruz:</p>
+
+<ul>
+  <li><strong>BigBlueButton Kurulumu:</strong> Ubuntu sunucu kurulumu ve yapılandırması</li>
+  <li><strong>Greenlight Kurulumu:</strong> Kullanıcı arayüzü kurulumu ve yapılandırması</li>
+  <li><strong>SSL/TLS Yapılandırması:</strong> Let's Encrypt sertifika kurulumu</li>
+  <li><strong>Performans Optimizasyonu:</strong> CPU, RAM, network optimizasyonu</li>
+  <li><strong>Güvenlik Yapılandırması:</strong> Firewall, API güvenliği, kayıt güvenliği</li>
+  <li><strong>Entegrasyon:</strong> Moodle, WordPress, özel sistem entegrasyonları</li>
+  <li><strong>Yedekleme ve İzleme:</strong> Otomatik yedekleme ve izleme sistemleri</li>
+  <li><strong>7/24 Destek:</strong> Teknik destek ve bakım hizmetleri</li>
+</ul>
+
+<p>Profesyonel BigBlueButton kurulumu için bizimle iletişime geçin. Deneyimli ekibimiz, yüksek performanslı ve güvenli bir web konferans sistemi kurarak işletmenizin iletişim ihtiyaçlarını karşılar.</p>
+
+<h2>Sonuç</h2>
+
+<p>BigBlueButton, açık kaynak ve ücretsiz bir web konferans çözümüdür. Doğru kurulum ve yapılandırma ile kurumsal düzeyde video konferans, canlı ders ve toplantı hizmetleri sunabilirsiniz.</p>
+
+<p>Performans optimizasyonu, güvenlik yapılandırması ve düzenli bakım ile BigBlueButton'unuz yüksek kaliteli hizmet sağlar. Entegrasyonlar ve özelleştirmeler ile işletmenizin ihtiyaçlarına uygun bir çözüm oluşturabilirsiniz.</p>
+
+<p>BigBlueButton kurulumu ve yönetimi konusunda muharremsen'in deneyimli ekibi yanınızda. Profesyonel web konferans sisteminiz için bizimle iletişime geçin!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Altyapı",
+    tags: ["BigBlueButton", "Web Konferans", "Video Konferans", "Açık Kaynak", "Greenlight", "Uzaktan Eğitim", "Canlı Ders", "WebRTC"],
+  },
 ];
