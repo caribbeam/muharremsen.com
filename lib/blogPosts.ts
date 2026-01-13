@@ -6052,4 +6052,567 @@ function createBBBMeeting($meetingID, $meetingName) {
     category: "Altyapı",
     tags: ["BigBlueButton", "Web Konferans", "Video Konferans", "Açık Kaynak", "Greenlight", "Uzaktan Eğitim", "Canlı Ders", "WebRTC"],
   },
+  {
+    id: 22,
+    slug: "wifi-log-sistemi-5651-port-yonetimi-detayli-rehber",
+    title: "WiFi Log Sistemi ve 5651 Port Yönetimi: Kapsamlı Ağ İzleme ve Analiz Rehberi",
+    description: "WiFi log sistemi kurulumu, 5651 port yönetimi, ağ trafiği izleme, kullanıcı aktivite logları, güvenlik analizi ve raporlama. Syslog, SNMP, RADIUS entegrasyonu ve log analiz araçları.",
+    content: `
+<h2>WiFi Log Sistemi Nedir?</h2>
+
+<p>WiFi log sistemi, kablosuz ağ aktivitelerinin kaydedilmesi, izlenmesi ve analiz edilmesi için kullanılan bir sistemdir. Kullanıcı bağlantıları, trafik verileri, güvenlik olayları ve performans metrikleri gibi bilgileri loglar.</p>
+
+<p>5651 portu, genellikle log toplama ve analiz sistemleri için kullanılan bir port numarasıdır. Bu port üzerinden log verileri toplanır, analiz edilir ve raporlanır.</p>
+
+<h2>WiFi Log Sisteminin Önemi</h2>
+
+<h3>1. Güvenlik İzleme</h3>
+<ul>
+  <li>Şüpheli bağlantı tespiti</li>
+  <li>Yetkisiz erişim denemeleri</li>
+  <li>DDoS saldırıları tespiti</li>
+  <li>Güvenlik ihlali analizi</li>
+  <li>Compliance (uyumluluk) gereksinimleri</li>
+</ul>
+
+<h3>2. Performans Analizi</h3>
+<ul>
+  <li>Bant genişliği kullanımı</li>
+  <li>Bağlantı kalitesi metrikleri</li>
+  <li>Kullanıcı deneyimi analizi</li>
+  <li>Bottleneck tespiti</li>
+  <li>Kapasite planlama</li>
+</ul>
+
+<h3>3. Kullanıcı Yönetimi</h3>
+<ul>
+  <li>Kullanıcı aktivite takibi</li>
+  <li>Zaman bazlı kullanım analizi</li>
+  <li>Bant genişliği kullanımı</li>
+  <li>Erişim kontrolü</li>
+  <li>Kullanıcı davranış analizi</li>
+</ul>
+
+<h2>5651 Port ve Log Yönetimi</h2>
+
+<h3>5651 Port Nedir?</h3>
+
+<p>5651 portu, log toplama ve analiz sistemleri için kullanılan özel bir port numarasıdır. Bu port üzerinden:</p>
+
+<ul>
+  <li>Syslog mesajları toplanır</li>
+  <li>SNMP trap'leri alınır</li>
+  <li>RADIUS accounting verileri aktarılır</li>
+  <li>Özel log protokolleri kullanılır</li>
+</ul>
+
+<h3>Port Yapılandırması</h3>
+
+<pre><code># Firewall'da 5651 portunu aç
+sudo ufw allow 5651/tcp
+sudo ufw allow 5651/udp
+
+# Port dinleme kontrolü
+sudo netstat -tulpn | grep 5651
+sudo ss -tulpn | grep 5651
+
+# Port yönlendirme (gerekirse)
+sudo iptables -t nat -A PREROUTING -p tcp --dport 5651 -j REDIRECT --to-port 5651
+</code></pre>
+
+<h2>WiFi Log Sistemi Bileşenleri</h2>
+
+<h3>1. Log Toplama Katmanı</h3>
+
+<p><strong>Syslog Server:</strong></p>
+<ul>
+  <li>Merkezi log toplama</li>
+  <li>Çoklu kaynak desteği</li>
+  <li>Log format standardizasyonu</li>
+  <li>Zaman damgası ekleme</li>
+</ul>
+
+<p><strong>SNMP Collector:</strong></p>
+<ul>
+  <li>Network cihaz metrikleri</li>
+  <li>Performans verileri</li>
+  <li>Trap mesajları</li>
+  <li>OID bazlı veri toplama</li>
+</ul>
+
+<p><strong>RADIUS Accounting:</strong></p>
+<ul>
+  <li>Kullanıcı oturum bilgileri</li>
+  <li>Bağlantı süreleri</li>
+  <li>Veri transfer miktarları</li>
+  <li>Bağlantı noktası bilgileri</li>
+</ul>
+
+<h3>2. Log Depolama Katmanı</h3>
+
+<p><strong>Veritabanı:</strong></p>
+<ul>
+  <li>MySQL/MariaDB: İlişkisel veri</li>
+  <li>PostgreSQL: Büyük veri setleri</li>
+  <li>InfluxDB: Zaman serisi verileri</li>
+  <li>Elasticsearch: Arama ve analiz</li>
+</ul>
+
+<p><strong>Dosya Sistemi:</strong></p>
+<ul>
+  <li>Log dosyaları (text format)</li>
+  <li>Rotasyon stratejileri</li>
+  <li>Sıkıştırma</li>
+  <li>Arşivleme</li>
+</ul>
+
+<h3>3. Log Analiz Katmanı</h3>
+
+<p><strong>Analiz Araçları:</strong></p>
+<ul>
+  <li>ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+  <li>Grafana</li>
+  <li>Splunk</li>
+  <li>Graylog</li>
+</ul>
+
+<h2>WiFi Log Sistemi Kurulumu</h2>
+
+<h3>Gereksinimler</h3>
+
+<ul>
+  <li><strong>İşletim Sistemi:</strong> Ubuntu 20.04/22.04 LTS veya CentOS 8+</li>
+  <li><strong>RAM:</strong> 8GB minimum (16GB+ önerilir)</li>
+  <li><strong>Disk:</strong> 100GB+ SSD (log depolama için)</li>
+  <li><strong>CPU:</strong> 4+ çekirdek</li>
+  <li><strong>Network:</strong> Yüksek bant genişliği</li>
+</ul>
+
+<h3>Seçenek 1: Graylog Kurulumu</h3>
+
+<p>Graylog, açık kaynak bir log yönetim platformudur.</p>
+
+<h4>Adım 1: MongoDB Kurulumu</h4>
+
+<pre><code># MongoDB repository ekle
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+# MongoDB kur
+sudo apt update
+sudo apt install -y mongodb-org
+
+# MongoDB başlat
+sudo systemctl start mongod
+sudo systemctl enable mongod
+</code></pre>
+
+<h4>Adım 2: Elasticsearch Kurulumu</h4>
+
+<pre><code># Elasticsearch repository ekle
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+# Elasticsearch kur
+sudo apt update
+sudo apt install -y elasticsearch
+
+# Elasticsearch yapılandırması
+sudo nano /etc/elasticsearch/elasticsearch.yml
+
+# Önemli ayarlar:
+# cluster.name: graylog
+# network.host: 127.0.0.1
+# discovery.type: single-node
+
+# Elasticsearch başlat
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+</code></pre>
+
+<h4>Adım 3: Graylog Kurulumu</h4>
+
+<pre><code># Graylog repository ekle
+wget https://packages.graylog2.org/repo/packages/graylog-5.1-repository_latest.deb
+sudo dpkg -i graylog-5.1-repository_latest.deb
+sudo apt update
+
+# Graylog kur
+sudo apt install -y graylog-server
+
+# Graylog yapılandırması
+sudo nano /etc/graylog/server/server.conf
+
+# Önemli ayarlar:
+# password_secret = generate_with_openssl_rand -hex 64
+# root_password_sha2 = generate_with_echo -n "password" | shasum -a 256
+# http_bind_address = 0.0.0.0:9000
+# http_external_uri = http://graylog-server-ip:9000/
+# elasticsearch_hosts = http://127.0.0.1:9200
+
+# Graylog başlat
+sudo systemctl start graylog-server
+sudo systemctl enable graylog-server
+</code></pre>
+
+<h4>Adım 4: 5651 Port Yapılandırması</h4>
+
+<pre><code># Graylog input oluştur (Web arayüzünden)
+# System → Inputs → Select Input → Syslog UDP
+# Port: 5651
+# Bind address: 0.0.0.0
+
+# Veya yapılandırma dosyasından:
+sudo nano /etc/graylog/server/server.conf
+
+# Input yapılandırması:
+# content_pack_dir = /usr/share/graylog-server/contentpacks
+# message_journal_enabled = true
+</code></pre>
+
+<h3>Seçenek 2: ELK Stack Kurulumu</h3>
+
+<h4>Adım 1: Elasticsearch Kurulumu</h4>
+
+<pre><code># Elasticsearch kurulumu (yukarıdaki gibi)
+sudo apt install -y elasticsearch
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+</code></pre>
+
+<h4>Adım 2: Logstash Kurulumu</h4>
+
+<pre><code># Logstash repository ekle
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+# Logstash kur
+sudo apt update
+sudo apt install -y logstash
+
+# Logstash yapılandırması
+sudo nano /etc/logstash/conf.d/wifi-logs.conf
+
+# Yapılandırma:
+input {
+  syslog {
+    port => 5651
+    type => "wifi-logs"
+  }
+}
+
+filter {
+  if [type] == "wifi-logs" {
+    grok {
+      match => { "message" => "%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:host} %{PROG:program}(?:\\[%{POSINT:pid}\\])?: %{GREEDYDATA:message}" }
+    }
+    date {
+      match => [ "timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+    }
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    index => "wifi-logs-%{+YYYY.MM.dd}"
+  }
+}
+
+# Logstash başlat
+sudo systemctl start logstash
+sudo systemctl enable logstash
+</code></pre>
+
+<h4>Adım 3: Kibana Kurulumu</h4>
+
+<pre><code># Kibana kur
+sudo apt install -y kibana
+
+# Kibana yapılandırması
+sudo nano /etc/kibana/kibana.yml
+
+# Önemli ayarlar:
+# server.port: 5601
+# server.host: "0.0.0.0"
+# elasticsearch.hosts: ["http://localhost:9200"]
+
+# Kibana başlat
+sudo systemctl start kibana
+sudo systemctl enable kibana
+</code></pre>
+
+<h2>WiFi Access Point Log Yapılandırması</h2>
+
+<h3>1. Cisco Access Point</h3>
+
+<pre><code># Syslog yapılandırması
+configure terminal
+logging host 192.168.1.100 5651
+logging trap informational
+logging source-interface vlan1
+logging facility local0
+end
+write memory
+</code></pre>
+
+<h3>2. Ubiquiti UniFi</h3>
+
+<pre><code># UniFi Controller → Settings → System Settings → Remote Syslog
+# Syslog Server: 192.168.1.100
+# Port: 5651
+# Enable Remote Syslog: Yes
+</code></pre>
+
+<h3>3. TP-Link Access Point</h3>
+
+<pre><code># Web arayüzü → System Tools → System Log
+# Remote Log Server: 192.168.1.100
+# Remote Log Port: 5651
+# Enable Remote Log: Yes
+</code></pre>
+
+<h3>4. MikroTik RouterOS</h3>
+
+<pre><code># Terminal'den:
+/system logging
+add action=remote remote=192.168.1.100:5651 topics=info,warning,error
+</code></pre>
+
+<h2>RADIUS Accounting Yapılandırması</h2>
+
+<h3>FreeRADIUS Kurulumu</h3>
+
+<pre><code># FreeRADIUS kur
+sudo apt install -y freeradius freeradius-utils
+
+# Accounting yapılandırması
+sudo nano /etc/freeradius/3.0/sites-enabled/default
+
+# Accounting bölümünü etkinleştir:
+accounting {
+    detail
+    unix
+    radacct
+    sql
+}
+
+# SQL accounting yapılandırması
+sudo nano /etc/freeradius/3.0/mods-enabled/sql
+
+# SQL ayarları:
+sql {
+    driver = "rlm_sql_mysql"
+    server = "localhost"
+    login = "radius"
+    password = "radius_password"
+    radius_db = "radius"
+    accounting {
+        reference = "%{tolower:type.%{Acct-Status-Type}}"
+        type {
+            accounting-on {
+                query = "INSERT INTO radacct (acctsessionid, acctuniqueid, username, realm, nasipaddress, nasportid, nasporttype, acctstarttime, acctstoptime, acctsessiontime, acctauthentic, connectinfo_start, connectinfo_stop, acctinputoctets, acctoutputoctets, calledstationid, callingstationid, servicetype, framedprotocol, framedipaddress) VALUES ('%{Acct-Session-Id}', '%{Acct-Unique-Session-Id}', '%{User-Name}', '%{Realm}', '%{NAS-IP-Address}', '%{NAS-Port}', '%{NAS-Port-Type}', FROM_UNIXTIME(%{integer:Event-Timestamp}), NULL, 0, '%{Acct-Authentic}', '', '', 0, 0, '%{Called-Station-Id}', '%{Calling-Station-Id}', '%{Service-Type}', '%{Framed-Protocol}', '%{Framed-IP-Address}')"
+            }
+            accounting-off {
+                query = "UPDATE radacct SET acctstoptime = FROM_UNIXTIME(%{integer:Event-Timestamp}), acctsessiontime = '%{Acct-Session-Time}', acctinputoctets = '%{Acct-Input-Octets}', acctoutputoctets = '%{Acct-Output-Octets}', connectinfo_stop = '%{Connect-Info}' WHERE acctuniqueid = '%{Acct-Unique-Session-Id}'"
+            }
+        }
+    }
+}
+
+# FreeRADIUS başlat
+sudo systemctl start freeradius
+sudo systemctl enable freeradius
+</code></pre>
+
+<h2>SNMP Yapılandırması</h2>
+
+<h3>SNMP Agent Kurulumu</h3>
+
+<pre><code># SNMP kur
+sudo apt install -y snmp snmpd snmp-mibs-downloader
+
+# SNMP yapılandırması
+sudo nano /etc/snmp/snmpd.conf
+
+# Önemli ayarlar:
+# rocommunity public 192.168.1.0/24
+# sysLocation "WiFi Network"
+# sysContact "admin@yourdomain.com"
+# trap2sink 192.168.1.100 public
+# trapsink 192.168.1.100 public
+
+# SNMP başlat
+sudo systemctl start snmpd
+sudo systemctl enable snmpd
+</code></pre>
+
+<h3>SNMP Trap Collector</h3>
+
+<pre><code># SNMP trap alıcı yapılandırması
+sudo nano /etc/snmp/snmptrapd.conf
+
+# Trap yapılandırması:
+authCommunity log public
+traphandle default /usr/bin/logger -t snmptrap
+
+# SNMP trap servisi başlat
+sudo systemctl start snmptrapd
+sudo systemctl enable snmptrapd
+</code></pre>
+
+<h2>Log Analiz ve Raporlama</h2>
+
+<h3>1. Grafana Dashboard Kurulumu</h3>
+
+<pre><code># Grafana kur
+sudo apt install -y software-properties-common
+sudo add-apt-repository "deb https://packages.graylog2.org/repo/packages/grafana-10.1-repository_latest.deb"
+sudo apt update
+sudo apt install -y grafana
+
+# Grafana yapılandırması
+sudo nano /etc/grafana/grafana.ini
+
+# Önemli ayarlar:
+# [server]
+# http_port = 3000
+# [database]
+# type = mysql
+# host = localhost:3306
+# name = grafana
+# user = grafana
+# password = grafana_password
+
+# Grafana başlat
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+</code></pre>
+
+<h3>2. Log Query Örnekleri</h3>
+
+<pre><code># En çok bağlanan kullanıcılar
+SELECT username, COUNT(*) as connection_count
+FROM radacct
+WHERE acctstarttime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+GROUP BY username
+ORDER BY connection_count DESC
+LIMIT 10;
+
+# Bant genişliği kullanımı
+SELECT username, 
+       SUM(acctinputoctets + acctoutputoctets) as total_bytes,
+       SUM(acctinputoctets) as input_bytes,
+       SUM(acctoutputoctets) as output_bytes
+FROM radacct
+WHERE acctstarttime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+GROUP BY username
+ORDER BY total_bytes DESC;
+
+# Bağlantı süreleri
+SELECT username,
+       AVG(acctsessiontime) as avg_session_time,
+       MAX(acctsessiontime) as max_session_time,
+       MIN(acctsessiontime) as min_session_time
+FROM radacct
+WHERE acctstarttime >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+GROUP BY username;
+</code></pre>
+
+<h2>Güvenlik ve Uyumluluk</h2>
+
+<h3>1. Log Güvenliği</h3>
+
+<ul>
+  <li><strong>Şifreleme:</strong> Log verilerini şifreleyin</li>
+  <li><strong>Erişim Kontrolü:</strong> Log sunucularına sınırlı erişim</li>
+  <li><strong>Bütünlük:</strong> Log dosyalarının değiştirilmediğini doğrulayın</li>
+  <li><strong>Yedekleme:</strong> Düzenli log yedekleme</li>
+</ul>
+
+<h3>2. Compliance (Uyumluluk)</h3>
+
+<ul>
+  <li><strong>KVKK/GDPR:</strong> Kişisel veri koruma</li>
+  <li><strong>ISO 27001:</strong> Bilgi güvenliği yönetimi</li>
+  <li><strong>PCI DSS:</strong> Ödeme kartı güvenliği</li>
+  <li><strong>HIPAA:</strong> Sağlık bilgileri güvenliği</li>
+</ul>
+
+<h3>3. Log Saklama Politikaları</h3>
+
+<pre><code># Log rotasyon yapılandırması
+sudo nano /etc/logrotate.d/wifi-logs
+
+# Yapılandırma:
+/var/log/wifi/*.log {
+    daily
+    rotate 90
+    compress
+    delaycompress
+    notifempty
+    create 0640 www-data www-data
+    sharedscripts
+    postrotate
+        systemctl reload graylog-server
+    endscript
+}
+</code></pre>
+
+<h2>Performans Optimizasyonu</h2>
+
+<h3>1. Veritabanı Optimizasyonu</h3>
+
+<pre><code># MySQL indeksleme
+CREATE INDEX idx_username ON radacct(username);
+CREATE INDEX idx_acctstarttime ON radacct(acctstarttime);
+CREATE INDEX idx_nasipaddress ON radacct(nasipaddress);
+
+# Partitioning (büyük tablolar için)
+ALTER TABLE radacct PARTITION BY RANGE (YEAR(acctstarttime)) (
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025),
+    PARTITION p2025 VALUES LESS THAN (2026)
+);
+</code></pre>
+
+<h3>2. Log İşleme Optimizasyonu</h3>
+
+<ul>
+  <li>Batch processing kullanın</li>
+  <li>Asenkron log işleme</li>
+  <li>Log filtreleme (önemli loglar)</li>
+  <li>Compression kullanın</li>
+</ul>
+
+<h2>muharremsen'in WiFi Log Sistemi Hizmetleri</h2>
+
+<p>muharremsen olarak, WiFi log sistemi kurulumu ve yönetimi için kapsamlı hizmetler sunuyoruz:</p>
+
+<ul>
+  <li><strong>Log Sistemi Kurulumu:</strong> Graylog, ELK Stack, Splunk kurulumu</li>
+  <li><strong>5651 Port Yapılandırması:</strong> Port yönetimi ve güvenlik</li>
+  <li><strong>RADIUS Accounting:</strong> FreeRADIUS kurulumu ve yapılandırması</li>
+  <li><strong>SNMP Yapılandırması:</strong> Network cihaz izleme</li>
+  <li><strong>Log Analiz:</strong> Grafana dashboard kurulumu</li>
+  <li><strong>Güvenlik:</strong> Log güvenliği ve uyumluluk</li>
+  <li><strong>Performans Optimizasyonu:</strong> Veritabanı ve log işleme optimizasyonu</li>
+  <li><strong>7/24 Destek:</strong> Teknik destek ve bakım hizmetleri</li>
+</ul>
+
+<p>Profesyonel WiFi log sistemi kurulumu için bizimle iletişime geçin. Deneyimli ekibimiz, kapsamlı log yönetimi ve analiz sistemi kurarak ağ güvenliğinizi ve performansınızı optimize eder.</p>
+
+<h2>Sonuç</h2>
+
+<p>WiFi log sistemi, modern ağ yönetimi için kritik öneme sahiptir. Kullanıcı aktivitelerini izleyerek, güvenlik tehditlerini tespit ederek ve performans metriklerini analiz ederek ağ altyapınızı optimize edebilirsiniz.</p>
+
+<p>5651 portu ve diğer log toplama mekanizmaları ile merkezi log yönetimi sağlayarak, compliance gereksinimlerini karşılayabilir ve ağ güvenliğinizi artırabilirsiniz.</p>
+
+<p>WiFi log sistemi kurulumu ve yönetimi konusunda muharremsen'in deneyimli ekibi yanınızda. Güvenli ve performanslı log yönetim sisteminiz için bizimle iletişime geçin!</p>
+    `,
+    date: new Date().toISOString().split('T')[0],
+    author: "muharremsen",
+    category: "Network",
+    tags: ["WiFi Log", "5651 Port", "Log Yönetimi", "Syslog", "SNMP", "RADIUS", "Graylog", "ELK Stack", "Ağ İzleme", "Network Monitoring"],
+  },
 ];
