@@ -12,9 +12,9 @@ export default function SectionWrapper({
   return (
     <section
       id={id}
-      className={`py-20 px-4 overflow-hidden ${className}`}
+      className={`py-20 px-4 ${className}`}
     >
-      <div className="container mx-auto max-w-full overflow-hidden">{children}</div>
+      <div className="container mx-auto">{children}</div>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { exampleBlogPosts } from "@/lib/blogPosts";
+import { blogPosts } from "@/lib/blogData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://muharremsen.com";
@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Blog posts
-  const blogPages = exampleBlogPosts.map((post) => ({
+  const blogPages = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "weekly" as const,

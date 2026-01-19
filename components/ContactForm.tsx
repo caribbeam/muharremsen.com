@@ -10,52 +10,16 @@ export default function ContactForm() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-
-    const form = e.currentTarget;
-
-    try {
-      // Kendi API route'umuzu kullan (mail + SMS gönderir)
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Bir hata oluştu");
-      }
-
-      // Başarılı
-      setIsSubmitted(true);
+    // Dummy submit handler - backend bağlantısı yok
+    console.log("Form submitted:", formData);
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
       setFormData({ name: "", email: "", message: "" });
-      
-      // Formu resetle
-      form.reset();
-      
-      // 5 saniye sonra mesajı kaldır
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    } catch (err: any) {
-      setError(err.message || "Bir hata oluştu. Lütfen tekrar deneyin.");
-    } finally {
-      setIsLoading(false);
-    }
+    }, 3000);
   };
 
   const handleChange = (
@@ -70,9 +34,6 @@ export default function ContactForm() {
   return (
     <div className="glass rounded-xl p-8">
       <h2 className="text-2xl font-bold text-white mb-6">Bize Ulaşın</h2>
-      <p className="text-gray-400 text-sm mb-6">
-        Teklif, soru veya önerileriniz için formu doldurun. En kısa sürede size dönüş yapacağız.
-      </p>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label
@@ -128,24 +89,11 @@ export default function ContactForm() {
             placeholder="Mesajınızı buraya yazabilirsiniz..."
           />
         </div>
-        {error && (
-          <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
-            {error}
-          </div>
-        )}
-
-        {isSubmitted && (
-          <div className="bg-accent-green/20 border border-accent-green/50 rounded-lg p-4 text-accent-green text-sm">
-            Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
-          </div>
-        )}
-
         <button
           type="submit"
-          disabled={isLoading || isSubmitted}
-          className="w-full bg-accent-green text-dark-primary font-semibold px-8 py-3 rounded-lg hover:bg-accent-turquoise hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="w-full bg-accent-green text-dark-primary font-semibold px-8 py-3 rounded-lg hover:bg-accent-turquoise hover:scale-105 transition-all duration-300"
         >
-          {isLoading ? "Gönderiliyor..." : isSubmitted ? "Mesaj Gönderildi ✓" : "Gönder"}
+          {isSubmitted ? "Mesaj Gönderildi ✓" : "Gönder"}
         </button>
       </form>
     </div>

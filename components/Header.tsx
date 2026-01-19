@@ -16,10 +16,10 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 overflow-hidden max-w-full">
+    <header className="fixed top-0 left-0 right-0 z-50">
       <TopBar />
-      <div className="glass-strong overflow-hidden">
-      <nav className="container mx-auto px-4 py-3 md:py-4 max-w-full overflow-hidden">
+      <div className="glass-strong">
+      <nav className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <Link 
             href="/" 

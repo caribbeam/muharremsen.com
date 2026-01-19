@@ -3,9 +3,6 @@ import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getPostBySlug, getPosts } from "@/lib/wp";
 import Link from "next/link";
-import { parseWordPressContent, renderWordPressContent } from "@/lib/parseWordPressContent";
-import { exampleBlogPosts } from "@/lib/blogPosts";
-import SocialShare from "@/components/SocialShare";
 
 interface BlogPostPageProps {
   params: {
@@ -13,57 +10,21 @@ interface BlogPostPageProps {
   };
 }
 
-export const revalidate = 10;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
-  // WordPress'ten gelen post'lar
-  const wpPosts = await getPosts(1, 100);
-  const wpSlugs = wpPosts.map((post) => ({
+  const posts = await getPosts(1, 100);
+  return posts.map((post) => ({
     slug: post.slug,
   }));
-
-  // Local blog posts'ları da ekle
-  const localSlugs = exampleBlogPosts.map((post) => ({
-    slug: post.slug,
-  }));
-
-  // İkisini birleştir (duplicate'leri kaldır)
-  const allSlugs = [...wpSlugs, ...localSlugs];
-  const uniqueSlugs = allSlugs.filter(
-    (item, index, self) => index === self.findIndex((t) => t.slug === item.slug)
-  );
-
-  return uniqueSlugs;
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  let post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
 
-  // WordPress'ten gelmediyse local blog posts'tan bul
   if (!post) {
-    const examplePost = exampleBlogPosts.find(p => p.slug === params.slug);
-    if (examplePost) {
-      return {
-        title: `${examplePost.title} | muharremsen Blog`,
-        description: examplePost.description,
-        openGraph: {
-          title: examplePost.title,
-          description: examplePost.description,
-          type: "article",
-          publishedTime: examplePost.date,
-        },
-        alternates: {
-          canonical: `https://muharremsen.com/blog/${examplePost.slug}`,
-        },
-        robots: {
-          index: true,
-          follow: true,
-        },
-      };
-    }
-    
     return {
       title: "Yazı Bulunamadı | muharremsen",
     };
@@ -89,47 +50,17 @@ export async function generateMetadata({
       modifiedTime: post.modified,
     },
     alternates: {
-      canonical: `https://muharremsen.com/blog/${post.slug}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
+      canonical: `/blog/${post.slug}`,
     },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  let post = await getPostBySlug(params.slug);
-  
-  // WordPress'ten gelmediyse örnek yazılardan bul
-  if (!post) {
-    const examplePost = exampleBlogPosts.find(p => p.slug === params.slug);
-    if (examplePost) {
-      post = {
-        id: examplePost.id,
-        slug: examplePost.slug,
-        title: { rendered: examplePost.title },
-        excerpt: { rendered: examplePost.description },
-        content: { rendered: examplePost.content },
-        date: examplePost.date,
-        modified: examplePost.date,
-        yoast_head_json: {
-          title: examplePost.title,
-          description: examplePost.description,
-        },
-      } as any;
-    } else {
-      notFound();
-    }
-  }
+  const post = await getPostBySlug(params.slug);
 
-  // Post hala null ise 404 göster
   if (!post) {
     notFound();
   }
-
-  // TypeScript için: post artık kesinlikle null değil
-  const currentPost = post;
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -142,30 +73,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const allPosts = await getPosts(1, 10);
   const relatedPosts = allPosts
-    .filter((p) => {
-      // Mevcut yazıyı hariç tut
-      if (p.id === currentPost.id) return false;
-      
-      // "Hello world!" gibi varsayılan yazıları filtrele
-      const title = p.title.rendered.toLowerCase();
-      const slug = p.slug.toLowerCase();
-      const isDefaultPost = 
-        title.includes('hello world') || 
-        title.includes('merhaba dünya') ||
-        slug.includes('hello-world') ||
-        slug.includes('merhaba-dunya');
-      
-      return !isDefaultPost;
-    })
+    .filter((p) => p.id !== post.id)
     .slice(0, 2);
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: currentPost.title.rendered,
-    description: currentPost.excerpt.rendered.replace(/<[^>]*>/g, ""),
-    datePublished: currentPost.date,
-    dateModified: currentPost.modified,
+    headline: post.title.rendered,
+    description: post.excerpt.rendered.replace(/<[^>]*>/g, ""),
+    datePublished: post.date,
+    dateModified: post.modified,
     author: {
       "@type": "Person",
       name: "muharremsen",
@@ -176,7 +93,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://muharremsen.com/blog/${currentPost.slug}`,
+      "@id": `https://muharremsen.com/blog/${post.slug}`,
     },
   };
 
@@ -200,29 +117,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Blog
             </Link>
             {" / "}
-            <span className="text-gray-500">{currentPost.title.rendered}</span>
+            <span className="text-gray-500">{post.title.rendered}</span>
           </nav>
 
           <header className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {currentPost.title.rendered}
+              {post.title.rendered}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-6">
-              <span>{formatDate(currentPost.date)}</span>
+              <span>{formatDate(post.date)}</span>
             </div>
           </header>
 
-          <article className="mb-8 glass rounded-xl p-8 overflow-hidden">
-            <div className="overflow-hidden">
-              {(() => {
-                const sections = parseWordPressContent(currentPost.content.rendered);
-                return renderWordPressContent(sections);
-              })()}
-            </div>
-            <SocialShare 
-              title={currentPost.title.rendered}
-              url={`/blog/${currentPost.slug}`}
-              description={currentPost.excerpt.rendered.replace(/<[^>]*>/g, "")}
+          <article className="glass rounded-xl p-8 md:p-12 mb-8">
+            <div
+              className="prose prose-invert prose-lg max-w-none
+                prose-headings:text-white
+                prose-p:text-gray-300
+                prose-strong:text-white
+                prose-a:text-accent-green
+                prose-a:no-underline
+                hover:prose-a:underline
+                prose-ul:text-gray-300
+                prose-ol:text-gray-300
+                prose-li:text-gray-300"
+              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
             />
           </article>
 
