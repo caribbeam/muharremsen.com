@@ -1,66 +1,64 @@
 import { Metadata } from "next";
-import { getPageBySlug } from "@/lib/wp";
-import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/SectionWrapper";
 import ContactForm from "@/components/ContactForm";
 
-export const revalidate = 60;
+export const metadata: Metadata = {
+  title: "İletişim | muharremsen",
+  description: "muharremsen ile iletişime geçin. Yazılım geliştirme, IT çözümleri ve teknoloji danışmanlığı için bizimle iletişime geçin.",
+};
 
-export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPageBySlug("iletisim");
-
-  if (!page) {
-    return {
-      title: "İletişim | muharremsen",
-    };
-  }
-
-  const title =
-    page.yoast_head_json?.title ||
-    page.yoast_head_json?.og_title ||
-    page.title.rendered;
-  const description =
-    page.yoast_head_json?.description ||
-    page.yoast_head_json?.og_description ||
-    page.excerpt.rendered.replace(/<[^>]*>/g, "").substring(0, 160);
-
-  return {
-    title: title ? `${title} | muharremsen` : "İletişim | muharremsen",
-    description: description || undefined,
-  };
-}
-
-export default async function Iletisim() {
-  const page = await getPageBySlug("iletisim");
-
-  if (!page) {
-    notFound();
-  }
-
+export default function Iletisim() {
   return (
     <SectionWrapper className="pt-32">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {page.title.rendered}
+            İletişim
           </h1>
-          <div
-            className="prose prose-invert prose-lg max-w-none
-              prose-headings:text-white
-              prose-p:text-gray-300
-              prose-strong:text-white
-              prose-a:text-accent-green
-              prose-a:no-underline
-              hover:prose-a:underline
-              prose-ul:text-gray-300
-              prose-ol:text-gray-300
-              prose-li:text-gray-300 mb-8"
-            dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-          />
+          <p className="text-xl text-gray-300 mb-8">
+            Projeleriniz için bizimle iletişime geçin. Size en kısa sürede dönüş yapacağız.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <ContactForm />
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-6">İletişim Bilgileri</h2>
+            
+            <div className="space-y-6 mb-8">
+              <div className="bg-gray-800/50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-white mb-2">E-posta</h3>
+                <a href="mailto:info@muharremsen.com" className="text-accent-green hover:underline">
+                  info@muharremsen.com
+                </a>
+              </div>
+
+              <div className="bg-gray-800/50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-white mb-2">Telefon</h3>
+                <a href="tel:+905551234567" className="text-accent-green hover:underline">
+                  +90 (555) 123 45 67
+                </a>
+              </div>
+
+              <div className="bg-gray-800/50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-white mb-2">Adres</h3>
+                <p className="text-gray-300">
+                  İstanbul, Türkiye
+                </p>
+              </div>
+
+              <div className="bg-gray-800/50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-white mb-2">Çalışma Saatleri</h3>
+                <p className="text-gray-300">
+                  Pazartesi - Cuma: 09:00 - 18:00<br />
+                  Cumartesi - Pazar: Kapalı
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <ContactForm />
+          </div>
         </div>
       </div>
     </SectionWrapper>
