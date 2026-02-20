@@ -10,16 +10,31 @@ export default function ContactForm() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Dummy submit handler - backend bağlantısı yok
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
+    setError("");
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Gönderilemedi.");
+        return;
+      }
+      setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+    } catch {
+      setError("Bağlantı hatası. Lütfen tekrar deneyin.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -89,11 +104,15 @@ export default function ContactForm() {
             placeholder="Mesajınızı buraya yazabilirsiniz..."
           />
         </div>
+        {error && (
+          <p className="text-red-400 text-sm">{error}</p>
+        )}
         <button
           type="submit"
-          className="w-full bg-accent-green text-dark-primary font-semibold px-8 py-3 rounded-lg hover:bg-accent-turquoise hover:scale-105 transition-all duration-300"
+          disabled={loading}
+          className="w-full bg-accent-green text-dark-primary font-semibold px-8 py-3 rounded-lg hover:bg-accent-turquoise hover:scale-105 transition-all duration-300 disabled:opacity-70"
         >
-          {isSubmitted ? "Mesaj Gönderildi ✓" : "Gönder"}
+          {isSubmitted ? "Mesaj Gönderildi ✓" : loading ? "Gönderiliyor…" : "Mail Gönder"}
         </button>
       </form>
     </div>
