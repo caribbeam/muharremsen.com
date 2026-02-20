@@ -148,6 +148,16 @@ body {
   }
 }
 
+/* Ağ arka planı – hareketli düğümler */
+@keyframes nodeFloat {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .hero-animated-bg {
   position: absolute;
   inset: 0;

@@ -3,8 +3,9 @@ import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Hizmetlerimiz | muharremsen",
-  description: "Web geliştirme, mobil uygulama, siber güvenlik, bulut çözümleri, sistem yönetimi ve IT danışmanlık hizmetleri. Profesyonel teknoloji çözümleri.",
+  title: "Network, Firewall, Sanallaştırma ve Sunucu Hizmetleri | muharremsen",
+  description:
+    "Network ve firewall çözümleri, sanallaştırma, mail server, IP santral, DNS, FortiGate, MikroTik ve domain server kurulumları için uçtan uca altyapı ve güvenlik hizmetleri.",
 };
 
 export default function Hizmetler() {
@@ -12,100 +13,126 @@ export default function Hizmetler() {
     <SectionWrapper className="pt-32">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          Hizmetlerimiz
+          Network, Güvenlik ve Sunucu Hizmetlerimiz
         </h1>
         <p className="text-xl text-gray-300 mb-12">
-          Modern teknolojilerle işletmenizin dijital dönüşümüne katkı sağlayan kapsamlı IT çözümleri sunuyoruz.
+          Kurumsal network, firewall, sanallaştırma, mail server, IP santral, DNS ve domain server altyapılarınızı tasarlıyor, kuruyor ve yönetiyoruz. Güvenli, ölçeklenebilir ve yüksek erişilebilir IT altyapıları ile işletmenizin sürekliliğini sağlıyoruz.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Web Geliştirme */}
+          {/* Network ve Firewall */}
           <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
             <div className="text-accent-green text-4xl mb-4">🌐</div>
-            <h2 className="text-2xl font-bold text-white mb-3">Web Geliştirme</h2>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              Network ve Firewall
+            </h2>
             <p className="text-gray-300 mb-4">
-              Modern, responsive ve SEO uyumlu web siteleri. Next.js, React, TypeScript ile profesyonel web uygulamaları geliştiriyoruz.
+              Kurumsal network tasarımı, switch ve router yapılandırmaları, VLAN
+              segmentasyonu, site-to-site ve SSL VPN tünelleri ile güvenli
+              iletişim altyapısı kuruyoruz. FortiGate, MikroTik, pfSense gibi
+              çözümlerle güçlü firewall politikaları oluşturuyoruz.
             </p>
             <ul className="text-gray-300 text-sm space-y-2">
-              <li>• Kurumsal web siteleri</li>
-              <li>• E-ticaret platformları</li>
-              <li>• Web uygulamaları</li>
-              <li>• API geliştirme</li>
+              <li>• Network keşfi ve dokümantasyonu</li>
+              <li>• FortiGate ve MikroTik firewall kurulumları</li>
+              <li>• VPN (IPSec, SSL, Remote Access) yapılandırmaları</li>
+              <li>• IDS/IPS, web filter ve application control politikaları</li>
             </ul>
           </div>
 
-          {/* Mobil Uygulama */}
+          {/* Sanallaştırma ve Veri Merkezi */}
           <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
-            <div className="text-accent-green text-4xl mb-4">📱</div>
-            <h2 className="text-2xl font-bold text-white mb-3">Mobil Uygulama</h2>
+            <div className="text-accent-green text-4xl mb-4">💻</div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              Sanallaştırma ve Veri Merkezi
+            </h2>
             <p className="text-gray-300 mb-4">
-              iOS ve Android için native ve cross-platform mobil uygulamalar. React Native ve Flutter ile modern çözümler.
+              VMware, Proxmox ve Hyper-V tabanlı sanallaştırma ortamları,
+              cluster ve high availability yapıları, storage planlama ve yedekleme
+              çözümleri ile veri merkezinizi optimize ediyoruz.
             </p>
             <ul className="text-gray-300 text-sm space-y-2">
-              <li>• Native iOS/Android uygulamaları</li>
-              <li>• Cross-platform çözümler</li>
-              <li>• Mobil API entegrasyonları</li>
-              <li>• App Store optimizasyonu</li>
+              <li>• Hypervisor kurulum ve yapılandırma</li>
+              <li>• Cluster ve HA senaryoları</li>
+              <li>• Backup ve replikasyon çözümleri</li>
+              <li>• Kaynak ve kapasite planlama</li>
             </ul>
           </div>
 
-          {/* Siber Güvenlik */}
+          {/* Mail Server ve Güvenlik */}
           <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
-            <div className="text-accent-green text-4xl mb-4">🔒</div>
-            <h2 className="text-2xl font-bold text-white mb-3">Siber Güvenlik</h2>
+            <div className="text-accent-green text-4xl mb-4">📧</div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              Mail Server ve Güvenlik
+            </h2>
             <p className="text-gray-300 mb-4">
-              Kurumsal siber güvenlik çözümleri, güvenlik denetimi ve danışmanlık hizmetleri ile sistemlerinizi koruyoruz.
+              Exchange, Zimbra, Postfix gibi mail server çözümlerinin kurulumu,
+              SPAM ve phishing saldırılarına karşı gelişmiş koruma, SPF/DKIM/DMARC
+              yapılandırmaları ve mail arşivleme hizmetleri sunuyoruz.
             </p>
             <ul className="text-gray-300 text-sm space-y-2">
-              <li>• Güvenlik denetimi</li>
-              <li>• Penetrasyon testleri</li>
-              <li>• Güvenlik danışmanlığı</li>
-              <li>• Incident response</li>
+              <li>• Mail server kurulum ve migration</li>
+              <li>• Antispam ve antivirüs entegrasyonları</li>
+              <li>• SPF, DKIM, DMARC ayarları</li>
+              <li>• Mail yedekleme ve arşivleme</li>
             </ul>
           </div>
 
-          {/* Bulut Çözümleri */}
+          {/* IP Santral ve Çağrı Merkezi */}
           <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
-            <div className="text-accent-green text-4xl mb-4">☁️</div>
-            <h2 className="text-2xl font-bold text-white mb-3">Bulut Çözümleri</h2>
+            <div className="text-accent-green text-4xl mb-4">📞</div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              IP Santral ve Çağrı Merkezi
+            </h2>
             <p className="text-gray-300 mb-4">
-              AWS, Azure ve Google Cloud ile bulut altyapı kurulumu, migration ve yönetim hizmetleri.
+              FreePBX ve IP-PBX santral çözümleri ile dahili hatlar, IVR
+              senaryoları, çağrı kayıt ve raporlama, çoklu şube ve remote
+              kullanıcı desteği sağlıyoruz.
             </p>
             <ul className="text-gray-300 text-sm space-y-2">
-              <li>• Bulut geçişi</li>
-              <li>• Cloud infrastructure</li>
-              <li>• DevOps çözümleri</li>
-              <li>• Container orchestration</li>
+              <li>• IP santral kurulum ve yapılandırma</li>
+              <li>• IVR, queue ve çağrı akışları</li>
+              <li>• Softphone ve IP telefon entegrasyonları</li>
+              <li>• CRM ve helpdesk entegrasyonları</li>
             </ul>
           </div>
 
-          {/* Sistem Yönetimi */}
+          {/* DNS, Domain ve Directory Services */}
           <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
-            <div className="text-accent-green text-4xl mb-4">⚙️</div>
-            <h2 className="text-2xl font-bold text-white mb-3">Sistem Yönetimi</h2>
+            <div className="text-accent-green text-4xl mb-4">🧩</div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              DNS, Domain ve Directory Services
+            </h2>
             <p className="text-gray-300 mb-4">
-              Server yönetimi, network altyapısı, backup çözümleri ve 7/24 sistem izleme hizmetleri.
+              Windows Server Active Directory, DNS, DHCP ve Group Policy
+              yapılandırmaları ile domain ortamınızı standartlara uygun şekilde
+              tasarlıyoruz. Linux tabanlı DNS ve directory çözümleri de
+              sunuyoruz.
             </p>
             <ul className="text-gray-300 text-sm space-y-2">
-              <li>• Server yönetimi</li>
-              <li>• Network altyapısı</li>
-              <li>• Backup çözümleri</li>
-              <li>• 7/24 izleme</li>
+              <li>• Domain controller kurulumları</li>
+              <li>• DNS ve DHCP servisleri</li>
+              <li>• GPO ile güvenlik politikaları</li>
+              <li>• Kimlik ve erişim yönetimi</li>
             </ul>
           </div>
 
-          {/* IT Danışmanlık */}
+          {/* Yapay Zeka ve Otomasyon */}
           <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
-            <div className="text-accent-green text-4xl mb-4">💼</div>
-            <h2 className="text-2xl font-bold text-white mb-3">IT Danışmanlık</h2>
+            <div className="text-accent-green text-4xl mb-4">🤖</div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              Yapay Zeka ve Otomasyon
+            </h2>
             <p className="text-gray-300 mb-4">
-              Teknoloji stratejisi, dijital dönüşüm, sistem optimizasyonu ve IT altyapı danışmanlığı.
+              Network ve sunucu altyapılarınız için yapay zeka destekli izleme,
+              log analizi ve otomasyon senaryoları ile arıza tespiti, kapasite
+              planlama ve raporlama süreçlerini akıllandırıyoruz.
             </p>
             <ul className="text-gray-300 text-sm space-y-2">
-              <li>• Teknoloji stratejisi</li>
-              <li>• Dijital dönüşüm</li>
-              <li>• Sistem optimizasyonu</li>
-              <li>• IT roadmap</li>
+              <li>• Otomatik uyarı ve olay yönetimi</li>
+              <li>• Log analizi ve korelasyon</li>
+              <li>• Script ve playbook tabanlı otomasyon</li>
+              <li>• Raporlama ve kapasite analizi</li>
             </ul>
           </div>
         </div>
