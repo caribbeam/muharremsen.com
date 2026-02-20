@@ -291,6 +291,291 @@ add chain=input action=drop in-interface=WAN</code></pre>
     seoKeywords:
       "yapay zeka it otomasyon, log analizi, network izleme, otomatik firewall kuralı",
   },
+  {
+    slug: "devsecops-guvenligi-gelistirme-surecine-entegre-etme",
+    title: "DevSecOps: Güvenliği Geliştirme Sürecine Entegre Etme",
+    description:
+      "DevSecOps nedir? Yazılım geliştirme döngüsüne güvenliği nasıl entegre edersiniz? CI/CD pipeline'da güvenlik kontrolleri ve en iyi uygulamalar.",
+    content: `
+      <h2>DevSecOps Nedir?</h2>
+      <p>DevSecOps, geliştirme (Development), güvenlik (Security) ve operasyon (Operations) ekiplerinin iş birliğiyle yazılım yaşam döngüsüne güvenliği entegre eden bir yaklaşımdır. Güvenlik artık sonradan eklenen bir katman değil, sürecin doğal parçasıdır.</p>
+      <h3>1. Shift-Left Güvenlik</h3>
+      <p>Güvenlik kontrollerini mümkün olan en erken aşamada (tasarım, kod, build) uygulayarak zafiyetlerin production'a ulaşmasını engelleyin.</p>
+      <h3>2. CI/CD Pipeline'da Güvenlik</h3>
+      <ul>
+        <li>SAST (Static Application Security Testing) – statik kod analizi</li>
+        <li>DAST (Dynamic Application Security Testing) – canlı ortamda tarama</li>
+        <li>Bağımlılık taraması (dependency scanning) – bilinen açıkları tespit</li>
+        <li>Container image taraması – güvenlik açığı ve uyumsuzluk kontrolü</li>
+      </ul>
+      <h3>3. Otomasyon ve Araçlar</h3>
+      <p>SonarQube, Snyk, Trivy, OWASP ZAP gibi araçları pipeline'a entegre edin. Güvenlik geçmeyen build'ler otomatik olarak başarısız sayılsın.</p>
+      <h3>4. Kültür ve Eğitim</h3>
+      <p>Geliştirici ekiplerine güvenli kod yazma eğitimleri verin. Güvenlik ekipleri ile ortak dil ve metrikler belirleyin.</p>
+      <h3>Sonuç</h3>
+      <p>DevSecOps ile güvenlik, hızı düşürmeden sürecin içine gömülür; hem kalite hem güvenlik artar.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-20",
+    category: "Siber Güvenlik",
+    tags: ["DevSecOps", "CI/CD", "güvenlik", "SAST", "DAST"],
+    seoKeywords: "DevSecOps, shift-left güvenlik, CI/CD güvenlik, güvenli yazılım geliştirme",
+  },
+  {
+    slug: "network-monitoring-ag-trafigi-izleme-ve-analiz-araclari",
+    title: "Network Monitoring: Ağ Trafiği İzleme ve Analiz Araçları",
+    description:
+      "Ağ trafiğini izleme ve analiz araçları. NetFlow, sFlow, SNMP, Wireshark, Zabbix, PRTG ve merkezi izleme stratejileri.",
+    content: `
+      <h2>Ağ İzleme Neden Önemli?</h2>
+      <p>Kurumsal ağlarda trafik analizi, performans sorunlarının tespiti, güvenlik olaylarının fark edilmesi ve kapasite planlaması için kritiktir.</p>
+      <h3>1. Trafik Verisi Toplama</h3>
+      <ul>
+        <li><strong>NetFlow / IPFIX:</strong> Router ve switch'lerden akış verisi toplama</li>
+        <li><strong>sFlow:</strong> Örnekleme tabanlı, yüksek hızlı ağlar için</li>
+        <li><strong>SNMP:</strong> Cihaz metrikleri (CPU, bellek, interface trafiği)</li>
+      </ul>
+      <h3>2. Popüler İzleme Araçları</h3>
+      <p><strong>Zabbix, PRTG, LibreNMS:</strong> Ağ cihazları ve sunucuları izleme, uyarı ve grafik. <strong>Wireshark, tcpdump:</strong> Paket seviyesinde analiz. <strong>ELK Stack, Grafana:</strong> Log ve metrik görselleştirme.</p>
+      <h3>3. Merkezi İzleme Stratejisi</h3>
+      <p>Tek bir konsoldan tüm ağı görebilmek için collector, zaman senkronizasyonu (NTP) ve tutarlı log formatları kullanın.</p>
+      <h3>Sonuç</h3>
+      <p>Doğru network monitoring ile sorunları proaktif tespit eder, SLA'larınızı korursunuz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-21",
+    category: "Network",
+    tags: ["network monitoring", "NetFlow", "SNMP", "Zabbix", "Wireshark"],
+    seoKeywords: "ağ izleme, network monitoring, NetFlow, SNMP, trafik analizi",
+  },
+  {
+    slug: "cloud-guvenligi-aws-azure-gcp-en-iyi-uygulamalar",
+    title: "Cloud Güvenliği: AWS, Azure ve GCP İçin En İyi Uygulamalar",
+    description:
+      "AWS, Azure ve Google Cloud ortamlarında güvenlik en iyi uygulamaları: kimlik yönetimi, şifreleme, ağ segmentasyonu ve uyumluluk.",
+    content: `
+      <h2>Bulut Güvenliğinin Temelleri</h2>
+      <p>Paylaşılan sorumluluk modelinde; sağlayıcı altyapıyı korur, siz veri, kimlik ve yapılandırmadan sorumlusunuz.</p>
+      <h3>1. Kimlik ve Erişim Yönetimi</h3>
+      <ul>
+        <li>IAM rollerinde minimum yetki prensibi (least privilege)</li>
+        <li>MFA zorunluluğu, root hesap kullanımını kısıtlama</li>
+        <li>AWS IAM, Azure AD, GCP IAM politikalarını düzenli gözden geçirme</li>
+      </ul>
+      <h3>2. Veri Şifreleme</h3>
+      <p>Bekleyen veri (at rest): disk ve bucket şifrelemesi. Aktarımda (in transit): TLS kullanımı. Mümkünse müşteri tarafı şifreleme anahtarları (CMK) yönetin.</p>
+      <h3>3. Ağ Güvenliği</h3>
+      <p>VPC/VNet yapılandırması, security group / NSG kuralları, private endpoint ve güvenli hybrid bağlantılar.</p>
+      <h3>4. Loglama ve Denetim</h3>
+      <p>CloudTrail, Azure Monitor, GCP Audit Logs ile tüm API ve yapılandırma değişikliklerini izleyin.</p>
+      <h3>Sonuç</h3>
+      <p>Ortamınıza özel güvenlik kontrolleri ve düzenli denetimlerle bulut güvenliğinizi güçlendirin.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-22",
+    category: "Siber Güvenlik",
+    tags: ["cloud güvenliği", "AWS", "Azure", "GCP", "IAM", "şifreleme"],
+    seoKeywords: "cloud güvenliği, AWS güvenlik, Azure güvenlik, GCP güvenlik, bulut en iyi uygulamalar",
+  },
+  {
+    slug: "ransomware-saldirilari-korunma-ve-mudahale-stratejileri",
+    title: "Ransomware Saldırıları: Korunma ve Müdahale Stratejileri",
+    description:
+      "Ransomware saldırılarına karşı korunma, yedekleme stratejileri ve olay müdahale adımları. Fidye ödemeden kurtulma yolları.",
+    content: `
+      <h2>Ransomware Tehdidi</h2>
+      <p>Ransomware, verileri şifreleyip fidye talep eden kötü amaçlı yazılımlardır. Kurumsal ağlara yayılım (lateral movement) sık görülür.</p>
+      <h3>1. Korunma Önlemleri</h3>
+      <ul>
+        <li>E-posta ve web filtreleme, güvenlik bilinci eğitimi (phishing simülasyonları)</li>
+        <li>Güncel yamalar, kısıtlı yönetici hakları, uygulama beyaz listesi</li>
+        <li>Ağ segmentasyonu – bir segment etkilense diğerleri izole kalsın</li>
+      </ul>
+      <h3>2. Yedekleme Stratejisi</h3>
+      <p>3-2-1 kuralı: 3 kopya, 2 farklı medya, 1 off-site/air-gapped yedek. Yedeklerin düzenli restore testi yapın.</p>
+      <h3>3. Olay Müdahale</h3>
+      <p>Etkilenen sistemleri ağdan ayırın, iletişimi kesin. Forensik kanıtları koruyun. IR planı ve iletişim listesi hazır olsun. Yasal ve sigorta süreçlerini başlatın.</p>
+      <h3>4. Fidye Ödemek</h3>
+      <p>Ödeme garanti vermez; yasal ve etik açıdan dikkatli değerlendirin. Mümkünse yedekten kurtarma ve sistemleri temiz kurulumla yeniden inşa edin.</p>
+      <h3>Sonuç</h3>
+      <p>Proaktif önlemler ve hazır IR planı ile ransomware etkisini azaltabilirsiniz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-23",
+    category: "Siber Güvenlik",
+    tags: ["ransomware", "fidye yazılımı", "yedekleme", "olay müdahale", "güvenlik"],
+    seoKeywords: "ransomware korunma, fidye yazılımı, ransomware müdahale, yedekleme stratejisi",
+  },
+  {
+    slug: "zero-trust-guvenlik-modeli",
+    title: "Zero Trust Güvenlik Modeli: Güvenmeden Doğrula Yaklaşımı",
+    description:
+      "Zero Trust nedir? Hiçbir kullanıcı veya cihaza varsayılan güven vermeden sürekli doğrulama ve en az yetki ilkeleri.",
+    content: `
+      <h2>Zero Trust Nedir?</h2>
+      <p>Zero Trust, \"asla güvenme, her zaman doğrula\" prensibine dayanır. Konum veya ağ segmenti ne olursa olsun her erişim isteği doğrulanır ve yetkilendirilir.</p>
+      <h3>1. Temel İlkeler</h3>
+      <ul>
+        <li><strong>Sürekli doğrulama:</strong> Tek seferlik giriş değil, her işlem ve oturum kontrolü</li>
+        <li><strong>En az ayrıcalık:</strong> Sadece iş için gerekli minimum erişim</li>
+        <li><strong>Mikro-segmentasyon:</strong> Ağ ve uygulama düzeyinde küçük güvenlik bölgeleri</li>
+      </ul>
+      <h3>2. Uygulama Bileşenleri</h3>
+      <p>Çok faktörlü kimlik doğrulama (MFA), kimlik ve cihaz sağlığı kontrolü, uygulama ve veri erişim politikaları (CASB, ZTNA).</p>
+      <h3>3. Zero Trust Ağ Erişimi</h3>
+      <p>Geleneksel VPN yerine identity-aware proxy ve ZTNA çözümleri; kullanıcı ve cihaz doğrulandıktan sonra sadece yetkili kaynaklara erişim.</p>
+      <h3>Sonuç</h3>
+      <p>Zero Trust, modern hibrit ve bulut ortamlarında güvenliği artıran stratejik bir yaklaşımdır.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-24",
+    category: "Siber Güvenlik",
+    tags: ["Zero Trust", "güvenlik modeli", "MFA", "mikro-segmentasyon", "ZTNA"],
+    seoKeywords: "Zero Trust, sıfır güven, Zero Trust güvenlik, ZTNA",
+  },
+  {
+    slug: "siem-sistemleri-guvenlik-olaylarini-izleme-ve-analiz",
+    title: "SIEM Sistemleri: Güvenlik Olaylarını İzleme ve Analiz",
+    description:
+      "SIEM nedir? Log toplama, korelasyon, tehdit tespiti ve olay müdahale. Splunk, Elastic, Microsoft Sentinel ve açık kaynak seçenekleri.",
+    content: `
+      <h2>SIEM Nedir?</h2>
+      <p>SIEM (Security Information and Event Management), güvenlik olayları ve log verilerini toplayan, korelasyon yapan ve tehditleri tespit etmeye yardımcı olan sistemlerdir.</p>
+      <h3>1. Log Kaynakları</h3>
+      <ul>
+        <li>Firewall, IDS/IPS, endpoint, sunucu ve uygulama logları</li>
+        <li>Kimlik doğrulama ve erişim logları (AD, VPN, bulut)</li>
+        <li>E-posta güvenliği ve web proxy logları</li>
+      </ul>
+      <h3>2. Korelasyon ve Kurallar</h3>
+      <p>Kurallar ve use case'ler ile şüpheli davranışları tespit edin: başarısız giriş denemeleri, anormal saatlerde erişim, hassas veri erişimi, lateral movement göstergeleri.</p>
+      <h3>3. SIEM Araçları</h3>
+      <p>Splunk, Microsoft Sentinel, Elastic Security, Wazuh (açık kaynak) gibi platformlar; SOAR entegrasyonu ile otomatik yanıt.</p>
+      <h3>4. SOC ve İzleme</h3>
+      <p>SIEM, SOC (Security Operations Center) ekibinin merkezi görünürlük ve alarm yönetimi için temel bileşenidir.</p>
+      <h3>Sonuç</h3>
+      <p>Doğru yapılandırılmış bir SIEM, tehditleri hızlı tespit ve müdahale için vazgeçilmezdir.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-25",
+    category: "Siber Güvenlik",
+    tags: ["SIEM", "log yönetimi", "SOC", "tehdit tespiti", "korelasyon"],
+    seoKeywords: "SIEM, güvenlik olay yönetimi, log analizi, SOC, tehdit tespiti",
+  },
+  {
+    slug: "vpn-teknolojileri-guvenli-uzaktan-erisim",
+    title: "VPN Teknolojileri: Güvenli Uzaktan Erişim Çözümleri",
+    description:
+      "IPSec, SSL/TLS VPN, WireGuard ve site-to-site VPN. Kurumsal uzaktan erişim, güvenlik ve performans karşılaştırması.",
+    content: `
+      <h2>VPN Neden Gerekli?</h2>
+      <p>VPN (Virtual Private Network), internet üzerinden şifreli tünel ile güvenli iletişim sağlar. Uzaktan çalışma ve şube bağlantıları için standart çözümdür.</p>
+      <h3>1. VPN Türleri</h3>
+      <ul>
+        <li><strong>Site-to-Site (IPSec):</strong> Şube–merkez ağ bağlantısı, şeffaf kullanıcı deneyimi</li>
+        <li><strong>Remote Access (SSL/TLS):</strong> Tek kullanıcılar, tarayıcı veya istemci ile bağlanır</li>
+        <li><strong>WireGuard:</strong> Modern, hızlı, yapılandırması kolay açık kaynak VPN</li>
+      </ul>
+      <h3>2. Güvenlik Hususları</h3>
+      <p>Güçlü şifreleme (AES-256), doğru authentication (certificate veya MFA), split tunneling politikası ve VPN erişim loglarının izlenmesi.</p>
+      <h3>3. Performans ve Ölçek</h3>
+      <p>Donanım veya yazılım VPN seçimi, bant genişliği ve eşzamanlı kullanıcı sayısına göre kapasite planlaması.</p>
+      <h3>Sonuç</h3>
+      <p>İhtiyacınıza uygun VPN teknolojisi ve politikaları ile hem güvenli hem verimli uzaktan erişim sağlayın.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-26",
+    category: "Network",
+    tags: ["VPN", "IPSec", "SSL VPN", "WireGuard", "uzaktan erişim"],
+    seoKeywords: "VPN teknolojileri, IPSec VPN, SSL VPN, WireGuard, güvenli uzaktan erişim",
+  },
+  {
+    slug: "penetrasyon-testleri-sistemlerinizi-nasil-test-edersiniz",
+    title: "Penetrasyon Testleri: Sistemlerinizi Nasıl Test Edersiniz?",
+    description:
+      "Penetrasyon testi (pentest) nedir? Web, ağ ve sosyal mühendislik testleri. OWASP, PTES ve raporlama süreçleri.",
+    content: `
+      <h2>Penetrasyon Testi Nedir?</h2>
+      <p>Penetrasyon testi, sistemlerinize saldırgan gözüyle bakarak güvenlik açıklarını tespit eden, kontrollü ve planlı bir süreçtir.</p>
+      <h3>1. Test Türleri</h3>
+      <ul>
+        <li><strong>Black box:</strong> Dışarıdan, ön bilgi olmadan test</li>
+        <li><strong>White box:</strong> Kaynak kod ve mimari bilgisi ile derinlemesine test</li>
+        <li><strong>Web / API pentest:</strong> OWASP Top 10 odaklı uygulama testleri</li>
+        <li><strong>Sosyal mühendislik:</strong> Phishing ve fiziksel güvenlik senaryoları</li>
+      </ul>
+      <h3>2. Standartlar ve Metodoloji</h3>
+      <p>OWASP Testing Guide, PTES (Penetration Testing Execution Standard), NIST SP 800-115. Kapsam ve kurallar önceden yazılı sözleşmeyle belirlenmelidir.</p>
+      <h3>3. Raporlama ve İyileştirme</h3>
+      <p>Bulunan zafiyetler risk seviyesine göre sıralanır; öneriler ve düzeltme adımları rapora eklenir. Retest ile kapatmalar doğrulanır.</p>
+      <h3>Sonuç</h3>
+      <p>Düzenli penetrasyon testleri, güvenlik açıklarını saldırganlardan önce keşfetmenizi sağlar.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-27",
+    category: "Siber Güvenlik",
+    tags: ["penetrasyon testi", "pentest", "OWASP", "güvenlik testi", "zafiyet"],
+    seoKeywords: "penetrasyon testi, pentest, güvenlik testi, OWASP, zafiyet taraması",
+  },
+  {
+    slug: "ag-guvenligi-firewall-konfigurasyonu-ve-en-iyi-uygulamalar",
+    title: "Ağ Güvenliği: Firewall Konfigürasyonu ve En İyi Uygulamalar",
+    description:
+      "Firewall kuralları, DMZ tasarımı, default-deny yaklaşımı ve güvenlik profilleri. Kurumsal ağ güvenliği rehberi.",
+    content: `
+      <h2>Firewall Neden Kritik?</h2>
+      <p>Firewall, ağ güvenliğinin ilk hattıdır. Doğru konfigürasyon ile yetkisiz erişimi engeller, trafiği filtreler ve loglama ile denetim sağlar.</p>
+      <h3>1. Temel Kurallar</h3>
+      <ul>
+        <li><strong>Default deny:</strong> Açıkça izin verilmeyen her şey engellenir</li>
+        <li><strong>En az ayrıcalık:</strong> Sadece gerekli port ve protokoller açılır</li>
+        <li><strong>Explicit allow:</strong> Kaynak, hedef ve servis net tanımlanır</li>
+      </ul>
+      <h3>2. DMZ ve Segmentasyon</h3>
+      <p>Web ve mail sunucuları DMZ'de; iç ağ ayrı segmentte. VLAN ve firewall zone'lar ile yatay hareket kısıtlanır.</p>
+      <h3>3. Güvenlik Profilleri</h3>
+      <p>Antivirus, IPS, web filter ve application control politikalarını trafik tipine göre uygulayın. Yönetim erişimi ayrı ve kısıtlı olsun.</p>
+      <h3>4. Bakım ve Gözden Geçirme</h3>
+      <p>Kuralları periyodik gözden geçirin; kullanılmayan kuralları kaldırın. Değişiklik yönetimi ve yedekleme yapın.</p>
+      <h3>Sonuç</h3>
+      <p>Tutarlı firewall politikaları ve düzenli denetimle ağ güvenliğinizi sürdürün.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-28",
+    category: "Firewall",
+    tags: ["ağ güvenliği", "firewall", "DMZ", "güvenlik kuralları", "segmentasyon"],
+    seoKeywords: "ağ güvenliği, firewall konfigürasyonu, DMZ, firewall en iyi uygulamalar",
+  },
+  {
+    slug: "siber-guvenlik-temelleri-isletmenizi-nasil-korursunuz",
+    title: "Siber Güvenlik Temelleri: İşletmenizi Nasıl Korursunuz?",
+    description:
+      "Küçük ve orta ölçekli işletmeler için siber güvenlik temelleri: yedekleme, güçlü parola, güncellemeler, e-posta güvenliği ve farkındalık.",
+    content: `
+      <h2>Siber Güvenlik Neden Her İşletme İçin Önemli?</h2>
+      <p>Veri ihlali ve fidye yazılımı saldırıları sadece büyük şirketlere değil, KOBİ'lere de yöneliyor. Temel önlemler büyük fark yaratır.</p>
+      <h3>1. Yedekleme</h3>
+      <p>Kritik verileri düzenli ve otomatik yedekleyin. Yedekleri ağdan izole veya off-site tutun; periyodik restore testi yapın.</p>
+      <h3>2. Kimlik Doğrulama</h3>
+      <ul>
+        <li>Güçlü parola politikası ve mümkünse MFA (çok faktörlü kimlik doğrulama)</li>
+        <li>Yönetici hesaplarını sınırlayın, ayrıcalıklı erişim loglansın</li>
+      </ul>
+      <h3>3. Güncellemeler ve Yamalar</h3>
+      <p>İşletim sistemi ve uygulamaları güncel tutun. Kritik güvenlik yamalarını zamanında uygulayın.</p>
+      <h3>4. E-posta ve Eğitim</h3>
+      <p>Phishing ve dolandırıcılık e-postalarına karşı filtre ve bilinç. Çalışanlara güvenlik farkındalık eğitimi verin.</p>
+      <h3>5. Firewall ve Ağ</h3>
+      <p>Firewall kullanın, gereksiz portları kapatın. Wi-Fi ağını güçlü şifre ve ayrı misafir ağı ile yönetin.</p>
+      <h3>Sonuç</h3>
+      <p>Bu temelleri uygulayarak birçok saldırıyı önleyebilir veya etkisini azaltabilirsiniz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-29",
+    category: "Siber Güvenlik",
+    tags: ["siber güvenlik", "KOBİ", "yedekleme", "MFA", "farkındalık"],
+    seoKeywords: "siber güvenlik temelleri, işletme güvenliği, KOBİ siber güvenlik, güvenlik farkındalığı",
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
