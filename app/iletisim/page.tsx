@@ -5,13 +5,13 @@ import ContactForm from "@/components/ContactForm";
 const siteUrl = "https://muharremsen.com";
 
 export const metadata: Metadata = {
-  title: "İletişim",
+  title: "İletişim — Teklif Al",
   description:
-    "Network, firewall, VPN, mail server ve sunucu hizmetleri için teklif alın. muharremsen ile iletişime geçin, 7/24 destek.",
-  keywords: "iletişim, teklif, network hizmeti, firewall, VPN, mail server, sunucu kurulumu",
+    "İstanbul network, firewall, VPN, mail server hizmetleri için ücretsiz teklif alın. 0 530 498 95 53 — 7/24 destek. Hemen formu doldurun veya arayın.",
+  keywords: "iletişim, teklif al, İstanbul network, firewall, VPN, mail server, sunucu kurulumu",
   openGraph: {
-    title: "İletişim | muharremsen",
-    description: "Network, firewall, VPN, mail server hizmetleri için bizimle iletişime geçin.",
+    title: "İletişim & Teklif | muharremsen",
+    description: "Ücretsiz keşif ve teklif için iletişime geçin. 7/24 destek.",
     url: `${siteUrl}/iletisim`,
     type: "website",
   },
@@ -27,7 +27,7 @@ export default function Iletisim() {
             İletişim
           </h1>
           <p className="text-xl text-gray-300 mb-8">
-            Projeleriniz için bizimle iletişime geçin. Size en kısa sürede dönüş yapacağız.
+            Projeleriniz için ücretsiz keşif ve teklif alın. Formu doldurun veya doğrudan <a href="tel:+905304989553" className="text-accent-green hover:underline">0 530 498 95 53</a> numarasından arayın; en kısa sürede dönüş yapacağız.
           </p>
         </div>
 

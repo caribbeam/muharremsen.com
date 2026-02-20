@@ -11,9 +11,8 @@ export default function Footer() {
               muharremsen
             </h3>
             <p className="text-gray-400 text-sm">
-              Yapay zeka destekli yazılımlar, proforma uygulamalar, helpdesk sistemleri, 
-              LMS, envanter yönetimi, QDMS, domain server, Active Directory, imaj yönetimi, 
-              FreePBX/Asterisk kurulumları ve ISO 27001 BGYS desteği konularında uzman.
+              İstanbul ve Türkiye geneli network, firewall, VPN, mail server ve sunucu kurulumu. 
+              FortiGate, MikroTik, VMware, Proxmox, FreePBX. 7/24 destek ve ücretsiz keşif.
             </p>
           </div>
 

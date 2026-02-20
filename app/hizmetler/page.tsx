@@ -5,14 +5,14 @@ import Link from "next/link";
 const siteUrl = "https://muharremsen.com";
 
 export const metadata: Metadata = {
-  title: "Network, Firewall, Sanallaştırma ve Sunucu Hizmetleri",
+  title: "İstanbul Network, Firewall, VPN ve Mail Server Hizmetleri",
   description:
-    "Network güvenliği, FortiGate ve MikroTik firewall, VPN, mail server, sunucu kurulumu, VMware ve Proxmox sanallaştırma, FreePBX IP santral, DNS ve Active Directory hizmetleri.",
+    "İstanbul ve Türkiye geneli network, FortiGate ve MikroTik firewall, VPN, mail server, sunucu kurulumu, VMware ve Proxmox sanallaştırma, FreePBX. Ücretsiz keşif ve teklif.",
   keywords:
-    "network güvenliği, firewall, FortiGate, MikroTik, VPN, mail server, sunucu, sanallaştırma, VMware, Proxmox, FreePBX, DNS, Active Directory",
+    "İstanbul network, FortiGate kurulum, firewall, MikroTik, VPN, mail server, sunucu, sanallaştırma, VMware, Proxmox, FreePBX",
   openGraph: {
-    title: "Hizmetler | Network, Firewall, VPN, Mail Server | muharremsen",
-    description: "Network, firewall, VPN, mail server ve sunucu altyapı hizmetleri. Detaylı teknik hizmet listesi.",
+    title: "Hizmetler | İstanbul Network, Firewall, VPN | muharremsen",
+    description: "İstanbul network, firewall, VPN, mail server ve sunucu hizmetleri. Ücretsiz keşif için iletişime geçin.",
     url: `${siteUrl}/hizmetler`,
     type: "website",
   },
@@ -148,12 +148,18 @@ export default function Hizmetler() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <Link 
-            href="/iletisim" 
+        <div className="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="tel:+905304989553"
             className="bg-accent-green text-white px-8 py-4 rounded-lg font-semibold hover:bg-accent-green/90 transition-colors inline-block"
           >
-            Teklif Alın
+            Hemen Ara — 0 530 498 95 53
+          </Link>
+          <Link
+            href="/iletisim"
+            className="border-2 border-accent-green text-accent-green px-8 py-4 rounded-lg font-semibold hover:bg-accent-green/10 transition-colors inline-block"
+          >
+            Teklif Formu
           </Link>
         </div>
       </div>

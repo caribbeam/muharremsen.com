@@ -6,14 +6,14 @@ import NetworkBackground from "@/components/NetworkBackground";
 const siteUrl = "https://muharremsen.com";
 
 export const metadata: Metadata = {
-  title: "Network, Firewall, Sanallaştırma ve Sunucu Çözümleri",
+  title: "İstanbul Network, Firewall, VPN ve Mail Server Kurulumu",
   description:
-    "Network, firewall, VPN, mail server, sunucu kurulumu, FortiGate, MikroTik, VMware, Proxmox, FreePBX. Kurumsal IT altyapı ve 7/24 destek.",
+    "İstanbul ve Türkiye geneli network, firewall, VPN, mail server ve sunucu kurulumu. FortiGate, MikroTik, VMware, Proxmox. 7/24 destek. Ücretsiz keşif ve teklif için hemen arayın: 0 530 498 95 53.",
   keywords:
-    "network güvenliği, firewall kurulum, FortiGate, MikroTik, VPN, mail server, sunucu kurulumu, sanallaştırma, VMware, Proxmox, FreePBX, DNS, siber güvenlik",
+    "İstanbul network kurulum, FortiGate İstanbul, firewall kurulum, MikroTik, VPN, mail server, sunucu kurulumu, VMware, Proxmox, FreePBX, siber güvenlik",
   openGraph: {
-    title: "muharremsen | Network, Firewall, VPN, Mail Server ve Sunucu",
-    description: "Network, firewall, VPN, mail server ve sunucu altyapı hizmetleri. 7/24 destek.",
+    title: "muharremsen | İstanbul Network, Firewall, VPN, Mail Server",
+    description: "İstanbul network, firewall, VPN, mail server kurulumu. 7/24 destek. Ücretsiz keşif.",
     url: siteUrl,
     type: "website",
     locale: "tr_TR",
@@ -163,21 +163,30 @@ export default function Home() {
               Network, Sunucu, VPN, Firewall & Mail Server
             </span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 max-w-3xl mx-auto">
             Ağ altyapısı, sunucu kurulumu, VPN, firewall ve mail server işlemleri ile güvenli ve kesintisiz bir IT ortamı sunuyoruz. 7/24 izleme ve destek.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <p className="text-cyan-300/90 text-sm md:text-base mb-8">
+            İstanbul ve Türkiye geneli — Ücretsiz keşif ve teklif için hemen arayın.
+          </p>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mb-12">
             <Link
-              href="/hizmetler"
+              href="tel:+905304989553"
               className="inline-flex items-center justify-center bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity min-h-[44px]"
             >
-              Hizmetleri Gör
+              Hemen Ara — 0 530 498 95 53
             </Link>
             <Link
               href="/iletisim"
-              className="inline-flex items-center justify-center bg-transparent border border-cyan-400/60 text-white font-semibold px-6 py-3 rounded-lg hover:bg-white/10 transition-colors min-h-[44px]"
+              className="inline-flex items-center justify-center bg-white/10 border border-cyan-400/60 text-white font-semibold px-6 py-3 rounded-lg hover:bg-white/15 transition-colors min-h-[44px]"
             >
               Teklif Al
+            </Link>
+            <Link
+              href="/hizmetler"
+              className="inline-flex items-center justify-center bg-transparent border border-gray-500 text-gray-300 font-semibold px-6 py-3 rounded-lg hover:bg-white/5 transition-colors min-h-[44px]"
+            >
+              Hizmetleri Gör
             </Link>
           </div>
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-gray-400 text-sm md:text-base">
@@ -185,10 +194,10 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-emerald-400" /> 7/24 Destek
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" /> Güvenli Altyapı
+              <span className="w-2 h-2 rounded-full bg-cyan-400" /> Ücretsiz Keşif
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-violet-400" /> Hızlı Çözümler
+              <span className="w-2 h-2 rounded-full bg-violet-400" /> İstanbul & Türkiye
             </span>
           </div>
         </div>
@@ -245,6 +254,10 @@ export default function Home() {
           <ul className="text-gray-300 space-y-3 mb-8">
             <li className="flex items-start gap-2">
               <span className="text-accent-green">✓</span>
+              <span><strong>Ücretsiz ön görüşme ve keşif:</strong> Projenizi dinliyoruz, ihtiyaca özel teklif hazırlıyoruz</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-accent-green">✓</span>
               <span><strong>Deneyimli ekip:</strong> Network, firewall ve sunucu alanında uzman kadro</span>
             </li>
             <li className="flex items-start gap-2">
@@ -262,16 +275,16 @@ export default function Home() {
           </ul>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/hizmetler"
+              href="tel:+905304989553"
               className="bg-accent-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-green/90 transition-colors text-center"
             >
-              Hizmetlerimizi İnceleyin
+              Hemen Arayın — Ücretsiz Keşif
             </Link>
             <Link
               href="/iletisim"
               className="bg-transparent border-2 border-accent-green text-accent-green px-6 py-3 rounded-lg font-semibold hover:bg-accent-green/10 transition-colors text-center"
             >
-              İletişime Geçin
+              Teklif Formu
             </Link>
           </div>
         </div>
