@@ -35,13 +35,13 @@ export default function NetworkBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <svg
-        className="w-full h-full opacity-40"
+        className="w-full h-full network-bg-svg"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <linearGradient id="nodeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(0, 255, 136, 0.9)" />
-            <stop offset="100%" stopColor="rgba(0, 212, 255, 0.7)" />
+            <stop offset="0%" stopColor="rgba(0, 255, 136, 0.95)" />
+            <stop offset="100%" stopColor="rgba(0, 212, 255, 0.9)" />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="2" result="coloredBlur" />
@@ -51,7 +51,7 @@ export default function NetworkBackground() {
             </feMerge>
           </filter>
         </defs>
-        {/* Bağlantı çizgileri */}
+        {/* Bağlantı çizgileri – hareketli */}
         <g className="network-lines">
           {links.map(([i, j], idx) => (
             <line
@@ -60,29 +60,32 @@ export default function NetworkBackground() {
               y1={`${nodes[i].y}%`}
               x2={`${nodes[j].x}%`}
               y2={`${nodes[j].y}%`}
-              stroke="rgba(0, 212, 255, 0.25)"
-              strokeWidth="0.5"
-              className="animate-pulse"
-              style={{ animationDuration: "3s", animationDelay: `${idx * 0.1}s` }}
+              stroke="rgba(0, 212, 255, 0.45)"
+              strokeWidth="0.8"
+              className="network-line"
+              style={{ animationDelay: `${idx * 0.15}s` }}
             />
           ))}
         </g>
-        {/* Düğümler (hareketli nesneler) */}
+        {/* Düğümler – hareketli küreler */}
         <g className="network-nodes">
           {nodes.map((node, idx) => (
-            <circle
+            <g
               key={idx}
-              cx={`${node.x}%`}
-              cy={`${node.y}%`}
-              r={node.r}
-              fill="url(#nodeGlow)"
-              filter="url(#glow)"
-              className="network-node"
+              className="network-node-g"
               style={{
-                animation: "nodeFloat 6s ease-in-out infinite",
-                animationDelay: `${idx * 0.2}s`,
+                animation: "nodeFloat 5s ease-in-out infinite",
+                animationDelay: `${idx * 0.25}s`,
               }}
-            />
+            >
+              <circle
+                cx={`${node.x}%`}
+                cy={`${node.y}%`}
+                r={node.r}
+                fill="url(#nodeGlow)"
+                filter="url(#glow)"
+              />
+            </g>
           ))}
         </g>
       </svg>

@@ -120,10 +120,9 @@ export default function Home() {
       {/* Hero – arka planda hareketli ağ, orta alanda network / sunucu / vpn / firewall / mail server */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
         <NetworkBackground />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e27]/90 via-[#0a0e27]/70 to-[#0a0e27]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e27]/85 via-[#0a0e27]/50 to-[#0a0e27]/90" />
         <div className="relative z-10 container mx-auto text-center max-w-5xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight">
-            <span className="text-white">muharremsen – </span>
             <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               Network, Sunucu, VPN, Firewall & Mail Server
             </span>
