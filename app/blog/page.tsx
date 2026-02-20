@@ -3,9 +3,21 @@ import { blogPosts } from "@/lib/blogData";
 import SectionWrapper from "@/components/SectionWrapper";
 import BlogCard from "@/components/BlogCard";
 
+const siteUrl = "https://muharremsen.com";
+
 export const metadata: Metadata = {
-  title: "Blog | muharremsen",
-  description: "IT teknolojileri ve güvenlik konularında güncel blog yazıları.",
+  title: "Blog",
+  description:
+    "Network, firewall, VPN, mail server, sunucu kurulumu, FortiGate, MikroTik, VMware, Proxmox, FreePBX ve siber güvenlik konularında rehber ve makaleler.",
+  keywords:
+    "network blog, firewall rehberi, VPN kurulum, mail server, sunucu, FortiGate, MikroTik, Proxmox, FreePBX, siber güvenlik",
+  openGraph: {
+    title: "Blog | Network, Firewall, Mail Server | muharremsen",
+    description: "Network, firewall, VPN, mail server ve sunucu konularında teknik blog yazıları.",
+    url: `${siteUrl}/blog`,
+    type: "website",
+  },
+  alternates: { canonical: `${siteUrl}/blog` },
 };
 
 export default function BlogPage() {

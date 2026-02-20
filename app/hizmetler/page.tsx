@@ -2,10 +2,21 @@ import { Metadata } from "next";
 import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
 
+const siteUrl = "https://muharremsen.com";
+
 export const metadata: Metadata = {
-  title: "Network, Firewall, Sanallaştırma ve Sunucu Hizmetleri | muharremsen",
+  title: "Network, Firewall, Sanallaştırma ve Sunucu Hizmetleri",
   description:
-    "Network ve firewall çözümleri, sanallaştırma, mail server, IP santral, DNS, FortiGate, MikroTik ve domain server kurulumları için uçtan uca altyapı ve güvenlik hizmetleri.",
+    "Network güvenliği, FortiGate ve MikroTik firewall, VPN, mail server, sunucu kurulumu, VMware ve Proxmox sanallaştırma, FreePBX IP santral, DNS ve Active Directory hizmetleri.",
+  keywords:
+    "network güvenliği, firewall, FortiGate, MikroTik, VPN, mail server, sunucu, sanallaştırma, VMware, Proxmox, FreePBX, DNS, Active Directory",
+  openGraph: {
+    title: "Hizmetler | Network, Firewall, VPN, Mail Server | muharremsen",
+    description: "Network, firewall, VPN, mail server ve sunucu altyapı hizmetleri. Detaylı teknik hizmet listesi.",
+    url: `${siteUrl}/hizmetler`,
+    type: "website",
+  },
+  alternates: { canonical: `${siteUrl}/hizmetler` },
 };
 
 export default function Hizmetler() {

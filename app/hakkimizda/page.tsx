@@ -2,9 +2,20 @@ import { Metadata } from "next";
 import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
 
+const siteUrl = "https://muharremsen.com";
+
 export const metadata: Metadata = {
-  title: "Hakkımızda | muharremsen",
-  description: "muharremsen hakkında bilgiler. Yazılım geliştirme, IT çözümleri ve teknoloji danışmanlığı konusunda deneyimli ekibimiz.",
+  title: "Hakkımızda",
+  description:
+    "Network, firewall, VPN, mail server ve sunucu altyapısı konusunda deneyimli muharremsen ekibi. FortiGate, MikroTik, VMware, Proxmox, FreePBX uzmanlığı.",
+  keywords: "hakkımızda, muharremsen, network, firewall, VPN, mail server, IT altyapı",
+  openGraph: {
+    title: "Hakkımızda | muharremsen",
+    description: "Network, firewall, VPN ve mail server hizmetleri konusunda deneyimli ekibimiz.",
+    url: `${siteUrl}/hakkimizda`,
+    type: "website",
+  },
+  alternates: { canonical: `${siteUrl}/hakkimizda` },
 };
 
 export default function Hakkimizda() {

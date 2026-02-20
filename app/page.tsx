@@ -3,10 +3,22 @@ import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
 import NetworkBackground from "@/components/NetworkBackground";
 
+const siteUrl = "https://muharremsen.com";
+
 export const metadata: Metadata = {
-  title: "muharremsen | Network, Firewall, Sanallaştırma ve Sunucu Çözümleri",
+  title: "Network, Firewall, Sanallaştırma ve Sunucu Çözümleri",
   description:
-    "Network, firewall, sanallaştırma, mail server, IP santral, DNS, FortiGate, MikroTik ve domain server kurulumları için profesyonel altyapı ve güvenlik çözümleri.",
+    "Network, firewall, VPN, mail server, sunucu kurulumu, FortiGate, MikroTik, VMware, Proxmox, FreePBX. Kurumsal IT altyapı ve 7/24 destek.",
+  keywords:
+    "network güvenliği, firewall kurulum, FortiGate, MikroTik, VPN, mail server, sunucu kurulumu, sanallaştırma, VMware, Proxmox, FreePBX, DNS, siber güvenlik",
+  openGraph: {
+    title: "muharremsen | Network, Firewall, VPN, Mail Server ve Sunucu",
+    description: "Network, firewall, VPN, mail server ve sunucu altyapı hizmetleri. 7/24 destek.",
+    url: siteUrl,
+    type: "website",
+    locale: "tr_TR",
+  },
+  alternates: { canonical: siteUrl },
 };
 
 const serviceCards = [
@@ -114,9 +126,33 @@ const serviceCards = [
   },
 ];
 
+const homePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Network, Firewall, VPN, Mail Server ve Sunucu Çözümleri",
+  description:
+    "Network altyapısı, firewall (FortiGate, MikroTik), VPN, mail server, sunucu kurulumu, sanallaştırma (VMware, Proxmox), IP santral (FreePBX) hizmetleri.",
+  url: siteUrl,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Network Güvenliği" },
+      { "@type": "ListItem", position: 2, name: "Sunucu & Sanallaştırma" },
+      { "@type": "ListItem", position: 3, name: "VPN & Uzaktan Erişim" },
+      { "@type": "ListItem", position: 4, name: "Firewall Güvenlik ve Yönetim" },
+      { "@type": "ListItem", position: 5, name: "Mail Server İşlemleri" },
+      { "@type": "ListItem", position: 6, name: "Siber Güvenlik Testleri" },
+    ],
+  },
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageJsonLd) }}
+      />
       {/* Hero – arka planda hareketli ağ, orta alanda network / sunucu / vpn / firewall / mail server */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
         <NetworkBackground />

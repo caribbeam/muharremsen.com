@@ -2,9 +2,20 @@ import { Metadata } from "next";
 import SectionWrapper from "@/components/SectionWrapper";
 import ContactForm from "@/components/ContactForm";
 
+const siteUrl = "https://muharremsen.com";
+
 export const metadata: Metadata = {
-  title: "İletişim | muharremsen",
-  description: "muharremsen ile iletişime geçin. Yazılım geliştirme, IT çözümleri ve teknoloji danışmanlığı için bizimle iletişime geçin.",
+  title: "İletişim",
+  description:
+    "Network, firewall, VPN, mail server ve sunucu hizmetleri için teklif alın. muharremsen ile iletişime geçin, 7/24 destek.",
+  keywords: "iletişim, teklif, network hizmeti, firewall, VPN, mail server, sunucu kurulumu",
+  openGraph: {
+    title: "İletişim | muharremsen",
+    description: "Network, firewall, VPN, mail server hizmetleri için bizimle iletişime geçin.",
+    url: `${siteUrl}/iletisim`,
+    type: "website",
+  },
+  alternates: { canonical: `${siteUrl}/iletisim` },
 };
 
 export default function Iletisim() {
