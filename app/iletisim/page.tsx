@@ -60,8 +60,7 @@ export default function Iletisim() {
               <div className="bg-gray-800/50 p-4 rounded-lg">
                 <h3 className="text-lg font-semibold text-white mb-2">Çalışma Saatleri</h3>
                 <p className="text-gray-300">
-                  Pazartesi - Cuma: 09:00 - 18:00<br />
-                  Cumartesi - Pazar: Kapalı
+                  7/24 destek ve bakım hizmetleri
                 </p>
               </div>
             </div>
