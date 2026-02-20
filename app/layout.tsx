@@ -60,7 +60,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-  // Google Search Console: Doğrulama sonrası ekleyin: verification: { google: "KODUNUZ" },
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  }),
 };
 
 export const viewport: Viewport = {
