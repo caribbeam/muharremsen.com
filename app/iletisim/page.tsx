@@ -45,8 +45,8 @@ export default function Iletisim() {
 
               <div className="bg-gray-800/50 p-4 rounded-lg">
                 <h3 className="text-lg font-semibold text-white mb-2">Telefon</h3>
-                <a href="tel:+905551234567" className="text-accent-green hover:underline">
-                  +90 (555) 123 45 67
+                <a href="tel:+905304989553" className="text-accent-green hover:underline">
+                  0 530 498 95 53
                 </a>
               </div>
 
