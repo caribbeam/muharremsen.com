@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/guvenlik`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/hakkimizda`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
