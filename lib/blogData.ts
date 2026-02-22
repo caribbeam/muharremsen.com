@@ -13,6 +13,60 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "vds-nedir-vds-sunucu-kurulum-ve-kullanim-rehberi",
+    title: "VDS Nedir? VDS Sunucu Kurulum ve Kullanım Rehberi",
+    description:
+      "VDS (Virtual Dedicated Server) nedir, VPS ve dedicated sunucudan farkı ne? VDS ile mail server, web hosting ve uygulama sunucusu kurulumu. İstanbul ve Türkiye geneli VDS hizmetleri.",
+    content: `
+      <h2>VDS (Virtual Dedicated Server) Nedir?</h2>
+      <p>VDS, fiziksel bir sunucunun sanallaştırma teknolojisi ile bölünmesi sonucu oluşan, size özel kaynakların (CPU, RAM, disk) garanti edildiği bir sunucu türüdür. Paylaşımlı hostingten daha güçlü, dedicated sunucudan daha ekonomik bir çözüm sunar.</p>
+
+      <h3>VDS, VPS ve Dedicated Sunucu Farkları</h3>
+      <ul>
+        <li><strong>VPS (Virtual Private Server):</strong> Kaynaklar genellikle paylaşımlıdır; komşu siteler yoğunlaştığında performans düşebilir.</li>
+        <li><strong>VDS:</strong> CPU, RAM ve disk kotanız garanti edilir; daha öngörülebilir performans sağlar.</li>
+        <li><strong>Dedicated Sunucu:</strong> Tüm fiziksel sunucu sadece sizin; en yüksek performans ve maliyet.</li>
+      </ul>
+
+      <h3>VDS ile Neler Yapabilirsiniz?</h3>
+      <p>VDS sunucular, kurumsal ihtiyaçlar için ideal bir altyapı sağlar:</p>
+      <ul>
+        <li><strong>Web ve uygulama hosting:</strong> Yüksek trafikli siteler, e-ticaret, CRM ve ERP sistemleri</li>
+        <li><strong>Mail server:</strong> Kendi domain'inizle kurumsal e-posta (Postfix, Zimbra, Exchange)</li>
+        <li><strong>Veritabanı sunucusu:</strong> MySQL, PostgreSQL, MongoDB gibi veritabanları</li>
+        <li><strong>VPN ve güvenlik:</strong> Uzaktan erişim, site-to-site VPN, firewall kurulumu</li>
+        <li><strong>Geliştirme ve test:</strong> Staging ortamları, CI/CD pipeline'ları</li>
+      </ul>
+
+      <h3>VDS Kurulum Adımları</h3>
+      <ol>
+        <li><strong>İşletim sistemi seçimi:</strong> Ubuntu, Debian, CentOS (Linux) veya Windows Server</li>
+        <li><strong>SSH ve güvenlik:</strong> Root erişimi, firewall (UFW/iptables), fail2ban</li>
+        <li><strong>Web sunucusu:</strong> Nginx veya Apache kurulumu ve SSL (Let's Encrypt)</li>
+        <li><strong>Veritabanı:</strong> MySQL/PostgreSQL kurulumu ve güvenlik ayarları</li>
+        <li><strong>Yedekleme:</strong> Otomatik yedekleme planı ve uzak depolama</li>
+      </ol>
+
+      <h3>VDS Seçerken Dikkat Edilmesi Gerekenler</h3>
+      <ul>
+        <li>Garantili CPU çekirdeği ve RAM miktarı</li>
+        <li>SSD disk ve IOPS performansı</li>
+        <li>Veri merkezi konumu (Türkiye için düşük gecikme)</li>
+        <li>7/24 teknik destek ve SLA</li>
+        <li>Yedekleme ve felaket kurtarma seçenekleri</li>
+      </ul>
+
+      <h3>Sonuç</h3>
+      <p>VDS, hem maliyet hem performans açısından dengeli bir sunucu çözümüdür. Kurumsal web sitesi, mail server veya uygulama barındırma ihtiyaçlarınız için VDS tercih edebilirsiniz. muharremsen olarak İstanbul ve Türkiye genelinde VDS kurulum, yönetim ve 7/24 destek hizmeti sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-20",
+    category: "Sunucu",
+    tags: ["VDS", "VDS sunucu", "sunucu kurulumu", "web hosting", "mail server"],
+    seoKeywords:
+      "VDS nedir, VDS sunucu, VDS kurulum, VDS hosting İstanbul, VDS VPS farkı, sanal sunucu",
+  },
+  {
     slug: "fortigate-network-firewall-kurulum-rehberi",
     title: "FortiGate Network Firewall Kurulum ve Güvenlik Politikaları Rehberi",
     description:

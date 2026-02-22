@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "İstanbul ve Türkiye geneli network, FortiGate ve MikroTik firewall, VPN, mail server, sunucu kurulumu, VMware ve Proxmox sanallaştırma, FreePBX. Ücretsiz keşif ve teklif.",
   keywords:
-    "İstanbul network, FortiGate kurulum, firewall, MikroTik, VPN, mail server, sunucu, sanallaştırma, VMware, Proxmox, FreePBX",
+    "İstanbul network, FortiGate kurulum, firewall, MikroTik, VPN, mail server, sunucu, sanallaştırma, VMware, Proxmox, FreePBX, VDS, VDS sunucu",
   openGraph: {
     title: "Hizmetler | İstanbul Network, Firewall, VPN | muharremsen",
     description: "İstanbul network, firewall, VPN, mail server ve sunucu hizmetleri. Ücretsiz keşif için iletişime geçin.",
@@ -144,6 +144,25 @@ export default function Hizmetler() {
               <li>• Log analizi ve korelasyon</li>
               <li>• Script ve playbook tabanlı otomasyon</li>
               <li>• Raporlama ve kapasite analizi</li>
+            </ul>
+          </div>
+
+          {/* VDS Hizmetleri */}
+          <div className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors">
+            <div className="text-accent-green text-4xl mb-4">🖥️</div>
+            <h2 className="text-2xl font-bold text-white mb-3">
+              VDS Hizmetleri
+            </h2>
+            <p className="text-gray-300 mb-4">
+              Virtual Dedicated Server (VDS) ile paylaşımlı hosting sınırlarını aşın. 
+              Garantili CPU, RAM ve disk kaynakları ile web sitesi, uygulama, mail server 
+              veya veritabanı sunucularınızı güvenle barındırıyoruz.
+            </p>
+            <ul className="text-gray-300 text-sm space-y-2">
+              <li>• VDS kurulum ve yönetim (Linux/Windows)</li>
+              <li>• Özel kaynak garantisi (CPU, RAM, SSD)</li>
+              <li>• Mail server, web ve uygulama hosting</li>
+              <li>• Yedekleme, izleme ve 7/24 destek</li>
             </ul>
           </div>
         </div>
