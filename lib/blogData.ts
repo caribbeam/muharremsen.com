@@ -13,6 +13,94 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ransomware-fidye-yazilimi-korunma-rehberi",
+    title: "Ransomware (Fidye Yazılımı) Nedir? Korunma ve Kurtarma Rehberi",
+    description:
+      "Ransomware fidye yazılımı nedir, nasıl bulaşır? Kurumsal ağlarda ransomware'dan korunma yöntemleri, yedekleme stratejileri ve saldırı sonrası kurtarma adımları.",
+    content: `
+      <h2>Ransomware (Fidye Yazılımı) Nedir?</h2>
+      <p>Ransomware, bilgisayar veya sunuculardaki dosyaları şifreleyerek erişimi engelleyen ve fidye talep eden kötü amaçlı yazılımdır. Son yıllarda kurumsal hedeflere yönelik saldırılar ciddi şekilde artmıştır.</p>
+
+      <h3>Ransomware Nasıl Bulaşır?</h3>
+      <ul>
+        <li><strong>Phishing e-postaları:</strong> Sahte ekler veya linkler üzerinden</li>
+        <li><strong>Zafiyetli yazılımlar:</strong> Güncel olmayan sistemlerdeki açıklar</li>
+        <li><strong>Uzaktan masaüstü (RDP):</strong> Zayıf şifre veya açık portlar</li>
+        <li><strong>USB ve harici medya:</strong> Fiziksel cihazlar üzerinden</li>
+      </ul>
+
+      <h3>Kurumsal Korunma Yöntemleri</h3>
+      <ol>
+        <li><strong>Düzenli yedekleme:</strong> 3-2-1 kuralı: 3 kopya, 2 farklı medya, 1 off-site</li>
+        <li><strong>Yazılım güncellemeleri:</strong> İşletim sistemi ve uygulamaları güncel tutun</li>
+        <li><strong>E-posta filtreleme:</strong> Antispam, sandbox ve link tarama</li>
+        <li><strong>Firewall ve segmentasyon:</strong> Ağ bölümleme ile yayılımı sınırlayın</li>
+        <li><strong>Kullanıcı eğitimi:</strong> Phishing simülasyonları ve farkındalık</li>
+      </ol>
+
+      <h3>Saldırı Sonrası Ne Yapmalı?</h3>
+      <ul>
+        <li>Etkilenen sistemleri ağdan ayırın</li>
+        <li>Yedeklerin bütünlüğünü kontrol edin</li>
+        <li>Olay müdahale planını devreye alın</li>
+        <li>Yasal süreçler ve raporlama için uzman desteği alın</li>
+      </ul>
+
+      <h3>Sonuç</h3>
+      <p>Ransomware saldırıları önlenebilir. Doğru yedekleme, güncelleme ve güvenlik politikaları ile riski ciddi oranda azaltabilirsiniz. muharremsen olarak network güvenliği, firewall ve yedekleme altyapısı konularında destek sağlıyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-21",
+    category: "Siber Güvenlik",
+    tags: ["ransomware", "fidye yazılımı", "siber güvenlik", "yedekleme", "korunma"],
+    seoKeywords:
+      "ransomware nedir, fidye yazılımı korunma, ransomware'dan korunma, kurumsal siber güvenlik",
+  },
+  {
+    slug: "kurumsal-vpn-kurulumu-uzaktan-erisim-rehberi",
+    title: "Kurumsal VPN Kurulumu: Uzaktan Erişim ve Şube Bağlantısı Rehberi",
+    description:
+      "Kurumsal VPN nedir, nasıl kurulur? Site-to-site VPN, uzaktan çalışma erişimi, IPSec ve SSL VPN farkları. İstanbul ve Türkiye geneli VPN kurulum hizmetleri.",
+    content: `
+      <h2>Kurumsal VPN Neden Gerekli?</h2>
+      <p>VPN (Virtual Private Network), uzaktan çalışanların ve şubelerin merkez ağa güvenli bağlanmasını sağlar. Veriler şifrelenir, kimlik doğrulama ile yetkisiz erişim engellenir.</p>
+
+      <h3>VPN Türleri</h3>
+      <ul>
+        <li><strong>Site-to-Site VPN:</strong> Şube ofisler arası sürekli tünel (IPSec)</li>
+        <li><strong>Remote Access VPN:</strong> Evden veya mobil çalışanların merkeze bağlanması</li>
+        <li><strong>SSL VPN:</strong> Tarayıcı üzerinden erişim, istemci kurulumu gerektirmez</li>
+        <li><strong>IPSec VPN:</strong> Cihaz seviyesinde şifreleme, yüksek güvenlik</li>
+      </ul>
+
+      <h3>Kurulum Adımları (Genel)</h3>
+      <ol>
+        <li><strong>Donanım/yazılım seçimi:</strong> FortiGate, MikroTik, pfSense veya bulut tabanlı çözüm</li>
+        <li><strong>Kimlik doğrulama:</strong> RADIUS, LDAP veya yerel kullanıcı veritabanı</li>
+        <li><strong>Tünel yapılandırması:</strong> Phase 1/2 parametreleri, pre-shared key veya sertifika</li>
+        <li><strong>Split tunneling:</strong> Sadece kurumsal trafiği VPN üzerinden gönderme</li>
+        <li><strong>İzleme ve loglama:</strong> Bağlantı logları ve anomali tespiti</li>
+      </ol>
+
+      <h3>Uzaktan Çalışma İçin En İyi Uygulamalar</h3>
+      <ul>
+        <li>Çok faktörlü kimlik doğrulama (MFA) kullanın</li>
+        <li>Endpoint güvenliği (antivirüs, güncel OS) zorunlu tutun</li>
+        <li>Zaman aşımı ve oturum limitleri tanımlayın</li>
+        <li>Kritik sistemlere ayrıcalıklı erişim politikaları uygulayın</li>
+      </ul>
+
+      <h3>Sonuç</h3>
+      <p>Doğru yapılandırılmış bir kurumsal VPN, hem güvenliği hem de iş sürekliliğini artırır. muharremsen olarak FortiGate, MikroTik ve diğer çözümlerle VPN kurulum ve yönetim hizmeti sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-21",
+    category: "Network",
+    tags: ["VPN", "kurumsal VPN", "uzaktan erişim", "IPSec", "SSL VPN"],
+    seoKeywords:
+      "kurumsal VPN kurulumu, VPN nasıl kurulur, uzaktan erişim VPN, site-to-site VPN, İstanbul VPN",
+  },
+  {
     slug: "vds-nedir-vds-sunucu-kurulum-ve-kullanim-rehberi",
     title: "VDS Nedir? VDS Sunucu Kurulum ve Kullanım Rehberi",
     description:
