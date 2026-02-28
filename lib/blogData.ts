@@ -13,6 +13,130 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "supplier-portal-tedarikci-portali-nedir-kurulum",
+    title: "Supplier Portal (Tedarikçi Portalı) Nedir? Kurulum ve Avantajları",
+    description:
+      "Supplier portal tedarikçi portalı nedir, nasıl kurulur? Tedarik zinciri yönetimi, sipariş takibi, faturalama ve tedarikçi self-servis. Kurumsal tedarik portalı çözümleri.",
+    content: `
+      <h2>Supplier Portal (Tedarikçi Portalı) Nedir?</h2>
+      <p>Supplier portal, firmaların tedarikçileriyle dijital ortamda iletişim kurduğu, sipariş, faturalama ve doküman paylaşımını merkezileştiren bir B2B platformudur. Tedarik zinciri süreçlerini hızlandırır ve şeffaflığı artırır.</p>
+
+      <h3>Supplier Portal'ın Sağladığı Avantajlar</h3>
+      <ul>
+        <li><strong>Sipariş yönetimi:</strong> Sipariş oluşturma, onay, takip ve teslimat durumu</li>
+        <li><strong>Fatura ve ödeme:</strong> E-fatura entegrasyonu, ödeme takibi, mutabakat</li>
+        <li><strong>Self-servis:</strong> Tedarikçilerin kendi bilgilerini güncellemesi, doküman yüklemesi</li>
+        <li><strong>Raporlama:</strong> Performans, teslimat süreleri, kalite metrikleri</li>
+        <li><strong>İletişim merkezi:</strong> Tek kanal üzerinden tüm tedarikçi iletişimi</li>
+      </ul>
+
+      <h3>Kurulum ve Entegrasyon</h3>
+      <p>Supplier portal kurulumunda ERP (SAP, Oracle, Microsoft Dynamics) veya satın alma sistemleriyle entegrasyon kritiktir. API, EDI veya dosya transferi ile veri senkronizasyonu sağlanır.</p>
+      <ol>
+        <li>İhtiyaç analizi ve süreç haritalama</li>
+        <li>ERP/CRM entegrasyon mimarisi</li>
+        <li>Kullanıcı rolleri ve yetkilendirme</li>
+        <li>E-imza ve e-fatura uyumluluğu</li>
+        <li>Güvenlik (SSL, kimlik doğrulama, audit log)</li>
+      </ol>
+
+      <h3>Sonuç</h3>
+      <p>Supplier portal, tedarik zinciri verimliliğini artıran, maliyet düşüren ve süreçleri standartlaştıran bir çözümdür. muharremsen olarak supplier portal geliştirme, kurulum ve entegrasyon hizmeti sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-19",
+    category: "Yazılım",
+    tags: ["supplier portal", "tedarikçi portalı", "B2B", "ERP", "tedarik zinciri"],
+    seoKeywords:
+      "supplier portal nedir, tedarikçi portalı, supplier portal kurulum, tedarik zinciri yazılımı",
+  },
+  {
+    slug: "proforma-uygulamalari-nedir-kurumsal-kullanim",
+    title: "Proforma Uygulamaları Nedir? Kurumsal Kullanım ve Entegrasyon",
+    description:
+      "Proforma uygulamaları nedir, nasıl kullanılır? Proforma fatura, teklif ve sipariş süreçleri. ERP entegrasyonu, otomasyon ve kurumsal proforma çözümleri.",
+    content: `
+      <h2>Proforma Uygulamaları Nedir?</h2>
+      <p>Proforma uygulamaları, satış öncesi süreçlerde kullanılan teklif, proforma fatura ve sipariş öncesi belgelerin oluşturulması, yönetilmesi ve takibini sağlayan yazılımlardır. Özellikle ihracat ve kurumsal satış süreçlerinde kritik öneme sahiptir.</p>
+
+      <h3>Proforma Uygulaması ile Neler Yapılır?</h3>
+      <ul>
+        <li><strong>Teklif oluşturma:</strong> Ürün/hizmet fiyatları, indirimler, KDV hesaplama</li>
+        <li><strong>Proforma fatura:</strong> Ön fatura, ödeme koşulları, teslimat bilgileri</li>
+        <li><strong>Onay akışları:</strong> Çok aşamalı onay, limit bazlı yetkilendirme</li>
+        <li><strong>Müşteri portali:</strong> Müşterilerin teklifleri görüntülemesi ve onaylaması</li>
+        <li><strong>Raporlama:</strong> Teklif dönüşüm oranları, satış pipeline analizi</li>
+      </ul>
+
+      <h3>ERP ve CRM Entegrasyonu</h3>
+      <p>Proforma uygulamaları genellikle ERP (SAP, Logo, Netsis) veya CRM sistemleriyle entegre çalışır. Stok, fiyat listesi ve müşteri verileri merkezi sistemden alınır; onaylanan proformalar otomatik siparişe dönüştürülür.</p>
+
+      <h3>Kurumsal Kullanım Senaryoları</h3>
+      <ul>
+        <li>İhracat proforma fatura süreçleri</li>
+        <li>Toplu satış ve kampanya teklifleri</li>
+        <li>Teklif şablonları ve standart formatlar</li>
+        <li>E-imza ile onaylı proforma süreçleri</li>
+      </ul>
+
+      <h3>Sonuç</h3>
+      <p>Proforma uygulamaları, satış süreçlerini hızlandırır ve hata oranını düşürür. muharremsen olarak proforma uygulaması geliştirme, mevcut ERP/CRM entegrasyonu ve özelleştirme hizmeti sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-19",
+    category: "Yazılım",
+    tags: ["proforma", "proforma uygulaması", "teklif", "ERP", "kurumsal yazılım"],
+    seoKeywords:
+      "proforma uygulaması, proforma fatura yazılımı, teklif uygulaması, kurumsal proforma",
+  },
+  {
+    slug: "active-directory-ad-kurulum-rehberi",
+    title: "Active Directory (AD) Kurulum Rehberi: Domain Controller ve GPO",
+    description:
+      "Active Directory nedir, nasıl kurulur? Windows Server üzerinde AD kurulumu, domain controller, DNS, Group Policy (GPO) ve kullanıcı yönetimi. İstanbul AD kurulum hizmetleri.",
+    content: `
+      <h2>Active Directory (AD) Nedir?</h2>
+      <p>Active Directory, Microsoft'un kurumsal ağlarda kullanıcı, bilgisayar ve kaynak yönetimi için kullandığı dizin servisidir. Merkezi kimlik doğrulama, yetkilendirme ve Group Policy ile tüm ağ yönetimini tek noktadan kontrol etmenizi sağlar.</p>
+
+      <h3>AD Kurulum Öncesi Hazırlık</h3>
+      <ul>
+        <li><strong>Domain adı planlaması:</strong> Örn. sirket.local veya sirket.com.tr</li>
+        <li><strong>IP ve DNS:</strong> Statik IP, DNS sunucusu (AD ile birlikte kurulabilir)</li>
+        <li><strong>Windows Server:</strong> En az Windows Server 2016/2019, güncel patch'ler</li>
+        <li><strong>Donanım:</strong> Yeterli RAM, disk (SSD önerilir)</li>
+      </ul>
+
+      <h3>Domain Controller Kurulum Adımları</h3>
+      <ol>
+        <li>Server Manager üzerinden "Add Roles and Features"</li>
+        <li>Active Directory Domain Services rolünü ekleyin</li>
+        <li>Promote to Domain Controller ile yeni forest/domain oluşturun</li>
+        <li>DNS seçeneklerini yapılandırın</li>
+        <li>Restart sonrası DC olarak çalışmaya başlar</li>
+      </ol>
+
+      <h3>Group Policy (GPO) ile Yönetim</h3>
+      <p>GPO ile masaüstü ayarları, yazılım dağıtımı, güvenlik politikaları ve ağ yapılandırmalarını merkezi olarak uygulayabilirsiniz. Örn: ekran kilidi süresi, şifre politikası, firewall kuralları.</p>
+
+      <h3>En İyi Uygulamalar</h3>
+      <ul>
+        <li>En az 2 Domain Controller (yüksek erişilebilirlik)</li>
+        <li>Düzenli yedekleme (System State, AD backup)</li>
+        <li>Organizational Unit (OU) yapısını mantıklı kurgulayın</li>
+        <li>GPO'ları test ortamında deneyin</li>
+      </ul>
+
+      <h3>Sonuç</h3>
+      <p>Doğru yapılandırılmış Active Directory, kurumsal IT altyapısının temelidir. muharremsen olarak AD kurulum, migration, GPO yapılandırması ve domain ortamı yönetimi hizmeti sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-19",
+    category: "Sunucu",
+    tags: ["Active Directory", "AD kurulum", "domain controller", "GPO", "Windows Server"],
+    seoKeywords:
+      "Active Directory kurulum, AD nedir, domain controller kurulumu, GPO, Windows Server AD",
+  },
+  {
     slug: "ransomware-fidye-yazilimi-korunma-rehberi",
     title: "Ransomware (Fidye Yazılımı) Nedir? Korunma ve Kurtarma Rehberi",
     description:
