@@ -2,7 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
-  // Google ve arama motorları için temiz URL'ler
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.muharremsen.com" }],
+        destination: "https://muharremsen.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

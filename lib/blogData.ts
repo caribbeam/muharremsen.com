@@ -13,6 +13,108 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "zero-trust-sifir-guven-mimarisi-nedir",
+    title: "Zero Trust (Sıfır Güven) Mimarisi Nedir? Kurumsal Uygulama Rehberi",
+    description:
+      "Zero Trust sıfır güven mimarisi nedir, nasıl uygulanır? Kimlik doğrulama, mikro-segmentasyon, least privilege. Kurumsal ağ güvenliği için Zero Trust stratejisi. İstanbul ve Türkiye.",
+    content: `
+      <h2>Zero Trust (Sıfır Güven) Nedir?</h2>
+      <p>Zero Trust, "hiçbir şeye güvenme, her şeyi doğrula" prensibine dayanan bir siber güvenlik mimarisidir. Geleneksel güvenlik duvarı yaklaşımının aksine, ağ içindeki kullanıcı ve cihazlar da varsayılan olarak güvenilmez kabul edilir.</p>
+
+      <h3>Zero Trust Temel Prensipleri</h3>
+      <ul>
+        <li><strong>Sürekli doğrulama:</strong> Her erişim isteği kimlik ve bağlam bazlı kontrol edilir</li>
+        <li><strong>En az yetki (Least Privilege):</strong> Kullanıcılara sadece ihtiyaç duydukları erişim verilir</li>
+        <li><strong>Mikro-segmentasyon:</strong> Ağ küçük bölümlere ayrılır, yatay hareket sınırlanır</li>
+        <li><strong>Çok faktörlü kimlik doğrulama (MFA):</strong> Şifre tek başına yeterli değildir</li>
+      </ul>
+
+      <h3>Uygulama Adımları</h3>
+      <ol>
+        <li>Kimlik yönetimi (Azure AD, Okta vb.) ile merkezi doğrulama</li>
+        <li>Network segmentasyonu ve firewall politikaları</li>
+        <li>Endpoint güvenliği ve cihaz uyumluluk kontrolü</li>
+        <li>Loglama, izleme ve anomali tespiti</li>
+      </ol>
+
+      <h3>Sonuç</h3>
+      <p>Zero Trust, uzaktan çalışma ve hibrit modellerde kritik öneme sahiptir. muharremsen olarak Zero Trust mimarisi danışmanlığı ve uygulama desteği sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-22",
+    category: "Siber Güvenlik",
+    tags: ["Zero Trust", "sıfır güven", "siber güvenlik", "mikro-segmentasyon", "MFA"],
+    seoKeywords:
+      "Zero Trust nedir, sıfır güven mimarisi, Zero Trust kurulum, kurumsal siber güvenlik",
+  },
+  {
+    slug: "bulut-guvenligi-cloud-security-rehberi",
+    title: "Bulut Güvenliği (Cloud Security) Rehberi: AWS, Azure ve Hibrit Ortamlar",
+    description:
+      "Bulut güvenliği nedir, nasıl sağlanır? AWS, Azure, hibrit bulut güvenlik en iyi uygulamaları. Kimlik yönetimi, şifreleme, uyumluluk. İstanbul cloud güvenlik danışmanlığı.",
+    content: `
+      <h2>Bulut Güvenliği Neden Önemli?</h2>
+      <p>Kurumların verileri ve uygulamaları giderek buluta taşınıyor. AWS, Azure ve hibrit ortamlarda güvenlik, veri koruma ve uyumluluk kritik hale gelmiştir.</p>
+
+      <h3>Bulut Güvenlik Temel Alanları</h3>
+      <ul>
+        <li><strong>Kimlik ve erişim (IAM):</strong> Rol tabanlı erişim, MFA, privilege management</li>
+        <li><strong>Veri şifreleme:</strong> Rest ve transit şifreleme, key management</li>
+        <li><strong>Ağ güvenliği:</strong> VPC, security group, NSG yapılandırmaları</li>
+        <li><strong>Uyumluluk:</strong> KVKK, ISO 27001, SOC 2 gereksinimleri</li>
+      </ul>
+
+      <h3>AWS ve Azure İçin Öneriler</h3>
+      <p>Her iki platformda da varsayılan güvenlik ayarlarını gözden geçirin. Root/admin erişimini sınırlayın, CloudTrail veya Azure Monitor ile loglama aktif edin, yedeklemeleri şifreleyin.</p>
+
+      <h3>Sonuç</h3>
+      <p>Bulut güvenliği sürekli izleme ve güncelleme gerektirir. muharremsen olarak bulut altyapısı güvenlik danışmanlığı ve yapılandırma hizmeti sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-22",
+    category: "Siber Güvenlik",
+    tags: ["bulut güvenliği", "cloud security", "AWS", "Azure", "KVKK"],
+    seoKeywords:
+      "bulut güvenliği, cloud security, AWS güvenlik, Azure güvenlik, hibrit bulut",
+  },
+  {
+    slug: "kvkk-kisisel-veri-koruma-it-uyumluluk",
+    title: "KVKK ve Kişisel Veri Koruma: IT Altyapısında Uyumluluk Rehberi",
+    description:
+      "KVKK kişisel veri koruma IT uyumluluğu nasıl sağlanır? Veri envanteri, erişim kontrolü, şifreleme, loglama. Kurumsal KVKK uyumluluk adımları. İstanbul KVKK danışmanlık.",
+    content: `
+      <h2>KVKK ve IT Altyapısı</h2>
+      <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), kişisel verilerin işlenmesinde teknik ve idari tedbirler alınmasını zorunlu kılar. IT altyapısı bu sürecin merkezindedir.</p>
+
+      <h3>IT Açısından KVKK Gereksinimleri</h3>
+      <ul>
+        <li><strong>Veri envanteri:</strong> Hangi veriler nerede, kim erişiyor?</li>
+        <li><strong>Erişim kontrolü:</strong> Yetkilendirme, rol tabanlı erişim, MFA</li>
+        <li><strong>Şifreleme:</strong> Hassas verilerin rest ve transit şifrelemesi</li>
+        <li><strong>Loglama ve denetim:</strong> Erişim logları, değişiklik takibi</li>
+        <li><strong>Yedekleme ve silme:</strong> Veri saklama süreleri, güvenli imha</li>
+      </ul>
+
+      <h3>Uygulama Adımları</h3>
+      <ol>
+        <li>Veri işleme envanteri çıkarın</li>
+        <li>Risk değerlendirmesi yapın</li>
+        <li>Teknik tedbirleri (firewall, DLP, şifreleme) uygulayın</li>
+        <li>Politika ve prosedürleri dokümante edin</li>
+        <li>Düzenli denetim ve güncelleme yapın</li>
+      </ol>
+
+      <h3>Sonuç</h3>
+      <p>KVKK uyumluluğu sürekli bir süreçtir. muharremsen olarak KVKK kapsamında IT altyapısı danışmanlığı ve teknik uyumluluk desteği sunuyoruz.</p>
+    `,
+    author: "muharremsen",
+    date: "2026-02-22",
+    category: "Siber Güvenlik",
+    tags: ["KVKK", "kişisel veri", "uyumluluk", "veri koruma", "IT güvenlik"],
+    seoKeywords:
+      "KVKK IT uyumluluk, kişisel veri koruma, KVKK teknik tedbirler, kurumsal KVKK",
+  },
+  {
     slug: "supplier-portal-tedarikci-portali-nedir-kurulum",
     title: "Supplier Portal (Tedarikçi Portalı) Nedir? Kurulum ve Avantajları",
     description:
